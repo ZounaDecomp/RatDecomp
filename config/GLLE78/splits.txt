@@ -4073,7 +4073,7 @@ Engine/WorldLoad_Z.cpp:
 Engine/Warp_Z.cpp:
 	.text       start:0x8030F1B8 end:0x80310098
 	.data       start:0x80360AF0 end:0x80360B08
-	.sdata2     start:0x803C3170 end:0x803C3170
+	.sdata2     start:0x803C3170 end:0x803C3180
 
 Engine/WarpLoad_Z.cpp:
 	.text       start:0x80310098 end:0x80310494

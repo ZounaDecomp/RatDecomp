@@ -4,7 +4,7 @@ object: sys/main.dol
 hash: 7d53ef01a11fbb7cd1417ebf5732c32d3f5879cd
 symbols: config/GLLE78/symbols.txt
 splits: config/GLLE78/splits.txt
-symbols_known: true
+symbols_known: false
 fill_gaps: false
 # Change this to match the linker verison.
 # See config.example.yml for a list.
