@@ -29,7 +29,7 @@ from tools.project import (
 # Game versions
 DEFAULT_VERSION = 0
 VERSIONS = [
-    "GAMEID",  # 0
+    "GLLE78",  # 0
 ]
 
 parser = argparse.ArgumentParser()
@@ -187,7 +187,6 @@ cflags_base = [
     "-fp hardware",
     "-Cpp_exceptions off",
     # "-W all",
-    "-O4,p",
     "-inline auto",
     '-pragma "cats off"',
     '-pragma "warn_notinlined off"',
@@ -202,7 +201,23 @@ cflags_base = [
     f"-DBUILD_VERSION={version_num}",
     f"-DVERSION_{config.version}",
 ]
+cflags_rat_base = [
+    *cflags_base,
+    "-pool off",
+    "-schedule on",
+    "-char signed",
+    "-str reuse,pool,readonly",
+    "-fp fmadd",
+    "-use_lmw_stmw on",
+    '-pragma "cpp_extensions on"',
+    "-sym on",
+    "-inline off",
+    "-opt level=4, peep, space",
+    "-sdata 64",
+    "-sdata2 64",
+ 
 
+]
 # Debug flags
 if args.debug:
     # Or -sym dwarf-2 for Wii compilers
@@ -218,6 +233,7 @@ cflags_runtime = [
     "-gccinc",
     "-common off",
     "-inline auto",
+    "-O4,p",
 ]
 
 # REL flags
@@ -227,7 +243,7 @@ cflags_rel = [
     "-sdata2 0",
 ]
 
-config.linker_version = "GC/1.3.2"
+config.linker_version = "GC/2.7"
 
 
 # Helper function for Dolphin libraries
@@ -268,7 +284,7 @@ config.libs = [
     {
         "lib": "Runtime.PPCEABI.H",
         "mw_version": config.linker_version,
-        "cflags": cflags_runtime,
+        "cflags": cflags_base,
         "progress_category": "sdk",  # str | List[str]
         "objects": [
             Object(NonMatching, "Runtime.PPCEABI.H/global_destructor_chain.c"),

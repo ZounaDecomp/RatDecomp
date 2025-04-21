@@ -1,0 +1,13 @@
+# See config.example.yml for documentation.
+object_base: orig/GLLE78
+object: sys/main.dol
+hash: 7d53ef01a11fbb7cd1417ebf5732c32d3f5879cd
+symbols: config/GLLE78/symbols.txt
+splits: config/GLLE78/splits.txt
+symbols_known: true
+fill_gaps: false
+# Change this to match the linker verison.
+# See config.example.yml for a list.
+# mw_comment_version: 11
+ldscript_template: config/GLLE78/ldscript.tpl
+write_asm: true
