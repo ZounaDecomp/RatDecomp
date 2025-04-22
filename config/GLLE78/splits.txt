@@ -157,7 +157,7 @@ Game/PhysicColl_G.cpp:
 	.text       start:0x80025530 end:0x8002DC14
 	.ctors      start:0x80324B84 end:0x80324B88
 	.rodata     start:0x80325B08 end:0x80325B80
-	.bss        start:0x80368060 end:0x80368060
+	.bss        start:0x80368060 end:0x80368090
 	.sdata      start:0x803B80B0 end:0x803B80B8
 	.sbss       start:0x803B8760 end:0x803B8768
 	.sdata2     start:0x803BB588 end:0x803BB5D0
@@ -1865,7 +1865,7 @@ GXInit.c:
 	.bss        start:0x80387DC0 end:0x803883F0
 	.sdata      start:0x803B8290 end:0x803B8298
 	.sbss       start:0x803BAAE8 end:0x803BAB10
-	.sdata2     start:0x803C0AC8 end:0x803C0AC8
+	.sdata2     start:0x803C0AC8 end:0x803C0AF0
 
 GXFifo.c:
 	.text       start:0x801D0C5C end:0x801D14B8
@@ -1942,7 +1942,7 @@ NMWException.cp:
 
 ptmf.c:
 	.text       start:0x801D779C end:0x801D7830
-	.rodata     start:0x803334D0 end:0x803334D0
+	.rodata     start:0x803334D0 end:0x803334E0
 
 runtime.c:
 	.text       start:0x801D7830 end:0x801D7D68
@@ -4088,8 +4088,7 @@ Engine/SubWorld_Z.cpp:
 	.sbss       start:0x803BAE10 end:0x803BAE18
 
 Engine/SubWorldLoad_Z.cpp:
-	.text       start:0x80311518 end:0x803125F4
-	.text       start:0x803125F4 end:0x803128F0
+	.text       start:0x80311518 end:0x803128F0
 	.rodata     start:0x8033B1D8 end:0x8033B1F8
 	.data       start:0x80360B70 end:0x80360B78
 
@@ -4102,7 +4101,7 @@ bink\src\sdk\decode\ngc\ngcsnd.c:
 	.text       start:0x80313C14 end:0x80317D9C
 	.rodata     start:0x8033B240 end:0x8033B2D0
 	.data       start:0x80360B80 end:0x803645C8
-	.bss        start:0x803B6C20 end:0x803B6D24
+	.bss        start:0x803B6C20 end:0x803B8088
 
 bink\src\sdk\decode\binkread.c:
 	.text       start:0x80317D9C end:0x80318948
