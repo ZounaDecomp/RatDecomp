@@ -214,7 +214,6 @@ cflags_rat_base = [
     "-opt level=4, peep, space",
     "-sdata 64",
     "-sdata2 64",
-    "-i src/include",
     "-i src/Engine/includes",
     "-O4,p"
  

@@ -1,3 +1,4 @@
+#include "String_Z.h"
 char g_ChartoLower[256] = {
     0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07,
     0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f,
@@ -32,3 +33,28 @@ char g_ChartoLower[256] = {
     0xf0, 0xf1, 0xf2, 0xf3, 0xf4, 0xf5, 0xf6, 0xf7,
     0xf8, 0xf9, 0xfa, 0xfb, 0xfc, 0xfd, 0xfe, 0xff
 };
+
+S32 fstricmp(const S8* a1, const S8* a2)
+{
+    S8 lhs;
+    S8 rhs;
+    do
+    {
+        if ((lhs = g_ChartoLower[*a1++]) != (rhs = g_ChartoLower[*a2++]))
+            return 1;
+    }
+    while (lhs);
+    
+    return 0;
+}
+//extracts the bottom 4 bits of a byte and converts it to a char by adding 'A' to it.  does this for both a2 and a3. a1 is the output buffer.
+// void fsprintfID(S8* a1, U32 a2, U32 a3) {
+//     S8* v3 = a1 + 8;
+//     for (int i = 0; i < 2; i++)
+//     {
+//         for (int j = 0; j < 4; j++)
+//         {
+
+//         }
+//     }
+// }
