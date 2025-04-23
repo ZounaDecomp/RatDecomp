@@ -299,7 +299,7 @@ config.libs = [
         "progress_category": "game",  # str | List[str]
         "objects": [
             Object(Matching, "Engine/Name_Z.cpp"),
-            Object(NonMatching, "Engine/String_Z.cpp"),
+            Object(Matching, "Engine/String_Z.cpp"),
         ],
     },
 ]
