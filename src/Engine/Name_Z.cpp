@@ -67,11 +67,25 @@ int Crc32Tab[] = {
     0xAFB010B1, 0xAB710D06, 0xA6322BDF, 0xA2F33668,
     0xBCB4666D, 0xB8757BDA, 0xB5365D03, 0xB1F740B4};
 
-int Name_Z::GetID(const char* a1, unsigned long a2) {
-    while (*a1)
+S32 Name_Z::GetID(U8* data, U32 result) {
+    while (*data)
     {
-        a2 = (Crc32Tab[(a2 ^ g_ChartoLower[*(a1)]) & 0xFF]) ^ (a2 >> 8);
-        a1++;
+        result = (Crc32Tab[(result ^ g_ChartoLower[*(data)]) & 0xFF]) ^ (result >> 8);
+        data++;
     }
-    return a2;
+    return result;
+}
+
+S32 Name_Z::GetID(U8* data, U32 size, U32 result) {
+    while (size--) {
+        result = (Crc32Tab[(result >> 0x18 ^ g_ChartoLower[*data++])]) ^ result << 8;
+    }
+    return result;
+}
+  
+S32 Name_ZSortingFunction(U32* a1, U32* a2)
+{
+    if (*a1 < *a2)
+        return -1;
+    return 1;
 }
