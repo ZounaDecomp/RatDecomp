@@ -297,7 +297,7 @@ config.libs = [
         "lib": "Engine",
         "mw_version": config.linker_version,
         "cflags": cflags_rat_base,
-        "progress_category": "game",  # str | List[str]
+        "progress_category": "engine",  # str | List[str]
         "objects": [
             Object(Matching, "Engine/Name_Z.cpp"),
             Object(Matching, "Engine/String_Z.cpp"),
@@ -329,6 +329,8 @@ def link_order_callback(module_id: int, objects: List[str]) -> List[str]:
 # Adjust as desired for your project
 config.progress_categories = [
     ProgressCategory("game", "Game Code"),
+    ProgressCategory("engine", "Engine Code"),
+    ProgressCategory("libgc", "LibGC Code"),
     ProgressCategory("sdk", "SDK Code"),
 ]
 config.progress_each_module = args.verbose

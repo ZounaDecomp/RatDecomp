@@ -12,24 +12,24 @@ Sections:
 	.sbss       type:bss align:32
 	.sdata2     type:rodata align:32
 
-Game/PersoLight_G.cpp:
+Rat/PersoLight_G.cpp:
 	.text       start:0x800065A0 end:0x80007BF4
 	.rodata     start:0x80324D40 end:0x80324D80
 	.data       start:0x8033DD00 end:0x8033DD40
 	.sbss       start:0x803B83E0 end:0x803B83E8
 	.sdata2     start:0x803BAE20 end:0x803BAE68
 
-Game/TextGameDraw_G.cpp:
+Rat/TextGameDraw_G.cpp:
 	.text       start:0x80007BF4 end:0x800092FC
 	.rodata     start:0x80324D80 end:0x80324DB0
 	.data       start:0x8033DD40 end:0x8033DD90
 	.sdata2     start:0x803BAE68 end:0x803BAEB0
 
-Game/InGameFX_G.cpp:
+Rat/InGameFX_G.cpp:
 	.text       start:0x800092FC end:0x80009398
 	.data       start:0x8033DD90 end:0x8033DDE0
 
-Game/LoadingDraw_G.cpp:
+Rat/LoadingDraw_G.cpp:
 	.text       start:0x80009398 end:0x8000A200
 	.ctors      start:0x80324B64 end:0x80324B68
 	.rodata     start:0x80324DB0 end:0x80324FB8
@@ -37,19 +37,19 @@ Game/LoadingDraw_G.cpp:
 	.sbss       start:0x803B83E8 end:0x803B84A8
 	.sdata2     start:0x803BAEB0 end:0x803BAF90
 
-Game/CreaturesManager_G.cpp:
+Rat/CreaturesManager_G.cpp:
 	.text       start:0x8000A200 end:0x8000AD1C
 	.rodata     start:0x80324FB8 end:0x80325000
 	.data       start:0x8033EE28 end:0x8033EE78
 	.sdata2     start:0x803BAF90 end:0x803BAFB0
 
-Game/Game_ParticleMgr_G.cpp:
+Rat/Game_ParticleMgr_G.cpp:
 	.text       start:0x8000AD1C end:0x8000C2DC
 	.rodata     start:0x80325000 end:0x80325038
 	.data       start:0x8033EE78 end:0x8033EF08
 	.sdata2     start:0x803BAFB0 end:0x803BAFB8
 
-Game/ItemMgr_G.cpp:
+Rat/ItemMgr_G.cpp:
 	.text       start:0x8000C2DC end:0x8000DCBC
 	.ctors      start:0x80324B68 end:0x80324B6C
 	.rodata     start:0x80325038 end:0x80325278
@@ -58,13 +58,13 @@ Game/ItemMgr_G.cpp:
 	.sbss       start:0x803B84A8 end:0x803B8568
 	.sdata2     start:0x803BAFB8 end:0x803BB038
 
-Game/ProGounrMgr_G.cpp:
+Rat/ProGounrMgr_G.cpp:
 	.text       start:0x8000DCBC end:0x8000F9FC
 	.rodata     start:0x80325278 end:0x80325310
 	.data       start:0x8033EF58 end:0x8033EFE8
 	.sdata2     start:0x803BB038 end:0x803BB0A0
 
-Game/CollectAgent_G.cpp:
+Rat/CollectAgent_G.cpp:
 	.text       start:0x8000F9FC end:0x80010F7C
 	.ctors      start:0x80324B6C end:0x80324B70
 	.rodata     start:0x80325310 end:0x80325368
@@ -73,14 +73,14 @@ Game/CollectAgent_G.cpp:
 	.sbss       start:0x803B8568 end:0x803B8578
 	.sdata2     start:0x803BB0A0 end:0x803BB0B8
 
-Game/IT_CollectMove_G.cpp:
+Rat/IT_CollectMove_G.cpp:
 	.text       start:0x80010F7C end:0x80012960
 	.rodata     start:0x80325368 end:0x80325378
 	.data       start:0x8033F140 end:0x8033F268
 	.sbss       start:0x803B8578 end:0x803B8588
 	.sdata2     start:0x803BB0B8 end:0x803BB108
 
-Game/ObjectAgent_G.cpp:
+Rat/ObjectAgent_G.cpp:
 	.text       start:0x80012960 end:0x80015170
 	.ctors      start:0x80324B70 end:0x80324B74
 	.rodata     start:0x80325378 end:0x803253E0
@@ -90,13 +90,13 @@ Game/ObjectAgent_G.cpp:
 	.sbss       start:0x803B8588 end:0x803B85A0
 	.sdata2     start:0x803BB108 end:0x803BB180
 
-Game/GameMgr_G.cpp:
+Rat/GameMgr_G.cpp:
 	.text       start:0x80015170 end:0x80017834
 	.rodata     start:0x803253E0 end:0x803254C0
 	.data       start:0x8033F728 end:0x8033F738
 	.sdata2     start:0x803BB180 end:0x803BB1B8
 
-Game/IT_Break.cpp:
+Rat/IT_Break.cpp:
 	.text       start:0x80017834 end:0x80019A54
 	.ctors      start:0x80324B74 end:0x80324B78
 	.rodata     start:0x803254C0 end:0x80325748
@@ -105,12 +105,12 @@ Game/IT_Break.cpp:
 	.sbss       start:0x803B85A0 end:0x803B8670
 	.sdata2     start:0x803BB1B8 end:0x803BB310
 
-Game/IT_CarryingMove.cpp:
+Rat/IT_CarryingMove.cpp:
 	.text       start:0x80019A54 end:0x8001A6A8
 	.data       start:0x8033F7C8 end:0x8033F918
 	.sdata2     start:0x803BB310 end:0x803BB350
 
-Game/IT_Carrying.cpp:
+Rat/IT_Carrying.cpp:
 	.text       start:0x8001A6A8 end:0x8001DC6C
 	.ctors      start:0x80324B78 end:0x80324B7C
 	.rodata     start:0x80325748 end:0x803259A0
@@ -119,13 +119,13 @@ Game/IT_Carrying.cpp:
 	.sbss       start:0x803B8670 end:0x803B8740
 	.sdata2     start:0x803BB350 end:0x803BB428
 
-Game/Ropes_G.cpp:
+Rat/Ropes_G.cpp:
 	.text       start:0x8001DC6C end:0x800226FC
 	.rodata     start:0x803259A0 end:0x80325A90
 	.data       start:0x8033FB18 end:0x8033FB68
 	.sdata2     start:0x803BB428 end:0x803BB4E0
 
-Game/IT_Ball_G.cpp:
+Rat/IT_Ball_G.cpp:
 	.text       start:0x800226FC end:0x80022FBC
 	.ctors      start:0x80324B7C end:0x80324B80
 	.rodata     start:0x80325A90 end:0x80325AC0
@@ -133,12 +133,12 @@ Game/IT_Ball_G.cpp:
 	.bss        start:0x80368040 end:0x80368050
 	.sbss       start:0x803B8740 end:0x803B8750
 
-Game/IT_BallMove_G.cpp:
+Rat/IT_BallMove_G.cpp:
 	.text       start:0x80022FBC end:0x80023A54
 	.data       start:0x8033FC50 end:0x8033FE28
 	.sdata2     start:0x803BB4E0 end:0x803BB528
 
-Game/IT_Stone_G.cpp:
+Rat/IT_Stone_G.cpp:
 	.text       start:0x80023A54 end:0x8002407C
 	.ctors      start:0x80324B80 end:0x80324B84
 	.rodata     start:0x80325AC0 end:0x80325AF8
@@ -147,13 +147,13 @@ Game/IT_Stone_G.cpp:
 	.sbss       start:0x803B8750 end:0x803B8760
 	.sdata2     start:0x803BB528 end:0x803BB538
 
-Game/ThrownMove_G.cpp:
+Rat/ThrownMove_G.cpp:
 	.text       start:0x8002407C end:0x80025530
 	.rodata     start:0x80325AF8 end:0x80325B08
 	.data       start:0x8033FF28 end:0x803402D8
 	.sdata2     start:0x803BB538 end:0x803BB588
 
-Game/PhysicColl_G.cpp:
+Rat/PhysicColl_G.cpp:
 	.text       start:0x80025530 end:0x8002DC14
 	.ctors      start:0x80324B84 end:0x80324B88
 	.rodata     start:0x80325B08 end:0x80325B80
@@ -162,7 +162,7 @@ Game/PhysicColl_G.cpp:
 	.sbss       start:0x803B8760 end:0x803B8768
 	.sdata2     start:0x803BB588 end:0x803BB5D0
 
-Game/PhysicObj_G.cpp:
+Rat/PhysicObj_G.cpp:
 	.text       start:0x8002DC14 end:0x80036760
 	.ctors      start:0x80324B88 end:0x80324B8C
 	.rodata     start:0x80325B80 end:0x80325BC8
@@ -170,7 +170,7 @@ Game/PhysicObj_G.cpp:
 	.bss        start:0x80368090 end:0x803682F0
 	.sdata2     start:0x803BB5D0 end:0x803BB6C0
 
-Game/PhysicWorld_G.cpp:
+Rat/PhysicWorld_G.cpp:
 	.text       start:0x80036760 end:0x8003C008
 	.ctors      start:0x80324B8C end:0x80324B90
 	.rodata     start:0x80325BC8 end:0x80325C30
@@ -179,25 +179,25 @@ Game/PhysicWorld_G.cpp:
 	.sbss       start:0x803B8768 end:0x803B8778
 	.sdata2     start:0x803BB6C0 end:0x803BB700
 
-Game/IT_DYNOBJ_G.cpp:
+Rat/IT_DYNOBJ_G.cpp:
 	.text       start:0x8003C008 end:0x8003C2F0
 	.rodata     start:0x80325C30 end:0x80325C60
 	.data       start:0x80340508 end:0x803405F0
 	.sbss       start:0x803B8778 end:0x803B8780
 
-Game/IT_DYNOBJMove_G.cpp:
+Rat/IT_DYNOBJMove_G.cpp:
 	.text       start:0x8003C2F0 end:0x8003C4D8
 	.data       start:0x803405F0 end:0x803407C8
 	.sdata2     start:0x803BB700 end:0x803BB720
 
-Game/LevelAgent_G.cpp:
+Rat/LevelAgent_G.cpp:
 	.text       start:0x8003C4D8 end:0x8003E280
 	.rodata     start:0x80325C60 end:0x80325CE8
 	.data       start:0x803407C8 end:0x80340988
 	.sbss       start:0x803B8780 end:0x803B8788
 	.sdata2     start:0x803BB720 end:0x803BB758
 
-Game/MenuLogicAgent_G.cpp:
+Rat/MenuLogicAgent_G.cpp:
 	.text       start:0x8003E280 end:0x8003F254
 	.rodata     start:0x80325CE8 end:0x80325CF8
 	.data       start:0x80340988 end:0x80340B00
@@ -205,78 +205,78 @@ Game/MenuLogicAgent_G.cpp:
 	.sbss       start:0x803B8788 end:0x803B8790
 	.sdata2     start:0x803BB758 end:0x803BB780
 
-Game/LogicAgent_G.cpp:
+Rat/LogicAgent_G.cpp:
 	.text       start:0x8003F254 end:0x8003FCA8
 	.rodata     start:0x80325CF8 end:0x80325D18
 	.data       start:0x80340B00 end:0x80340C70
 	.sbss       start:0x803B8790 end:0x803B8798
 	.sdata2     start:0x803BB780 end:0x803BB788
 
-Game/GameLogicAgent_G.cpp:
+Rat/GameLogicAgent_G.cpp:
 	.text       start:0x8003FCA8 end:0x8004158C
 	.rodata     start:0x80325D18 end:0x80325D98
 	.data       start:0x80340C70 end:0x80340E50
 	.sbss       start:0x803B8798 end:0x803B87A0
 	.sdata2     start:0x803BB788 end:0x803BB7C8
 
-Game/StreamGameAgent_G.cpp:
+Rat/StreamGameAgent_G.cpp:
 	.text       start:0x8004158C end:0x80041810
 	.data       start:0x80340E50 end:0x80340EC0
 	.sbss       start:0x803B87A0 end:0x803B87A8
 
-Game/BaseAgent_G.cpp:
+Rat/BaseAgent_G.cpp:
 	.text       start:0x80041810 end:0x80041F54
 	.rodata     start:0x80325D98 end:0x80325DA8
 	.data       start:0x80340EC0 end:0x80341078
 	.sbss       start:0x803B87A8 end:0x803B87B0
 
-Game/InGameSounds_G.cpp:
+Rat/InGameSounds_G.cpp:
 	.text       start:0x80041F54 end:0x800420C0
 	.rodata     start:0x80325DA8 end:0x80325E60
 	.data       start:0x80341078 end:0x803410A8
 	.sdata2     start:0x803BB7C8 end:0x803BB7F8
 
-Game/GlobalInGameDatas_G.cpp:
+Rat/GlobalInGameDatas_G.cpp:
 	.text       start:0x800420C0 end:0x80043140
 	.rodata     start:0x80325E60 end:0x80325E80
 	.data       start:0x803410A8 end:0x80341130
 	.sbss       start:0x803B87B0 end:0x803B87B8
 	.sdata2     start:0x803BB7F8 end:0x803BB858
 
-Game/AutoCompletion_G.cpp:
+Rat/AutoCompletion_G.cpp:
 	.text       start:0x80043140 end:0x80044218
 	.ctors      start:0x80324B90 end:0x80324B94
 	.rodata     start:0x80325E80 end:0x803260D8
 	.sbss       start:0x803B87B8 end:0x803B8878
 	.sdata2     start:0x803BB858 end:0x803BB8E8
 
-Game/InGameCreatures_G.cpp:
+Rat/InGameCreatures_G.cpp:
 	.text       start:0x80044218 end:0x80046274
 	.rodata     start:0x803260D8 end:0x80326108
 	.data       start:0x80341130 end:0x80341188
 	.sdata2     start:0x803BB8E8 end:0x803BB948
 
-Game/InGamePlayer_Draw_G.cpp:
+Rat/InGamePlayer_Draw_G.cpp:
 	.text       start:0x80046274 end:0x800463F4
 	.sbss       start:0x803B8878 end:0x803B8888
 	.sdata2     start:0x803BB948 end:0x803BB958
 
-Game/InGamePlayer_G.cpp:
+Rat/InGamePlayer_G.cpp:
 	.text       start:0x800463F4 end:0x8004872C
 	.rodata     start:0x80326108 end:0x80326128
 	.data       start:0x80341188 end:0x803411F0
 	.sdata2     start:0x803BB958 end:0x803BB968
 
-Game/InGamePlayerPages_G.cpp:
+Rat/InGamePlayerPages_G.cpp:
 	.text       start:0x8004872C end:0x80048924
 
-Game/InGamePlayerGarfield_G.cpp:
+Rat/InGamePlayerGarfield_G.cpp:
 	.text       start:0x80048924 end:0x8004F098
 	.rodata     start:0x80326128 end:0x80326148
 	.data       start:0x803411F0 end:0x803414B0
 	.sdata2     start:0x803BB968 end:0x803BBB30
 
-Game/BaseInGameDatas_G.cpp:
+Rat/BaseInGameDatas_G.cpp:
 	.text       start:0x8004F098 end:0x80053DB4
 	.ctors      start:0x80324B94 end:0x80324B98
 	.rodata     start:0x80326148 end:0x80326980
@@ -286,24 +286,24 @@ Game/BaseInGameDatas_G.cpp:
 	.sbss       start:0x803B8888 end:0x803B8950
 	.sdata2     start:0x803BBB30 end:0x803BBD10
 
-Game/BaseInGameDatas_Text_G.cpp:
+Rat/BaseInGameDatas_Text_G.cpp:
 	.text       start:0x80053DB4 end:0x80055B20
 	.rodata     start:0x80326980 end:0x80326990
 	.sdata2     start:0x803BBD10 end:0x803BBD58
 
-Game/BaseInGameItems_G.cpp:
+Rat/BaseInGameItems_G.cpp:
 	.text       start:0x80055B20 end:0x800581B4
 	.rodata     start:0x80326990 end:0x803269B0
 	.data       start:0x80341698 end:0x803416B8
 	.sdata2     start:0x803BBD58 end:0x803BBDC8
 
-Game/ZoneVolumeAgent_G.cpp:
+Rat/ZoneVolumeAgent_G.cpp:
 	.text       start:0x800581B4 end:0x8005B42C
 	.data       start:0x803416B8 end:0x80341D88
 	.sbss       start:0x803B8950 end:0x803B8980
 	.sdata2     start:0x803BBDC8 end:0x803BBE10
 
-Game/CheckpointVolAgent_G.cpp:
+Rat/CheckpointVolAgent_G.cpp:
 	.text       start:0x8005B42C end:0x8005BDEC
 	.ctors      start:0x80324B98 end:0x80324B9C
 	.rodata     start:0x803269B0 end:0x803269D0
@@ -311,7 +311,7 @@ Game/CheckpointVolAgent_G.cpp:
 	.bss        start:0x80368BA8 end:0x80368BB8
 	.sbss       start:0x803B8980 end:0x803B8990
 
-Game/ChangeLevelVolumeAgent_G.cpp:
+Rat/ChangeLevelVolumeAgent_G.cpp:
 	.text       start:0x8005BDEC end:0x8005CAE0
 	.ctors      start:0x80324B9C end:0x80324BA0
 	.rodata     start:0x803269D0 end:0x80326A58
@@ -320,7 +320,7 @@ Game/ChangeLevelVolumeAgent_G.cpp:
 	.sbss       start:0x803B8990 end:0x803B89A0
 	.sdata2     start:0x803BBE10 end:0x803BBE28
 
-Game/MissionVolumeAgent_G.cpp:
+Rat/MissionVolumeAgent_G.cpp:
 	.text       start:0x8005CAE0 end:0x8005FE78
 	.ctors      start:0x80324BA0 end:0x80324BA4
 	.rodata     start:0x80326A58 end:0x80326F40
@@ -329,7 +329,7 @@ Game/MissionVolumeAgent_G.cpp:
 	.sbss       start:0x803B89A0 end:0x803B89B0
 	.sdata2     start:0x803BBE28 end:0x803BBEB0
 
-Game/ImpactVolumeAgent_G.cpp:
+Rat/ImpactVolumeAgent_G.cpp:
 	.text       start:0x8005FE78 end:0x800606A8
 	.ctors      start:0x80324BA4 end:0x80324BA8
 	.rodata     start:0x80326F40 end:0x80326F60
@@ -338,32 +338,32 @@ Game/ImpactVolumeAgent_G.cpp:
 	.sbss       start:0x803B89B0 end:0x803B89C0
 	.sdata2     start:0x803BBEB0 end:0x803BBEC0
 
-Game/EndMissionVolumeAgent_G.cpp:
+Rat/EndMissionVolumeAgent_G.cpp:
 	.text       start:0x800606A8 end:0x80060B80
 	.data       start:0x80342030 end:0x803420D8
 	.sbss       start:0x803B89C0 end:0x803B89C8
 
-Game/SaveVolumeAgent_G.cpp:
+Rat/SaveVolumeAgent_G.cpp:
 	.text       start:0x80060B80 end:0x80060F70
 	.rodata     start:0x80326F60 end:0x80326F78
 	.data       start:0x803420D8 end:0x80342180
 	.sbss       start:0x803B89C8 end:0x803B89D0
 
-Game/EvenementVolAgent_G.cpp:
+Rat/EvenementVolAgent_G.cpp:
 	.text       start:0x80060F70 end:0x80062A84
 	.rodata     start:0x80326F78 end:0x80327088
 	.data       start:0x80342180 end:0x803422F8
 	.sbss       start:0x803B89D0 end:0x803B89D8
 	.sdata2     start:0x803BBEC0 end:0x803BBEF8
 
-Game/LightVolumeAgent_G.cpp:
+Rat/LightVolumeAgent_G.cpp:
 	.text       start:0x80062A84 end:0x80063260
 	.rodata     start:0x80327088 end:0x803270C0
 	.data       start:0x803422F8 end:0x803423A0
 	.sbss       start:0x803B89D8 end:0x803B89E0
 	.sdata2     start:0x803BBEF8 end:0x803BBF00
 
-Game/RtcScriptAgent_G.cpp:
+Rat/RtcScriptAgent_G.cpp:
 	.text       start:0x80063260 end:0x80068828
 	.rodata     start:0x803270C0 end:0x80327190
 	.data       start:0x803423A0 end:0x80342A98
@@ -371,110 +371,110 @@ Game/RtcScriptAgent_G.cpp:
 	.sbss       start:0x803B89E0 end:0x803B89E8
 	.sdata2     start:0x803BBF00 end:0x803BBF78
 
-Game/RtcScripted_G.cpp:
+Rat/RtcScripted_G.cpp:
 	.text       start:0x80068828 end:0x80069D7C
 	.rodata     start:0x80327190 end:0x803271B0
 	.data       start:0x80342A98 end:0x80342AF0
 	.sdata2     start:0x803BBF78 end:0x803BBFD0
 
-Game/RtcScriptFunctions_G.cpp:
+Rat/RtcScriptFunctions_G.cpp:
 	.text       start:0x80069D7C end:0x8006BBD8
 	.rodata     start:0x803271B0 end:0x803271C0
 	.sdata2     start:0x803BBFD0 end:0x803BC038
 
-Game/ScriptExternalCommands_G.cpp:
+Rat/ScriptExternalCommands_G.cpp:
 	.text       start:0x8006BBD8 end:0x8006BEA4
 
-Game/ScriptExternals_G.cpp:
+Rat/ScriptExternals_G.cpp:
 	.text       start:0x8006BEA4 end:0x80072674
 	.rodata     start:0x803271C0 end:0x80327CB0
 	.data       start:0x80342AF0 end:0x803435A8
 	.sdata2     start:0x803BC038 end:0x803BC0F0
 
-Game/UserCommand_G.cpp:
+Rat/UserCommand_G.cpp:
 	.text       start:0x80072674 end:0x8007A5F0
 	.rodata     start:0x80327CB0 end:0x80328AC8
 	.sbss       start:0x803B89E8 end:0x803B89F0
 	.sdata2     start:0x803BC0F0 end:0x803BC270
 
-Game/LevelData_G.cpp:
+Rat/LevelData_G.cpp:
 	.text       start:0x8007A5F0 end:0x8007B634
 	.rodata     start:0x80328AC8 end:0x80328B60
 	.data       start:0x803435A8 end:0x803435D8
 	.sdata2     start:0x803BC270 end:0x803BC280
 
-Game/LevelAdvancement_G.cpp:
+Rat/LevelAdvancement_G.cpp:
 	.text       start:0x8007B634 end:0x8007D588
 	.rodata     start:0x80328B60 end:0x80328BA8
 	.data       start:0x803435D8 end:0x80343608
 	.sdata2     start:0x803BC280 end:0x803BC2B8
 
-Game/UnLock_G.cpp:
+Rat/UnLock_G.cpp:
 	.text       start:0x8007D588 end:0x8007ECF8
 	.rodata     start:0x80328BA8 end:0x80328C88
 	.sdata2     start:0x803BC2B8 end:0x803BC300
 
-Game/CharsData_G.cpp:
+Rat/CharsData_G.cpp:
 	.text       start:0x8007ECF8 end:0x8007EDCC
 	.data       start:0x80343608 end:0x80343638
 
-Game/ScriptManager_G.cpp:
+Rat/ScriptManager_G.cpp:
 	.text       start:0x8007EDCC end:0x800856A4
 	.rodata     start:0x80328C88 end:0x80329510
 	.data       start:0x80343638 end:0x803437B8
 	.sbss       start:0x803B89F0 end:0x803B8A10
 	.sdata2     start:0x803BC300 end:0x803BC528
 
-Game/ScriptManagerEngine_G.cpp:
+Rat/ScriptManagerEngine_G.cpp:
 	.text       start:0x800856A4 end:0x80087610
 	.rodata     start:0x80329510 end:0x803295A8
 	.sdata2     start:0x803BC528 end:0x803BC570
 
-Game/ScriptManagerRtcScript_G.cpp:
+Rat/ScriptManagerRtcScript_G.cpp:
 	.text       start:0x80087610 end:0x8008782C
 
-Game/CameraAgent_G.cpp:
+Rat/CameraAgent_G.cpp:
 	.text       start:0x8008782C end:0x80088180
 	.rodata     start:0x803295A8 end:0x803295C8
 	.data       start:0x803437B8 end:0x803438C0
 	.sbss       start:0x803B8A10 end:0x803B8A18
 
-Game/CameraFog_G.cpp:
+Rat/CameraFog_G.cpp:
 	.text       start:0x80088180 end:0x80089CC8
 	.rodata     start:0x803295C8 end:0x80329620
 	.data       start:0x803438C0 end:0x80343908
 	.sdata2     start:0x803BC570 end:0x803BC5B0
 
-Game/CameraTools.cpp:
+Rat/CameraTools.cpp:
 	.text       start:0x80089CC8 end:0x8008BF0C
 	.sdata      start:0x803B80C8 end:0x803B80D0
 	.sbss       start:0x803B8A18 end:0x803B8A20
 	.sdata2     start:0x803BC5B0 end:0x803BC648
 
-Game/CameraChase.cpp:
+Rat/CameraChase.cpp:
 	.text       start:0x8008BF0C end:0x80096DE4
 	.rodata     start:0x80329620 end:0x803296B0
 	.sdata      start:0x803B80D0 end:0x803B8100
 	.sdata2     start:0x803BC648 end:0x803BC7E8
 
-Game/CameraEdited.cpp:
+Rat/CameraEdited.cpp:
 	.text       start:0x80096DE4 end:0x80097398
 	.sdata2     start:0x803BC7E8 end:0x803BC808
 
-Game/CameraGame_G.cpp:
+Rat/CameraGame_G.cpp:
 	.text       start:0x80097398 end:0x80097DB4
 	.data       start:0x80343908 end:0x803439B0
 	.sbss       start:0x803B8A20 end:0x803B8A28
 	.sdata2     start:0x803BC808 end:0x803BC830
 
-Game/CameraRTC.cpp:
+Rat/CameraRTC.cpp:
 	.text       start:0x80097DB4 end:0x800994A0
 	.ctors      start:0x80324BA8 end:0x80324BAC
 	.rodata     start:0x803296B0 end:0x803296E8
 	.bss        start:0x80368C08 end:0x80368C18
 	.sdata2     start:0x803BC830 end:0x803BC898
 
-Game/Enemies_G.cpp:
+Rat/Enemies_G.cpp:
 	.text       start:0x800994A0 end:0x8009B8F0
 	.ctors      start:0x80324BAC end:0x80324BB0
 	.rodata     start:0x803296E8 end:0x80329B68
@@ -482,7 +482,7 @@ Game/Enemies_G.cpp:
 	.sbss       start:0x803B8A28 end:0x803B8AF0
 	.sdata2     start:0x803BC898 end:0x803BC9F0
 
-Game/Player_G.cpp:
+Rat/Player_G.cpp:
 	.text       start:0x8009B8F0 end:0x8009DFB0
 	.ctors      start:0x80324BB0 end:0x80324BB4
 	.rodata     start:0x80329B68 end:0x80329D98
@@ -491,7 +491,7 @@ Game/Player_G.cpp:
 	.sbss       start:0x803B8AF0 end:0x803B8BC0
 	.sdata2     start:0x803BC9F0 end:0x803BCAA8
 
-Game/PlayerMove_G.cpp:
+Rat/PlayerMove_G.cpp:
 	.text       start:0x8009DFB0 end:0x800A30A4
 	.ctors      start:0x80324BB4 end:0x80324BB8
 	.rodata     start:0x80329D98 end:0x80329FA8
@@ -501,13 +501,13 @@ Game/PlayerMove_G.cpp:
 	.sbss       start:0x803B8BC0 end:0x803B8C88
 	.sdata2     start:0x803BCAA8 end:0x803BCB78
 
-Game/Heros_G.cpp:
+Rat/Heros_G.cpp:
 	.text       start:0x800A30A4 end:0x800A55A4
 	.data       start:0x80344070 end:0x803464C0
 	.sbss       start:0x803B8C88 end:0x803B8CF8
 	.sdata2     start:0x803BCB78 end:0x803BCB88
 
-Game/Friends_G.cpp:
+Rat/Friends_G.cpp:
 	.text       start:0x800A55A4 end:0x800A63E8
 	.ctors      start:0x80324BB8 end:0x80324BBC
 	.rodata     start:0x80329FA8 end:0x8032A020
@@ -516,27 +516,27 @@ Game/Friends_G.cpp:
 	.sbss       start:0x803B8CF8 end:0x803B8D08
 	.sdata2     start:0x803BCB88 end:0x803BCBD0
 
-Game/FriendsMove_G.cpp:
+Rat/FriendsMove_G.cpp:
 	.text       start:0x800A63E8 end:0x800A64C0
 	.data       start:0x803466A0 end:0x80346840
 	.sdata2     start:0x803BCBD0 end:0x803BCBD8
 
-Game/CreatureCarry.cpp:
+Rat/CreatureCarry.cpp:
 	.text       start:0x800A64C0 end:0x800AAE04
 	.ctors      start:0x80324BBC end:0x80324BC0
 	.rodata     start:0x8032A020 end:0x8032A210
 	.sbss       start:0x803B8D08 end:0x803B8DC8
 	.sdata2     start:0x803BCBD8 end:0x803BCC98
 
-Game/CreaturesGrabStates_G.cpp:
+Rat/CreaturesGrabStates_G.cpp:
 	.text       start:0x800AAE04 end:0x800AB27C
 	.sdata2     start:0x803BCC98 end:0x803BCCA8
 
-Game/CreaturesPoleStates_G.cpp:
+Rat/CreaturesPoleStates_G.cpp:
 	.text       start:0x800AB27C end:0x800AC354
 	.sdata2     start:0x803BCCA8 end:0x803BCCD8
 
-Game/CreatureRatRope.cpp:
+Rat/CreatureRatRope.cpp:
 	.text       start:0x800AC354 end:0x800AED84
 	.ctors      start:0x80324BC0 end:0x80324BC4
 	.rodata     start:0x8032A210 end:0x8032A3F0
@@ -544,12 +544,12 @@ Game/CreatureRatRope.cpp:
 	.sbss       start:0x803B8DC8 end:0x803B8E88
 	.sdata2     start:0x803BCCD8 end:0x803BCD98
 
-Game/CreatureRat_G.cpp:
+Rat/CreatureRat_G.cpp:
 	.text       start:0x800AED84 end:0x800B0754
 	.rodata     start:0x8032A3F0 end:0x8032A400
 	.sdata2     start:0x803BCD98 end:0x803BCDF8
 
-Game/CreaturesWallClimbStates.cpp:
+Rat/CreaturesWallClimbStates.cpp:
 	.text       start:0x800B0754 end:0x800B28D8
 	.ctors      start:0x80324BC4 end:0x80324BC8
 	.rodata     start:0x8032A400 end:0x8032A618
@@ -557,37 +557,37 @@ Game/CreaturesWallClimbStates.cpp:
 	.sbss       start:0x803B8E88 end:0x803B8F48
 	.sdata2     start:0x803BCDF8 end:0x803BCEC8
 
-Game/CreatureFightStates_G.cpp:
+Rat/CreatureFightStates_G.cpp:
 	.text       start:0x800B28D8 end:0x800B305C
 	.sdata2     start:0x803BCEC8 end:0x803BCEE0
 
-Game/CreaturesJumpStates_G.cpp:
+Rat/CreaturesJumpStates_G.cpp:
 	.text       start:0x800B305C end:0x800B6D84
 	.rodata     start:0x8032A618 end:0x8032A670
 	.sdata      start:0x803B8110 end:0x803B8118
 	.sdata2     start:0x803BCEE0 end:0x803BCF38
 
-Game/CreatureImpactStates_G.cpp:
+Rat/CreatureImpactStates_G.cpp:
 	.text       start:0x800B6D84 end:0x800BC5AC
 	.ctors      start:0x80324BC8 end:0x80324BCC
 	.rodata     start:0x8032A670 end:0x8032A880
 	.sbss       start:0x803B8F48 end:0x803B9008
 	.sdata2     start:0x803BCF38 end:0x803BD048
 
-Game/CreaturesEnemiesStates_G.cpp:
+Rat/CreaturesEnemiesStates_G.cpp:
 	.text       start:0x800BC5AC end:0x800C1F28
 	.ctors      start:0x80324BCC end:0x80324BD0
 	.rodata     start:0x8032A880 end:0x8032AA90
 	.sbss       start:0x803B9008 end:0x803B90C8
 	.sdata2     start:0x803BD048 end:0x803BD118
 
-Game/CreatureOtherStates_G.cpp:
+Rat/CreatureOtherStates_G.cpp:
 	.text       start:0x800C1F28 end:0x800C56D0
 	.rodata     start:0x8032AA90 end:0x8032AAA0
 	.data       start:0x80346868 end:0x80346890
 	.sdata2     start:0x803BD118 end:0x803BD180
 
-Game/CreaturePST_TOOLS_G.cpp:
+Rat/CreaturePST_TOOLS_G.cpp:
 	.text       start:0x800C56D0 end:0x800CB678
 	.ctors      start:0x80324BD0 end:0x80324BD4
 	.rodata     start:0x8032AAA0 end:0x8032AD10
@@ -596,7 +596,7 @@ Game/CreaturePST_TOOLS_G.cpp:
 	.sbss       start:0x803B90C8 end:0x803B9188
 	.sdata2     start:0x803BD180 end:0x803BD248
 
-Game/Creatures_G.cpp:
+Rat/Creatures_G.cpp:
 	.text       start:0x800CB678 end:0x800D0BEC
 	.ctors      start:0x80324BD4 end:0x80324BD8
 	.rodata     start:0x8032AD10 end:0x8032AF90
@@ -605,7 +605,7 @@ Game/Creatures_G.cpp:
 	.sbss       start:0x803B9188 end:0x803B9260
 	.sdata2     start:0x803BD248 end:0x803BD320
 
-Game/CreaturesCommands_G.cpp:
+Rat/CreaturesCommands_G.cpp:
 	.text       start:0x800D0BEC end:0x800D80EC
 	.ctors      start:0x80324BD8 end:0x80324BDC
 	.rodata     start:0x8032AF90 end:0x8032B280
@@ -614,15 +614,15 @@ Game/CreaturesCommands_G.cpp:
 	.sbss       start:0x803B9260 end:0x803B9320
 	.sdata2     start:0x803BD320 end:0x803BD410
 
-Game/Config_G.cpp:
+Rat/Config_G.cpp:
 	.sdata      start:0x803B8128 end:0x803B8140
 
-Game/CreaturesMachineCommands_G.cpp:
+Rat/CreaturesMachineCommands_G.cpp:
 	.text       start:0x800D80EC end:0x800D8874
 	.rodata     start:0x8032B280 end:0x8032B2A0
 	.sdata2     start:0x803BD410 end:0x803BD418
 
-Game/CreaturesMove_G.cpp:
+Rat/CreaturesMove_G.cpp:
 	.text       start:0x800D8874 end:0x800E1980
 	.ctors      start:0x80324BDC end:0x80324BE0
 	.rodata     start:0x8032B2A0 end:0x8032B500
@@ -630,7 +630,7 @@ Game/CreaturesMove_G.cpp:
 	.sbss       start:0x803B9320 end:0x803B93E0
 	.sdata2     start:0x803BD418 end:0x803BD580
 
-Game/CreaturesStates_G.cpp:
+Rat/CreaturesStates_G.cpp:
 	.text       start:0x800E1980 end:0x800E3B58
 	.ctors      start:0x80324BE0 end:0x80324BE4
 	.rodata     start:0x8032B500 end:0x8032BCA8
@@ -638,77 +638,77 @@ Game/CreaturesStates_G.cpp:
 	.sbss       start:0x803B93E0 end:0x803B93E8
 	.sdata2     start:0x803BD580 end:0x803BD628
 
-Game/CreaturesSwim_G.cpp:
+Rat/CreaturesSwim_G.cpp:
 	.text       start:0x800E3B58 end:0x800E3B78
 
-Game/CreaturesWaitStates_G.cpp:
+Rat/CreaturesWaitStates_G.cpp:
 	.text       start:0x800E3B78 end:0x800E4C0C
 	.ctors      start:0x80324BE4 end:0x80324BE8
 	.rodata     start:0x8032BCA8 end:0x8032BEB0
 	.sbss       start:0x803B93E8 end:0x803B94A8
 	.sdata2     start:0x803BD628 end:0x803BD6D0
 
-Game/MemoryCardMgr_G.cpp:
+Rat/MemoryCardMgr_G.cpp:
 	.text       start:0x800E4C0C end:0x800E5D94
 	.rodata     start:0x8032BEB0 end:0x8032BF68
 	.data       start:0x80347268 end:0x803472A8
 	.sdata2     start:0x803BD6D0 end:0x803BD6F0
 
-Game/Game_SoundMgr_G.cpp:
+Rat/Game_SoundMgr_G.cpp:
 	.text       start:0x800E5D94 end:0x800E6458
 	.rodata     start:0x8032BF68 end:0x8032BF98
 	.data       start:0x803472A8 end:0x803472F8
 	.sdata2     start:0x803BD6F0 end:0x803BD6F8
 
-Game/IT_SOUND_G.CPP:
+Rat/IT_SOUND_G.CPP:
 	.text       start:0x800E6458 end:0x800E76A4
 	.rodata     start:0x8032BF98 end:0x8032BFB8
 	.data       start:0x803472F8 end:0x80347380
 	.sbss       start:0x803B94A8 end:0x803B94B0
 	.sdata2     start:0x803BD6F8 end:0x803BD728
 
-Game/VibrationKeyframers_G.cpp:
+Rat/VibrationKeyframers_G.cpp:
 	.text       start:0x800E76A4 end:0x800E90E8
 	.rodata     start:0x8032BFB8 end:0x8032BFD8
 	.sdata2     start:0x803BD728 end:0x803BD768
 
-Game/VibrationManager_G.cpp:
+Rat/VibrationManager_G.cpp:
 	.text       start:0x800E90E8 end:0x800EA124
 	.rodata     start:0x8032BFD8 end:0x8032BFF8
 	.data       start:0x80347380 end:0x803473C0
 	.sdata2     start:0x803BD768 end:0x803BD778
 
-Game/PaddleChecker_G.cpp:
+Rat/PaddleChecker_G.cpp:
 	.text       start:0x800EA124 end:0x800EA970
 	.data       start:0x803473C0 end:0x80347400
 	.sdata2     start:0x803BD778 end:0x803BD790
 
-Game/MusicManager_G.cpp:
+Rat/MusicManager_G.cpp:
 	.text       start:0x800EA970 end:0x800EB470
 	.rodata     start:0x8032BFF8 end:0x8032C098
 	.data       start:0x80347400 end:0x80347690
 	.sdata2     start:0x803BD790 end:0x803BD7B8
 
-Game/InputDef_G.cpp:
+Rat/InputDef_G.cpp:
 	.text       start:0x800EB470 end:0x800ED39C
 	.ctors      start:0x80324BE8 end:0x80324BEC
 	.rodata     start:0x8032C098 end:0x8032C318
 	.bss        start:0x8036A118 end:0x8036A1E0
 	.sdata2     start:0x803BD7B8 end:0x803BD820
 
-Game/MainGame_G.cpp:
+Rat/MainGame_G.cpp:
 	.text       start:0x800ED39C end:0x800F1D64
 	.rodata     start:0x8032C318 end:0x8032CC38
 	.data       start:0x80347690 end:0x803479F0
 	.sdata      start:0x803B8140 end:0x803B8148
 	.sdata2     start:0x803BD820 end:0x803BD848
 
-Game/Mission_MiniGame.cpp:
+Rat/Mission_MiniGame.cpp:
 	.text       start:0x800F1D64 end:0x800F1F30
 	.data       start:0x803479F0 end:0x80347B10
 	.sdata2     start:0x803BD848 end:0x803BD858
 
-Game/Mission_Tutorial.cpp:
+Rat/Mission_Tutorial.cpp:
 	.text       start:0x800F1F30 end:0x800F2E74
 	.ctors      start:0x80324BEC end:0x80324BF0
 	.rodata     start:0x8032CC38 end:0x8032CE70
@@ -716,13 +716,13 @@ Game/Mission_Tutorial.cpp:
 	.sbss       start:0x803B94B0 end:0x803B9570
 	.sdata2     start:0x803BD858 end:0x803BD8F0
 
-Game/MissionInfo_G.cpp:
+Rat/MissionInfo_G.cpp:
 	.text       start:0x800F2E74 end:0x800F2FE4
 	.rodata     start:0x8032CE70 end:0x8032CFE0
 	.data       start:0x80347C30 end:0x80347CC8
 	.sdata2     start:0x803BD8F0 end:0x803BD940
 
-Game/MissionManager_G.cpp:
+Rat/MissionManager_G.cpp:
 	.text       start:0x800F2FE4 end:0x800F7DBC
 	.ctors      start:0x80324BF0 end:0x80324BF4
 	.rodata     start:0x8032CFE0 end:0x8032D4B8
@@ -730,7 +730,7 @@ Game/MissionManager_G.cpp:
 	.sbss       start:0x803B9570 end:0x803B9630
 	.sdata2     start:0x803BD940 end:0x803BD9C8
 
-Game/MissionTemplate_G.cpp:
+Rat/MissionTemplate_G.cpp:
 	.text       start:0x800F7DBC end:0x800FA0E4
 	.ctors      start:0x80324BF4 end:0x80324BF8
 	.rodata     start:0x8032D4B8 end:0x8032D7B8
@@ -738,13 +738,13 @@ Game/MissionTemplate_G.cpp:
 	.sbss       start:0x803B9630 end:0x803B96F0
 	.sdata2     start:0x803BD9C8 end:0x803BDA90
 
-Game/Mission_PushButton.cpp:
+Rat/Mission_PushButton.cpp:
 	.text       start:0x800FA0E4 end:0x800FB1E8
 	.rodata     start:0x8032D7B8 end:0x8032D7D0
 	.data       start:0x80348070 end:0x80348190
 	.sdata2     start:0x803BDA90 end:0x803BDAC8
 
-Game/Mission_Collect.cpp:
+Rat/Mission_Collect.cpp:
 	.text       start:0x800FB1E8 end:0x800FB954
 	.ctors      start:0x80324BF8 end:0x80324BFC
 	.rodata     start:0x8032D7D0 end:0x8032D9B0
@@ -752,12 +752,12 @@ Game/Mission_Collect.cpp:
 	.sbss       start:0x803B96F0 end:0x803B97B0
 	.sdata2     start:0x803BDAC8 end:0x803BDB40
 
-Game/Mission_CollectTrigger.cpp:
+Rat/Mission_CollectTrigger.cpp:
 	.text       start:0x800FB954 end:0x800FBB2C
 	.rodata     start:0x8032D9B0 end:0x8032D9C0
 	.data       start:0x803482B8 end:0x803483D8
 
-Game/Mission_Colony.cpp:
+Rat/Mission_Colony.cpp:
 	.text       start:0x800FBB2C end:0x800FBF40
 	.ctors      start:0x80324BFC end:0x80324C00
 	.rodata     start:0x8032D9C0 end:0x8032DBA0
@@ -765,22 +765,22 @@ Game/Mission_Colony.cpp:
 	.sbss       start:0x803B97B0 end:0x803B9870
 	.sdata2     start:0x803BDB40 end:0x803BDBB8
 
-Game/Mission_Goto.cpp:
+Rat/Mission_Goto.cpp:
 	.text       start:0x800FBF40 end:0x800FC108
 	.rodata     start:0x8032DBA0 end:0x8032DBB8
 	.data       start:0x80348500 end:0x80348620
 
-Game/CreaturesPushButtonStates_G.cpp:
+Rat/CreaturesPushButtonStates_G.cpp:
 	.text       start:0x800FC108 end:0x800FC4D8
 	.sdata2     start:0x803BDBB8 end:0x803BDBD0
 
-Game/Mission_Heist.cpp:
+Rat/Mission_Heist.cpp:
 	.text       start:0x800FC4D8 end:0x800FD628
 	.rodata     start:0x8032DBB8 end:0x8032DC08
 	.data       start:0x80348620 end:0x80348740
 	.sdata2     start:0x803BDBD0 end:0x803BDBF8
 
-Game/Mission_Chase.cpp:
+Rat/Mission_Chase.cpp:
 	.text       start:0x800FD628 end:0x800FEFF0
 	.ctors      start:0x80324C00 end:0x80324C04
 	.rodata     start:0x8032DC08 end:0x8032DE88
@@ -788,36 +788,36 @@ Game/Mission_Chase.cpp:
 	.sbss       start:0x803B9870 end:0x803B9930
 	.sdata2     start:0x803BDBF8 end:0x803BDCA0
 
-Game/CreatureGlissade.cpp:
+Rat/CreatureGlissade.cpp:
 	.text       start:0x800FEFF0 end:0x8010216C
 	.sdata2     start:0x803BDCA0 end:0x803BDD38
 
-Game/CreaturesBallMoveStates_G.cpp:
+Rat/CreaturesBallMoveStates_G.cpp:
 	.text       start:0x8010216C end:0x80102FF8
 	.rodata     start:0x8032DE88 end:0x8032DEB0
 	.sdata2     start:0x803BDD38 end:0x803BDD68
 
-Game/CreaturePointJump.cpp:
+Rat/CreaturePointJump.cpp:
 	.text       start:0x80102FF8 end:0x80103AAC
 	.ctors      start:0x80324C04 end:0x80324C08
 	.rodata     start:0x8032DEB0 end:0x8032E090
 	.sbss       start:0x803B9930 end:0x803B99F0
 	.sdata2     start:0x803BDD68 end:0x803BDDF0
 
-Game/CreatureRatBeamRun.cpp:
+Rat/CreatureRatBeamRun.cpp:
 	.text       start:0x80103AAC end:0x80105194
 	.ctors      start:0x80324C08 end:0x80324C0C
 	.rodata     start:0x8032E090 end:0x8032E270
 	.sbss       start:0x803B99F0 end:0x803B9AB0
 	.sdata2     start:0x803BDDF0 end:0x803BDE90
 
-Game/PointJump_G.cpp:
+Rat/PointJump_G.cpp:
 	.text       start:0x80105194 end:0x801061CC
 	.rodata     start:0x8032E270 end:0x8032E2C0
 	.data       start:0x80348860 end:0x803488A8
 	.sdata2     start:0x803BDE90 end:0x803BDEA8
 
-Game/ConditionVolumeAgent_G.cpp:
+Rat/ConditionVolumeAgent_G.cpp:
 	.text       start:0x801061CC end:0x80106C08
 	.ctors      start:0x80324C0C end:0x80324C10
 	.rodata     start:0x8032E2C0 end:0x8032E320
@@ -826,59 +826,59 @@ Game/ConditionVolumeAgent_G.cpp:
 	.sbss       start:0x803B9AB0 end:0x803B9AC0
 	.sdata2     start:0x803BDEA8 end:0x803BDEC0
 
-Game/DetectVolumeAgent_G.cpp:
+Rat/DetectVolumeAgent_G.cpp:
 	.text       start:0x80106C08 end:0x801072D4
 	.data       start:0x80348950 end:0x803489F8
 	.sbss       start:0x803B9AC0 end:0x803B9AC8
 
-Game/CreatureSticky.cpp:
+Rat/CreatureSticky.cpp:
 	.text       start:0x801072D4 end:0x80107E74
 	.ctors      start:0x80324C10 end:0x80324C14
 	.rodata     start:0x8032E320 end:0x8032E500
 	.sbss       start:0x803B9AC8 end:0x803B9B88
 	.sdata2     start:0x803BDEC0 end:0x803BDF48
 
-Game/CreatureSkid.cpp:
+Rat/CreatureSkid.cpp:
 	.text       start:0x80107E74 end:0x80109E14
 	.ctors      start:0x80324C14 end:0x80324C18
 	.rodata     start:0x8032E500 end:0x8032E6F0
 	.sbss       start:0x803B9B88 end:0x803B9C48
 	.sdata2     start:0x803BDF48 end:0x803BDFF8
 
-Game/Mission_Semaphore.cpp:
+Rat/Mission_Semaphore.cpp:
 	.text       start:0x80109E14 end:0x8010CEEC
 	.rodata     start:0x8032E6F0 end:0x8032E7E8
 	.data       start:0x803489F8 end:0x80348B18
 	.sdata2     start:0x803BDFF8 end:0x803BE060
 
-Game/Mission_TimeCount.cpp:
+Rat/Mission_TimeCount.cpp:
 	.text       start:0x8010CEEC end:0x8010D1C0
 	.rodata     start:0x8032E7E8 end:0x8032E800
 	.data       start:0x80348B18 end:0x80348C38
 	.sdata2     start:0x803BE060 end:0x803BE078
 
-Game/Mission_Switch.cpp:
+Rat/Mission_Switch.cpp:
 	.text       start:0x8010D1C0 end:0x8010E24C
 	.rodata     start:0x8032E800 end:0x8032E958
 	.data       start:0x80348C38 end:0x80348D88
 	.sdata2     start:0x803BE078 end:0x803BE080
 
-Game/CreatureSemaphore.cpp:
+Rat/CreatureSemaphore.cpp:
 	.text       start:0x8010E24C end:0x8010E2DC
 
-Game/Mission_ShootTarget.cpp:
+Rat/Mission_ShootTarget.cpp:
 	.text       start:0x8010E2DC end:0x80111B40
 	.rodata     start:0x8032E958 end:0x8032EAF8
 	.data       start:0x80348D88 end:0x80348EF0
 	.sdata2     start:0x803BE080 end:0x803BE110
 
-Game/V_RaftMove.cpp:
+Rat/V_RaftMove.cpp:
 	.text       start:0x80111B40 end:0x80114C34
 	.rodata     start:0x8032EAF8 end:0x8032EB18
 	.data       start:0x80348EF0 end:0x803490C8
 	.sdata2     start:0x803BE110 end:0x803BE180
 
-Game/V_Raft.cpp:
+Rat/V_Raft.cpp:
 	.text       start:0x80114C34 end:0x801151C8
 	.ctors      start:0x80324C18 end:0x80324C1C
 	.rodata     start:0x8032EB18 end:0x8032EB48
@@ -886,11 +886,11 @@ Game/V_Raft.cpp:
 	.bss        start:0x8036A1F0 end:0x8036A200
 	.sbss       start:0x803B9C48 end:0x803B9C60
 
-Game/CreatureFlying.cpp:
+Rat/CreatureFlying.cpp:
 	.text       start:0x801151C8 end:0x80115B48
 	.sdata2     start:0x803BE180 end:0x803BE198
 
-Game/FlyUpVolumeAgent_G.cpp:
+Rat/FlyUpVolumeAgent_G.cpp:
 	.text       start:0x80115B48 end:0x801163EC
 	.ctors      start:0x80324C1C end:0x80324C20
 	.rodata     start:0x8032EB48 end:0x8032EB68
@@ -899,46 +899,46 @@ Game/FlyUpVolumeAgent_G.cpp:
 	.sbss       start:0x803B9C60 end:0x803B9C70
 	.sdata2     start:0x803BE198 end:0x803BE1A0
 
-Game/CreatureVehiculeStates_G.cpp:
+Rat/CreatureVehiculeStates_G.cpp:
 	.text       start:0x801163EC end:0x801189B0
 	.rodata     start:0x8032EB68 end:0x8032EB90
 	.sdata2     start:0x803BE1A0 end:0x803BE1F8
 
-Game/Mission_PushLift.cpp:
+Rat/Mission_PushLift.cpp:
 	.text       start:0x801189B0 end:0x8011968C
 	.rodata     start:0x8032EB90 end:0x8032EBC8
 	.data       start:0x803492B0 end:0x803493D0
 	.sdata2     start:0x803BE1F8 end:0x803BE238
 
-Game/GroupAgent_G.cpp:
+Rat/GroupAgent_G.cpp:
 	.text       start:0x8011968C end:0x80119AB8
 	.rodata     start:0x8032EBC8 end:0x8032EBE0
 	.data       start:0x803493D0 end:0x803494A0
 	.sbss       start:0x803B9C70 end:0x803B9C78
 
-Game/GroupTriggerZone_G.cpp:
+Rat/GroupTriggerZone_G.cpp:
 	.text       start:0x80119AB8 end:0x80120338
 	.rodata     start:0x8032EBE0 end:0x8032EC30
 	.data       start:0x803494A0 end:0x80349BB0
 	.sbss       start:0x803B9C78 end:0x803B9CA0
 	.sdata2     start:0x803BE238 end:0x803BE278
 
-Game/CreatureShootTarget.cpp:
+Rat/CreatureShootTarget.cpp:
 	.text       start:0x80120338 end:0x80120378
 
-Game/Mission_Container.cpp:
+Rat/Mission_Container.cpp:
 	.text       start:0x80120378 end:0x80120DF8
 	.rodata     start:0x8032EC30 end:0x8032EC98
 	.data       start:0x80349BB0 end:0x80349CD0
 
-Game/GroupMove_G.cpp:
+Rat/GroupMove_G.cpp:
 	.text       start:0x80120DF8 end:0x80125BA8
 	.rodata     start:0x8032EC98 end:0x8032ECB8
 	.data       start:0x80349CD0 end:0x80349E80
 	.sdata      start:0x803B8148 end:0x803B8150
 	.sdata2     start:0x803BE278 end:0x803BE320
 
-Game/IT_Switch.cpp:
+Rat/IT_Switch.cpp:
 	.text       start:0x80125BA8 end:0x80126B38
 	.ctors      start:0x80324C20 end:0x80324C24
 	.rodata     start:0x8032ECB8 end:0x8032EED0
@@ -947,7 +947,7 @@ Game/IT_Switch.cpp:
 	.sbss       start:0x803B9CA0 end:0x803B9D70
 	.sdata2     start:0x803BE320 end:0x803BE3B8
 
-Game/Mission_ControlPanel.cpp:
+Rat/Mission_ControlPanel.cpp:
 	.text       start:0x80126B38 end:0x80128068
 	.ctors      start:0x80324C24 end:0x80324C28
 	.rodata     start:0x8032EED0 end:0x8032EF70
@@ -955,25 +955,25 @@ Game/Mission_ControlPanel.cpp:
 	.sbss       start:0x803B9D70 end:0x803B9D90
 	.sdata2     start:0x803BE3B8 end:0x803BE3D8
 
-Game/CreatureControlPanel.cpp:
+Rat/CreatureControlPanel.cpp:
 	.text       start:0x80128068 end:0x80128968
 	.sdata2     start:0x803BE3D8 end:0x803BE3E0
 
-Game/CreatureDeaths.cpp:
+Rat/CreatureDeaths.cpp:
 	.text       start:0x80128968 end:0x80129BA4
 	.ctors      start:0x80324C28 end:0x80324C2C
 	.rodata     start:0x8032EF70 end:0x8032F1F8
 	.sbss       start:0x803B9D90 end:0x803B9E50
 	.sdata2     start:0x803BE3E0 end:0x803BE480
 
-Game/CreatureBumper.cpp:
+Rat/CreatureBumper.cpp:
 	.text       start:0x80129BA4 end:0x8012AEA4
 	.ctors      start:0x80324C2C end:0x80324C30
 	.rodata     start:0x8032F1F8 end:0x8032F3E8
 	.sbss       start:0x803B9E50 end:0x803B9F10
 	.sdata2     start:0x803BE480 end:0x803BE510
 
-Game/IT_Bumper.cpp:
+Rat/IT_Bumper.cpp:
 	.text       start:0x8012AEA4 end:0x8012C04C
 	.ctors      start:0x80324C30 end:0x80324C34
 	.rodata     start:0x8032F3E8 end:0x8032F4B0
@@ -982,18 +982,18 @@ Game/IT_Bumper.cpp:
 	.sbss       start:0x803B9F10 end:0x803B9F20
 	.sdata2     start:0x803BE510 end:0x803BE540
 
-Game/Mission_Multi_Race.cpp:
+Rat/Mission_Multi_Race.cpp:
 	.text       start:0x8012C04C end:0x8012D220
 	.rodata     start:0x8032F4B0 end:0x8032F548
 	.data       start:0x8034A0C0 end:0x8034A1E8
 	.sdata2     start:0x803BE540 end:0x803BE5A0
 
-Game/IT_LinkObjMove.cpp:
+Rat/IT_LinkObjMove.cpp:
 	.text       start:0x8012D220 end:0x8012D5A8
 	.data       start:0x8034A1E8 end:0x8034A3C8
 	.sdata2     start:0x803BE5A0 end:0x803BE5C0
 
-Game/IT_LinkObj.cpp:
+Rat/IT_LinkObj.cpp:
 	.text       start:0x8012D5A8 end:0x8012DD58
 	.ctors      start:0x80324C34 end:0x80324C38
 	.rodata     start:0x8032F548 end:0x8032F590
@@ -1001,7 +1001,7 @@ Game/IT_LinkObj.cpp:
 	.bss        start:0x8036A230 end:0x8036A240
 	.sbss       start:0x803B9F20 end:0x803B9F30
 
-Game/CreatureFishing.cpp:
+Rat/CreatureFishing.cpp:
 	.text       start:0x8012DD58 end:0x8012E7D0
 	.ctors      start:0x80324C38 end:0x80324C3C
 	.rodata     start:0x8032F590 end:0x8032F790
@@ -1009,24 +1009,24 @@ Game/CreatureFishing.cpp:
 	.sbss       start:0x803B9F30 end:0x803BA000
 	.sdata2     start:0x803BE5C0 end:0x803BE690
 
-Game/Mission_WireConnectInterface.cpp:
+Rat/Mission_WireConnectInterface.cpp:
 	.text       start:0x8012E7D0 end:0x8012EB40
 	.data       start:0x8034A598 end:0x8034A5B8
 	.sdata2     start:0x803BE690 end:0x803BE6B0
 
-Game/Mission_WireConnect.cpp:
+Rat/Mission_WireConnect.cpp:
 	.text       start:0x8012EB40 end:0x80130CA8
 	.rodata     start:0x8032F790 end:0x8032F840
 	.data       start:0x8034A5B8 end:0x8034A6D8
 	.sdata2     start:0x803BE6B0 end:0x803BE700
 
-Game/Mission_CookingCake.cpp:
+Rat/Mission_CookingCake.cpp:
 	.text       start:0x80130CA8 end:0x80132944
 	.rodata     start:0x8032F840 end:0x8032F8E0
 	.data       start:0x8034A6D8 end:0x8034A818
 	.sdata2     start:0x803BE700 end:0x803BE758
 
-Game/Mission_Wii_Fish.cpp:
+Rat/Mission_Wii_Fish.cpp:
 	.text       start:0x80132944 end:0x80135028
 	.ctors      start:0x80324C3C end:0x80324C40
 	.rodata     start:0x8032F8E0 end:0x8032FB98
@@ -1034,12 +1034,12 @@ Game/Mission_Wii_Fish.cpp:
 	.sbss       start:0x803BA000 end:0x803BA0C0
 	.sdata2     start:0x803BE758 end:0x803BE848
 
-Game/Mission_CookinCakeInterface.cpp:
+Rat/Mission_CookinCakeInterface.cpp:
 	.text       start:0x80135028 end:0x80135AE4
 	.data       start:0x8034A938 end:0x8034A978
 	.sdata2     start:0x803BE848 end:0x803BE8E0
 
-Game/PhysicAgt_G.cpp:
+Rat/PhysicAgt_G.cpp:
 	.text       start:0x80135AE4 end:0x80137598
 	.ctors      start:0x80324C40 end:0x80324C44
 	.rodata     start:0x8032FB98 end:0x8032FC30
@@ -1048,11 +1048,11 @@ Game/PhysicAgt_G.cpp:
 	.sbss       start:0x803BA0C0 end:0x803BA0D8
 	.sdata2     start:0x803BE8E0 end:0x803BE938
 
-Game/HumanHideVolumeAgent_G.cpp:
+Rat/HumanHideVolumeAgent_G.cpp:
 	.text       start:0x80137598 end:0x80137728
 	.sbss       start:0x803BA0D8 end:0x803BA0E0
 
-Game/GuardAgent_G.cpp:
+Rat/GuardAgent_G.cpp:
 	.text       start:0x80137728 end:0x80139BCC
 	.ctors      start:0x80324C44 end:0x80324C48
 	.rodata     start:0x8032FC30 end:0x8032FE98
@@ -1061,29 +1061,29 @@ Game/GuardAgent_G.cpp:
 	.sbss       start:0x803BA0E0 end:0x803BA1B0
 	.sdata2     start:0x803BE938 end:0x803BEA00
 
-Game/Mission_CuttingPotatoesInterface.cpp:
+Rat/Mission_CuttingPotatoesInterface.cpp:
 	.text       start:0x80139BCC end:0x8013A520
 	.data       start:0x8034AC48 end:0x8034AC68
 	.sdata2     start:0x803BEA00 end:0x803BEA70
 
-Game/Mission_CookingSoup.cpp:
+Rat/Mission_CookingSoup.cpp:
 	.text       start:0x8013A520 end:0x8013C210
 	.rodata     start:0x8032FE98 end:0x8032FF18
 	.data       start:0x8034AC68 end:0x8034AD88
 	.sdata2     start:0x803BEA70 end:0x803BEAC0
 
-Game/Mission_CookingSoupInterface.cpp:
+Rat/Mission_CookingSoupInterface.cpp:
 	.text       start:0x8013C210 end:0x8013CB6C
 	.data       start:0x8034AD88 end:0x8034ADA8
 	.sdata2     start:0x803BEAC0 end:0x803BEB58
 
-Game/Mission_CuttingPotatoes.cpp:
+Rat/Mission_CuttingPotatoes.cpp:
 	.text       start:0x8013CB6C end:0x8013DB98
 	.rodata     start:0x8032FF18 end:0x8032FF60
 	.data       start:0x8034ADA8 end:0x8034AEC8
 	.sdata2     start:0x803BEB58 end:0x803BEB70
 
-Game/IT_Fish_G.cpp:
+Rat/IT_Fish_G.cpp:
 	.text       start:0x8013DB98 end:0x8013E3D4
 	.ctors      start:0x80324C48 end:0x80324C4C
 	.rodata     start:0x8032FF60 end:0x8032FF90
@@ -1091,16 +1091,16 @@ Game/IT_Fish_G.cpp:
 	.bss        start:0x8036A388 end:0x8036A398
 	.sbss       start:0x803BA1B0 end:0x803BA1C0
 
-Game/Mission_PushButtonInterface.cpp:
+Rat/Mission_PushButtonInterface.cpp:
 	.text       start:0x8013E3D4 end:0x8013F0E8
 	.data       start:0x8034AF58 end:0x8034AF98
 	.sdata2     start:0x803BEB70 end:0x803BEC10
 
-Game/CreatureStatic.cpp:
+Rat/CreatureStatic.cpp:
 	.text       start:0x8013F0E8 end:0x8013F254
 	.sdata2     start:0x803BEC10 end:0x803BEC18
 
-Game/IT_FishMove.cpp:
+Rat/IT_FishMove.cpp:
 	.text       start:0x8013F254 end:0x8013F8D8
 	.ctors      start:0x80324C4C end:0x80324C50
 	.rodata     start:0x8032FF90 end:0x80330170
@@ -1108,67 +1108,67 @@ Game/IT_FishMove.cpp:
 	.sbss       start:0x803BA1C0 end:0x803BA280
 	.sdata2     start:0x803BEC18 end:0x803BEC90
 
-Game/Mission_CookingLinguini.cpp:
+Rat/Mission_CookingLinguini.cpp:
 	.text       start:0x8013F8D8 end:0x80140350
 	.rodata     start:0x80330170 end:0x80330188
 	.data       start:0x8034B0C8 end:0x8034B1E8
 	.sdata2     start:0x803BEC90 end:0x803BECA8
 
-Game/Mission_CookingLinguiniInterface.cpp:
+Rat/Mission_CookingLinguiniInterface.cpp:
 	.text       start:0x80140350 end:0x80140A50
 	.data       start:0x8034B1E8 end:0x8034B208
 	.sdata2     start:0x803BECA8 end:0x803BED00
 
-Game/Mission_Raft.cpp:
+Rat/Mission_Raft.cpp:
 	.text       start:0x80140A50 end:0x80141C40
 	.rodata     start:0x80330188 end:0x803301E0
 	.data       start:0x8034B208 end:0x8034B328
 	.sdata2     start:0x803BED00 end:0x803BED50
 
-Game/MenuManager_G.cpp:
+Rat/MenuManager_G.cpp:
 	.text       start:0x80141C40 end:0x80147DD8
 	.rodata     start:0x803301E0 end:0x80330290
 	.data       start:0x8034B328 end:0x8034B460
 	.sdata      start:0x803B8150 end:0x803B8158
 	.sdata2     start:0x803BED50 end:0x803BEDA8
 
-Game/Dialog_G.cpp:
+Rat/Dialog_G.cpp:
 	.text       start:0x80147DD8 end:0x8014B544
 	.rodata     start:0x80330290 end:0x803302B0
 	.data       start:0x8034B460 end:0x8034B4C8
 	.sdata2     start:0x803BEDA8 end:0x803BEDF0
 
-Game/Button_G.cpp:
+Rat/Button_G.cpp:
 	.text       start:0x8014B544 end:0x8014E774
 	.rodata     start:0x803302B0 end:0x803302D0
 	.data       start:0x8034B4C8 end:0x8034B4D8
 	.sdata2     start:0x803BEDF0 end:0x803BEE60
 
-Game/ResName.cpp:
+Rat/ResName.cpp:
 	.text       start:0x8014E774 end:0x80159E34
 	.ctors      start:0x80324C50 end:0x80324C54
 	.rodata     start:0x803302D0 end:0x80330BC0
 	.bss        start:0x8036A398 end:0x8036BDB0
 	.sdata2     start:0x803BEE60 end:0x803BF290
 
-Game/MenuParser.cpp:
+Rat/MenuParser.cpp:
 	.text       start:0x80159E34 end:0x8015D7F8
 	.rodata     start:0x80330BC0 end:0x80330E28
 	.sbss       start:0x803BA280 end:0x803BA298
 	.sdata2     start:0x803BF290 end:0x803BF330
 
-Game/Dialogs_MainMenu.cpp:
+Rat/Dialogs_MainMenu.cpp:
 	.text       start:0x8015D7F8 end:0x8015F284
 	.rodata     start:0x80330E28 end:0x80330EE8
 	.data       start:0x8034B4D8 end:0x8034B6F0
 	.sdata2     start:0x803BF330 end:0x803BF388
 
-Game/MenuKeys.cpp:
+Rat/MenuKeys.cpp:
 	.text       start:0x8015F284 end:0x8015FD40
 	.data       start:0x8034B6F0 end:0x8034B878
 	.sdata2     start:0x803BF388 end:0x803BF398
 
-Game/Dialogs_Pause.cpp:
+Rat/Dialogs_Pause.cpp:
 	.text       start:0x8015FD40 end:0x80165C6C
 	.ctors      start:0x80324C54 end:0x80324C58
 	.rodata     start:0x80330EE8 end:0x80331238
@@ -1176,22 +1176,22 @@ Game/Dialogs_Pause.cpp:
 	.sbss       start:0x803BA298 end:0x803BA360
 	.sdata2     start:0x803BF398 end:0x803BF4D8
 
-Game/BaseInGame3D.cpp:
+Rat/BaseInGame3D.cpp:
 	.text       start:0x80165C6C end:0x80166A28
 	.rodata     start:0x80331238 end:0x80331260
 	.sdata2     start:0x803BF4D8 end:0x803BF4F8
 
-Game/MenuTools.cpp:
+Rat/MenuTools.cpp:
 	.text       start:0x80166A28 end:0x80166F7C
 	.sdata2     start:0x803BF4F8 end:0x803BF508
 
-Game/IT_BallWalkMove_G.cpp:
+Rat/IT_BallWalkMove_G.cpp:
 	.text       start:0x80166F7C end:0x80169584
 	.rodata     start:0x80331260 end:0x80331298
 	.data       start:0x8034BE18 end:0x8034BFA8
 	.sdata2     start:0x803BF508 end:0x803BF580
 
-Game/IT_BallWalk_G.cpp:
+Rat/IT_BallWalk_G.cpp:
 	.text       start:0x80169584 end:0x8016A88C
 	.ctors      start:0x80324C58 end:0x80324C5C
 	.rodata     start:0x80331298 end:0x803312E8
@@ -1200,13 +1200,13 @@ Game/IT_BallWalk_G.cpp:
 	.sbss       start:0x803BA360 end:0x803BA370
 	.sdata2     start:0x803BF580 end:0x803BF5C0
 
-Game/Dialogs_Common.cpp:
+Rat/Dialogs_Common.cpp:
 	.text       start:0x8016A88C end:0x8016DD68
 	.rodata     start:0x803312E8 end:0x80331318
 	.data       start:0x8034C128 end:0x8034C600
 	.sdata2     start:0x803BF5C0 end:0x803BF630
 
-Game/GangAgent_G.cpp:
+Rat/GangAgent_G.cpp:
 	.text       start:0x8016DD68 end:0x8016F854
 	.ctors      start:0x80324C5C end:0x80324C60
 	.rodata     start:0x80331318 end:0x80331518
@@ -1215,25 +1215,25 @@ Game/GangAgent_G.cpp:
 	.sbss       start:0x803BA370 end:0x803BA450
 	.sdata2     start:0x803BF630 end:0x803BF6D0
 
-Game/Mission_Wii_FishInterface.cpp:
+Rat/Mission_Wii_FishInterface.cpp:
 	.text       start:0x8016F854 end:0x8016FB28
 	.data       start:0x8034C898 end:0x8034C8B8
 	.sdata2     start:0x803BF6D0 end:0x803BF700
 
-Game/Dialogs_LoadSave.cpp:
+Rat/Dialogs_LoadSave.cpp:
 	.text       start:0x8016FB28 end:0x801716B8
 	.rodata     start:0x80331518 end:0x80331558
 	.data       start:0x8034C8B8 end:0x8034CD88
 	.sdata      start:0x803B8158 end:0x803B8170
 	.sdata2     start:0x803BF700 end:0x803BF728
 
-Game/Dialogs_System.cpp:
+Rat/Dialogs_System.cpp:
 	.text       start:0x801716B8 end:0x801747F8
 	.rodata     start:0x80331558 end:0x803315A0
 	.data       start:0x8034CD88 end:0x8034D050
 	.sdata2     start:0x803BF728 end:0x803BF750
 
-Game/Mission_Global.cpp:
+Rat/Mission_Global.cpp:
 	.text       start:0x801747F8 end:0x801751F0
 	.ctors      start:0x80324C60 end:0x80324C64
 	.rodata     start:0x803315A0 end:0x80331780
@@ -1241,24 +1241,24 @@ Game/Mission_Global.cpp:
 	.sbss       start:0x803BA450 end:0x803BA510
 	.sdata2     start:0x803BF750 end:0x803BF7E0
 
-Game/Mission_LinguiniMaking.cpp:
+Rat/Mission_LinguiniMaking.cpp:
 	.text       start:0x801751F0 end:0x80176AE8
 	.rodata     start:0x80331780 end:0x80331808
 	.data       start:0x8034D170 end:0x8034D290
 	.sdata2     start:0x803BF7E0 end:0x803BF830
 
-Game/Mission_LinguiniMakingInterface.cpp:
+Rat/Mission_LinguiniMakingInterface.cpp:
 	.text       start:0x80176AE8 end:0x801773DC
 	.data       start:0x8034D290 end:0x8034D2B0
 	.sdata2     start:0x803BF830 end:0x803BF890
 
-Game/Mission_Mutli_Race_Interface.cpp:
+Rat/Mission_Mutli_Race_Interface.cpp:
 	.text       start:0x801773DC end:0x80177904
 	.rodata     start:0x80331808 end:0x80331818
 	.data       start:0x8034D2B0 end:0x8034D2D0
 	.sdata2     start:0x803BF890 end:0x803BF8C0
 
-Game/Mission_Multi_Collect.cpp:
+Rat/Mission_Multi_Collect.cpp:
 	.text       start:0x80177904 end:0x801781BC
 	.ctors      start:0x80324C64 end:0x80324C68
 	.rodata     start:0x80331818 end:0x80331848
@@ -1266,12 +1266,12 @@ Game/Mission_Multi_Collect.cpp:
 	.sbss       start:0x803BA510 end:0x803BA518
 	.sdata2     start:0x803BF8C0 end:0x803BF8D8
 
-Game/Mission_Multi_Collect_Interface.cpp:
+Rat/Mission_Multi_Collect_Interface.cpp:
 	.text       start:0x801781BC end:0x80178748
 	.data       start:0x8034D3F8 end:0x8034D418
 	.sdata2     start:0x803BF8D8 end:0x803BF918
 
-Game/Mission_Dream.cpp:
+Rat/Mission_Dream.cpp:
 	.text       start:0x80178748 end:0x8017948C
 	.ctors      start:0x80324C68 end:0x80324C6C
 	.rodata     start:0x80331848 end:0x80331A78
@@ -1279,7 +1279,7 @@ Game/Mission_Dream.cpp:
 	.sbss       start:0x803BA518 end:0x803BA5D8
 	.sdata2     start:0x803BF918 end:0x803BF9A8
 
-Game/Smell_G.cpp:
+Rat/Smell_G.cpp:
 	.text       start:0x8017948C end:0x8017C834
 	.ctors      start:0x80324C6C end:0x80324C70
 	.rodata     start:0x80331A78 end:0x80331CA0
@@ -1288,83 +1288,83 @@ Game/Smell_G.cpp:
 	.sbss       start:0x803BA5D8 end:0x803BA698
 	.sdata2     start:0x803BF9A8 end:0x803BFA90
 
-Game/Mission_Wii_Wash.cpp:
+Rat/Mission_Wii_Wash.cpp:
 	.text       start:0x8017C834 end:0x8017DD74
 	.rodata     start:0x80331CA0 end:0x80331D50
 	.data       start:0x8034D590 end:0x8034D6B0
 	.sdata2     start:0x803BFA90 end:0x803BFAD0
 
-Game/Mission_Wii_WashInterface.cpp:
+Rat/Mission_Wii_WashInterface.cpp:
 	.text       start:0x8017DD74 end:0x8017E35C
 	.data       start:0x8034D6B0 end:0x8034D6D0
 	.sdata2     start:0x803BFAD0 end:0x803BFB08
 
-Game/LiquidFlow_G.cpp:
+Rat/LiquidFlow_G.cpp:
 	.text       start:0x8017E35C end:0x80180EAC
 	.rodata     start:0x80331D50 end:0x80331E58
 	.data       start:0x8034D6D0 end:0x8034D720
 	.sdata2     start:0x803BFB08 end:0x803BFB78
 
-Game/Mission_Multi_Ball_Interface.cpp:
+Rat/Mission_Multi_Ball_Interface.cpp:
 	.text       start:0x80180EAC end:0x8018117C
 	.data       start:0x8034D720 end:0x8034D740
 	.sdata2     start:0x803BFB78 end:0x803BFB98
 
-Game/Mission_Multi_Rope_Interface.cpp:
+Rat/Mission_Multi_Rope_Interface.cpp:
 	.text       start:0x8018117C end:0x8018144C
 	.data       start:0x8034D740 end:0x8034D760
 	.sdata2     start:0x803BFB98 end:0x803BFBB8
 
-Game/Mission_Mutli_Rope.cpp:
+Rat/Mission_Mutli_Rope.cpp:
 	.text       start:0x8018144C end:0x80181EF4
 	.rodata     start:0x80331E58 end:0x80331EA0
 	.data       start:0x8034D760 end:0x8034D888
 	.sdata2     start:0x803BFBB8 end:0x803BFBF8
 
-Game/Mission_Multi_Ball.cpp:
+Rat/Mission_Multi_Ball.cpp:
 	.text       start:0x80181EF4 end:0x801828CC
 	.rodata     start:0x80331EA0 end:0x80331F00
 	.data       start:0x8034D888 end:0x8034D9B0
 	.sdata2     start:0x803BFBF8 end:0x803BFC18
 
-Game/Mission_CookingPlateInterface.cpp:
+Rat/Mission_CookingPlateInterface.cpp:
 	.text       start:0x801828CC end:0x80184534
 	.rodata     start:0x80331F00 end:0x80331F10
 	.data       start:0x8034D9B0 end:0x8034D9D0
 	.sdata2     start:0x803BFC18 end:0x803BFD30
 
-Game/Mission_CookingPlate.cpp:
+Rat/Mission_CookingPlate.cpp:
 	.text       start:0x80184534 end:0x80186FA4
 	.rodata     start:0x80331F10 end:0x80331FE0
 	.data       start:0x8034D9D0 end:0x8034DB18
 	.sdata2     start:0x803BFD30 end:0x803BFD68
 
-Game/Mission_Wii_CrepeInterface.cpp:
+Rat/Mission_Wii_CrepeInterface.cpp:
 	.text       start:0x80186FA4 end:0x8018758C
 	.data       start:0x8034DB18 end:0x8034DB38
 	.sdata2     start:0x803BFD68 end:0x803BFDA0
 
-Game/Mission_Wii_Crepe.cpp:
+Rat/Mission_Wii_Crepe.cpp:
 	.text       start:0x8018758C end:0x80188D64
 	.rodata     start:0x80331FE0 end:0x80332038
 	.data       start:0x8034DB38 end:0x8034DC78
 	.sdata2     start:0x803BFDA0 end:0x803BFE18
 
-Game/IT_Condition.cpp:
+Rat/IT_Condition.cpp:
 	.text       start:0x80188D64 end:0x8018A9E4
 	.rodata     start:0x80332038 end:0x80332198
 	.data       start:0x8034DC78 end:0x8034DD08
 	.sdata2     start:0x803BFE18 end:0x803BFEA8
 
-Game/NodeVolumeAgent_G.cpp:
+Rat/NodeVolumeAgent_G.cpp:
 	.text       start:0x8018A9E4 end:0x8018AAB4
 	.sbss       start:0x803BA698 end:0x803BA6A0
 
-Game/Mission_MutliTemplate_G.cpp:
+Rat/Mission_MutliTemplate_G.cpp:
 	.text       start:0x8018AAB4 end:0x8018ABD4
 	.sdata2     start:0x803BFEA8 end:0x803BFEB0
 
-Game/WanderingPath_G.cpp:
+Rat/WanderingPath_G.cpp:
 	.text       start:0x8018ABD4 end:0x8018BE90
 	.ctors      start:0x80324C70 end:0x80324C74
 	.rodata     start:0x80332198 end:0x803323C0
@@ -1372,200 +1372,200 @@ Game/WanderingPath_G.cpp:
 	.sbss       start:0x803BA6A0 end:0x803BA760
 	.sdata2     start:0x803BFEB0 end:0x803BFF60
 
-Game/FXVolumeAgent_G.cpp:
+Rat/FXVolumeAgent_G.cpp:
 	.text       start:0x8018BE90 end:0x8018C42C
 	.rodata     start:0x803323C0 end:0x803323D0
 	.data       start:0x8034DD38 end:0x8034DDE0
 	.sbss       start:0x803BA760 end:0x803BA768
 	.sdata2     start:0x803BFF60 end:0x803BFF78
 
-Game/LevelMenu_G.cpp:
+Rat/LevelMenu_G.cpp:
 	.text       start:0x8018C42C end:0x8018C4D0
 	.rodata     start:0x803323D0 end:0x803323F8
 	.sdata2     start:0x803BFF78 end:0x803BFF80
 
-Game/GusteauMove.cpp:
+Rat/GusteauMove.cpp:
 	.text       start:0x8018C4D0 end:0x8018CD88
 	.data       start:0x8034DDE0 end:0x8034DF70
 	.sdata2     start:0x803BFF80 end:0x803BFFB0
 
-Game/GusteauAgent.cpp:
+Rat/GusteauAgent.cpp:
 	.text       start:0x8018CD88 end:0x8018D140
 	.rodata     start:0x803323F8 end:0x80332408
 	.data       start:0x8034DF70 end:0x8034E000
 	.sbss       start:0x803BA768 end:0x803BA770
 
-Game/Mission_GlissadeInterface.cpp:
+Rat/Mission_GlissadeInterface.cpp:
 	.text       start:0x8018D140 end:0x8018D564
 	.data       start:0x8034E000 end:0x8034E020
 	.sdata2     start:0x803BFFB0 end:0x803BFFE0
 
-Game/Mission_Glissade.cpp:
+Rat/Mission_Glissade.cpp:
 	.text       start:0x8018D564 end:0x8018E17C
 	.rodata     start:0x80332408 end:0x80332470
 	.data       start:0x8034E020 end:0x8034E140
 	.sdata2     start:0x803BFFE0 end:0x803C0018
 
-Game/VolumeDelayedStartMove_G.cpp:
+Rat/VolumeDelayedStartMove_G.cpp:
 	.text       start:0x8018E17C end:0x8018E48C
 	.data       start:0x8034E140 end:0x8034E180
 	.sdata2     start:0x803C0018 end:0x803C0020
 
-Game/VolumeDelayedStart_G.cpp:
+Rat/VolumeDelayedStart_G.cpp:
 	.text       start:0x8018E48C end:0x8018E978
 	.rodata     start:0x80332470 end:0x803324A8
 	.data       start:0x8034E180 end:0x8034E228
 	.sbss       start:0x803BA770 end:0x803BA778
 
-Game/EnemyGenerator_G.cpp:
+Rat/EnemyGenerator_G.cpp:
 	.text       start:0x8018E978 end:0x8018FF38
 	.rodata     start:0x803324A8 end:0x803324F0
 	.data       start:0x8034E228 end:0x8034E278
 	.sdata2     start:0x803C0020 end:0x803C0038
 
-Game/DummyGen.cpp:
+Rat/DummyGen.cpp:
 	.text       start:0x8018FF38 end:0x80191690
 	.rodata     start:0x803324F0 end:0x803325E8
 	.data       start:0x8034E278 end:0x8034E310
 	.sdata2     start:0x803C0038 end:0x803C0078
 
-Game/Shop.cpp:
+Rat/Shop.cpp:
 	.text       start:0x80191690 end:0x80195680
 	.rodata     start:0x803325E8 end:0x80332EC0
 	.data       start:0x8034E310 end:0x8034E3C0
 	.sdata2     start:0x803C0078 end:0x803C0410
 
-Game/Purchase.cpp:
+Rat/Purchase.cpp:
 	.text       start:0x80195680 end:0x80197794
 	.rodata     start:0x80332EC0 end:0x80333000
 	.data       start:0x8034E3C0 end:0x8034E608
 	.sdata2     start:0x803C0410 end:0x803C0460
 
-Game/Dialogs_MisssionEnd.cpp:
+Rat/Dialogs_MisssionEnd.cpp:
 	.text       start:0x80197794 end:0x8019B4AC
 	.rodata     start:0x80333000 end:0x803330E8
 	.data       start:0x8034E608 end:0x8034EB28
 	.sdata      start:0x803B8170 end:0x803B8190
 	.sdata2     start:0x803C0460 end:0x803C04C0
 
-Game/Dialog_MC_Base.cpp:
+Rat/Dialog_MC_Base.cpp:
 	.text       start:0x8019B4AC end:0x801A0D20
 	.rodata     start:0x803330E8 end:0x80333118
 	.data       start:0x8034EB28 end:0x8034EFC0
 	.sdata2     start:0x803C04C0 end:0x803C04E8
 
-Game/Dialogs_Extras.cpp:
+Rat/Dialogs_Extras.cpp:
 	.text       start:0x801A0D20 end:0x801A6B14
 	.rodata     start:0x80333118 end:0x80333210
 	.data       start:0x8034EFC0 end:0x8034FB10
 	.sdata      start:0x803B8190 end:0x803B81B0
 	.sdata2     start:0x803C04E8 end:0x803C05A0
 
-Game/LangDefine.cpp:
+Rat/LangDefine.cpp:
 	.text       start:0x801A6B14 end:0x801A6CAC
 	.rodata     start:0x80333210 end:0x80333230
 
-Game/MenuStyle.cpp:
+Rat/MenuStyle.cpp:
 	.text       start:0x801A6CAC end:0x801A7458
 	.sdata2     start:0x803C05A0 end:0x803C05B8
 
-Game/Menu3DScenery.cpp:
+Rat/Menu3DScenery.cpp:
 	.text       start:0x801A7458 end:0x801A81BC
 	.rodata     start:0x80333230 end:0x80333270
 	.data       start:0x8034FB10 end:0x8034FB58
 	.sdata2     start:0x803C05B8 end:0x803C0660
 
-Game/ActionHelper_G.cpp:
+Rat/ActionHelper_G.cpp:
 	.text       start:0x801A81BC end:0x801A9D40
 	.rodata     start:0x80333270 end:0x803332B0
 	.data       start:0x8034FB58 end:0x8034FBA8
 	.sdata2     start:0x803C0660 end:0x803C06B0
 
-Game/PermanentDraw.cpp:
+Rat/PermanentDraw.cpp:
 	.text       start:0x801A9D40 end:0x801AAA84
 	.rodata     start:0x803332B0 end:0x803332C0
 	.data       start:0x8034FBA8 end:0x8034FC10
 	.sdata2     start:0x803C06B0 end:0x803C0710
 
-Game/CreaturesDashStates_G.cpp:
+Rat/CreaturesDashStates_G.cpp:
 	.text       start:0x801AAA84 end:0x801AC164
 	.sdata2     start:0x803C0710 end:0x803C0750
 
-Game/CreaturesBoneManip.cpp:
+Rat/CreaturesBoneManip.cpp:
 	.text       start:0x801AC164 end:0x801ACA2C
 	.rodata     start:0x803332C0 end:0x803332E0
 	.data       start:0x8034FC10 end:0x8034FC50
 	.sdata2     start:0x803C0750 end:0x803C0758
 
-Game/Mission_CookingSoupInterfaceYesNo.cpp:
+Rat/Mission_CookingSoupInterfaceYesNo.cpp:
 	.text       start:0x801ACA2C end:0x801AD010
 	.data       start:0x8034FC50 end:0x8034FC70
 	.sdata2     start:0x803C0758 end:0x803C07D0
 
-Game/LogicLevel.cpp:
+Rat/LogicLevel.cpp:
 	.text       start:0x801AD010 end:0x801AD700
 	.rodata     start:0x803332E0 end:0x80333300
 	.data       start:0x8034FC70 end:0x8034FCA0
 
-Game/IT_BreakMove.cpp:
+Rat/IT_BreakMove.cpp:
 	.text       start:0x801AD700 end:0x801AD88C
 	.data       start:0x8034FCA0 end:0x8034FCE0
 	.sdata2     start:0x803C07D0 end:0x803C07E8
 
-Game/LevelManipulator_G.cpp:
+Rat/LevelManipulator_G.cpp:
 	.text       start:0x801AD88C end:0x801AE6A4
 	.rodata     start:0x80333300 end:0x80333330
 	.data       start:0x8034FCE0 end:0x8034FD20
 	.sdata2     start:0x803C07E8 end:0x803C0808
 
-Game/GuardMove_G.cpp:
+Rat/GuardMove_G.cpp:
 	.text       start:0x801AE6A4 end:0x801AEDA4
 	.data       start:0x8034FD20 end:0x8034FD60
 	.sdata2     start:0x803C0808 end:0x803C0820
 
-Game/FootPrints_G.cpp:
+Rat/FootPrints_G.cpp:
 	.text       start:0x801AEDA4 end:0x801AF828
 	.data       start:0x8034FD60 end:0x8034FDB0
 	.sdata2     start:0x803C0820 end:0x803C0838
 
-Game/Mission_PreLinguiniMaking.cpp:
+Rat/Mission_PreLinguiniMaking.cpp:
 	.text       start:0x801AF828 end:0x801AFCFC
 	.rodata     start:0x80333330 end:0x80333388
 	.data       start:0x8034FDB0 end:0x8034FED0
 	.sdata2     start:0x803C0838 end:0x803C0840
 
-Game/MultiMapLevel.cpp:
+Rat/MultiMapLevel.cpp:
 	.text       start:0x801AFCFC end:0x801AFEFC
 	.rodata     start:0x80333388 end:0x803333E0
 
-Game/BriefInfo.cpp:
+Rat/BriefInfo.cpp:
 	.text       start:0x801AFEFC end:0x801B0188
 	.rodata     start:0x803333E0 end:0x80333400
 
-Game/Mission_CookingSoupYesNo.cpp:
+Rat/Mission_CookingSoupYesNo.cpp:
 	.text       start:0x801B0188 end:0x801B1510
 	.rodata     start:0x80333400 end:0x80333428
 	.data       start:0x8034FED0 end:0x8034FFF0
 	.sdata2     start:0x803C0840 end:0x803C0880
 
-Game/IsToBePlayed.cpp:
+Rat/IsToBePlayed.cpp:
 	.text       start:0x801B1510 end:0x801B38C0
 	.rodata     start:0x80333428 end:0x803334A0
 	.data       start:0x8034FFF0 end:0x80350050
 	.sdata      start:0x803B81B0 end:0x803B81B8
 	.sdata2     start:0x803C0880 end:0x803C0898
 
-Game/Frame_G.cpp:
+Rat/Frame_G.cpp:
 	.text       start:0x801B38C0 end:0x801B42EC
 	.rodata     start:0x803334A0 end:0x803334C0
 	.data       start:0x80350050 end:0x80350068
 	.sdata2     start:0x803C0898 end:0x803C08C0
 
-Game/DialogVoices.cpp:
+Rat/DialogVoices.cpp:
 	.data       start:0x80350068 end:0x80350150
 	.sdata2     start:0x803C08C0 end:0x803C0A90
 
-Game/DialogGroup_G.cpp:
+Rat/DialogGroup_G.cpp:
 	.text       start:0x801B42EC end:0x801B4368
 
 PPCArch.c:
@@ -2374,7 +2374,7 @@ Engine/ARAM_Z.cpp:
 Engine/Assert_Z.cpp:
 	.text       start:0x801F5EC4 end:0x801F5F24
 
-Engine/GCMain_Z.cpp:
+LibGC/GCMain_Z.cpp:
 	.text       start:0x801F5F24 end:0x801FA188
 	.ctors      start:0x80324C7C end:0x80324C80
 	.rodata     start:0x80334410 end:0x803348B0
@@ -2387,7 +2387,7 @@ Engine/GCMain_Z.cpp:
 EngineDupe/String_Z.c:
 	.text       start:0x801FA188 end:0x801FA1CC
 
-Engine/SystemObjectGC_Z.cpp:
+LibGC/SystemObjectGC_Z.cpp:
 	.text       start:0x801FA1CC end:0x801FA5DC
 	.sdata2     start:0x803C1138 end:0x803C1148
 
@@ -2399,7 +2399,7 @@ Engine/LowLevelTools_Z.cpp:
 	.text       start:0x801FA644 end:0x801FAF84
 	.sdata2     start:0x803C1158 end:0x803C1160
 
-Engine/GCFile_Z.cpp:
+LibGC/GCFile_Z.cpp:
 	.text       start:0x801FAF84 end:0x801FBAAC
 	.rodata     start:0x803348B0 end:0x803348D8
 	.data       start:0x80358268 end:0x80358338
@@ -2412,36 +2412,36 @@ Engine/MathTools_Z.cpp:
 	.bss        start:0x8038C7A0 end:0x8038C9A8
 	.sdata2     start:0x803C1188 end:0x803C11E0
 
-Engine/MathGC_Z.cpp:
+LibGC/MathGC_Z.cpp:
 	.text       start:0x801FC4A4 end:0x801FCD98
 	.sdata2     start:0x803C11E0 end:0x803C11E8
 
-Engine/GCConsoleSystem_Z.cpp:
+LibGC/GCConsoleSystem_Z.cpp:
 	.text       start:0x801FCD98 end:0x801FCDC4
 
-Engine/GCConsoleFolder_Z.cpp:
+LibGC/GCConsoleFolder_Z.cpp:
 	.text       start:0x801FCDC4 end:0x801FD178
 	.rodata     start:0x803348D8 end:0x80334908
 	.data       start:0x80358338 end:0x80358360
 	.sdata2     start:0x803C11E8 end:0x803C11F8
 
-Engine/GCConsole_Z.cpp:
+LibGC/GCConsole_Z.cpp:
 	.text       start:0x801FD178 end:0x801FD49C
 	.rodata     start:0x80334908 end:0x80334928
 	.data       start:0x80358360 end:0x803583B0
 
-Engine/InGameObjectsGC_Z.cpp:
+LibGC/InGameObjectsGC_Z.cpp:
 	.text       start:0x801FD49C end:0x801FD774
 	.data       start:0x803583B0 end:0x80358400
 	.sdata2     start:0x803C11F8 end:0x803C1210
 
-Engine/FlareGCDraw_Z.cpp:
+LibGC/FlareGCDraw_Z.cpp:
 	.text       start:0x801FD774 end:0x801FE044
 	.rodata     start:0x80334928 end:0x80334960
 	.data       start:0x80358400 end:0x80358470
 	.sdata2     start:0x803C1210 end:0x803C1230
 
-Engine/FlareGC_Z.cpp:
+LibGC/FlareGC_Z.cpp:
 	.text       start:0x801FE044 end:0x801FE8DC
 	.ctors      start:0x80324C80 end:0x80324C84
 	.rodata     start:0x80334960 end:0x803349C8
@@ -2449,34 +2449,34 @@ Engine/FlareGC_Z.cpp:
 	.sbss       start:0x803BAC60 end:0x803BAC68
 	.sdata2     start:0x803C1230 end:0x803C1240
 
-Engine/LodGCDraw_Z.cpp:
+LibGC/LodGCDraw_Z.cpp:
 	.text       start:0x801FE8DC end:0x801FEB34
 	.data       start:0x803584F0 end:0x803585B8
 	.sdata2     start:0x803C1240 end:0x803C1248
 
-Engine/LodGC_Z.cpp:
+LibGC/LodGC_Z.cpp:
 	.text       start:0x801FEB34 end:0x801FEB70
 
-Engine/MaterialGC_Z.cpp:
+LibGC/MaterialGC_Z.cpp:
 	.text       start:0x801FEB70 end:0x801FEC4C
 	.data       start:0x803585B8 end:0x803585F8
 
-Engine/MeshGC_Z.cpp:
+LibGC/MeshGC_Z.cpp:
 	.text       start:0x801FEC4C end:0x801FF7E0
 	.rodata     start:0x803349C8 end:0x803349E8
 	.data       start:0x803585F8 end:0x803586D0
 
-Engine/MeshGCDraw_Z.cpp:
+LibGC/MeshGCDraw_Z.cpp:
 	.text       start:0x801FF7E0 end:0x80200570
 	.rodata     start:0x803349E8 end:0x80334A30
 	.sdata2     start:0x803C1248 end:0x803C1268
 
-Engine/ParticlesGC_Z.cpp:
+LibGC/ParticlesGC_Z.cpp:
 	.text       start:0x80200570 end:0x8020122C
 	.rodata     start:0x80334A30 end:0x80334A50
 	.data       start:0x803586D0 end:0x80358738
 
-Engine/ParticlesGCDraw_Z.cpp:
+LibGC/ParticlesGCDraw_Z.cpp:
 	.text       start:0x8020122C end:0x802020A8
 	.ctors      start:0x80324C84 end:0x80324C88
 	.rodata     start:0x80334A50 end:0x80334AC0
@@ -2485,60 +2485,60 @@ Engine/ParticlesGCDraw_Z.cpp:
 	.sbss       start:0x803BAC68 end:0x803BAC70
 	.sdata2     start:0x803C1268 end:0x803C1280
 
-Engine/RotShapeGC_Z.cpp:
+LibGC/RotShapeGC_Z.cpp:
 	.text       start:0x802020A8 end:0x802026FC
 	.rodata     start:0x80334AC0 end:0x80334B18
 	.data       start:0x80358748 end:0x803587A8
 
-Engine/RotShapeGCDraw_Z.cpp:
+LibGC/RotShapeGCDraw_Z.cpp:
 	.text       start:0x802026FC end:0x80203424
 	.data       start:0x803587A8 end:0x80358818
 	.sdata2     start:0x803C1280 end:0x803C1298
 
-Engine/SkelGC_Z.cpp:
+LibGC/SkelGC_Z.cpp:
 	.text       start:0x80203424 end:0x80203D14
 	.rodata     start:0x80334B18 end:0x80334B68
 	.data       start:0x80358818 end:0x80358898
 	.sdata2     start:0x803C1298 end:0x803C12A0
 
-Engine/SkinGC_Z.cpp:
+LibGC/SkinGC_Z.cpp:
 	.text       start:0x80203D14 end:0x802043C4
 	.rodata     start:0x80334B68 end:0x80334B88
 
-Engine/SkinGCDraw_Z.cpp:
+LibGC/SkinGCDraw_Z.cpp:
 	.text       start:0x802043C4 end:0x80204DE4
 	.ctors      start:0x80324C88 end:0x80324C8C
 	.data       start:0x80358898 end:0x80358908
 	.bss        start:0x8038CA00 end:0x80396320
 	.sdata2     start:0x803C12A0 end:0x803C12B0
 
-Engine/SurfaceGC_Z.cpp:
+LibGC/SurfaceGC_Z.cpp:
 	.text       start:0x80204DE4 end:0x802050D8
 	.rodata     start:0x80334B88 end:0x80334BA8
 	.data       start:0x80358908 end:0x80358978
 
-Engine/SurfaceGCDraw_Z.cpp:
+LibGC/SurfaceGCDraw_Z.cpp:
 	.text       start:0x802050D8 end:0x802068B0
 	.rodata     start:0x80334BA8 end:0x80334BD0
 	.sdata2     start:0x803C12B0 end:0x803C12E8
 
-Engine/SurfaceGCCache_Z.cpp:
+LibGC/SurfaceGCCache_Z.cpp:
 	.text       start:0x802068B0 end:0x80207790
 	.ctors      start:0x80324C8C end:0x80324C90
 	.rodata     start:0x80334BD0 end:0x80334C48
 	.bss        start:0x80396320 end:0x80396350
 
-Engine/WarpGCDraw_Z.cpp:
+LibGC/WarpGCDraw_Z.cpp:
 	.text       start:0x80207790 end:0x80207B38
 	.sdata2     start:0x803C12E8 end:0x803C1300
 
-Engine/WarpGC_Z.cpp:
+LibGC/WarpGC_Z.cpp:
 	.text       start:0x80207B38 end:0x802085F0
 	.rodata     start:0x80334C48 end:0x80334C80
 	.data       start:0x80358978 end:0x803589B0
 	.sdata2     start:0x803C1300 end:0x803C1308
 
-Engine/GCDrawString.cpp:
+LibGC/GCDrawString.cpp:
 	.text       start:0x802085F0 end:0x802089F8
 	.rodata     start:0x80334C80 end:0x80334CE0
 	.data       start:0x803589B0 end:0x8035C170
@@ -2550,25 +2550,25 @@ Engine/TextureManager_Z.cpp:
 	.data       start:0x8035C170 end:0x8035C1B0
 	.sdata2     start:0x803C1320 end:0x803C1328
 
-Engine/GCRenderer_Z.cpp:
+LibGC/GCRenderer_Z.cpp:
 	.text       start:0x80209B1C end:0x8020CED4
 	.rodata     start:0x80334D00 end:0x80334DC0
 	.data       start:0x8035C1B0 end:0x8035C320
 	.sbss       start:0x803BAC70 end:0x803BAC78
 	.sdata2     start:0x803C1328 end:0x803C1360
 
-Engine/GCRendererLighting_Z.cpp:
+LibGC/GCRendererLighting_Z.cpp:
 	.text       start:0x8020CED4 end:0x8020DB0C
 	.sdata2     start:0x803C1360 end:0x803C1390
 
-Engine/GCRendererDraw_Z.cpp:
+LibGC/GCRendererDraw_Z.cpp:
 	.text       start:0x8020DB0C end:0x8020DC54
 	.sdata2     start:0x803C1390 end:0x803C1398
 
-Engine/GCFrustrum_Z.cpp:
+LibGC/GCFrustrum_Z.cpp:
 	.text       start:0x8020DC54 end:0x8020E2A4
 
-Engine/GCRendererTransp_Z.cpp:
+LibGC/GCRendererTransp_Z.cpp:
 	.text       start:0x8020E2A4 end:0x80210FA8
 	.rodata     start:0x80334DC0 end:0x80334E70
 	.sdata2     start:0x803C1398 end:0x803C13F0
@@ -2577,7 +2577,7 @@ Engine/DisplayList_Z.cpp:
 	.text       start:0x80210FA8 end:0x80211048
 	.rodata     start:0x80334E70 end:0x80334E98
 
-Engine/GCRenderer3D_Z.cpp:
+LibGC/GCRenderer3D_Z.cpp:
 	.text       start:0x80211048 end:0x80211C28
 	.ctors      start:0x80324C90 end:0x80324C94
 	.rodata     start:0x80334E98 end:0x80334F30
@@ -2586,52 +2586,52 @@ Engine/GCRenderer3D_Z.cpp:
 	.sbss       start:0x803BAC78 end:0x803BAC80
 	.sdata2     start:0x803C13F0 end:0x803C1400
 
-Engine/GCRenderer2D_Z.cpp:
+LibGC/GCRenderer2D_Z.cpp:
 	.text       start:0x80211C28 end:0x80213F40
 	.rodata     start:0x80334F30 end:0x80334FC8
 	.sdata2     start:0x803C1400 end:0x803C1428
 
-Engine/GCStreamManager_Z.cpp:
+LibGC/GCStreamManager_Z.cpp:
 	.text       start:0x80213F40 end:0x80214268
 	.rodata     start:0x80334FC8 end:0x80335000
 	.bss        start:0x80396390 end:0x803966A8
 	.sbss       start:0x803BAC80 end:0x803BAC88
 
-Engine/GCMcManager_Z.cpp:
+LibGC/GCMcManager_Z.cpp:
 	.text       start:0x80214268 end:0x802174A8
 	.rodata     start:0x80335000 end:0x803350D8
 	.data       start:0x8035C348 end:0x8035C598
 	.sbss       start:0x803BAC88 end:0x803BAC90
 	.sdata2     start:0x803C1428 end:0x803C1430
 
-Engine/GCInput_Z.cpp:
+LibGC/GCInput_Z.cpp:
 	.text       start:0x802174A8 end:0x802197B8
 	.rodata     start:0x803350D8 end:0x80335130
 	.data       start:0x8035C598 end:0x8035C650
 	.sdata2     start:0x803C1430 end:0x803C1458
 
-Engine/GCSound_Z.cpp:
+LibGC/GCSound_Z.cpp:
 	.text       start:0x802197B8 end:0x802199BC
 	.rodata     start:0x80335130 end:0x80335150
 
-Engine/GCSoundManager_Z.cpp:
+LibGC/GCSoundManager_Z.cpp:
 	.text       start:0x802199BC end:0x8021ABD4
 	.data       start:0x8035C650 end:0x8035C718
 	.bss        start:0x803966A8 end:0x803968C0
 	.sdata2     start:0x803C1458 end:0x803C1490
 
-Engine/GCSoundStreaming_Z.cpp:
+LibGC/GCSoundStreaming_Z.cpp:
 	.text       start:0x8021ABD4 end:0x8021C0BC
 	.rodata     start:0x80335150 end:0x803352C8
 	.sdata2     start:0x803C1490 end:0x803C14D8
 
-Engine/GCSoundBF.cpp:
+LibGC/GCSoundBF.cpp:
 	.text       start:0x8021C0BC end:0x8021C2D0
 	.ctors      start:0x80324C94 end:0x80324C98
 	.data       start:0x8035C718 end:0x8035C730
 	.bss        start:0x803968C0 end:0x803A38C0
 
-Engine/GCSndStream_Z.cpp:
+LibGC/GCSndStream_Z.cpp:
 	.text       start:0x8021C2D0 end:0x8021DEB0
 	.rodata     start:0x803352C8 end:0x803352E8
 	.data       start:0x8035C730 end:0x8035C748
@@ -2642,17 +2642,17 @@ Engine/Streaming_Z.cpp:
 	.data       start:0x8035C748 end:0x8035C778
 	.sbss       start:0x803BAC90 end:0x803BAC98
 
-Engine/wiitextures.c:
+LibGC/wiitextures.c:
 	.text       start:0x8021E054 end:0x8021E68C
 	.sdata2     start:0x803C1518 end:0x803C1520
 
-Engine/GCMovie_Z.cpp:
+LibGC/GCMovie_Z.cpp:
 	.text       start:0x8021E68C end:0x8021EBE4
 	.rodata     start:0x803352E8 end:0x803353A0
 	.data       start:0x8035C778 end:0x8035C7E0
 	.sdata2     start:0x803C1520 end:0x803C1530
 
-Engine/GCMovieManipulator_Z.cpp:
+LibGC/GCMovieManipulator_Z.cpp:
 	.text       start:0x8021EBE4 end:0x80220548
 	.rodata     start:0x803353A0 end:0x80335400
 	.data       start:0x8035C7E0 end:0x8035C8C8

@@ -47,7 +47,7 @@ S32 fstricmp(const S8* a1, const S8* a2)
     
     return 0;
 }
-//extracts the bottom 4 bits of a byte and converts it to a char by adding 'A' to it.  does this for both a2 and a3. a1 is the output buffer.
+
 void fsprintfID(S8* a1, U32 a2, U32 a3) {
     S8* v3 = a1 + 8;
     for (int i = 0; i < 8; i++, a2 = a2 >> 4, a3 = a3 >> 4) {
