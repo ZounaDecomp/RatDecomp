@@ -4092,66 +4092,66 @@ Engine/SubWorldLoad_Z.cpp:
 	.rodata     start:0x8033B1D8 end:0x8033B1F8
 	.data       start:0x80360B70 end:0x80360B78
 
-bink\src\sdk\decode\ngc\binkngc.c:
+bink/src/sdk/decode/ngc/binkngc.c:
 	.text       start:0x803125F4 end:0x803128F0
 	.rodata     start:0x8033B1F8 end:0x8033B240
 	.data       start:0x80360B78 end:0x80360B80
 
-bink\src\sdk\decode\ngc\ngcsnd.c:
+bink/src/sdk/decode/ngc/ngcsnd.c:
 	.text       start:0x803128F0 end:0x80313C14
 	.rodata     start:0x8033B240 end:0x8033B2D0
 	.data       start:0x80360B80 end:0x803645C8
 	.bss        start:0x803B6C20 end:0x803B8088
 
-bink\src\sdk\decode\binkread.c:
+bink/src/sdk/decode/binkread.c:
 	.text       start:0x80313C14 end:0x80317D9C
 	.data       start:0x803645C8 end:0x803645C8
 
-bink\src\sdk\decode\ngc\ngcfile.c:
+bink/src/sdk/decode/ngc/ngcfile.c:
 	.text       start:0x80317D9C end:0x80318948
 	.data       start:0x803645C8 end:0x803645E0
 
-shared\memory\ngc\radmem.c:
+shared/memory/ngc/radmem.c:
 	.text       start:0x80318948 end:0x80318A74
 	.data       start:0x803645E0 end:0x80364600
 
-bink\src\sdk\decode\yuv.c:
+bink/src/sdk/decode/yuv.c:
 	.text       start:0x80318A74 end:0x80319B84
 	.rodata     start:0x8033B2D0 end:0x8033B320
 	.data       start:0x80364600 end:0x80364858
 	.bss        start:0x803B8088 end:0x803B8090
 
-bink\src\sdk\decode\binkacd.c:
+bink/src/sdk/decode/binkacd.c:
 	.text       start:0x80319B84 end:0x8031A764
 	.data       start:0x80364858 end:0x80364860
 
-shared\time\ngc\radcb.c:
+shared/time/ngc/radcb.c:
 	.text       start:0x8031A764 end:0x8031AF10
 	.rodata     start:0x8033B320 end:0x8033B7E0
 	.data       start:0x80364860 end:0x803648A0
 
-bink\src\sdk\decode\expand.c:
+bink/src/sdk/decode/expand.c:
 	.text       start:0x8031AF10 end:0x8031E5AC
 	.data       start:0x803648A0 end:0x803648B4
 	.bss        start:0x803B8090 end:0x803B8090
 
-bink\src\sdk\popmal.c:
+bink/src/sdk/popmal.c:
 	.text       start:0x8031E5AC end:0x8031E774
 
-bink\src\sdk\decode\ppc\ppcyuy2.c:
+bink/src/sdk/decode/ppc/ppcyuy2.c:
 	.text       start:0x8031E774 end:0x8031E9A4
 	.rodata     start:0x8033B7E0 end:0x8033B840
 
-bink\src\sdk\fft.c:
+bink/src/sdk/fft.c:
 	.text       start:0x8031E9A4 end:0x80322C70
 	.rodata     start:0x8033B840 end:0x8033D880
 
-bink\src\sdk\dct.c:
+bink/src/sdk/dct.c:
 	.text       start:0x80322C70 end:0x80323714
 	.rodata     start:0x8033D880 end:0x8033DD00
 
-bink\src\sdk\bitplane.c:
+bink/src/sdk/bitplane.c:
 	.text       start:0x80323714 end:0x80324B54
 
-bink\src\sdk\dummy.c:
+bink/src/sdk/dummy.c:
 	.text       start:0x80324B54 end:0x80324B58
