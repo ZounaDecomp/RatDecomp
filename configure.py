@@ -196,7 +196,6 @@ cflags_base = [
     "-fp_contract on",
     "-str reuse",
     "-multibyte",  # For Wii compilers, replace with `-enc SJIS`
-    "-i include",
     f"-i build/{config.version}/include",
     f"-DBUILD_VERSION={version_num}",
     f"-DVERSION_{config.version}",
@@ -215,6 +214,7 @@ cflags_rat_base = [
     "-opt level=4, peep, space",
     "-sdata 64",
     "-sdata2 64",
+    "-i src/Engine/includes"
  
 
 ]
@@ -289,7 +289,16 @@ config.libs = [
         "objects": [
             Object(NonMatching, "Runtime.PPCEABI.H/global_destructor_chain.c"),
             Object(NonMatching, "Runtime.PPCEABI.H/__init_cpp_exceptions.cpp"),
+        ],
+    },
+        {
+        "lib": "Engine",
+        "mw_version": config.linker_version,
+        "cflags": cflags_rat_base,
+        "progress_category": "game",  # str | List[str]
+        "objects": [
             Object(NonMatching, "Engine/Name_Z.cpp"),
+            Object(NonMatching, "Engine/String_Z.cpp"),
         ],
     },
 ]
