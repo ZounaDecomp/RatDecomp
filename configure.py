@@ -299,7 +299,7 @@ config.libs = [
         "cflags": cflags_rat_base,
         "progress_category": "game",  # str | List[str]
         "objects": [
-            Object(NonMatching, "Engine/Name_Z.cpp"),
+            Object(Matching, "Engine/Name_Z.cpp"),
             Object(NonMatching, "Engine/String_Z.cpp"),
         ],
     },

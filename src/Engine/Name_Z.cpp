@@ -1,5 +1,5 @@
 #include "Name_Z.h"
-#include "String_Z.h"
+
 extern char g_ChartoLower[256];
 int Crc32Tab[] = {
     0x00000000, 0x04C11DB7, 0x09823B6E, 0x0D4326D9,
@@ -65,9 +65,10 @@ int Crc32Tab[] = {
     0x89B8FD09, 0x8D79E0BE, 0x803AC667, 0x84FBDBD0,
     0x9ABC8BD5, 0x9E7D9662, 0x933EB0BB, 0x97FFAD0C,
     0xAFB010B1, 0xAB710D06, 0xA6322BDF, 0xA2F33668,
-    0xBCB4666D, 0xB8757BDA, 0xB5365D03, 0xB1F740B4};
+    0xBCB4666D, 0xB8757BDA, 0xB5365D03, 0xB1F740B4
+};
 
-S32 Name_Z::GetID(U8* data, U32 result) {
+S32 Name_Z::GetID(const S8* data, U32 result) {
     while (*data)
     {
         result = (Crc32Tab[(result ^ g_ChartoLower[*(data)]) & 0xFF]) ^ (result >> 8);
@@ -83,9 +84,9 @@ S32 Name_Z::GetID(U8* data, U32 size, U32 result) {
     return result;
 }
   
-S32 Name_ZSortingFunction(U32* a1, U32* a2)
+S32 Name_ZSortingFunction(const void* a1, const void* a2)
 {
-    if (*a1 < *a2)
+    if (*(U32*)a1 < *(U32*)a2)
         return -1;
     return 1;
 }

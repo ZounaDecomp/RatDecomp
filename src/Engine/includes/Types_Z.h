@@ -1,13 +1,13 @@
-#ifndef _TYPES_H_
-#define _TYPES_H_
+#ifndef _TYPES_Z_H_
+#define _TYPES_Z_H_
 
 typedef char Bool;
-typedef unsigned int U32;
-typedef signed int S32;
+typedef unsigned long U32;
+typedef long S32;
 typedef unsigned short U16;
-typedef signed short S16;
+typedef short S16;
 typedef unsigned char U8;
-typedef signed char S8;
+typedef char S8;
 typedef float F32;
 
 #endif
