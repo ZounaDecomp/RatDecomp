@@ -215,6 +215,7 @@ cflags_rat_base = [
     "-sdata 64",
     "-sdata2 64",
     "-i src/Engine/includes",
+    "-i src/sdk/includes",
     "-O4,p"
  
 
@@ -300,6 +301,8 @@ config.libs = [
         "objects": [
             Object(Matching, "Engine/Name_Z.cpp"),
             Object(Matching, "Engine/String_Z.cpp"),
+            Object(Matching, "Engine/Assert_Z.cpp"),
+            #Object(NonMatching, "Engine/Timer_Z.cpp"),
         ],
     },
 ]
