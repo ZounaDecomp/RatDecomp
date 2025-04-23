@@ -293,7 +293,7 @@ config.libs = [
             Object(NonMatching, "Runtime.PPCEABI.H/__init_cpp_exceptions.cpp"),
         ],
     },
-        {
+    {
         "lib": "Engine",
         "mw_version": config.linker_version,
         "cflags": cflags_rat_base,
@@ -303,6 +303,22 @@ config.libs = [
             Object(Matching, "Engine/String_Z.cpp"),
             Object(Matching, "Engine/Assert_Z.cpp"),
             #Object(NonMatching, "Engine/Timer_Z.cpp"),
+        ],
+    },
+    {
+        "lib": "LibGC",
+        "mw_version": config.linker_version,
+        "cflags": cflags_rat_base,
+        "progress_category": "libgc",  # str | List[str]
+        "objects": [
+        ],
+    },
+    {
+        "lib": "Game",
+        "mw_version": config.linker_version,
+        "cflags": cflags_rat_base,
+        "progress_category": "game",  # str | List[str]
+        "objects": [
         ],
     },
 ]
