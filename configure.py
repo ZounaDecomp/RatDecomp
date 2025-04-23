@@ -375,7 +375,6 @@ config.libs = [
             Object(NonMatching, "alloc.c"),
             Object(NonMatching, "mpc_7xx_603e.c"),
             Object(NonMatching, "arq.c"),
-            Object(NonMatching, "EngineDupe/String_Z.c"),
             Object(NonMatching, "bink/src/sdk/decode/binkacd.c"),
             Object(NonMatching, "s_sin.c"),
             Object(NonMatching, "w_sqrt.c"),

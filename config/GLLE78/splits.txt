@@ -2384,7 +2384,7 @@ LibGC/GCMain_Z.cpp:
 	.sbss       start:0x803BAC50 end:0x803BAC58
 	.sdata2     start:0x803C10C8 end:0x803C1138
 
-EngineDupe/String_Z.c:
+Engine/Dupe/String_Z.c:
 	.text       start:0x801FA188 end:0x801FA1CC
 
 LibGC/SystemObjectGC_Z.cpp:
