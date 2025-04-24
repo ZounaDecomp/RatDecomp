@@ -17,18 +17,18 @@ Bitmap_Z::~Bitmap_Z()
 }
 
 void Bitmap_Z::Init() {
-    this->flag = 0;
+    this->Flag = 0;
     Bitmap_Z::EnableFlag(0x14);
-    this->dataPointer = 0;
-    this->palPointer = 0;
-    this->width = 0;
-    this->height = 0;
-    this->formatCopy = 0;
+    this->Datas = 0;
+    this->Palette = 0;
+    this->SizeX = 0;
+    this->SizeY = 0;
+    this->trueFormat = 0;
     this->unkSetTo4 = 4;
     this->texID = -1;
-    this->transpFormat = -1;
-    this->mipmapCount = 0;
+    this->Transp = -1;
+    this->MipmapCount = 0;
     this->precalculatedSize = 0;
-    this->paletteFormat = 3;
+    this->PalFormat = PAL_8888;
 }
   
