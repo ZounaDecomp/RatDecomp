@@ -5,30 +5,30 @@ Bitmap_Z::Bitmap_Z()
     Init();
 }
 
-Bitmap_Z::Bitmap_Z(S32 width, S32 height, U8 format, U8* palPointer)
+Bitmap_Z::Bitmap_Z(S32 i_Width, S32 i_Height, U8 i_Format, U8* i_Palette)
 {
     Init();
-    InitBmap(width, height, format, palPointer, 0);
+    InitBmap(i_Width, i_Height, i_Format, i_Palette, 0);
 }
 
 Bitmap_Z::~Bitmap_Z()
 {
-    //stub
+    Reset();
 }
 
 void Bitmap_Z::Init() {
-    this->Flag = 0;
+    m_Flag = 0;
     Bitmap_Z::EnableFlag(0x14);
-    this->Datas = 0;
-    this->Palette = 0;
-    this->SizeX = 0;
-    this->SizeY = 0;
-    this->trueFormat = 0;
-    this->unkSetTo4 = 4;
-    this->texID = -1;
-    this->Transp = -1;
-    this->MipmapCount = 0;
-    this->precalculatedSize = 0;
-    this->PalFormat = PAL_8888;
+    m_Datas = 0;
+    m_Palette = 0;
+    m_SizeX = 0;
+    m_SizeY = 0;
+    m_TrueFormat = 0;
+    m_Unk_0x31 = 4;
+    m_TexID = -1;
+    m_Transp = -1;
+    m_MipmapCount = 0;
+    m_PrecalculatedSize = 0;
+    m_PalFormat = PAL_8888;
 }
   

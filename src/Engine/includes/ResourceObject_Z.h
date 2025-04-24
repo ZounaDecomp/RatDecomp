@@ -1,6 +1,5 @@
 #ifndef _RESOURCE_OBJECT_Z_H_
 #define _RESOURCE_OBJECT_Z_H_
-#include "Types_Z.h"
 #include "BaseObject_Z.h"
 
 class ResourceObject_Z : public BaseObject_Z
@@ -15,4 +14,5 @@ class ResourceObject_Z : public BaseObject_Z
         virtual void MarkHandles();
     	char pad_000C[8];
 };
+
 #endif

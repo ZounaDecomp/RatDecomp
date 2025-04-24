@@ -1,6 +1,6 @@
 #include "Assert_Z.h"
 
-void ExceptionBool_Z(bool a1, const S8* a2, ...) {
+void ExceptionBool_Z(bool i_Cancelable, const Char* i_Message, ...) {
     va_list args;
 }
 

@@ -20,4 +20,7 @@
   },
   // Disable C/C++ IntelliSense, use clangd instead
   "C_Cpp.intelliSenseEngine": "disabled",
+  "editor.tabSize": 4,
+  "editor.insertSpaces": true,
+  "editor.detectIndentation": false
 }

@@ -4,10 +4,12 @@
 
 class Name_Z
 {
-    public:
-        static S32 GetID(const S8* a1, U32 a2);
-        static S32 GetID(U8* data, U32 size, U32 result);
-        static S32 Name_ZSortingFunction(const void* a1, const void* a2);
+public:
+    static S32 GetID(const S8* a1, U32 a2);
+    static S32 GetID(U8* data, U32 size, U32 result);
+
+private:
+	U32 m_ID;
 };
 
 #endif

@@ -2,6 +2,7 @@
 #define _BITMAP_Z_H_
 #include "ResourceObject_Z.h"
 #include "Types_Z.h"
+
 enum BmFormat_Z
 {
     BM_4            = 0x01        ,             // 4 Bits Indexed RGB
@@ -38,30 +39,31 @@ enum BmTransp
 
 class Bitmap_Z : public ResourceObject_Z
 {
-    public:
-        Bitmap_Z();
-        Bitmap_Z(S32 width, S32 height, U8 format, U8* palPointer);
-        virtual void Init();
-        virtual ~Bitmap_Z();
-        virtual void Load(void* a1);
-        virtual void Clean();
-        void InitBmap(S32 width, S32 height, U8 format, U8* palPointer, U8 dataPointer);
-        void EnableFlag(U8 _Flag)   {Flag|=_Flag;}
-    private:
-        void* Datas;
-        void* Palette;
-        S16 texID;
-        U32 SizeX;
-        U32 SizeY;
-        U32 precalculatedSize;
-        U8 format;
-        U8 trueFormat;
-        U8 PalFormat;
-        U8 Transp;
-        U8 MipmapCount;
-        U8 unkSetTo4;
-        U8 Flag;
-        U8 DontDelete;
-
+public:
+    Bitmap_Z();
+    Bitmap_Z(S32 m_Width, S32 m_Height, U8 m_Format, U8* m_Palette);
+    virtual void Init();
+    virtual ~Bitmap_Z();
+    virtual void Load(void* a1);
+    virtual void Clean();
+    void InitBmap(S32 m_Width, S32 m_Height, U8 m_Format, U8* m_Palette, U8 m_Datas);
+    void EnableFlag(U8 i_Flag)   {m_Flag|=i_Flag;}
+    void Reset();
+private:
+    void* m_Datas;
+    void* m_Palette;
+    S16 m_TexID;
+    U32 m_SizeX;
+    U32 m_SizeY;
+    U32 m_PrecalculatedSize;
+    U8 m_Format;
+    U8 m_TrueFormat;
+    U8 m_PalFormat;
+    U8 m_Transp;
+    U8 m_MipmapCount;
+    U8 m_Unk_0x31; // Always set to 4
+    U8 m_Flag;
+    U8 m_DontDelete;
 };
+
 #endif

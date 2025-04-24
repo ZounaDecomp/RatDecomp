@@ -210,11 +210,10 @@ cflags_rat_base = [
     "-use_lmw_stmw on",
     '-pragma "cpp_extensions on"',
     "-sym on",
-    "-inline off",
     "-opt level=4, peep, space",
-    "-sdata 32",
-    "-sdata2 32",
     "-i src/Engine/includes",
+    "-i src/LibGC/includes",
+    "-i src/Rat/includes",
     "-i src/sdk/includes",
     "-O4,p"
 ]
