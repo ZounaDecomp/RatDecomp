@@ -200,11 +200,11 @@ cflags_base = [
     f"-DBUILD_VERSION={version_num}",
     f"-DVERSION_{config.version}",
 ]
+
 cflags_rat_base = [
     *cflags_base,
     "-pool off",
     "-schedule on",
-    "-char unsigned",
     "-str reuse,pool,readonly",
     "-fp fmadd",
     "-use_lmw_stmw on",
@@ -217,9 +217,8 @@ cflags_rat_base = [
     "-i src/Engine/includes",
     "-i src/sdk/includes",
     "-O4,p"
- 
-
 ]
+
 # Debug flags
 if args.debug:
     # Or -sym dwarf-2 for Wii compilers

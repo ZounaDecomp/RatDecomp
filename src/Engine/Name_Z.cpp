@@ -1,6 +1,7 @@
 #include "Name_Z.h"
 
-extern char g_ChartoLower[256];
+extern U8 g_ChartoLower[256];
+
 int Crc32Tab[] = {
     0x00000000, 0x04C11DB7, 0x09823B6E, 0x0D4326D9,
     0x130476DC, 0x17C56B6B, 0x1A864DB2, 0x1E475005,
@@ -69,10 +70,11 @@ int Crc32Tab[] = {
 };
 
 S32 Name_Z::GetID(const S8* data, U32 result) {
-    while (*data)
+    U8* data2 = (U8*)data;
+    while (*data2)
     {
-        result = (Crc32Tab[(result ^ g_ChartoLower[*(data)]) & 0xFF]) ^ (result >> 8);
-        data++;
+        result = (Crc32Tab[(result ^ g_ChartoLower[*data2]) & 0xFF]) ^ (result >> 8);
+        data2++;
     }
     return result;
 }

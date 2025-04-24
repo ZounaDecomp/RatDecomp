@@ -1,5 +1,6 @@
 #include "String_Z.h"
-char g_ChartoLower[256] = {
+
+U8 g_ChartoLower[256] = {
     0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07,
     0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f,
     0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17,
@@ -36,11 +37,13 @@ char g_ChartoLower[256] = {
 
 S32 fstricmp(const S8* a1, const S8* a2)
 {
-    S8 lhs;
-    S8 rhs;
+    U8 lhs;
+    U8 rhs;
+    U8* a1_2 = (U8*)a1;
+    U8* a2_2 = (U8*)a2;
     do
     {
-        if ((lhs = g_ChartoLower[*a1++]) != (rhs = g_ChartoLower[*a2++]))
+        if ((lhs = g_ChartoLower[*a1_2++]) != (rhs = g_ChartoLower[*a2_2++]))
             return 1;
     }
     while (lhs);
