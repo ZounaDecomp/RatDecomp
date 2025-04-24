@@ -212,8 +212,8 @@ cflags_rat_base = [
     "-sym on",
     "-inline off",
     "-opt level=4, peep, space",
-    "-sdata 64",
-    "-sdata2 64",
+    "-sdata 32",
+    "-sdata2 32",
     "-i src/Engine/includes",
     "-i src/sdk/includes",
     "-O4,p"
