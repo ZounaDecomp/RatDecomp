@@ -12,12 +12,13 @@ public:
     virtual U32 GetMgrSize(Name_Z *l_Name, S32 *a1, S32 *a2);
     virtual void Minimize();
     virtual void GetDate();
+    void InitTime();
 
     U8 Pad_0x0[0xC];
     HandleManager_Z* ClassMgr;
     U8 Pad_0x14[0x7CC];
 
-    Globals() {
+    inline Globals() {
         Pad_0x14[137] = 0;
         Pad_0x14[393] = 0;
         Pad_0x14[649] = 0;

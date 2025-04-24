@@ -210,6 +210,7 @@ cflags_rat_base = [
     "-use_lmw_stmw on",
     '-pragma "cpp_extensions on"',
     "-sym on",
+    "-inline off",
     "-opt level=4, peep, space",
     "-i src/Engine/includes",
     "-i src/LibGC/includes",
@@ -218,6 +219,23 @@ cflags_rat_base = [
     "-O4,p"
 ]
 
+cflags_rat_base_libgc = [
+    *cflags_base,
+    "-pool off",
+    "-schedule on",
+    "-str reuse,pool,readonly",
+    "-fp fmadd",
+    "-use_lmw_stmw on",
+    '-pragma "cpp_extensions on"',
+    "-sym on",
+    "-inline on",
+    "-opt level=4, peep, space",
+    "-i src/Engine/includes",
+    "-i src/LibGC/includes",
+    "-i src/Rat/includes",
+    "-i src/sdk/includes",
+    "-O4,p"
+]
 # Debug flags
 if args.debug:
     # Or -sym dwarf-2 for Wii compilers
@@ -802,7 +820,7 @@ config.libs = [
     {
         "lib": "LibGC",
         "mw_version": config.linker_version,
-        "cflags": cflags_rat_base,
+        "cflags": cflags_rat_base_libgc,
         "progress_category": "libgc",  # str | List[str]
         "objects": [
             Object(NonMatching, "LibGC/MeshGCDraw_Z.cpp"),

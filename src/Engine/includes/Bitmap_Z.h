@@ -47,8 +47,10 @@ public:
     virtual void Load(void* a1);
     virtual void Clean();
     void InitBmap(S32 m_Width, S32 m_Height, U8 m_Format, U8* m_Palette, U8 m_Datas);
-    void EnableFlag(U8 i_Flag)   {m_Flag|=i_Flag;}
+    void EnableFlag(S16 i_Flag)   {m_Flag|=i_Flag;}
     void Reset();
+    void Invalidate();
+    Float GetBytePerPixel();
 private:
     void* m_Datas;
     void* m_Palette;
@@ -62,8 +64,7 @@ private:
     U8 m_Transp;
     U8 m_MipmapCount;
     U8 m_Unk_0x31; // Always set to 4
-    U8 m_Flag;
-    U8 m_DontDelete;
+    S16 m_Flag;
 };
 
 #endif
