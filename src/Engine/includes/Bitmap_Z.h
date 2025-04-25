@@ -3,6 +3,8 @@
 #include "ResourceObject_Z.h"
 #include "Types_Z.h"
 
+#define     INVALID_TEXID               -1
+
 enum BmFormat_Z
 {
     BM_4            = 0x01        ,             // 4 Bits Indexed RGB
@@ -46,18 +48,20 @@ public:
     virtual ~Bitmap_Z();
     virtual void Load(void* a1);
     virtual void Clean();
-    void InitBmap(S32 m_Width, S32 m_Height, U8 m_Format, U8* m_Palette, U8 m_Datas);
+    void InitBmap(S32 m_SizeX, S32 m_SizeY, U8 m_Format, U8* m_Palette, U8 unkBool);
     void EnableFlag(S16 i_Flag)   {m_Flag|=i_Flag;}
+    S32 GetFormat() {return m_Format;}
     void Reset();
     void Invalidate();
     Float GetBytePerPixel();
-    Float GetDataSize();
+    S32 GetPalSize();
+    S32 GetDataSize();
 private:
     void* m_Datas;
     void* m_Palette;
     S16 m_TexID;
-    U32 m_SizeX;
-    U32 m_SizeY;
+    S32 m_SizeX;
+    S32 m_SizeY;
     U32 m_PrecalculatedSize;
     U8 m_Format;
     U8 m_TrueFormat;

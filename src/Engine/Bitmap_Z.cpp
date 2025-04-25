@@ -18,6 +18,7 @@ Bitmap_Z::~Bitmap_Z()
     Reset();
 }
 
+#pragma dont_inline on
 void Bitmap_Z::Init() {
     m_Flag = 0;
     Bitmap_Z::EnableFlag(0x14);
@@ -27,16 +28,15 @@ void Bitmap_Z::Init() {
     m_SizeY = 0;
     m_TrueFormat = 0;
     m_UnkU8_0x31 = 4;
-    m_TexID = -1;
+    m_TexID = INVALID_TEXID;
     m_Transp = -1;
     m_MipmapCount = 0;
     m_PrecalculatedSize = 0;
     m_PalFormat = PAL_8888;
 }
-  
-void Bitmap_Z::Invalidate() {
-    //stub
-};
+// void Bitmap_Z::Invalidate() {
+//     //stub
+// };
 
 void Bitmap_Z::Reset() {
     Invalidate();
@@ -52,13 +52,26 @@ void Bitmap_Z::Reset() {
 
     Init();
 }
-
-void Bitmap_Z::InitBmap(S32 m_Width, S32 m_Height, U8 m_Format, U8* m_Palette, U8 m_Datas)
+// far from complete
+void Bitmap_Z::InitBmap(S32 m_SizeX, S32 m_SizeY, U8 m_Format, U8* m_Palette, U8 unkBool)
 {
-    //stub
+    int lPaletteSize;
+    int lBytePalleteSize;
+    this->m_SizeY = m_SizeY;
+    this->m_TexID = INVALID_TEXID;
+    this->m_SizeX = m_SizeX;
+    this->m_Format = m_Format;
+    this->m_TrueFormat = m_Format;
+    this->m_MipmapCount = 0;
+    lPaletteSize = GetPalSize();
+    GetBytePerPixel();
+
+    if (m_Format == BM_4 || m_Format == BM_8) {
+        lBytePalleteSize = 4 * lPaletteSize;
+    }
+    
 }
 
-//far from matching
 Float Bitmap_Z::GetBytePerPixel() {
     Float result; // st7
 
@@ -87,25 +100,38 @@ Float Bitmap_Z::GetBytePerPixel() {
         result = 0.0;
         break;
       default:
-        ExceptionFonc_Z("FALSE", "Bitmap_Z.cpp", 117, "Bitmap_Z::GetBytePerPixel", 0, 0, 0, 0, 0, 0);
+        ExceptionFonc_Z("FALSE", __FILE__, __LINE__, "Bitmap_Z::GetBytePerPixel", 0, 0, 0, 0, 0, 0);
         result = 0.0;
         break;
     }
     return result;
 }
-
-Float Bitmap_Z::GetDataSize()
+S32 Bitmap_Z::GetDataSize()
 {
-    int dataSize; // eax
-    char mipmapCount; // cl
-    int mipSize; // edx
-  
-    dataSize = (GetBytePerPixel() * (this->m_SizeX * this->m_SizeY));
-    mipmapCount = this->m_MipmapCount;
-    for ( mipSize = dataSize; mipmapCount; dataSize += (mipSize + 127) & 0xFFFFFF80 )// round up to nearest 128
+    S32 lMipSize;
+    S32 lDataSize;
+    U8 lMipmapCount;
+    lDataSize = (GetBytePerPixel() * ((Float)this->m_SizeY * (Float)this->m_SizeX));
+    lMipmapCount = this->m_MipmapCount;
+    for ( lMipSize = lDataSize; lMipmapCount--; lMipSize += (lDataSize + 127) & ~127)
     {
-      mipSize / 4;                          // divide by 4
-      --mipmapCount;
+        lDataSize >>= 2;                          
     }
-    return dataSize;
+    return lMipSize;
 }
+// not matching. too lazy to fix for now
+S32 Bitmap_Z::GetPalSize()
+{
+    U8 palFormat = this->m_PalFormat;
+    if ((palFormat >= PAL_ALPHA|PAL_565) && (palFormat != 9 && palFormat < 0x10))
+        return 0;
+    else
+    {
+        if (palFormat == PAL_565)
+            return 256;
+        else if (palFormat == PAL_3444)
+            return 16;
+    }
+    ExceptionFonc_Z("FALSE", __FILE__, __LINE__, "Bitmap_Z::GetPalSize", 0, 0, 0, 0, 0, 0);
+}
+#pragma dont_inline off
