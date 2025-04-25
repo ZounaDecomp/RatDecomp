@@ -5,7 +5,7 @@
 class ResourceObject_Z : public BaseObject_Z
 {
     public:
-        ResourceObject_Z();
+        ResourceObject_Z() {};
         ~ResourceObject_Z();
         virtual void Load(void* a1);
         virtual void EndLoad();
