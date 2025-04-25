@@ -1,4 +1,7 @@
 #include "Fonts_Z.h"
+#include "Main_Z.h"
+
+extern Globals gData;
 
 S32 GetUTF8CharBytes(const S8* a1)
 {

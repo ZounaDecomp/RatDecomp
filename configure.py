@@ -235,6 +235,23 @@ cflags_rat_base_libgc = [
     "-rostr"
 ]
 
+cflags_rat_base_libgc = [
+    *cflags_base,
+    "-pool off",
+    "-schedule on",
+    "-str reuse,pool,readonly",
+    "-fp fmadd",
+    "-use_lmw_stmw on",
+    '-pragma "cpp_extensions on"',
+    "-sym on",
+    "-inline on",
+    "-opt level=4, peep, space",
+    "-i src/Engine/includes",
+    "-i src/LibGC/includes",
+    "-i src/Rat/includes",
+    "-i src/sdk/includes",
+    "-O4,p"
+]
 # Debug flags
 if args.debug:
     # Or -sym dwarf-2 for Wii compilers

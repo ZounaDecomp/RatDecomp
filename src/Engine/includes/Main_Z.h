@@ -13,6 +13,7 @@ public:
     virtual U32 GetMgrSize(Name_Z *l_Name, S32 *a1, S32 *a2);
     virtual void Minimize();
     virtual void GetDate();
+    void InitTime();
 
     U8 m_Pad_0x0[0x4];
     GCConsole_Z* Cons;
@@ -20,7 +21,7 @@ public:
     HandleManager_Z* ClassMgr; // Actually is ClassManager_Z
     U8 m_Pad_0x14[0x7CC];
 
-    Globals() {
+    inline Globals() {
         m_Pad_0x14[137] = 0;
         m_Pad_0x14[393] = 0;
         m_Pad_0x14[649] = 0;

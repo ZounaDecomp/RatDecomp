@@ -9,7 +9,7 @@ public:
     Name_Z m_Name;
     BaseObject_ZHdl m_Handle;
     BaseObject_Z();
-    virtual void Init();
+    virtual void Init() {};
     ~BaseObject_Z();
     virtual void Load(void* a1);
     virtual void EndLoad();

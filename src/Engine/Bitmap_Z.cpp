@@ -1,4 +1,6 @@
 #include "Bitmap_Z.h"
+#include "Assert_Z.h"
+extern void Z_FreeContiguous(void* ptr);
 
 Bitmap_Z::Bitmap_Z()
 {
@@ -32,3 +34,62 @@ void Bitmap_Z::Init() {
     m_PalFormat = PAL_8888;
 }
   
+void Bitmap_Z::Invalidate() {
+    //stub
+};
+
+void Bitmap_Z::Reset() {
+    Invalidate();
+    if (this->m_Datas) {
+        Z_FreeContiguous(this->m_Datas);
+    }
+    this->m_Datas = 0;
+
+    if (this->m_Palette) {
+        delete this->m_Palette;
+    }
+    this->m_Palette = 0;
+
+    Init();
+}
+
+void Bitmap_Z::InitBmap(S32 m_Width, S32 m_Height, U8 m_Format, U8* m_Palette, U8 m_Datas)
+{
+    //stub
+}
+
+//far from matching
+Float Bitmap_Z::GetBytePerPixel() {
+    Float result; // st7
+
+    switch ( this->m_Format )
+    {
+      case BM_4:
+        result = 0.5;
+        break;
+      case BM_8:
+      case BM_I4A4:
+        result = 1.0;
+        break;
+      case BM_5551:
+      case BM_565:
+      case BM_4444:
+      case BM_1555:
+        result = 2.0;
+        break;
+      case BM_8888:
+        result = 4.0;
+        break;
+      case BM_888:
+        result = 3.0;
+        break;
+      case BM_CMPR:
+        result = 0.0;
+        break;
+      default:
+        ExceptionFonc_Z("FALSE", "Bitmap_Z.cpp", 117, "Bitmap_Z::GetBytePerPixel", 0, 0, 0, 0, 0, 0);
+        result = 0.0;
+        break;
+    }
+    return result;
+}
