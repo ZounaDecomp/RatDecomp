@@ -93,3 +93,19 @@ Float Bitmap_Z::GetBytePerPixel() {
     }
     return result;
 }
+
+Float Bitmap_Z::GetDataSize()
+{
+    int dataSize; // eax
+    char mipmapCount; // cl
+    int mipSize; // edx
+  
+    dataSize = (GetBytePerPixel() * (this->m_SizeX * this->m_SizeY));
+    mipmapCount = this->m_MipmapCount;
+    for ( mipSize = dataSize; mipmapCount; dataSize += (mipSize + 127) & 0xFFFFFF80 )// round up to nearest 128
+    {
+      mipSize / 4;                          // divide by 4
+      --mipmapCount;
+    }
+    return dataSize;
+}

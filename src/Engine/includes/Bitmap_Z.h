@@ -51,6 +51,7 @@ public:
     void Reset();
     void Invalidate();
     Float GetBytePerPixel();
+    Float GetDataSize();
 private:
     void* m_Datas;
     void* m_Palette;
