@@ -10,9 +10,9 @@ public:
 
     virtual void Init();
     virtual void Shut();
-    virtual void* Alloc(U32 i_Size, Char* i_Comment, Char* i_File, S32 i_Line, U32 i_Align);
+    virtual void* Alloc(U32 i_Size, const Char* i_Comment, const Char* i_File, S32 i_Line, U32 i_Align);
     virtual void* AllocEnd(U32 i_Size, const Char* i_Comment, const Char* i_File, S32 i_Line, U32 i_Align);
-    virtual void* Realloc(void* i_Ptr, U32 i_Size, Char* i_Comment, Char* i_File, S32 i_Line);
+    virtual void* Realloc(void* i_Ptr, U32 i_Size, const Char* i_Comment, const Char* i_File, S32 i_Line);
     virtual void Free(void* i_Ptr);
     virtual U32 FindAlloc(void* a1, void* a2);
     virtual U32 FindAllocNb(void* a1, void* a2);
@@ -44,8 +44,8 @@ void operator delete[](void* i_Ptr);
 
 void* operator new(U32 i_Size);
 void* operator new(U32 i_Size, void* i_Ptr);
-void* operator new(U32 i_Size, Char* i_Comment, Char* i_File, S32 i_Line);
-void* operator new[](U32 i_Size, Char* i_Comment, Char* i_File, S32 i_Line);
+void* operator new(U32 i_Size, const Char* i_Comment, const Char* i_File, S32 i_Line);
+void* operator new[](U32 i_Size, const Char* i_Comment, const Char* i_File, S32 i_Line);
 
 #undef New_Z
 #define New_Z new("Anonymous New", __FILE__, __LINE__)

@@ -19,7 +19,7 @@ void Hi_MemoryManager_Z::Shut() {
     ExceptionFonc_Z("NbLeak==1", "Memory_Z.cpp", 0x23, "Leaks Found", 0, 0, 0, 0, 0, NULL);
 }
 
-void* Hi_MemoryManager_Z::Alloc(U32 i_Size, Char* i_Comment, Char* i_File, S32 i_Line, U32 i_Align) {
+void* Hi_MemoryManager_Z::Alloc(U32 i_Size, const Char* i_Comment, const Char* i_File, S32 i_Line, U32 i_Align) {
     void* l_Result;
     Char l_Message[512];
 
@@ -77,10 +77,10 @@ void* operator new(U32 i_Size, void* i_Ptr) {
     return i_Ptr;
 }
 
-void* operator new(U32 i_Size, Char* i_Comment, Char* i_File, S32 i_Line) {
+void* operator new(U32 i_Size, const Char* i_Comment, const Char* i_File, S32 i_Line) {
     return MemManager.Alloc(i_Size, i_Comment, i_File, i_Line, _ALLOCDEFAULTALIGN);
 }
 
-void* operator new[](U32 i_Size, Char* i_Comment, Char* i_File, S32 i_Line) {
+void* operator new[](U32 i_Size, const Char* i_Comment, const Char* i_File, S32 i_Line) {
     return MemManager.Alloc(i_Size, i_Comment, i_File, i_Line, _ALLOCDEFAULTALIGN);
 }
