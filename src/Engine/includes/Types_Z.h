@@ -15,4 +15,16 @@ typedef unsigned long long U64;
 typedef long long S64;
 typedef float Float;
 
+#undef FALSE
+#define FALSE (Bool) (0==1)
+
+#undef TRUE
+#define TRUE (Bool) (0==0)
+
+#undef NULL
+#define NULL 0
+
+#undef _ALLOCDEFAULTALIGN
+#define _ALLOCDEFAULTALIGN 4
+
 #endif

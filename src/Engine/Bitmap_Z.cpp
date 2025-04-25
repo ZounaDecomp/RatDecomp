@@ -24,7 +24,7 @@ void Bitmap_Z::Init() {
     m_SizeX = 0;
     m_SizeY = 0;
     m_TrueFormat = 0;
-    m_Unk_0x31 = 4;
+    m_UnkU8_0x31 = 4;
     m_TexID = -1;
     m_Transp = -1;
     m_MipmapCount = 0;

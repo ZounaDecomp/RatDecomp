@@ -8,12 +8,12 @@ public:
     virtual U32 GetMgrSize(Name_Z *l_Name, S32 *a1, S32 *a2);
     virtual void Minimize();
 
-    U8 Pad_0x7E0[0x110];
+    U8 m_Pad_0x7E0[0x110];
 
     GCGlobals() {
-        Pad_0x7E0[8] = 0;
-        *(S32*)(&Pad_0x7E0[0]) = 0;
-        *(S32*)(&Pad_0x7E0[4]) = 0;
+        m_Pad_0x7E0[8] = 0;
+        *(S32*)(&m_Pad_0x7E0[0]) = 0;
+        *(S32*)(&m_Pad_0x7E0[4]) = 0;
     }
 };
 

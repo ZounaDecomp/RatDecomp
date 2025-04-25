@@ -203,19 +203,36 @@ cflags_base = [
 
 cflags_rat_base = [
     *cflags_base,
-    "-pool off",
+    "-pool on",
     "-schedule on",
-    "-str reuse,pool,readonly",
     "-fp fmadd",
     "-use_lmw_stmw on",
     '-pragma "cpp_extensions on"',
     "-sym on",
-    "-opt level=4, peep, space",
+    "-inline auto",
     "-i src/Engine/includes",
     "-i src/LibGC/includes",
     "-i src/Rat/includes",
     "-i src/sdk/includes",
-    "-O4,p"
+    "-O4,p",
+    "-rostr"
+]
+
+cflags_rat_base_libgc = [
+    *cflags_base,
+    "-pool on",
+    "-schedule on",
+    "-fp fmadd",
+    "-use_lmw_stmw on",
+    '-pragma "cpp_extensions on"',
+    "-sym on",
+    "-inline off",
+    "-i src/Engine/includes",
+    "-i src/LibGC/includes",
+    "-i src/Rat/includes",
+    "-i src/sdk/includes",
+    "-O4,p",
+    "-rostr"
 ]
 
 # Debug flags
@@ -802,7 +819,7 @@ config.libs = [
     {
         "lib": "LibGC",
         "mw_version": config.linker_version,
-        "cflags": cflags_rat_base,
+        "cflags": cflags_rat_base_libgc,
         "progress_category": "libgc",  # str | List[str]
         "objects": [
             Object(NonMatching, "LibGC/MeshGCDraw_Z.cpp"),

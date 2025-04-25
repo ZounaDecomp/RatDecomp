@@ -61,7 +61,7 @@ private:
     U8 m_PalFormat;
     U8 m_Transp;
     U8 m_MipmapCount;
-    U8 m_Unk_0x31; // Always set to 4
+    U8 m_UnkU8_0x31; // Always set to 4
     U8 m_Flag;
     U8 m_DontDelete;
 };
