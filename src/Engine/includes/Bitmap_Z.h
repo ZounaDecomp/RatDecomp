@@ -5,6 +5,8 @@
 
 #define     INVALID_TEXID               -1
 
+#define FL_BITMAP_BILINEAR              1<<2
+
 enum BmFormat_Z
 {
     BM_4            = 0x01        ,             // 4 Bits Indexed RGB
@@ -43,12 +45,12 @@ class Bitmap_Z : public ResourceObject_Z
 {
 public:
     Bitmap_Z();
-    Bitmap_Z(S32 m_Width, S32 m_Height, U8 m_Format, U8* m_Palette);
+    Bitmap_Z(S32 l_Width, S32 l_Height, U8 l_Format, U8* l_Palette);
     virtual void Init();
     virtual ~Bitmap_Z();
     virtual void Load(void* a1);
     virtual void Clean();
-    void InitBmap(S32 m_SizeX, S32 m_SizeY, U8 m_Format, U8* m_Palette, U8 unkBool);
+    void InitBmap(S32 l_SizeX, S32 l_SizeY, U8 l_Format, U8* l_Palette, U8 l_UnkBool);
     void EnableFlag(U16 i_Flag)   {m_Flag|=i_Flag;}
     S32 GetFormat() {return m_Format;}
     void* GetDatas() {return m_Datas;}

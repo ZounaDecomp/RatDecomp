@@ -40,98 +40,101 @@ void Bitmap_Z::Init() {
 
 void Bitmap_Z::Reset() {
     Invalidate();
-    if (this->m_Datas) {
-        Z_FreeContiguous(this->m_Datas);
+    if (m_Datas) {
+        Z_FreeContiguous(m_Datas);
     }
-    this->m_Datas = 0;
+    m_Datas = 0;
 
-    if (this->m_Palette) {
-        delete this->m_Palette;
+    if (m_Palette) {
+        delete m_Palette;
     }
-    this->m_Palette = 0;
+    m_Palette = 0;
 
     Init();
 }
+
 // far from complete
-void Bitmap_Z::InitBmap(S32 m_SizeX, S32 m_SizeY, U8 m_Format, U8* m_Palette, U8 unkBool)
+void Bitmap_Z::InitBmap(S32 i_SizeX, S32 i_SizeY, U8 i_Format, U8* i_Palette, U8 i_UnkBool)
 {
-    int lPaletteSize;
-    int lBytePalleteSize;
-    this->m_SizeY = m_SizeY;
-    this->m_TexID = INVALID_TEXID;
-    this->m_SizeX = m_SizeX;
-    this->m_Format = m_Format;
-    this->m_TrueFormat = m_Format;
-    this->m_MipmapCount = 0;
-    lPaletteSize = GetPalSize();
+    int l_PaletteSize;
+    int l_BytePalleteSize;
+    m_SizeY = i_SizeY;
+    m_TexID = INVALID_TEXID;
+    m_SizeX = i_SizeX;
+    m_Format = i_Format;
+    m_TrueFormat = i_Format;
+    m_MipmapCount = 0;
+    l_PaletteSize = GetPalSize();
     GetBytePerPixel();
 
     if (m_Format == BM_4 || m_Format == BM_8) {
-        lBytePalleteSize = 4 * lPaletteSize;
+        l_BytePalleteSize = 4 * l_PaletteSize;
     }
-    
 }
 
 Float Bitmap_Z::GetBytePerPixel() {
-    Float result; // st7
+    Float l_Result; // st7
 
-    switch ( this->m_Format )
+    switch ( m_Format )
     {
       case BM_4:
-        result = 0.5;
+      l_Result = 0.5;
         break;
       case BM_8:
       case BM_I4A4:
-        result = 1.0;
+      l_Result = 1.0;
         break;
       case BM_5551:
       case BM_565:
       case BM_4444:
       case BM_1555:
-        result = 2.0;
+      l_Result = 2.0;
         break;
       case BM_8888:
-        result = 4.0;
+      l_Result = 4.0;
         break;
       case BM_888:
-        result = 3.0;
+      l_Result = 3.0;
         break;
       case BM_CMPR:
-        result = 0.0;
+      l_Result = 0.0;
         break;
       default:
         ExceptionFonc_Z("FALSE", __FILE__, __LINE__, "Bitmap_Z::GetBytePerPixel", 0, 0, 0, 0, 0, 0);
-        result = 0.0;
+        l_Result = 0.0;
         break;
     }
-    return result;
+    return l_Result;
 }
+
 S32 Bitmap_Z::GetDataSize()
 {
-    S32 lMipSize;
-    S32 lDataSize;
-    U8 lMipmapCount;
-    lDataSize = (GetBytePerPixel() * ((Float)this->m_SizeY * (Float)this->m_SizeX));
-    lMipmapCount = this->m_MipmapCount;
-    for ( lMipSize = lDataSize; lMipmapCount--; lMipSize += (lDataSize + 127) & ~127)
+    S32 l_MipSize;
+    S32 l_DataSize;
+    U8 l_MipmapCount;
+    l_DataSize = (GetBytePerPixel() * ((Float)m_SizeY * (Float)m_SizeX));
+    l_MipmapCount = m_MipmapCount;
+    for ( l_MipSize = l_DataSize; l_MipmapCount--; l_MipSize += (l_DataSize + 127) & ~127)
     {
-        lDataSize >>= 2;                          
+        l_DataSize >>= 2;                          
     }
-    return lMipSize;
+    return l_MipSize;
 }
+
 // not matching. too lazy to fix for now
 S32 Bitmap_Z::GetPalSize()
 {
-    U8 palFormat = this->m_PalFormat;
-    if ((palFormat >= PAL_ALPHA|PAL_565) && (palFormat != 9 && palFormat < 0x10))
+    U8 l_PalFormat = m_PalFormat;
+    if ((l_PalFormat >= PAL_ALPHA|PAL_565) && (l_PalFormat != 9 && l_PalFormat < 0x10))
         return 0;
     else
     {
-        if (palFormat == PAL_565)
+        if (l_PalFormat == PAL_565)
             return 256;
-        else if (palFormat == PAL_3444)
+        else if (l_PalFormat == PAL_3444)
             return 16;
     }
     ExceptionFonc_Z("FALSE", __FILE__, __LINE__, "Bitmap_Z::GetPalSize", 0, 0, 0, 0, 0, 0);
+    return 0;
 }
 #pragma dont_inline off
