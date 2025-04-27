@@ -5,11 +5,15 @@
 class Name_Z
 {
 public:
+    Name_Z(const Name_Z& a1);
+    Name_Z(const char* a1);
+    Name_Z() { m_ID = 0; }
+    void SetID(S32 a1) { m_ID = a1; }
     static S32 GetID(const S8* a1, U32 a2);
     static S32 GetID(U8* data, U32 size, U32 result);
 
 private:
-	U32 m_ID;
+	S32 m_ID;
 };
 
 #endif
