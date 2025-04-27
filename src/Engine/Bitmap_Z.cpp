@@ -2,6 +2,7 @@
 #include "Assert_Z.h"
 extern void Z_FreeContiguous(void* ptr);
 
+#pragma dont_inline on
 Bitmap_Z::Bitmap_Z()
 {
     Init();
@@ -18,7 +19,6 @@ Bitmap_Z::~Bitmap_Z()
     Reset();
 }
 
-#pragma dont_inline on
 void Bitmap_Z::Init() {
     m_Flag = 0;
     Bitmap_Z::EnableFlag(0x14);
@@ -54,7 +54,7 @@ void Bitmap_Z::Reset() {
 }
 
 // far from complete
-void Bitmap_Z::InitBmap(S32 i_SizeX, S32 i_SizeY, U8 i_Format, U8* i_Palette, U8 i_UnkBool)
+void Bitmap_Z::InitBmap(S32 i_SizeX, S32 i_SizeY, U8 i_Format, U8* i_Palette, U8* i_Datas)
 {
     int l_PaletteSize;
     int l_BytePalleteSize;
@@ -121,20 +121,36 @@ S32 Bitmap_Z::GetDataSize()
     return l_MipSize;
 }
 
-// not matching. too lazy to fix for now
 S32 Bitmap_Z::GetPalSize()
 {
-    U8 l_PalFormat = m_PalFormat;
-    if ((l_PalFormat >= PAL_ALPHA|PAL_565) && (l_PalFormat != 9 && l_PalFormat < 0x10))
-        return 0;
-    else
+    switch (GetFormat())
     {
-        if (l_PalFormat == PAL_565)
-            return 256;
-        else if (l_PalFormat == PAL_3444)
+        case BM_4:
             return 16;
+        case BM_8:
+            return 256;
+        case BM_5551:
+        case BM_565:
+        case BM_4444:
+        case BM_1555:
+        case BM_8888:
+        case BM_888:
+        case BM_CMPR:
+        case BM_I4A4:
+            return 0;
+        default:
+            ExceptionFonc_Z("FALSE", __FILE__, __LINE__, "Bitmap_Z::GetPalSize", 0, 0, 0, 0, 0, 0);
+            return 0;
+        
     }
-    ExceptionFonc_Z("FALSE", __FILE__, __LINE__, "Bitmap_Z::GetPalSize", 0, 0, 0, 0, 0, 0);
-    return 0;
+}
+
+S32 Bitmap_Z::GetNbEntries()
+{
+    U8 l_Format = m_Format;
+    if (l_Format == BM_4)
+        return 16;
+    else
+        return l_Format != BM_8 ? 256 : 0;
 }
 #pragma dont_inline off

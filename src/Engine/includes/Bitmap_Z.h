@@ -50,15 +50,16 @@ public:
     virtual ~Bitmap_Z();
     virtual void Load(void* a1);
     virtual void Clean();
-    void InitBmap(S32 l_SizeX, S32 l_SizeY, U8 l_Format, U8* l_Palette, U8 l_UnkBool);
+    void InitBmap(S32 l_SizeX, S32 l_SizeY, U8 l_Format, U8* l_Palette, U8* i_Datas);
     void EnableFlag(U16 i_Flag)   {m_Flag|=i_Flag;}
-    S32 GetFormat() {return m_Format;}
+    U8 GetFormat() {return m_Format;}
     void* GetDatas() {return m_Datas;}
     void Reset();
     void Invalidate();
     Float GetBytePerPixel();
     S32 GetPalSize();
     S32 GetDataSize();
+    S32 GetNbEntries();
 private:
     void* m_Datas;
     void* m_Palette;

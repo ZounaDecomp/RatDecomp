@@ -218,22 +218,6 @@ cflags_rat_base = [
     "-rostr"
 ]
 
-cflags_rat_base_libgc = [
-    *cflags_base,
-    "-pool on",
-    "-schedule on",
-    "-fp fmadd",
-    "-use_lmw_stmw on",
-    '-pragma "cpp_extensions on"',
-    "-sym on",
-    "-inline off",
-    "-i src/Engine/includes",
-    "-i src/LibGC/includes",
-    "-i src/Rat/includes",
-    "-i src/sdk/includes",
-    "-O4,p",
-    "-rostr"
-]
 
 cflags_rat_base_libgc = [
     *cflags_base,
