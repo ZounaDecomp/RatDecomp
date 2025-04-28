@@ -4,7 +4,7 @@
 #include "Handle_Z.h"
 
 extern Char * strcpy(Char *__dest,Char *__src);
-extern void * memset(void *__s,S32 __c,U32 __n);
+extern "C" void * memset(void *__s,S32 __c,U32 __n);
 class GCConsole_Z;
 
 class Globals {
