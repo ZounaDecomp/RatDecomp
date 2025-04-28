@@ -34,9 +34,6 @@ void Bitmap_Z::Init() {
     m_PrecalculatedSize = 0;
     m_PalFormat = PAL_8888;
 }
-// void Bitmap_Z::Invalidate() {
-//     //stub
-// };
 
 void Bitmap_Z::Reset() {
     Invalidate();
@@ -53,8 +50,7 @@ void Bitmap_Z::Reset() {
     Init();
 }
 
-// far from complete
-void Bitmap_Z::InitBmap(S32 i_SizeX, S32 i_SizeY, U8 i_Format, U8* i_Palette, U8* i_Datas)
+void Bitmap_Z::InitBmap(S32 i_SizeX, S32 i_SizeY, U8 i_Format, U8* i_Palette, U8* i_Datas) // far from complete
 {
     int l_PaletteSize;
     int l_BytePalleteSize;
@@ -75,34 +71,33 @@ void Bitmap_Z::InitBmap(S32 i_SizeX, S32 i_SizeY, U8 i_Format, U8* i_Palette, U8
 Float Bitmap_Z::GetBytePerPixel() {
     Float l_Result; // st7
 
-    switch ( m_Format )
-    {
-      case BM_4:
-      l_Result = 0.5;
-        break;
-      case BM_8:
-      case BM_I4A4:
-      l_Result = 1.0;
-        break;
-      case BM_5551:
-      case BM_565:
-      case BM_4444:
-      case BM_1555:
-      l_Result = 2.0;
-        break;
-      case BM_8888:
-      l_Result = 4.0;
-        break;
-      case BM_888:
-      l_Result = 3.0;
-        break;
-      case BM_CMPR:
-      l_Result = 0.0;
-        break;
-      default:
-        ExceptionFonc_Z("FALSE", __FILE__, __LINE__, "Bitmap_Z::GetBytePerPixel", 0, 0, 0, 0, 0, 0);
-        l_Result = 0.0;
-        break;
+    switch (m_Format) {
+        case BM_4:
+            l_Result = 0.5;
+            break;
+        case BM_8:
+        case BM_I4A4:
+            l_Result = 1.0;
+            break;
+        case BM_5551:
+        case BM_565:
+        case BM_4444:
+        case BM_1555:
+            l_Result = 2.0;
+            break;
+        case BM_8888:
+            l_Result = 4.0;
+            break;
+        case BM_888:
+            l_Result = 3.0;
+            break;
+        case BM_CMPR:
+            l_Result = 0.0;
+            break;
+        default:
+            ASSERT_Z(FALSE, "Bitmap_Z::GetBytePerPixel");
+            l_Result = 0.0;
+            break;
     }
     return l_Result;
 }
@@ -139,9 +134,8 @@ S32 Bitmap_Z::GetPalSize()
         case BM_I4A4:
             return 0;
         default:
-            ExceptionFonc_Z("FALSE", __FILE__, __LINE__, "Bitmap_Z::GetPalSize", 0, 0, 0, 0, 0, 0);
+            ASSERT_Z(FALSE, "Bitmap_Z::GetPalSize");
             return 0;
-        
     }
 }
 

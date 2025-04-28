@@ -4,9 +4,17 @@
 
 class Hi_MemoryManager_Z {
 public:
-    U8 m_Pad_0x0[0x20];
+    void* m_HeapBase;
+    void* m_HeapEnd;
+    U32 m_FreeMemCached;
+    U32 m_MaxMemUsed;
+    U8 m_Pad_0x10[0x4];
+    U32 m_NbAlloc;
+    U32 m_FrameNbAlloc;
+    Float m_AllocTimer;
 
     Hi_MemoryManager_Z();
+    ~Hi_MemoryManager_Z();
 
     virtual void Init();
     virtual void Shut();
@@ -14,12 +22,12 @@ public:
     virtual void* AllocEnd(U32 i_Size, const Char* i_Comment, const Char* i_File, S32 i_Line, U32 i_Align);
     virtual void* Realloc(void* i_Ptr, U32 i_Size, const Char* i_Comment, const Char* i_File, S32 i_Line);
     virtual void Free(void* i_Ptr);
-    virtual U32 FindAlloc(void* a1, void* a2);
-    virtual U32 FindAllocNb(void* a1, void* a2);
-    virtual U32 FindAllocID(S32 a1, Char* a2, void* a3, void* a4);
-    virtual void* AllocContiguous(U32 a1, const Char* a2, const Char* a3, S32 a4, U32 a5);
-    virtual void FreeContiguous(void* a1);
-    virtual U32 Update(Float a1);
+    virtual void* FindAlloc(void* i_RangeStart, void* i_RangeEnd);
+    virtual U32 FindAllocNb(void* i_RangeStart, void* i_RangeEnd);
+    virtual void* FindAllocID(S32 i_AllocId, Char* i_ResultDescription, void* i_RangeStart, void* i_RangeEnd);
+    virtual void* AllocContiguous(U32 i_Size, const Char* i_Comment, const Char* i_File, S32 i_Line, U32 i_Align);
+    virtual void FreeContiguous(void* i_Ptr);
+    virtual U32 Update(Float i_DeltaTime);
     virtual void PrintStatus();
     virtual U32 GetHeapSize();
     virtual U32 GetHeapBase();
@@ -36,8 +44,11 @@ public:
     virtual U32 ShowMostNbMalloc();
     virtual void VerifyMem();
     virtual void SetCallStackPtrs(U32* a1, S32 a2);
-    virtual ~Hi_MemoryManager_Z();
+    //virtual ~Hi_MemoryManager_Z();
 };
+
+void Z_Verify();
+U32 MemoryGraphColor();
 
 void operator delete(void* i_Ptr);
 void operator delete[](void* i_Ptr);
@@ -46,6 +57,13 @@ void* operator new(U32 i_Size);
 void* operator new(U32 i_Size, void* i_Ptr);
 void* operator new(U32 i_Size, const Char* i_Comment, const Char* i_File, S32 i_Line);
 void* operator new[](U32 i_Size, const Char* i_Comment, const Char* i_File, S32 i_Line);
+
+void* Z_Alloc(U32 i_Size, const Char* i_Comment, const Char* i_File, S32 i_Line, U32 i_Align);
+void* Z_AllocEnd(U32 i_Size, const Char* i_Comment, const Char* i_File, S32 i_Line, U32 i_Align);
+void* Z_AllocContiguous(U32 i_Size, const Char* i_Comment, const Char* i_File, S32 i_Line, U32 i_Align);
+void* Z_Realloc(void* i_Ptr, U32 i_Size, const Char* i_Comment, const Char* i_File, S32 i_Line);
+void Z_Free(void* i_Ptr);
+void Z_FreeContiguous(void* i_Ptr);
 
 #undef New_Z
 #define New_Z new("Anonymous New", __FILE__, __LINE__)

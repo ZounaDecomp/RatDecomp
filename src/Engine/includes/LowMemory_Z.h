@@ -9,4 +9,6 @@ public:
     virtual ~MemoryManager_Z();
 };
 
+extern MemoryManager_Z MemManager;
+
 #endif

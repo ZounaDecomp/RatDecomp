@@ -53,6 +53,7 @@ private:
 
 public:
     void SetVar(Char *i_Var);
+    U32 GetNbParam() { return m_NbParam; }
 
     virtual ~Console_Z();
     virtual void Init();

@@ -3,7 +3,8 @@
 #include "LowMemory_Z.h"
 #include "GCConsole_Z.h"
 
-static GCGlobals gData;
+GCGlobals gData;
+
 extern void OSInit();
 extern void DVDInit();
 extern void GetFlagsFromGame();

@@ -15,6 +15,9 @@ typedef unsigned long long U64;
 typedef long long S64;
 typedef float Float;
 
+#undef S32_MIN
+#define S32_MIN -2147483648
+
 #undef FALSE
 #define FALSE (Bool) (0==1)
 

@@ -9,6 +9,12 @@ void ExceptionReport(const S8* a1);
 void ExceptionHandler();
 void BreakPoint_Z();
 
-#define EXCEPTION
+#undef ASSERT_Z
+#define ASSERT_Z(Exp, Comment) \
+    if (Exp == FALSE) \
+        ExceptionFonc_Z(#Exp, __FILE__, __LINE__, Comment, 0, 0, 0, 0, 0, 0)
+
+//#undef ASSERT_Z
+//#define ASSERT_Z(Exp) ASSERTC_Z(Exp, __FUNCTION__)
 
 #endif
