@@ -266,7 +266,7 @@ typedef void* (*Memory_Manager__AllocContiguous)(MemoryManager_Z*,U32,const Char
 //        so I tried working around it but it only gets to 50%
 void* Z_AllocContiguous(U32 i_Size, const Char* i_Comment, const Char* i_File, S32 i_Line, U32 i_Align) {
     MemoryManager_Z* l_MemMgr = &MemManager;
-    void* result = (*(Memory_Manager__AllocContiguous*)((*(U32**)(*(U32*)&l_MemMgr+0x20))[4]))(l_MemMgr, i_Size, i_Comment, i_File, i_Line, i_Align);
+    void* result = l_MemMgr->Alloc(i_Size, i_Comment, i_File, i_Line, i_Align);
     return result;
 }
 
@@ -280,7 +280,8 @@ void Z_Free(void* i_Ptr) {
 
 // $SABE: This has the same issue as Z_AllocContiguous
 void Z_FreeContiguous(void* i_Ptr) {
-
+    MemoryManager_Z* l_MemMgr = &MemManager;
+    l_MemMgr->Free(i_Ptr);
 }
 
 void Hi_MemoryManager_Z::SetCallStackPtrs(U32* a1, S32 a2) {
