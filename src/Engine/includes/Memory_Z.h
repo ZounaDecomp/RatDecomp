@@ -2,6 +2,8 @@
 #define _MEMORY_Z_H_
 #include "Types_Z.h"
 
+extern U32 s_GetFreeMem(void);
+
 class Hi_MemoryManager_Z {
 public:
     void* m_HeapBase;
@@ -29,11 +31,17 @@ public:
     virtual void FreeContiguous(void* i_Ptr);
     virtual U32 Update(Float i_DeltaTime);
     virtual void PrintStatus();
-    virtual U32 GetHeapSize();
+    Weak_Z virtual U32 GetHeapSize()
+    {
+        return (U32)m_HeapEnd - (U32)m_HeapBase;
+    };
     virtual U32 GetHeapBase();
     virtual U32 GetNbAlloc();
     virtual U32 GetAllocatedMem();
-    virtual U32 GetFreeMem();
+    Weak_Z virtual U32 GetFreeMem() {
+        m_FreeMemCached = s_GetFreeMem();
+        return m_FreeMemCached;
+    };
     virtual U32 GetFragments();
     virtual U32 GetLargestFree();
     virtual U32 GetFrameNbAlloc();

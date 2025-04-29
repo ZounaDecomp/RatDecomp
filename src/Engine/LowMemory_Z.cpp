@@ -1,3 +1,5 @@
 #include "LowMemory_Z.h"
 
-static MemoryManager_Z MemManager;
+extern U32 s_GetFreeMem(void);
+
+MemoryManager_Z MemManager;

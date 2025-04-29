@@ -8,7 +8,7 @@ class BaseObject_Z
 public:
     Name_Z m_Name;
     BaseObject_ZHdl m_Handle;
-    __declspec(weak) BaseObject_Z() {};
+    Weak_Z BaseObject_Z() {};
     virtual void Init() {};
     ~BaseObject_Z();
     virtual void Load(void* a1);

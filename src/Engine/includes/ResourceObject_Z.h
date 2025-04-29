@@ -5,7 +5,7 @@
 class ResourceObjectLink_Z
 {
     public:
-        __declspec(weak) ResourceObjectLink_Z() {};
+        Weak_Z ResourceObjectLink_Z() {};
         ~ResourceObjectLink_Z();
         void Load(void* a1);
         void EndLoad();
@@ -17,8 +17,8 @@ class ResourceObjectLink_Z
 class ResourceObject_Z : public BaseObject_Z
 {
     public:
-        __declspec(weak) ResourceObject_Z() {};
-        __declspec(weak) ~ResourceObject_Z();
+        Weak_Z ResourceObject_Z() {};
+        Weak_Z ~ResourceObject_Z();
         virtual void Load(void* a1);
         virtual void EndLoad();
         virtual void LoadLinks(void* a1);

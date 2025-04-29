@@ -17,6 +17,8 @@ private:
     DynArray_Z<Folder_Z> m_FolderDA;
 
 public:
+    GCConsole_Z();
+
     virtual ~GCConsole_Z();
     virtual U32 InitConsole();
     virtual void CloseConsole();

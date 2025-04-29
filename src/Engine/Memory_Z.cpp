@@ -7,7 +7,7 @@
 extern void s_free(void* i_Ptr);
 extern void* s_malloc(U32 i_Size, U32 i_Align); extern void* s_realloc(void* i_Ptr, U32 i_Size);
 extern void s_Init(void* i_HeapBase, U32 i_HeapSize); void s_ShowMostNbMalloc(void);
-extern U32 s_GetFreeMem(void); void* s_findalloc(void* i_RangeStart, void* i_RangeEnd); U32 s_getnbfindalloc(void* i_RangeStart, void* i_RangeEnd); void* s_getfindalloc(S32 i_AllocId, Char* l_ResultDescription, void* i_RangeStart, void* i_RangeEnd);
+void* s_findalloc(void* i_RangeStart, void* i_RangeEnd); U32 s_getnbfindalloc(void* i_RangeStart, void* i_RangeEnd); void* s_getfindalloc(S32 i_AllocId, Char* l_ResultDescription, void* i_RangeStart, void* i_RangeEnd);
 extern "C" S32 sprintf(const Char* i_Buf, const Char*  i_Format, ...); extern void s_VerifyMem(); extern void* s_malloc_end(U32 i_Size, U32 i_Align);
 
 void Hi_MemoryManager_Z::Init() {

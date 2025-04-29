@@ -2,8 +2,9 @@
 #include "Memory_Z.h"
 #include "Name_Z.h"
 
-extern "C" extern S32 strlen(const Char* str);
-void Console_Z::AddCommand(Char* i_Command, void* i_Func, Char* i_Desc)
+extern "C" S32 strlen(const Char* str);
+
+void Console_Z::AddCommand(Char* i_Command, CommandProc i_Proc, Char* i_Desc)
 {
     S32 l_CommandName;
     Command_Z* l_Command = New_Z Command_Z;
@@ -26,7 +27,7 @@ void Console_Z::AddCommand(Char* i_Command, void* i_Func, Char* i_Desc)
     }
     l_Command->m_Command = l_CommandName;
     l_AliasSize = 0;
-    l_Command->m_Proc = i_Func;
+    l_Command->m_Proc = i_Proc;
 
     for (S32 i = 0; i < strlen(i_Command) && l_AliasSize < 15; i++) {
         l_Char = i_Command[i];

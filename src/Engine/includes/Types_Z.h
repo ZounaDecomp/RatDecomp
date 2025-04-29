@@ -30,4 +30,7 @@ typedef float Float;
 #undef _ALLOCDEFAULTALIGN
 #define _ALLOCDEFAULTALIGN 4
 
+#undef Weak_Z
+#define Weak_Z __declspec(weak)
+
 #endif
