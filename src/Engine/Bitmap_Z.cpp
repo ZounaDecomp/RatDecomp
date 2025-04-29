@@ -145,6 +145,6 @@ S32 Bitmap_Z::GetNbEntries()
     if (l_Format == BM_4)
         return 16;
     else
-        return l_Format != BM_8 ? 256 : 0;
+        return l_Format == BM_8 ? 256 : 0;
 }
 #pragma dont_inline off
