@@ -229,7 +229,6 @@ cflags_rat_base_libgc = [
     '-pragma "cpp_extensions on"',
     "-sym on",
     "-inline on",
-    "-opt level=4, peep, space",
     "-i src/Engine/includes",
     "-i src/LibGC/includes",
     "-i src/Rat/includes",

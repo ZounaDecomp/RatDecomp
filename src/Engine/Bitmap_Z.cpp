@@ -1,7 +1,7 @@
 #include "Bitmap_Z.h"
-#include "Assert_Z.h"
+#include "Memory_Z.h"
 extern void Z_FreeContiguous(void* ptr);
-
+extern "C" void memcpy(void* dest, const void* src, int n);
 #pragma dont_inline on
 Bitmap_Z::Bitmap_Z()
 {
@@ -14,10 +14,6 @@ Bitmap_Z::Bitmap_Z(S32 i_Width, S32 i_Height, U8 i_Format, U8* i_Palette)
     InitBmap(i_Width, i_Height, i_Format, i_Palette, 0);
 }
 
-Bitmap_Z::~Bitmap_Z()
-{
-    Reset();
-}
 
 void Bitmap_Z::Init() {
     m_Flag = 0;
@@ -43,31 +39,54 @@ void Bitmap_Z::Reset() {
     m_Datas = 0;
 
     if (m_Palette) {
-        delete m_Palette;
+        Delete_Z m_Palette;
     }
     m_Palette = 0;
 
     Init();
 }
 
-void Bitmap_Z::InitBmap(S32 i_SizeX, S32 i_SizeY, U8 i_Format, U8* i_Palette, U8* i_Datas) // far from complete
+void Bitmap_Z::InitBmap(S32 i_SizeX, S32 i_SizeY, U8 i_Format, U8* i_Datas, U8* i_Palette) // far from complete
 {
-    int l_PaletteSize;
-    int l_BytePalleteSize;
-    m_SizeY = i_SizeY;
+    S32 l_PaletteSize;
+    S32 l_BytePalleteSize;
+
     m_TexID = INVALID_TEXID;
     m_SizeX = i_SizeX;
+    m_SizeY = i_SizeY;
     m_Format = i_Format;
     m_TrueFormat = i_Format;
     m_MipmapCount = 0;
+
     l_PaletteSize = GetPalSize();
     GetBytePerPixel();
 
-    if (m_Format == BM_4 || m_Format == BM_8) {
+    if (i_Format  == BM_4 || i_Format == BM_8) {
         l_BytePalleteSize = 4 * l_PaletteSize;
+        m_Palette = Z_Alloc(l_BytePalleteSize, "BITMAP_PAL_ALLOC", __FILE__, __LINE__, 0x80);
+        if (i_Palette)
+            memcpy(m_Palette, i_Palette, l_BytePalleteSize);
     }
-}
 
+    else {
+        m_Palette = 0;
+    }
+
+
+
+    
+    if (i_Datas)
+    {
+        SetUniversal(i_Datas);
+    }
+    else
+    {
+        m_Datas = Z_AllocContiguous(GetDataSize(), "BITMAP_DATA_ALLOC", __FILE__, __LINE__, 0x80);
+
+        Clear(Color(0.0, 0.0, 0.0, 0.0));
+    }
+
+}
 Float Bitmap_Z::GetBytePerPixel() {
     Float l_Result; // st7
 
@@ -102,19 +121,6 @@ Float Bitmap_Z::GetBytePerPixel() {
     return l_Result;
 }
 
-S32 Bitmap_Z::GetDataSize()
-{
-    S32 l_MipSize;
-    S32 l_DataSize;
-    U8 l_MipmapCount;
-    l_DataSize = (GetBytePerPixel() * ((Float)m_SizeY * (Float)m_SizeX));
-    l_MipmapCount = m_MipmapCount;
-    for ( l_MipSize = l_DataSize; l_MipmapCount--; l_MipSize += (l_DataSize + 127) & ~127)
-    {
-        l_DataSize >>= 2;                          
-    }
-    return l_MipSize;
-}
 
 S32 Bitmap_Z::GetPalSize()
 {
@@ -139,6 +145,20 @@ S32 Bitmap_Z::GetPalSize()
     }
 }
 
+S32 Bitmap_Z::GetDataSize()
+{
+    S32 l_MipSize;
+    S32 l_DataSize;
+    U8 l_MipmapCount;
+    l_DataSize = (GetBytePerPixel() * ((Float)m_SizeY * (Float)m_SizeX));
+    l_MipmapCount = m_MipmapCount;
+    for ( l_MipSize = l_DataSize; l_MipmapCount--; l_MipSize += (l_DataSize + 127) & ~127)
+    {
+        l_DataSize >>= 2;                          
+    }
+    return l_MipSize;
+}
+
 S32 Bitmap_Z::GetNbEntries()
 {
     U8 l_Format = m_Format;
@@ -147,4 +167,25 @@ S32 Bitmap_Z::GetNbEntries()
     else
         return l_Format == BM_8 ? 256 : 0;
 }
+#pragma optimize_for_size on 
+
+void Bitmap_Z::SetDatas(U8* i_Datas)
+{
+    if (i_Datas != m_Datas)
+    {
+        if (m_Datas)
+        {
+            Z_FreeContiguous(m_Datas);
+        }
+        m_Datas = 0;
+        m_Datas = i_Datas;
+    }
+}
+
+Bitmap_Z::~Bitmap_Z()
+{
+    Reset();
+}
+
+#pragma optimize_for_size off
 #pragma dont_inline off

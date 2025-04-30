@@ -262,8 +262,9 @@ void* Z_AllocEnd(U32 i_Size, const Char* i_Comment, const Char* i_File, S32 i_Li
 
 typedef void* (*Memory_Manager__AllocContiguous)(MemoryManager_Z*,U32,const Char*,const Char*,S32,U32);
 
-// $SABE: This is broken rn cause for some reason instead of inlining the virtual it calls it, and even goes through the vtable which it wouldn't do on its own
-//        so I tried working around it but it only gets to 50%
+
+
+
 void* Z_AllocContiguous(U32 i_Size, const Char* i_Comment, const Char* i_File, S32 i_Line, U32 i_Align) {
     MemoryManager_Z* l_MemMgr = &MemManager;
     void* result = l_MemMgr->Alloc(i_Size, i_Comment, i_File, i_Line, i_Align);
@@ -278,7 +279,7 @@ void Z_Free(void* i_Ptr) {
     return MemManager.Free(i_Ptr);
 }
 
-// $SABE: This has the same issue as Z_AllocContiguous
+
 void Z_FreeContiguous(void* i_Ptr) {
     MemoryManager_Z* l_MemMgr = &MemManager;
     l_MemMgr->Free(i_Ptr);

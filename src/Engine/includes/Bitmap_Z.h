@@ -2,8 +2,8 @@
 #define _BITMAP_Z_H_
 #include "ResourceObject_Z.h"
 #include "Types_Z.h"
-
-#define     INVALID_TEXID               -1
+#include "Assert_Z.h"
+#define INVALID_TEXID                   -1
 
 #define FL_BITMAP_BILINEAR              1<<2
 
@@ -41,6 +41,18 @@ enum BmTransp
     BM_TRANSP       = 2
 };
 
+class Color {
+
+public:
+    Weak_Z Color(Float i_Red, Float i_Green, Float i_Blue, Float i_Alpha);
+
+private:
+    Float m_Red;
+    Float m_Green;
+    Float m_Blue;
+    Float m_Alpha;
+};
+
 class Bitmap_Z : public ResourceObject_Z
 {
 public:
@@ -50,16 +62,19 @@ public:
     virtual ~Bitmap_Z();
     virtual void Load(void* a1);
     virtual void Clean();
-    void InitBmap(S32 l_SizeX, S32 l_SizeY, U8 l_Format, U8* l_Palette, U8* i_Datas);
-    void EnableFlag(U16 i_Flag)   {m_Flag|=i_Flag;}
+    void InitBmap(S32 l_SizeX, S32 l_SizeY, U8 l_Format, U8* i_Datas, U8* i_Palette);
+    Weak_Z void EnableFlag(U16 i_Flag)   {m_Flag|=i_Flag;}
     U8 GetFormat() {return m_Format;}
-    void* GetDatas() {return m_Datas;}
+    Weak_Z void* GetDatas() {return m_Datas;}
+    void SetDatas(U8* i_Datas);
+    void Clear(Color i_Color);
     void Reset();
     void Invalidate();
     Float GetBytePerPixel();
     S32 GetPalSize();
     S32 GetDataSize();
     S32 GetNbEntries();
+    void SetUniversal(U8* i_Datas);
 private:
     void* m_Datas;
     void* m_Palette;
