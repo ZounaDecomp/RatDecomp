@@ -54,7 +54,6 @@ jobs:
     #     python tools/upload_progress.py -b https://progress.decomp.club/ \
     #       -p $PROGRESS_SLUG -v ${{ matrix.version }} \
     #       build/${{ matrix.version }}/progress.json
-
     # Upload map files
     - name: Upload map
       uses: actions/upload-artifact@v4
