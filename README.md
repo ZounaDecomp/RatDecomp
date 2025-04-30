@@ -5,8 +5,8 @@ Ratatouille
 <!--
 Replace with your repository's URL.
 -->
-[Build Status]: https://github.com/SamuraiOndo/RatDecomp/actions/workflows/build.yml/badge.svg
-[actions]: https://github.com/SamuraiOndo/RatDecomp/actions/workflows/build.yml
+[Build Status]: https://github.com/ZounaDecomp/RatDecomp/actions/workflows/build.yml/badge.svg
+[actions]: https://github.com/ZounaDecomp/RatDecomp/actions/workflows/build.yml
 [Discord Badge]: https://img.shields.io/discord/888080380752707624?color=%237289DA&logo=discord&logoColor=%23FFFFFF
 [discord]: https://discord.gg/cgUVpB6GNc
 
@@ -66,7 +66,7 @@ Building
 - Clone the repository:
 
   ```sh
-  git clone https://github.com/SamuraiOndo/RatDecomp.git
+  git clone https://github.com/ZounaDecomp/RatDecomp.git
   ```
 
 - Copy your game's disc image to `orig/GLLE78`.
