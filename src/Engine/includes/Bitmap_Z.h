@@ -46,7 +46,6 @@ class Color {
 public:
     Weak_Z Color(Float i_Red, Float i_Green, Float i_Blue, Float i_Alpha);
 
-private:
     Float m_Red;
     Float m_Green;
     Float m_Blue;
@@ -69,6 +68,7 @@ public:
     void SetDatas(U8* i_Datas);
     void Clear(Color i_Color);
     U8 GetBestPalEntry(U8 i_Red, U8 i_Green, U8 i_Blue, U8 i_Alpha);
+    U16 GetColor(const Color& i_Color);
     void Reset();
     void Invalidate();
     Float GetBytePerPixel();

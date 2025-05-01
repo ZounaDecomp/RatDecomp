@@ -168,6 +168,29 @@ S32 Bitmap_Z::GetNbEntries()
         return l_Format == BM_8 ? 256 : 0;
 }
 
+U16 Bitmap_Z::GetColor(const Color& i_Color)
+{
+    U8 l_Red = (U8)(i_Color.m_Red * 255.0f);
+    U8 l_Green = (U8)(i_Color.m_Green * 255.0f);
+    U8 l_Blue = (U8)(i_Color.m_Blue * 255.0f);
+    U8 l_Alpha = (U8)(i_Color.m_Alpha * 255.0f);
+
+    switch (m_Format)
+    {
+        case BM_4:
+        case BM_8:
+            return GetBestPalEntry(l_Red, l_Green, l_Blue, l_Alpha);
+        case BM_5551:
+            return (l_Blue >> 3) + (32 * (l_Green >> 3)) + (32 * (l_Red >> 3)) + (32 * (l_Alpha >> 7));
+        case BM_565:
+            return (l_Blue >> 3) + 32 * (l_Green >> 2) * (l_Red >> 3 << 6);
+        case BM_4444:
+            return (l_Blue >> 4) + 16 * (l_Green >> 4) + 16 * (l_Red >> 4) + 16 * (l_Alpha >> 4) ;
+        case BM_1555:
+            return (l_Blue >> 3) + 2 * (l_Green >> 3) + 32 * (l_Red >> 3) + 32 * (l_Alpha >> 7);
+    }
+}
+
 #pragma optimize_for_size on 
 U8 Bitmap_Z::GetBestPalEntry(U8 i_Red, U8 i_Green, U8 i_Blue, U8 i_Alpha)
 {
