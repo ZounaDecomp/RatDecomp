@@ -57,7 +57,7 @@ class Bitmap_Z : public ResourceObject_Z
 {
 public:
     Bitmap_Z();
-    Bitmap_Z(S32 l_Width, S32 l_Height, U8 l_Format, U8* l_Palette);
+    Bitmap_Z(S32 i_Width, S32 i_Height, U8 i_Format, U8* i_Datas);
     virtual void Init();
     virtual ~Bitmap_Z();
     virtual void Load(void* a1);
@@ -68,6 +68,7 @@ public:
     Weak_Z void* GetDatas() {return m_Datas;}
     void SetDatas(U8* i_Datas);
     void Clear(Color i_Color);
+    U8 GetBestPalEntry(U8 i_Red, U8 i_Green, U8 i_Blue, U8 i_Alpha);
     void Reset();
     void Invalidate();
     Float GetBytePerPixel();

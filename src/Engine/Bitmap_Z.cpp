@@ -8,10 +8,10 @@ Bitmap_Z::Bitmap_Z()
     Init();
 }
 
-Bitmap_Z::Bitmap_Z(S32 i_Width, S32 i_Height, U8 i_Format, U8* i_Palette)
+Bitmap_Z::Bitmap_Z(S32 i_Width, S32 i_Height, U8 i_Format, U8* i_Datas)
 {
     Init();
-    InitBmap(i_Width, i_Height, i_Format, i_Palette, 0);
+    InitBmap(i_Width, i_Height, i_Format, i_Datas, 0);
 }
 
 
@@ -150,7 +150,7 @@ S32 Bitmap_Z::GetDataSize()
     S32 l_MipSize;
     S32 l_DataSize;
     U8 l_MipmapCount;
-    l_DataSize = (GetBytePerPixel() * ((Float)m_SizeY * (Float)m_SizeX));
+    l_DataSize = (GetBytePerPixel() * ((Float)m_SizeY * m_SizeX));
     l_MipmapCount = m_MipmapCount;
     for ( l_MipSize = l_DataSize; l_MipmapCount--; l_MipSize += (l_DataSize + 127) & ~127)
     {
@@ -167,7 +167,58 @@ S32 Bitmap_Z::GetNbEntries()
     else
         return l_Format == BM_8 ? 256 : 0;
 }
+
 #pragma optimize_for_size on 
+U8 Bitmap_Z::GetBestPalEntry(U8 i_Red, U8 i_Green, U8 i_Blue, U8 i_Alpha)
+{
+    Float l_CmpValue = 1024*1024*1024;
+    Float l_Match = 0;
+    U8 l_BestMatch = -1;
+    U8 l_Red, l_Green, l_Blue, l_Alpha = 0;
+    
+    for (int i = 0; i < GetNbEntries(); i++)
+    {
+        if (m_PalFormat == PAL_8888)
+        {
+            U8* l_Palette = (U8*)m_Palette;
+            l_Red = l_Palette[4 * i];
+            l_Green = l_Palette[4 * i + 1];
+            l_Blue = l_Palette[4 * i + 2];
+            l_Alpha = l_Palette[4 * i + 3];
+        }
+        else if (m_PalFormat == PAL_565)
+        {
+            U16* l_Palette = (U16*)m_Palette;
+            l_Red = (l_Palette[i] >> 8) & 0xF8;
+            l_Green = (l_Palette[i] >> 3) & 0xFC;
+            l_Blue = (l_Palette[i] & 0x1F) << 3;
+            l_Alpha = -1;
+        }
+        else 
+        {
+            U16* l_Palette = (U16*)m_Palette;
+            l_Red = (l_Palette[i] >> 4) & 0xF0;
+            l_Green = (l_Palette[i]) & 0xF0;
+            l_Blue = (l_Palette[i] << 4) & 0xF0;
+            l_Alpha = (l_Palette[i] >> 7) & 0xE0;
+        }
+
+        l_Match = 
+                ((Float)(l_Red - i_Red) * (Float)(l_Red - i_Red)) + 
+                ((l_Green - i_Green) * (l_Green - i_Green)) + 
+                ((l_Blue - i_Blue) * (l_Blue - i_Blue)) + 
+                ((l_Alpha - i_Alpha) * (l_Alpha - i_Alpha));
+        
+        if (l_Match < l_CmpValue)
+        {
+            l_CmpValue = l_Match;
+            l_BestMatch = i;
+        }
+    }
+    
+    return l_BestMatch;
+}
+
 
 void Bitmap_Z::SetDatas(U8* i_Datas)
 {

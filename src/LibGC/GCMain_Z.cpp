@@ -31,6 +31,7 @@ void PrintMemoryStatus(Char* i_Comment)
     void** l_StackEnd = &_stack_end;
     void** l_StackAddr = &_stack_addr;
     void** l_DbStackAddr = &_stack_addr;
+    void** l_DbStackEnd = &_db_stack_end;
     U32 l_FreeMem = MemManager.GetFreeMem();
     U32 l_HeapSize = MemManager.GetHeapSize();
     U32 l_SizeInKo = ((U32)l_ArenaHi - (U32)l_ArenaLo) >> 10;
@@ -41,7 +42,7 @@ void PrintMemoryStatus(Char* i_Comment)
     OSReport(">              start       end         size         usage\n");
     OSReport(">     ELF      0x%08x  0x%08x  %08d ko\n", (U32)&__start, (U32)l_End, 0xefc);
     OSReport(">     STACK    0x%08x  0x%08x  %08d ko\n", l_StackEnd, l_StackAddr, 0x100);
-    OSReport(">     DBSTACK  0x%08x  0x%08x  %08d ko\n", l_DbStackAddr, &l_ArenaLo, 0x40);
+    OSReport(">     DBSTACK  0x%08x  0x%08x  %08d ko\n", l_DbStackEnd, &l_DbStackAddr, 0x40);
     OSReport(">     HEAP     0x%08x  0x%08x  %08d ko  %.2f mo\n", l_ArenaLo, l_ArenaHi, l_SizeInKo, l_HeapSize);
     OSReport("\n\n");
     return;
