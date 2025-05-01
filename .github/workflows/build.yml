@@ -8,7 +8,7 @@ jobs:
   build:
     # This is a *private* build container.
     # See docs/github_actions.md for more information.
-    container: ghcr.io/samuraiondo/ratdecomp-build:main
+    container: ghcr.io/zounadecomp/ratdecomp-build:main
 
     runs-on: ubuntu-latest
     strategy:
@@ -54,8 +54,8 @@ jobs:
     #     python tools/upload_progress.py -b https://progress.decomp.club/ \
     #       -p $PROGRESS_SLUG -v ${{ matrix.version }} \
     #       build/${{ matrix.version }}/progress.json
-
     # Upload map files
+    
     - name: Upload map
       uses: actions/upload-artifact@v4
       with:
