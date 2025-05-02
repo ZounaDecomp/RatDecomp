@@ -656,7 +656,7 @@ config.libs = [
             Object(NonMatching, "Engine/DisplayList_Z.cpp"),
             Object(NonMatching, "Engine/MaterialAnimLoad_Z.cpp"),
             Object(NonMatching, "Engine/Console_Z.cpp"),
-            Object(NonMatching, "Engine/LowMemory_Z.cpp"),
+            Object(Matching   , "Engine/LowMemory_Z.cpp"),
             Object(NonMatching, "Engine/SelfRunning_Z.cpp"),
             Object(NonMatching, "Engine/BitArray_Z.cpp"),
             Object(NonMatching, "Engine/CameraZone_Z.cpp"),
