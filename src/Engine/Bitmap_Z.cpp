@@ -1,6 +1,6 @@
 #include "Bitmap_Z.h"
 #include "Memory_Z.h"
-extern void Z_FreeContiguous(void* ptr);
+
 extern "C" void memcpy(void* dest, const void* src, int n);
 #pragma dont_inline on
 Bitmap_Z::Bitmap_Z()
@@ -34,7 +34,7 @@ void Bitmap_Z::Init() {
 void Bitmap_Z::Reset() {
     Invalidate();
     if (m_Datas) {
-        Z_FreeContiguous(m_Datas);
+        FreeContiguous_Z(m_Datas);
     }
     m_Datas = 0;
 
@@ -46,8 +46,8 @@ void Bitmap_Z::Reset() {
     Init();
 }
 
-void Bitmap_Z::InitBmap(S32 i_SizeX, S32 i_SizeY, U8 i_Format, U8* i_Datas, U8* i_Palette) // far from complete
-{
+
+void Bitmap_Z::InitBmap(S32 i_SizeX, S32 i_SizeY, U8 i_Format, U8* i_Datas, U8* i_Palette) { // far from complete
     S32 l_PaletteSize;
     S32 l_BytePalleteSize;
 
@@ -61,32 +61,41 @@ void Bitmap_Z::InitBmap(S32 i_SizeX, S32 i_SizeY, U8 i_Format, U8* i_Datas, U8* 
     l_PaletteSize = GetPalSize();
     GetBytePerPixel();
 
+
+
+
+
+
+
+
+
     if (i_Format  == BM_4 || i_Format == BM_8) {
         l_BytePalleteSize = 4 * l_PaletteSize;
-        m_Palette = Z_Alloc(l_BytePalleteSize, "BITMAP_PAL_ALLOC", __FILE__, __LINE__, 0x80);
+        m_Palette = AllocAlignC_Z(l_BytePalleteSize, 128, "BITMAP_PAL_ALLOC");
         if (i_Palette)
             memcpy(m_Palette, i_Palette, l_BytePalleteSize);
     }
-
     else {
         m_Palette = 0;
     }
 
 
 
-    
+
+
     if (i_Datas)
     {
         SetUniversal(i_Datas);
     }
     else
     {
-        m_Datas = Z_AllocContiguous(GetDataSize(), "BITMAP_DATA_ALLOC", __FILE__, __LINE__, 0x80);
+        m_Datas = AllocContiguousAlignC_Z(GetDataSize(), 128, "BITMAP_DATA_ALLOC");
 
         Clear(Color(0.0, 0.0, 0.0, 0.0));
     }
 
 }
+
 Float Bitmap_Z::GetBytePerPixel() {
     Float l_Result; // st7
 
@@ -189,6 +198,7 @@ U16 Bitmap_Z::GetColor(const Color& i_Color)
         case BM_1555:
             return (l_Blue >> 3) + 2 * (l_Green >> 3) + 32 * (l_Red >> 3) + 32 * (l_Alpha >> 7);
     }
+    return 0; // $SABE: TODO: Finish
 }
 
 #pragma optimize_for_size on 
@@ -242,14 +252,13 @@ U8 Bitmap_Z::GetBestPalEntry(U8 i_Red, U8 i_Green, U8 i_Blue, U8 i_Alpha)
     return l_BestMatch;
 }
 
-
 void Bitmap_Z::SetDatas(U8* i_Datas)
 {
     if (i_Datas != m_Datas)
     {
         if (m_Datas)
         {
-            Z_FreeContiguous(m_Datas);
+            FreeContiguous_Z(m_Datas);
         }
         m_Datas = 0;
         m_Datas = i_Datas;

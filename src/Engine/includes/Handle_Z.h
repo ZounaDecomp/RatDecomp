@@ -2,6 +2,9 @@
 #define _HANDLE_Z_H_
 #include "Types_Z.h"
 #include "Name_Z.h"
+#include "DynArray_Z.h"
+
+#define HandleGranularity 16384
 
 class BaseObject_Z;
 class BaseObject_ZHdl;
@@ -37,8 +40,36 @@ protected:
     HdlID m_RealID;
 };
 
+struct HandleRec_Z {
+    U8 m_Key;
+    U8 m_Flag;
+    Bool m_Marked;
+    BaseObject_Z* m_ObjPtr;
+    Name_Z m_Name;
+    S16 m_ClassID;
+    S16 m_xRamBlock;
+};
+
 class HandleManager_Z {
 public:
+    DynArray_Z<HandleRec_Z, HandleGranularity> m_HandleRecDA;
+    DynArray_Z<S32, HandleGranularity> m_FreeRecDA;
+    U8 m_Placeholder_NameToIdHashtable[0x10];
+    S32 m_UnkS32_0x20; // $SABE: Looks unused
+    U32 m_HandleRecDASize;
+    U32 m_NbFree;
+    Name_Z m_NullName;
+    BaseObject_ZHdl m_NullHandle;
+    Bool m_UnkBool_SetsDeltaTimeTo30fps_0x34;
+    Bool m_DoAsynchCheckHandles;
+    Bool m_ForbidCheckHandles;
+    Bool m_CheckHandlesQueued;
+    S32 m_NextHandleToDelete;
+    S32 m_NextManagerToMarkHandles;
+    U32 m_LastDeleteFrameNb;
+    S32 m_UnkS32_0x44; // $SABE: Gets tested in HandleManager_Z::MarkHandle but never passes
+    U32 m_FramesSpentDeleting;
+
     HandleManager_Z();
 
     BaseObject_Z* GetPtr(const BaseObject_ZHdl& i_Hdl) const;

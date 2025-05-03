@@ -219,9 +219,9 @@ void Hi_MemoryManager_Z::PrintStatus() {
 U32 MemoryGraphColor() {
     S32 l_NumParam = gData.Cons->GetNbParam();
     if (l_NumParam >= 2) {
-        return true;
+        return TRUE;
     }
-    return false;
+    return FALSE;
 }
 
 void Z_Verify() {
