@@ -22,7 +22,7 @@ public:
     virtual void PushSubItem(const Char* a1);
     virtual void PopSubItem();
     virtual void RemoveItem(S32 a1, S32 a2);
-    virtual void FindItem(int a1);
+    virtual void FindItem(S32 a1);
 };
 
 #endif

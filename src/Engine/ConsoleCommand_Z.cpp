@@ -7,7 +7,7 @@ extern "C" S32 strlen(const Char* str);
 void Console_Z::AddCommand(Char* i_Command, CommandProc i_Proc, Char* i_Desc)
 {
     S32 l_CommandName;
-    Command_Z* l_Command = New_Z Command_Z;
+    Command_Z* l_Command = NewL_Z(26) Command_Z;
     Char l_Char;
     Char l_Alias[16];
     S32 l_AliasSize;

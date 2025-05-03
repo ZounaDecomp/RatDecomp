@@ -13,7 +13,7 @@ extern Char * strcpy(Char *__dest,Char *__src);
 extern "C" void OSReport(const Char* __msg, ...);
 extern "C" void __start(void);
 
-extern "C" void exit(int __status);
+extern "C" void exit(S32 __status);
 extern "C" void* OSGetArenaHi(void);
 extern "C" void* OSGetArenaLo(void);
 
@@ -54,7 +54,7 @@ void InitProgram() {
     MemManager.Init();
     *(S32*)(&gData.m_Pad_0x14[0x794]) = 0;
     GetFlagsFromGame();
-    gData.Cons = New_Z GCConsole_Z;
+    gData.Cons = NewL_Z(283) GCConsole_Z;
     if (!(gData.Cons->InitConsole() & 0xFF)) {
         exit(0x14);
     }

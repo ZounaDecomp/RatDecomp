@@ -1,7 +1,7 @@
 #ifndef _TYPES_Z_H_
 #define _TYPES_Z_H_
 
-typedef char Bool;
+typedef bool Bool;
 typedef unsigned long U32;
 typedef long S32;
 typedef unsigned short U16;

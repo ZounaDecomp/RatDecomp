@@ -7,6 +7,7 @@
 #include "PopupMenu_Z.h"
 
 class ConsoleInterp_Z;
+class DrawInfo_Z;
 
 typedef U32 (*CommandProc)();
 
@@ -15,9 +16,6 @@ struct Command_Z {
     S32 m_Alias;
     CommandProc m_Proc;
     Command_Z* m_Prev;
-};
-
-struct DrawInfo_Z {
 };
 
 class Console_Z {

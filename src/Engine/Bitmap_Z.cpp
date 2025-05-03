@@ -1,7 +1,7 @@
 #include "Bitmap_Z.h"
 #include "Memory_Z.h"
 
-extern "C" void memcpy(void* dest, const void* src, int n);
+extern "C" void memcpy(void* dest, const void* src, S32 n);
 #pragma dont_inline on
 Bitmap_Z::Bitmap_Z()
 {
@@ -189,7 +189,7 @@ U8 Bitmap_Z::GetBestPalEntry(U8 i_Red, U8 i_Green, U8 i_Blue, U8 i_Alpha)
     U8 l_BestMatch = -1;
     U8 l_Red, l_Green, l_Blue, l_Alpha = 0;
     
-    for (int i = 0; i < GetNbEntries(); i++)
+    for (S32 i = 0; i < GetNbEntries(); i++)
     {
         if (m_PalFormat == PAL_8888)
         {

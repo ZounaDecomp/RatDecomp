@@ -1,6 +1,6 @@
 #include "LowMemory_Z.h"
 #include "Memory_Z.h"
-extern "C" void memset(void* dest, int c, int n);
+extern "C" void memset(void* dest, S32 c, S32 n);
 extern "C" void* OSGetArenaLo();
 extern "C" void* OSGetArenaHi();
 

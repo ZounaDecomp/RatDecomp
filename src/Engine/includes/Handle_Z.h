@@ -10,6 +10,7 @@
 class BaseObject_Z;
 class BaseObject_ZHdl;
 class HandleManager_Z;
+class DrawInfo_Z;
 
 #define GETPTR(a) gData.ClassMgr->GetPtr(a)
 
@@ -53,6 +54,18 @@ struct HandleRec_Z {
 
 class HandleManager_Z {
 public:
+    virtual void CheckHandles();
+    virtual void MarkHandles(S32 a1);
+    virtual void Update(Float a1);
+    virtual void Draw(DrawInfo_Z& a1);
+    virtual void Minimize();
+    virtual void ClearMark();
+    virtual void InvalidClassSize(S16 const a1);
+    virtual void RemoveResource(const BaseObject_ZHdl& a1);
+    virtual void ChangeHandleName(const BaseObject_ZHdl& a1, const Name_Z& a2);
+    virtual void DeleteHandle(const BaseObject_ZHdl& a1);
+    virtual void GetNameStrFromId(const Name_Z& a1);
+
     DynArray_Z<HandleRec_Z, HandleGranularity> m_HandleRecDA;
     DynArray_Z<S32, HandleGranularity> m_FreeRecDA;
     HashS32Table_Z m_Placeholder_NameToIdHashtable[0x10];

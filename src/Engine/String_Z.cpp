@@ -53,7 +53,7 @@ S32 fstricmp(const S8* a1, const S8* a2)
 
 void fsprintfID(S8* a1, U32 a2, U32 a3) {
     S8* v3 = a1 + 8;
-    for (int i = 0; i < 8; i++, a2 = a2 >> 4, a3 = a3 >> 4) {
+    for (S32 i = 0; i < 8; i++, a2 = a2 >> 4, a3 = a3 >> 4) {
         a1[i] = (a2 & 0xf) + 'A';
         *v3++ = (a3 & 0xf) + 'A';
     }

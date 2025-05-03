@@ -79,7 +79,7 @@ void* Hi_MemoryManager_Z::FindAllocID(S32 i_AllocID, Char* i_ResultDescription, 
 
 void* Hi_MemoryManager_Z::Realloc(void* i_Ptr, U32 i_Size, const Char* i_Comment, const Char* i_File, S32 i_Line) {
     Char l_Message[512];
-    int something;
+    S32 something;
 
     void* mem = s_realloc(i_Ptr, i_Size);
     if (mem == NULL) {
