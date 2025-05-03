@@ -30,7 +30,7 @@ public:
         }
     }
 
-    void SetSize(const U32 i_NewSize, const Bool i_ResizeOnlyIfGreater = FALSE) {
+    void SetSize(U32 i_NewSize, const Bool i_ResizeOnlyIfGreater = FALSE) {
         S32 i;
         if (i_NewSize > m_Size) {
             if ((i_NewSize - m_Size > m_ReservedSize) || !i_ResizeOnlyIfGreater) {
@@ -51,7 +51,7 @@ public:
                     m_ArrayPtr[i].~T();
                 }
             }
-            if (i_ResizeOnlyIfGreater && (m_ReservedSize + (m_Size - i_NewSize) <= DYA_RSVSIZEMAX)) {
+            if (i_ResizeOnlyIfGreater) {
                 m_ReservedSize += m_Size - i_NewSize;
                 m_Size = i_NewSize;
             } else {
@@ -107,15 +107,15 @@ public:
     {
         return m_ArrayPtr[Id];
     }
-
-    Weak_Z DynArray_Z<T, Granularity, DeleteObject, InitObject, Align>& operator=(const DynArray_Z<T, Granularity, DeleteObject, InitObject, Align>& i_Src) {
-        Flush();
+    
+    DynArray_Z<T, Granularity, DeleteObject, InitObject, Align>& operator=(const DynArray_Z<T, Granularity, DeleteObject, InitObject, Align>& i_Src) {
+        Empty();
         SetReserve(i_Src.GetSize());
-        for(U32 i = 0 ; i < i_Src.GetSize() ; ++i )
+        for(S32 i = 0 ; i < i_Src.GetSize() ; ++i )
         {
             Add(i_Src[i]);
         }
-        return * this;
+        return *this;
     }
 
 private:
