@@ -33,9 +33,9 @@ template<class T>
 class HashTableBase_Z {
     BitArray_Z* m_Status;
     T* m_Hash;
-    U32 m_NbElem;
-    U32 m_NbFree;
-    U32 m_ScanID;
+    S32 m_NbElem;
+    S32 m_NbFree;
+    S32 m_ScanID;
 
     HashTableBase_Z();
 
@@ -62,7 +62,7 @@ class HashTableBase_Z {
 
                     m_NbElem++;
 
-                    if ((m_NbFree == 0) || (m_NbFree < (m_Status->GetSize() >> 2)))
+                    if ((m_NbFree == 0) || (m_NbFree < ((S32)m_Status->GetSize() >> 2)))
                         Resize(m_NbElem);
 
                     return TRUE;
@@ -92,7 +92,7 @@ class HashTableBase_Z {
         T* l_OldHash = m_Hash;
         m_Status = NewL_Z(62) BitArray_Z(i_NewSize);
         m_Status->ClearAllBits();
-        m_Hash = (T*)AllocL_Z(sizeof(T) * i_NewSize, 65);
+        m_Hash = (T*)AllocCL_Z(sizeof(T) * i_NewSize, "HashTable_Z::Resize", 65);
         memset(m_Hash, 0, sizeof(T) * i_NewSize);
 
         S32 OldNbElem = m_NbElem;
