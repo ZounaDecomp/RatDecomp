@@ -10,6 +10,7 @@ BitArray_Z::~BitArray_Z() {
 BitArray_Z::BitArray_Z(S32 i_Size) {
     SetSize(i_Size);
 }
+
 // $VIOLET: Never used! but seems its needed to link properly
 BitArray_Z::BitArray_Z(const BitArray_Z &i_Src) {
     m_BitsDA = i_Src.m_BitsDA;

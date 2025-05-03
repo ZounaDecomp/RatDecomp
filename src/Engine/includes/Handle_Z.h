@@ -3,6 +3,7 @@
 #include "Types_Z.h"
 #include "Name_Z.h"
 #include "DynArray_Z.h"
+#include "HashTable_Z.h"
 
 #define HandleGranularity 16384
 
@@ -54,7 +55,7 @@ class HandleManager_Z {
 public:
     DynArray_Z<HandleRec_Z, HandleGranularity> m_HandleRecDA;
     DynArray_Z<S32, HandleGranularity> m_FreeRecDA;
-    U8 m_Placeholder_NameToIdHashtable[0x10];
+    HashS32Table_Z m_Placeholder_NameToIdHashtable[0x10];
     S32 m_UnkS32_0x20; // $SABE: Looks unused
     U32 m_HandleRecDASize;
     U32 m_NbFree;

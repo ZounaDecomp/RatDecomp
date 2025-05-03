@@ -2,8 +2,6 @@
 #include "Assert_Z.h"
 #include "Program_Z.h"
 
-// $SABE: There are a lot of random spaces in the file so the ASSERT line numbers properly align
-
 extern void s_free(void* i_Ptr);
 extern void* s_malloc(U32 i_Size, U32 i_Align); extern void* s_realloc(void* i_Ptr, U32 i_Size);
 extern void s_Init(void* i_HeapBase, U32 i_HeapSize); void s_ShowMostNbMalloc(void);
@@ -21,18 +19,13 @@ void Hi_MemoryManager_Z::Init() {
     return;
 }
 
-
-
-
-
-
 void Hi_MemoryManager_Z::Shut() {
     MarkMem(0);
     S32 NbLeak = ShowUnMarkedMem();
     if (NbLeak != 1) {
         ShowMostNbMalloc();
     }
-    ASSERT_Z(NbLeak==1, "Leaks Found");
+    ASSERTL_Z(NbLeak==1, "Leaks Found", 35);
 }
 
 Hi_MemoryManager_Z::Hi_MemoryManager_Z() {
@@ -47,22 +40,6 @@ void Hi_MemoryManager_Z::VerifyMem() {
     s_VerifyMem();
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 void* Hi_MemoryManager_Z::Alloc(U32 i_Size, const Char* i_Comment, const Char* i_File, S32 i_Line, U32 i_Align) {
     void* mem;
     Char l_Message[512];
@@ -70,7 +47,7 @@ void* Hi_MemoryManager_Z::Alloc(U32 i_Size, const Char* i_Comment, const Char* i
     mem = s_malloc(i_Size, i_Align);
     if (!mem) {
         sprintf(l_Message, "Not enough mem; alloc: %dkb \"%s\"", i_Size >> 10, i_Comment);
-        ASSERT_Z(mem, l_Message);
+        ASSERTL_Z(mem, l_Message, 73);
     }
     m_NbAlloc++;
     m_FrameNbAlloc++;
@@ -100,75 +77,6 @@ void* Hi_MemoryManager_Z::FindAllocID(S32 i_AllocID, Char* i_ResultDescription, 
     return s_getfindalloc(i_AllocID, i_ResultDescription, i_RangeStart, i_RangeEnd);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 void* Hi_MemoryManager_Z::Realloc(void* i_Ptr, U32 i_Size, const Char* i_Comment, const Char* i_File, S32 i_Line) {
     Char l_Message[512];
     int something;
@@ -176,7 +84,7 @@ void* Hi_MemoryManager_Z::Realloc(void* i_Ptr, U32 i_Size, const Char* i_Comment
     void* mem = s_realloc(i_Ptr, i_Size);
     if (mem == NULL) {
         sprintf(l_Message, "Not enough mem; re-alloc: %dkb", i_Size >> 10);
-        ASSERT_Z(mem, l_Message);
+        ASSERTL_Z(mem, l_Message, 179);
     }
     m_FrameNbAlloc++;
     return mem;
@@ -262,9 +170,6 @@ void* Z_AllocEnd(U32 i_Size, const Char* i_Comment, const Char* i_File, S32 i_Li
 
 typedef void* (*Memory_Manager__AllocContiguous)(MemoryManager_Z*,U32,const Char*,const Char*,S32,U32);
 
-
-
-
 void* Z_AllocContiguous(U32 i_Size, const Char* i_Comment, const Char* i_File, S32 i_Line, U32 i_Align) {
     MemoryManager_Z* l_MemMgr = &MemManager;
     void* result = l_MemMgr->Alloc(i_Size, i_Comment, i_File, i_Line, i_Align);
@@ -278,7 +183,6 @@ void* Z_Realloc(void* i_Ptr, U32 i_Size, const Char* i_Comment, const Char* i_Fi
 void Z_Free(void* i_Ptr) {
     return MemManager.Free(i_Ptr);
 }
-
 
 void Z_FreeContiguous(void* i_Ptr) {
     MemoryManager_Z* l_MemMgr = &MemManager;

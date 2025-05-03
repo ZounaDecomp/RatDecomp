@@ -14,7 +14,6 @@ Bitmap_Z::Bitmap_Z(S32 i_Width, S32 i_Height, U8 i_Format, U8* i_Datas)
     InitBmap(i_Width, i_Height, i_Format, i_Datas, 0);
 }
 
-
 void Bitmap_Z::Init() {
     m_Flag = 0;
     Bitmap_Z::EnableFlag(0x14);
@@ -46,7 +45,6 @@ void Bitmap_Z::Reset() {
     Init();
 }
 
-
 void Bitmap_Z::InitBmap(S32 i_SizeX, S32 i_SizeY, U8 i_Format, U8* i_Datas, U8* i_Palette) { // far from complete
     S32 l_PaletteSize;
     S32 l_BytePalleteSize;
@@ -61,17 +59,9 @@ void Bitmap_Z::InitBmap(S32 i_SizeX, S32 i_SizeY, U8 i_Format, U8* i_Datas, U8* 
     l_PaletteSize = GetPalSize();
     GetBytePerPixel();
 
-
-
-
-
-
-
-
-
     if (i_Format  == BM_4 || i_Format == BM_8) {
         l_BytePalleteSize = 4 * l_PaletteSize;
-        m_Palette = AllocAlignC_Z(l_BytePalleteSize, 128, "BITMAP_PAL_ALLOC");
+        m_Palette = AllocAlignCL_Z(l_BytePalleteSize, 128, "BITMAP_PAL_ALLOC", 74);
         if (i_Palette)
             memcpy(m_Palette, i_Palette, l_BytePalleteSize);
     }
@@ -79,17 +69,13 @@ void Bitmap_Z::InitBmap(S32 i_SizeX, S32 i_SizeY, U8 i_Format, U8* i_Datas, U8* 
         m_Palette = 0;
     }
 
-
-
-
-
     if (i_Datas)
     {
         SetUniversal(i_Datas);
     }
     else
     {
-        m_Datas = AllocContiguousAlignC_Z(GetDataSize(), 128, "BITMAP_DATA_ALLOC");
+        m_Datas = AllocContiguousAlignCL_Z(GetDataSize(), 128, "BITMAP_DATA_ALLOC", 92);
 
         Clear(Color(0.0, 0.0, 0.0, 0.0));
     }
@@ -123,13 +109,12 @@ Float Bitmap_Z::GetBytePerPixel() {
             l_Result = 0.0;
             break;
         default:
-            ASSERT_Z(FALSE, "Bitmap_Z::GetBytePerPixel");
+            ASSERTL_Z(FALSE, "Bitmap_Z::GetBytePerPixel", 117);
             l_Result = 0.0;
             break;
     }
     return l_Result;
 }
-
 
 S32 Bitmap_Z::GetPalSize()
 {
@@ -149,7 +134,7 @@ S32 Bitmap_Z::GetPalSize()
         case BM_I4A4:
             return 0;
         default:
-            ASSERT_Z(FALSE, "Bitmap_Z::GetPalSize");
+            ASSERTL_Z(FALSE, "Bitmap_Z::GetPalSize", 138);
             return 0;
     }
 }
@@ -176,6 +161,7 @@ S32 Bitmap_Z::GetNbEntries()
     else
         return l_Format == BM_8 ? 256 : 0;
 }
+
 //NOT DONE
 U16 Bitmap_Z::GetColor(const Color& i_Color)
 {
