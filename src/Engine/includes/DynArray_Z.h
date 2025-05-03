@@ -74,6 +74,10 @@ public:
             m_ReservedSize = l_NewReserved;
         }
     }
+    
+    T* GetArrayPtr() const {
+        return m_ArrayPtr;
+    }
 
     S32 GetSize() const {
         return m_Size;
@@ -103,9 +107,9 @@ public:
         SetSize(0);
     }
 
-    const T	&operator[](S32 Id) const
+    T &operator[](S32 i_Index) const
     {
-        return m_ArrayPtr[Id];
+        return m_ArrayPtr[i_Index];
     }
     
     DynArray_Z<T, Granularity, DeleteObject, InitObject, Align>& operator=(const DynArray_Z<T, Granularity, DeleteObject, InitObject, Align>& i_Src) {
@@ -122,9 +126,9 @@ private:
     void Realloc(S32 i_NewNbElement) {
         if (i_NewNbElement) {
             if (m_ArrayPtr)
-                m_ArrayPtr = (T*)Realloc_Z(m_ArrayPtr, i_NewNbElement * sizeof(T));
+                m_ArrayPtr = (T*)ReallocL_Z(m_ArrayPtr, i_NewNbElement * sizeof(T), 0x137);
             else
-                m_ArrayPtr = (T*)AllocAlign_Z(i_NewNbElement * sizeof(T), Align);
+                m_ArrayPtr = (T*)AllocAlignL_Z(i_NewNbElement * sizeof(T), Align, 0x13D);
         } else {
             if (m_ArrayPtr) {
                 Free_Z(m_ArrayPtr);
