@@ -126,19 +126,31 @@ void Z_FreeContiguous(void* i_Ptr);
 #undef Delete_Z
 #define Delete_Z delete
 
-#define Alloc_Z(Size) Z_Alloc(Size, "Anonymous Alloc", __FILE__, __LINE__, _ALLOCDEFAULTALIGN)
+#define AllocL_Z(Size, Line) Z_Alloc(Size, "Anonymous Alloc", __FILE__, Line, _ALLOCDEFAULTALIGN)
 #define AllocC_Z(Size, Comment) Z_Alloc(Size, Comment, __FILE__, __LINE__, _ALLOCDEFAULTALIGN)
+#define AllocCL_Z(Size, Comment, Line) Z_Alloc(Size, Comment, __FILE__, Line, _ALLOCDEFAULTALIGN)
+
 #define AllocContiguous_Z(Size) Z_AllocContiguous(Size, "Anonymous Alloc", __FILE__, __LINE__, _ALLOCDEFAULTALIGN)
+#define AllocContiguousL_Z(Size, Line) Z_AllocContiguous(Size, "Anonymous Alloc", __FILE__, Line, _ALLOCDEFAULTALIGN)
 #define AllocContiguousC_Z(Size, Comment) Z_AllocContiguous(Size, Comment, __FILE__, __LINE__, _ALLOCDEFAULTALIGN)
+#define AllocContiguousCL_Z(Size, Comment, Line) Z_AllocContiguous(Size, Comment, __FILE__, Line, _ALLOCDEFAULTALIGN)
+
 #define Realloc_Z(Ptr, Size) Z_Realloc(Ptr, Size, "Anonymous Alloc", __FILE__, __LINE__)
 #define ReallocL_Z(Ptr, Size, Line) Z_Realloc(Ptr, Size, "Anonymous Alloc", __FILE__, Line)
 #define ReallocC_Z(Ptr, Size, Comment) Z_Realloc(Ptr, Size, Comment, __FILE__, __LINE__)
+#define ReallocCL_Z(Ptr, Size, Comment, Line) Z_Realloc(Ptr, Size, Comment, __FILE__, Line)
+
 #define Free_Z(Ptr) Z_Free(Ptr)
 #define FreeContiguous_Z(Ptr) Z_FreeContiguous(Ptr)
+
 #define AllocAlign_Z(Size, Align) Z_Alloc(Size, "Anonymous Alloc", __FILE__, __LINE__, Align)
 #define AllocAlignL_Z(Size, Align, Line) Z_Alloc(Size, "Anonymous Alloc", __FILE__, Line, Align)
 #define AllocAlignC_Z(Size, Align, Comment) Z_Alloc(Size, Comment, __FILE__, __LINE__, Align)
+#define AllocAlignCL_Z(Size, Align, Comment, Line) Z_Alloc(Size, Comment, __FILE__, Line, Align)
+
 #define AllocContiguousAlign_Z(Size, Align) Z_AllocContiguous(Size, "Anonymous Alloc", __FILE__, __LINE__, Align)
+#define AllocContiguousAlignL_Z(Size, Align, Line) Z_AllocContiguous(Size, "Anonymous Alloc", __FILE__, Line, Align)
 #define AllocContiguousAlignC_Z(Size, Align, Comment) Z_AllocContiguous(Size, Comment, __FILE__, __LINE__, Align)
+#define AllocContiguousAlignCL_Z(Size, Align, Comment, Line) Z_AllocContiguous(Size, Comment, __FILE__, Line, Align)
 
 #endif
