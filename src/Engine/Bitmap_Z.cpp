@@ -162,23 +162,33 @@ S32 Bitmap_Z::GetNbEntries()
         return l_Format == BM_8 ? 256 : 0;
 }
 
-//NOT DONE
+// $VIOLET: This function might make me become religious
 U16 Bitmap_Z::GetColor(const Color& i_Color)
 {
-    U8 l_Red = (U8)(i_Color.m_Red * 255.0f);
-    U8 l_Green = (U8)(i_Color.m_Green * 255.0f);
-    U8 l_Blue = (U8)(i_Color.m_Blue * 255.0f);
-    U8 l_Alpha = (U8)(i_Color.m_Alpha * 255.0f);
+    U16 l_Red = (U16)(i_Color.m_Red * 255.0f);
+    U16 l_Green = (U16)(i_Color.m_Green * 255.0f);
+    U16 l_Blue = (U16)(i_Color.m_Blue * 255.0f);
+    U16 l_Alpha = (U16)(i_Color.m_Alpha * 255.0f);
 
     switch (m_Format)
     {
+        // $Violet: The comments following will give the colors with correct logic formatting, in their correct ASM order
+        case BM_565:
+            //green, blue, red.  in wrong order. because of course
+            return (((l_Red & 0xFFF8) << 8) + ((l_Green & 0xFFFC) << 3) + ((l_Blue >> 3) & 0x1FFF)) & 0xFFFF;
+        case BM_5551:
+            return (((l_Red & 0xFFF8) << 8) + ((l_Green & 0xFFF8) << 2) + ((l_Blue >> 3) & 0x1FFF) + ((l_Alpha >> 7) << 15)) & 0xFFFF;
+        case BM_4444:
+            return (l_Blue >> 4) + (l_Green >> 4 << 4) + (l_Red >> 4 << 8) + (l_Alpha >> 4 << 12);
+        case BM_1555:
+            return (l_Alpha >> 7) + (l_Blue >> 3 << 1) + (l_Green >> 3 << 6) + (l_Red >> 3 << 11);
         case BM_4:
         case BM_8:
             return GetBestPalEntry(l_Red, l_Green, l_Blue, l_Alpha);
-        case BM_5551:
-            return ((l_Red & 0xF8) << 8) | ((l_Green & 0xF8) << 3) | ((l_Blue & 0xF8) >> 3) | ((l_Alpha & 0x80) >> 7);
+        default:
+            return 0;
     }
-    return 0; // $SABE: TODO: Finish
+    return 0; 
 }
 
 #pragma optimize_for_size on 
