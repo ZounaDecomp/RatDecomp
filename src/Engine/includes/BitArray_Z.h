@@ -3,10 +3,10 @@
 #include "DynArray_Z.h"
 
 class BitArray_Z {
+public:
     U32DA m_BitsDA;
     S32 m_Size;
 
-public:
     BitArray_Z();
     BitArray_Z(S32 i_Size);
     BitArray_Z(const BitArray_Z &i_Src);
@@ -19,10 +19,10 @@ public:
     }
     void SetAllBits();
     void ClearAllBits();
-    U32 GetBit(S32 i_Bit) const { 
-        return (m_BitsDA[i_Bit >> 5] & (1 << (i_Bit & 0x1F)));
+    inline U32 GetBit(S32 i_Bit) const { 
+        return m_BitsDA[i_Bit >> 5] & (1 << (i_Bit & 0x1F));
     }
-    void SetBit(S32 i_Bit){
+    void SetBit(S32 i_Bit) {
         m_BitsDA[i_Bit >> 5] |= (1 << (i_Bit & 0x1F));
     }
     void ClearBitRange(S32 i_StartIndex, S32 i_EndIndex);

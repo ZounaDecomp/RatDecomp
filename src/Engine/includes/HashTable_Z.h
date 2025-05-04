@@ -22,7 +22,7 @@ public:
 
     inline S32 HashBase() const { return m_Value; }
     inline S32 HashIncrement() const {
-        return m_Value == 0;
+        return HashBase() == 0;
     }
 
     Bool operator==(const S32Hash_Z &i_Elem) { return i_Elem.m_Value == m_Value; }
@@ -37,21 +37,26 @@ class HashTableBase_Z {
     S32 m_NbFree;
     S32 m_ScanID;
 
+public:
     HashTableBase_Z();
 
     Weak_Z Bool Insert(const T &i_Ele) {
-        if (!m_Status)
+        if (!m_Status) {
             Resize(HASHTABLE_DEFAULT_SIZE);
+        }
+        
         S32 l_HashSize = m_Status->GetSize() - 1;
         S32 l_HashID = i_Ele.HashBase() & l_HashSize;
         S32 l_HashInc = i_Ele.HashIncrement();
         S32 l_ShadowHashID = -1;
-        if (!(l_HashInc & 0x1))
+        if (!(l_HashInc & 0x1)) {
             l_HashInc++;
-
+        }
+        
         for (;;) {
-            if (!m_Status->GetBit(l_HashID)) {
+            if (!(m_Status->GetBit(l_HashID))) {
                 if (!m_Hash[l_HashID].m_Ref) {
+                //if (m_Hash[l_HashID].IsEmpty()) {
                     if (l_ShadowHashID < 0)
                         m_NbFree--;
                     else
@@ -61,23 +66,22 @@ class HashTableBase_Z {
                     *(m_Hash + l_HashID) = i_Ele;
 
                     m_NbElem++;
-
-                    if ((m_NbFree == 0) || (m_NbFree < ((S32)m_Status->GetSize() >> 2)))
+                    
+                    if ((m_NbFree == 0) || (m_NbFree < ((S32)m_Status->GetSize() >> 2))) {
                         Resize(m_NbElem);
-
+                    }
                     return TRUE;
-                } else {
-                    if (l_ShadowHashID < 0)
-                        l_ShadowHashID = l_HashID;
+                } else if (l_ShadowHashID < 0) {
+                    l_ShadowHashID = l_HashID;
                 }
-            } else {
-                if (m_Hash[l_HashID] == i_Ele)
-                    return FALSE;
+            } else if (m_Hash[l_HashID] == i_Ele) {
+                return FALSE;
             }
             l_HashID = (l_HashID + l_HashInc) & l_HashSize;
         }
     }
 
+private:
     Weak_Z void Resize(S32 i_NewSize) {
         S32 l_OldSize;
         S32 l_NextScan;
@@ -105,7 +109,7 @@ class HashTableBase_Z {
 
         l_NextScan = 0;
         while ((l_NextScan = l_OldStatus->FindFirstBit(TRUE, l_NextScan)) >= 0) {
-            Bool bResult = Insert(*(l_OldHash + l_NextScan));
+            Insert(*(l_OldHash + l_NextScan));
             l_NextScan++;
         }
         Free_Z(l_OldHash);

@@ -107,6 +107,11 @@ public:
         SetSize(0);
     }
 
+    T &Get(S32 i_Index)
+    {
+        return m_ArrayPtr[i_Index];
+    }
+
     T &operator[](S32 i_Index) const
     {
         return m_ArrayPtr[i_Index];
