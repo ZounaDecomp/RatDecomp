@@ -22,6 +22,8 @@ enum BmFormat_Z
     BM_I8A8         = 0x10        ,             // I4A4
 };
 
+// BM_565 BM_5551 BM_4444 BM_1555 BM_4 BM_8
+
 enum PalFormat_Z
 {
     PAL_3444        = 0x01        ,             // 16 ARGB
@@ -39,6 +41,50 @@ enum BmTransp
     BM_NO_TRANSP    = 0,
     BM_TRANSP_ONE   = 1,
     BM_TRANSP       = 2
+};
+
+union BM_5551_Z
+{
+    U16 m_Color;
+    struct
+    {
+        U8 m_Red : 5;
+        U8 m_Green : 5;
+        U8 m_Blue : 5;
+        U8 m_Alpha : 1;
+    };
+};
+union BM_565_Z
+{
+    U16 m_Color;
+    struct
+    {
+        U8 m_Red : 5;
+        U8 m_Green : 6;
+        U8 m_Blue : 5;
+    };
+};
+union BM_4444_Z
+{
+    U16 m_Color;
+    struct
+    {
+        U8 m_Red : 4;
+        U8 m_Green : 4;
+        U8 m_Blue : 4;
+        U8 m_Alpha : 4;
+    };
+};
+union BM_1555_Z
+{
+    U16 m_Color;
+    struct
+    {
+        U8 m_Red : 5;
+        U8 m_Green : 5;
+        U8 m_Blue : 5;
+        U8 m_Alpha : 1;
+    };
 };
 
 class Color {

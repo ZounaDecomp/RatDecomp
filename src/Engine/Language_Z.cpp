@@ -2,9 +2,9 @@
 #include "Name_Z.h"
 
 Name_Z CharNames[20] = {
-    Name_Z::GetID("EMPTY", 0), Name_Z::GetID("CROSS", 0), Name_Z::GetID("CIRCLE", 0), Name_Z::GetID("SQUARE", 0), Name_Z::GetID("TRIANGLE", 0),
-    Name_Z::GetID("UPDOWN", 0), Name_Z::GetID("LEFTRIGHT", 0), Name_Z::GetID("DIRPAD", 0), Name_Z::GetID("L1", 0),
-    Name_Z::GetID("L2", 0), Name_Z::GetID("R1", 0), Name_Z::GetID("R2", 0), Name_Z::GetID("L3", 0), Name_Z::GetID("R3", 0),
-    Name_Z::GetID("UP", 0), Name_Z::GetID("DOWN", 0), Name_Z::GetID("LEFT", 0), Name_Z::GetID("RIGHT", 0),
-    Name_Z::GetID("SELECT", 0), Name_Z::GetID("START", 0),
+    Name_Z("EMPTY"), Name_Z("CROSS"), Name_Z("CIRCLE"), Name_Z("SQUARE"), Name_Z("TRIANGLE"),
+    Name_Z("UPDOWN"), Name_Z("LEFTRIGHT"), Name_Z("DIRPAD"), Name_Z("L1"),
+    Name_Z("L2"), Name_Z("R1"), Name_Z("R2"), Name_Z("L3"), Name_Z("R3"),
+    Name_Z("UP"), Name_Z("DOWN"), Name_Z("LEFT"), Name_Z("RIGHT"),
+    Name_Z("SELECT"), Name_Z("START"),
 };
