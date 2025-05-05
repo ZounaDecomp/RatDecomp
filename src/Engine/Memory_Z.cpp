@@ -21,11 +21,11 @@ void Hi_MemoryManager_Z::Init() {
 
 void Hi_MemoryManager_Z::Shut() {
     MarkMem(0);
-    S32 NbLeak = ShowUnMarkedMem();
-    if (NbLeak != 1) {
+    S32 l_NbLeak = ShowUnMarkedMem();
+    if (l_NbLeak != 1) {
         ShowMostNbMalloc();
     }
-    ASSERTL_Z(NbLeak==1, "Leaks Found", 35);
+    ASSERTLE_Z(l_NbLeak == 1, "Leaks Found", 35, "NbLeak==1");
 }
 
 Hi_MemoryManager_Z::Hi_MemoryManager_Z() {
@@ -41,28 +41,28 @@ void Hi_MemoryManager_Z::VerifyMem() {
 }
 
 void* Hi_MemoryManager_Z::Alloc(U32 i_Size, const Char* i_Comment, const Char* i_File, S32 i_Line, U32 i_Align) {
-    void* mem;
+    void* l_Mem;
     Char l_Message[512];
 
-    mem = s_malloc(i_Size, i_Align);
-    if (!mem) {
+    l_Mem = s_malloc(i_Size, i_Align);
+    if (!l_Mem) {
         sprintf(l_Message, "Not enough mem; alloc: %dkb \"%s\"", i_Size >> 10, i_Comment);
-        ASSERTL_Z(mem, l_Message, 73);
+        ASSERTLE_Z(l_Mem, l_Message, 73, "mem");
     }
     m_NbAlloc++;
     m_FrameNbAlloc++;
-    return mem;
+    return l_Mem;
 }
 
 void* Hi_MemoryManager_Z::AllocEnd(U32 i_Size, const Char* i_Comment, const Char* i_File, S32 i_Line, U32 i_Align) {
-    void* mem;
-    mem = s_malloc_end(i_Size, i_Align);
-    if (!mem) {
-        return mem;
+    void* l_Mem;
+    l_Mem = s_malloc_end(i_Size, i_Align);
+    if (!l_Mem) {
+        return l_Mem;
     }
     m_NbAlloc++;
     m_FrameNbAlloc++;
-    return mem;
+    return l_Mem;
 }
 
 void* Hi_MemoryManager_Z::FindAlloc(void* i_RangeStart, void* i_RangeEnd) {
@@ -81,13 +81,13 @@ void* Hi_MemoryManager_Z::Realloc(void* i_Ptr, U32 i_Size, const Char* i_Comment
     Char l_Message[512];
     S32 something;
 
-    void* mem = s_realloc(i_Ptr, i_Size);
-    if (mem == NULL) {
+    void* l_Mem = s_realloc(i_Ptr, i_Size);
+    if (l_Mem == NULL) {
         sprintf(l_Message, "Not enough mem; re-alloc: %dkb", i_Size >> 10);
-        ASSERTL_Z(mem, l_Message, 179);
+        ASSERTLE_Z(l_Mem, l_Message, 179, "mem");
     }
     m_FrameNbAlloc++;
-    return mem;
+    return l_Mem;
 }
 
 void Hi_MemoryManager_Z::Free(void* i_Ptr) {

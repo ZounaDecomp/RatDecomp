@@ -69,7 +69,7 @@ S32 Crc32Tab[] = {
     0xBCB4666D, 0xB8757BDA, 0xB5365D03, 0xB1F740B4
 };
 
-S32 Name_Z::GetID(const S8* data, U32 result) {
+U32 Name_Z::GetID(const S8* data, U32 result) {
     U8* data2 = (U8*)data;
     while (*data2)
     {
@@ -79,7 +79,7 @@ S32 Name_Z::GetID(const S8* data, U32 result) {
     return result;
 }
 
-S32 Name_Z::GetID(U8* data, U32 size, U32 result) {
+U32 Name_Z::GetID(U8* data, U32 size, U32 result) {
     while (size--) {
         result = (Crc32Tab[(result >> 0x18 ^ g_ChartoLower[*data++])]) ^ result << 8;
     }
