@@ -9,7 +9,7 @@
 class ConsoleInterp_Z;
 class DrawInfo_Z;
 
-typedef U32 (*CommandProc)();
+typedef Bool (*CommandProc)();
 
 struct Command_Z {
     S32 m_Command;
@@ -60,7 +60,7 @@ private:
 
 public:
     void SetVar(Char *i_Var);
-    void AddCommand(Char* i_Command, CommandProc i_Proc, Char* i_Desc);
+    void AddCommand(const Char* i_Command, CommandProc i_Proc, const Char* i_Desc);
     U32 GetNbParam() { return m_NbParam; }
 
     virtual ~Console_Z();
