@@ -181,7 +181,7 @@ void* Z_Realloc(void* i_Ptr, U32 i_Size, const Char* i_Comment, const Char* i_Fi
 }
 
 void Z_Free(void* i_Ptr) {
-    return MemManager.Free(i_Ptr);
+    MemManager.Free(i_Ptr);
 }
 
 void Z_FreeContiguous(void* i_Ptr) {

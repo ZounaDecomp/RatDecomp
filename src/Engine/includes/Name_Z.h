@@ -20,16 +20,17 @@ public:
         }
         m_ID = result;
     }
-    Weak_Z Name_Z(const S32 a1) { m_ID = a1; }
+    Weak_Z Name_Z(const S32 a1) { m_ID = (U32)a1; }
     Name_Z() { m_ID = 0; }
     void SetID(S32 a1) { m_ID = a1; }
-    static S32 GetID(const S8* a1, U32 a2);
-    static S32 GetID(U8* data, U32 size, U32 result);
+    static U32 GetID(const S8* a1, U32 a2);
+    static U32 GetID(U8* data, U32 size, U32 result);
     Weak_Z Bool operator==(const Name_Z& a1) const { return m_ID == a1.m_ID; }
-    Weak_Z Bool operator==(Name_Z a1) const { return m_ID == a1.m_ID; }
+    Weak_Z Bool operator==(Name_Z a1) { return m_ID == a1.m_ID; }
+    Weak_Z Bool operator!=(const Name_Z& a1) const { return m_ID != a1.m_ID; }
+    Weak_Z Bool operator!=(Name_Z a1) { return m_ID != a1.m_ID; }
 
-private:
-	S32 m_ID;
+	U32 m_ID;
 };
 
 #endif

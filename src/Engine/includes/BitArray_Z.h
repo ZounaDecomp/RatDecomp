@@ -13,7 +13,7 @@ public:
     ~BitArray_Z();
     BitArray_Z& operator=(const BitArray_Z &i_Src);
 
-    inline U32 GetSize() const { return m_Size; }
+    inline S32 GetSize() const { return m_Size; }
     void ClearBit(S32 i_Bit) {
         m_BitsDA[i_Bit >> 5] &= ~(1 << (i_Bit & 0x1F));
     }
@@ -26,7 +26,7 @@ public:
         m_BitsDA[i_Bit >> 5] |= (1 << (i_Bit & 0x1F));
     }
     void ClearBitRange(S32 i_StartIndex, S32 i_EndIndex);
-    S32 FindFirstBit(bool i_State, S32 i_firstBitToCheck) const;
+    S32 FindFirstBit(bool i_State = TRUE, S32 i_firstBitToCheck = 0) const;
     S32 FindLastBit(bool i_State, S32 i_firstBitToCheck) const;
     inline void SetSize(S32 i_Size) {
         m_Size = i_Size;
