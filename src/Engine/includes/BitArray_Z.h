@@ -19,7 +19,7 @@ public:
     }
     void SetAllBits();
     void ClearAllBits();
-    inline U32 GetBit(S32 i_Bit) const { 
+    U32 GetBit(S32 i_Bit) const { 
         return m_BitsDA[i_Bit >> 5] & (1 << (i_Bit & 0x1F));
     }
     void SetBit(S32 i_Bit) {
