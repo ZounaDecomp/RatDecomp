@@ -165,7 +165,7 @@ S32 Bitmap_Z::GetNbEntries()
 // $VIOLET: This function might make me become religious
 U16 Bitmap_Z::GetColor(const Color& i_Color)
 {
-    U16 l_ReturnValue;
+    U16 l_ReturnValue = 0;
     U32 l_NewRed, l_NewGreen, l_NewBlue, l_NewAlpha;
     U16 l_Red = (U16)(i_Color.m_Red * 255.0f);
     U16 l_Green = (U16)(i_Color.m_Green * 255.0f);

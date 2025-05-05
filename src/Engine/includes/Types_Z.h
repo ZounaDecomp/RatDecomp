@@ -2,18 +2,17 @@
 #define _TYPES_Z_H_
 
 typedef bool Bool;
-typedef unsigned long U32;
-typedef long S32;
-typedef unsigned short U16;
-typedef short S16;
+typedef char Char;
 typedef unsigned char U8;
 typedef char S8;
-typedef char Char;
-typedef float F32;
-typedef double F64;
+typedef unsigned short U16;
+typedef short S16;
+typedef unsigned long U32;
+typedef long S32;
 typedef unsigned long long U64;
 typedef long long S64;
 typedef float Float;
+typedef double Double;
 
 #undef S32_MIN
 #define S32_MIN -2147483648

@@ -28,7 +28,7 @@ public:
     ClassNameResManager_Z() : m_ClassHT(64) {
     }
 
-    void** Load(const Name_Z& i_Name, const Name_Z& i_FileName, void** i_Data);
+    void Load(const Name_Z& i_Name, const Name_Z& i_FileName, void** i_Data);
     void UpdateLinks(const Name_Z& i_Name, const Name_Z& i_FileName);
     Bool GetClassID(const Name_Z& i_Name, const Name_Z& i_FileName, S32& o_ClassID, Bool i_AddClass = TRUE);
 

@@ -8,7 +8,7 @@ void ClassNameResManager_Z::Shut() {
     }
 }
 
-void** ClassNameResManager_Z::Load(const Name_Z& i_Name, const Name_Z& i_FileName, void** i_Data) {
+void ClassNameResManager_Z::Load(const Name_Z& i_Name, const Name_Z& i_FileName, void** i_Data) {
     S32 l_ID;
     GetClassID(i_Name, i_FileName, l_ID);
     m_ClassResHA[l_ID].Load(i_Data);

@@ -90,7 +90,7 @@ public:
     {
         return s_ShowUnMarkedMem();
     };
-    virtual U32 ShowMostNbMalloc()
+    virtual void ShowMostNbMalloc()
     {
         s_ShowMostNbMalloc();
     };
