@@ -9,15 +9,15 @@ void ClassNameResManager_Z::Shut() {
 }
 
 void ClassNameResManager_Z::Load(const Name_Z& i_Name, const Name_Z& i_FileName, void** i_Data) {
-    S32 l_ID;
-    GetClassID(i_Name, i_FileName, l_ID);
-    m_ClassResHA[l_ID].Load(i_Data);
+    S32 l_ClassID;
+    GetClassID(i_Name, i_FileName, l_ClassID);
+    m_ClassResHA[l_ClassID].Load(i_Data);
 }
 
 void ClassNameResManager_Z::UpdateLinks(const Name_Z& i_Name, const Name_Z& i_FileName) {
-    S32 l_ID;
-    GetClassID(i_Name, i_FileName, l_ID);
-    m_ClassResHA[l_ID].UpdateLinks();
+    S32 l_ClassID;
+    GetClassID(i_Name, i_FileName, l_ClassID);
+    m_ClassResHA[l_ClassID].UpdateLinks();
 }
 
 Bool ClassNameResManager_Z::GetClassID(const Name_Z& i_Name, const Name_Z& i_FileName, S32& o_ClassID, Bool i_AddClass) {
@@ -40,6 +40,10 @@ Bool ClassNameResManager_Z::GetClassID(const Name_Z& i_Name, const Name_Z& i_Fil
     return FALSE;
 }
 
+Weak_Z ClassNameRes_Z::ClassNameRes_Z() {
+    m_UnkS32_0x8 = -1;
+}
+
 Weak_Z HashS32Table_Z::HashTableBase_Z() {
     m_NbElem = 0;
     m_NbFree = 0;
@@ -49,12 +53,60 @@ Weak_Z HashS32Table_Z::HashTableBase_Z() {
     Resize(HASHTABLE_DEFAULT_SIZE);
 }
 
-void ClassNameResManager_Z::MarkHandles() {
+Bool ClassNameResManager_Z::MarkHandles() {
+    S32 l_ClassID;
+    l_ClassID = m_ClassResHA.FindFirst();
+
+    while (l_ClassID >= 0) {
+        m_ClassResHA[l_ClassID].MarkHandles();
+        l_ClassID = m_ClassResHA.FindNext(l_ClassID);
+    }
+    return TRUE;
+}
+
+void ClassNameResManager_Z::MarkHandlesFromClass(const Name_Z& i_Name, const Name_Z& i_FileName) {
+    S32 l_ClassID;
+    if (GetClassID(i_Name, i_FileName, l_ClassID, FALSE)) {
+        m_ClassResHA[l_ClassID].MarkHandles();
+    }
+}
+
+Bool ClassNameResManager_Z::Minimize() {
+    S32 l_ClassID;
+    m_ClassHT.Minimize();
+    m_ClassResHA.Minimize();
+    l_ClassID = m_ClassResHA.FindFirst();
+    while (l_ClassID >= 0) {
+        m_ClassResHA[l_ClassID].Minimize();
+        l_ClassID = m_ClassResHA.FindNext(l_ClassID);
+    }
+    return TRUE;
+}
+
+void ClassNameResManager_Z::RemoveClassId(const S32 i_ClassID )
+{
+    if (!m_ClassResHA.IsElement(i_ClassID))
+    { 
+        return;
+    }
+
+    m_ClassResHA[i_ClassID].Flush();
+    m_ClassResHA.Remove(i_ClassID);
+}
+
+void ClassNameResManager_Z::RemoveClassId(const Name_Z& i_Name, const Name_Z& i_FileName) {
+    S32 l_ClassID;
+    if (GetClassID(i_Name, i_FileName, l_ClassID, FALSE)) {
+        RemoveClassId(l_ClassID);
+    }
+}
+
+BaseObject_ZHdl ClassNameResManager_Z::GetObjectInClass(const S32 i_ClassID, const S32 i_EnumID) {
 
 }
 
-void ClassNameResManager_Z::Minimize() {
-
+void ClassNameRes_Z::Minimize() {
+    m_ResourceHT.Minimize();
 }
 
 void ClassNameRes_Z::Load(void** l_Data) {
@@ -64,6 +116,11 @@ void ClassNameRes_Z::Load(void** l_Data) {
 void ClassNameRes_Z::UpdateLinks() {
 
 }
+
+void ClassNameRes_Z::MarkHandles() {
+
+}
+
 
 // $SABE: Only here for now to match HashTableBase_Z::Insert
 void dummy() {

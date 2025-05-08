@@ -30,7 +30,7 @@ public:
         }
     }
 
-    void SetSize(U32 i_NewSize, const Bool i_ResizeOnlyIfGreater = FALSE) {
+    void SetSize(int i_NewSize, const Bool i_ResizeOnlyIfGreater = FALSE) {
         S32 i;
         if (i_NewSize > m_Size) {
             if ((i_NewSize - m_Size > m_ReservedSize) || !i_ResizeOnlyIfGreater) {
@@ -47,7 +47,7 @@ public:
             m_Size = i_NewSize;
         } else if (i_NewSize < m_Size) {
             if (DeleteObject) {
-                for (i = i_NewSize; i < m_Size; i++) {
+                for (i = m_Size - 1; i >= i_NewSize; i--) {
                     m_ArrayPtr[i].~T();
                 }
             }
@@ -82,7 +82,7 @@ public:
     S32 GetSize() const {
         return m_Size;
     }
-
+    
     S32 Add() {
         if (!m_ReservedSize) {
             m_ReservedSize = Granularity;
@@ -117,6 +117,12 @@ public:
     void Flush()
     {
         SetSize(0);
+    }
+
+    void Minimize()
+    {
+        Realloc(m_Size);
+        m_ReservedSize = 0;
     }
 
     T &Get(S32 i_Index) const

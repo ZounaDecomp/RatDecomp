@@ -165,6 +165,10 @@ public:
             l_HashID = (l_HashID + l_HashInc) & l_HashSize;
         }
     }
+
+    void Minimize() {
+        Resize(m_NbElem);
+    }
 };
 
 typedef HashTableBase_Z<S32Hash_Z> HashS32Table_Z;

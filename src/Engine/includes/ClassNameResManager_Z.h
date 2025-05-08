@@ -2,6 +2,7 @@
 #define _CLASSNAMERESMANAGER_Z_H_
 #include "HashTable_Z.h"
 #include "HoleArray_Z.h"
+#include "Handle_Z.h"
 
 class ClassNameRes_Z {
 public:
@@ -18,6 +19,8 @@ public:
 
     void Load(void** l_Data);
     void UpdateLinks();
+    void MarkHandles();
+    void Minimize();
 };
 
 class ClassNameResManager_Z {
@@ -31,10 +34,14 @@ public:
     void Load(const Name_Z& i_Name, const Name_Z& i_FileName, void** i_Data);
     void UpdateLinks(const Name_Z& i_Name, const Name_Z& i_FileName);
     Bool GetClassID(const Name_Z& i_Name, const Name_Z& i_FileName, S32& o_ClassID, Bool i_AddClass = TRUE);
+    void MarkHandlesFromClass(const Name_Z& i_Name, const Name_Z& i_FileName);
+    void RemoveClassId(const S32 i_ClassID);
+    void RemoveClassId(const Name_Z& i_Name, const Name_Z& i_FileName);
+    BaseObject_ZHdl GetObjectInClass(const S32 i_ClassID, const S32 i_EnumID);
 
     virtual void Shut();
-    virtual void MarkHandles();
-    virtual void Minimize();
+    virtual Bool MarkHandles();
+    virtual Bool Minimize();
 };
 
 #endif

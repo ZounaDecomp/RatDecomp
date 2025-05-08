@@ -5,8 +5,8 @@
 class AnimationManager_Z : public ClassNameResManager_Z {
     AnimationManager_Z();
 
-    virtual void MarkHandles();
-    virtual void Minimize();
+    virtual Bool MarkHandles();
+    virtual Bool Minimize();
     virtual ~AnimationManager_Z();
 };
 

@@ -15,6 +15,17 @@ public:
         m_NbElement = 0;
     }
 
+    S32 GetSize() const { return m_Size; }
+
+    U32 IsElement(S32 i_Index) const
+    {
+        if (i_Index < 0 || i_Index >= m_Size) {
+            return 0;
+        } else {
+            return m_BA.GetBit(i_Index);
+        }
+    }
+
     S32 FindFirst(void) const
     {
         if(m_Size==0) return  -1;
@@ -43,7 +54,7 @@ public:
             return l_Free;
         }
     }
-
+    
     S32 Add() {
         S32 l_Free;
         if (m_Size == 0) l_Free = -1;
@@ -58,6 +69,33 @@ public:
             new (&m_DA[l_Free]) T;
             m_BA.SetBit(l_Free);
             return l_Free;
+        }
+    }
+
+    Bool Remove(S32 i_Index) {
+        if (m_BA.GetBit(i_Index)) {
+            m_DA[i_Index].~T();
+            m_BA.ClearBit(i_Index);
+            m_NbElement--;
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+    }
+
+    void Minimize() {
+        S32 l_LastID = m_BA.FindLastBit(TRUE,m_BA.m_Size - 1);
+        if (l_LastID == -1) {
+            m_DA.Flush();
+            m_BA.Flush();
+            m_Size = 0;
+            m_NbElement = 0;
+        } else {
+            m_Size = l_LastID + 1;
+            m_DA.SetSize(m_Size);
+            m_BA.SetSize(m_Size);
+            m_DA.Minimize();
+            m_BA.Minimize();
         }
     }
 
