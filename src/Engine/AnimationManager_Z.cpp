@@ -3,12 +3,14 @@
 AnimationManager_Z::AnimationManager_Z() {
 }
 
-void AnimationManager_Z::MarkHandles() {
-
+Bool AnimationManager_Z::MarkHandles() {
+    ClassNameResManager_Z::MarkHandles();
+    return TRUE;
 }
 
-void AnimationManager_Z::Minimize() {
-
+Bool AnimationManager_Z::Minimize() {
+    ClassNameResManager_Z::Minimize();
+    return TRUE;
 }
 
 AnimationManager_Z::~AnimationManager_Z() {
