@@ -788,7 +788,7 @@ config.libs = [
             Object(NonMatching, "Engine/NetDataSet_Z.cpp"),
             Object(NonMatching, "Engine/Mesh_Z.cpp"),
             Object(NonMatching, "Engine/CameraDraw_Z.cpp"),
-            Object(NonMatching, "Engine/Timer_Z.cpp"),
+            Object(Matching,    "Engine/Timer_Z.cpp"),
             Object(NonMatching, "Engine/Spline_Z.cpp"),
             Object(NonMatching, "Engine/ConsoleMessage_Z.cpp"),
             Object(NonMatching, "Engine/Skel_Z.cpp"),

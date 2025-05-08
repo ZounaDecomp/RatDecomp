@@ -2,7 +2,7 @@
 #define _MAIN_Z_H_
 #include "Types_Z.h"
 #include "Handle_Z.h"
-
+#include "Timer_Z.h"
 extern Char * strcpy(Char *__dest,Char *__src);
 extern "C" void memset(void *__s,S32 __c,U32 __n);
 class GCConsole_Z;

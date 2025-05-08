@@ -43,50 +43,6 @@ enum BmTransp
     BM_TRANSP       = 2
 };
 
-union BM_5551_Z
-{
-    U16 m_Color;
-    struct
-    {
-        U8 m_Red : 5;
-        U8 m_Green : 5;
-        U8 m_Blue : 5;
-        U8 m_Alpha : 1;
-    };
-};
-union BM_565_Z
-{
-    U16 m_Color;
-    struct
-    {
-        U8 m_Red : 5;
-        U8 m_Green : 6;
-        U8 m_Blue : 5;
-    };
-};
-union BM_4444_Z
-{
-    U16 m_Color;
-    struct
-    {
-        U8 m_Red : 4;
-        U8 m_Green : 4;
-        U8 m_Blue : 4;
-        U8 m_Alpha : 4;
-    };
-};
-union BM_1555_Z
-{
-    U16 m_Color;
-    struct
-    {
-        U8 m_Red : 5;
-        U8 m_Green : 5;
-        U8 m_Blue : 5;
-        U8 m_Alpha : 1;
-    };
-};
-
 class Color {
 
 public:
@@ -105,13 +61,14 @@ public:
     Bitmap_Z(S32 i_Width, S32 i_Height, U8 i_Format, U8* i_Datas);
     virtual void Init();
     virtual ~Bitmap_Z();
-    virtual void Load(void* a1);
+    virtual void Load(void** i_BigFile);
     virtual void Clean();
     void InitBmap(S32 l_SizeX, S32 l_SizeY, U8 l_Format, U8* i_Datas, U8* i_Palette);
     Weak_Z void EnableFlag(U16 i_Flag)   {m_Flag|=i_Flag;}
     U8 GetFormat() {return m_Format;}
     Weak_Z void* GetDatas() {return m_Datas;}
     void SetDatas(U8* i_Datas);
+    void SetTransp(U8 i_Transp);
     void Clear(Color i_Color);
     U8 GetBestPalEntry(U8 i_Red, U8 i_Green, U8 i_Blue, U8 i_Alpha);
     U16 GetColor(const Color& i_Color);
