@@ -38,7 +38,7 @@ public:
         return m_BA.FindFirstBit(TRUE, i_Cur);
     }
 
-    S32 Add(const T & i_Elem) {
+    S32 Add(const T& i_Elem) {
         S32 l_Free;
         if (m_Size == 0) l_Free = -1;
         else l_Free = m_BA.FindFirstBit(FALSE);
@@ -99,20 +99,21 @@ public:
         }
     }
 
-    T & Get(S32 i_Index) {
+    T& Get(S32 i_Index) {
         return m_DA[(U32)i_Index];
     }
 
-    const T & Get(S32 i_Index) const {
+    const T& Get(S32 i_Index) const {
         return m_DA[(U32)i_Index];
     }
 
-    T & operator[](S32 i_Index) {
+    T& operator[](S32 i_Index) {
         return Get(i_Index);
     }
 
-    const T & operator[](S32 i_Index) const {
+    const T& operator[](S32 i_Index) const {
         return Get(i_Index);
     }
 };
+
 #endif

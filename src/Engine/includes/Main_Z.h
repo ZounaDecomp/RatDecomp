@@ -1,7 +1,7 @@
 #ifndef _MAIN_Z_H_
 #define _MAIN_Z_H_
 #include "Types_Z.h"
-#include "Handle_Z.h"
+#include "ClassManager_Z.h"
 #include "Timer_Z.h"
 extern Char * strcpy(Char *__dest,Char *__src);
 extern "C" void memset(void *__s,S32 __c,U32 __n);
@@ -18,7 +18,7 @@ public:
     U8 m_Pad_0x0[0x4];
     GCConsole_Z* Cons;
     U8 m_Pad_0xc[0x4]; // GCRenderer_Z
-    HandleManager_Z* ClassMgr; // Actually is ClassManager_Z
+    ClassManager_Z* ClassMgr;
     U8 m_Pad_0x14[0x7CC];
 
     inline Globals() {

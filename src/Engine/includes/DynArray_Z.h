@@ -95,7 +95,7 @@ public:
         return m_Size - 1;
     }
 
-    S32 Add(const T &i_Ele) {
+    S32 Add(const T& i_Ele) {
         if (!m_ReservedSize) {
             m_ReservedSize = Granularity;
             Realloc(m_ReservedSize + m_Size);
@@ -125,12 +125,12 @@ public:
         m_ReservedSize = 0;
     }
 
-    T &Get(S32 i_Index) const
+    T& Get(S32 i_Index) const
     {
         return m_ArrayPtr[i_Index];
     }
 
-    T &operator[](S32 i_Index) const
+    T& operator[](S32 i_Index) const
     {
         return m_ArrayPtr[i_Index];
     }

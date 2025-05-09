@@ -6,6 +6,7 @@
 #include "HashTable_Z.h"
 
 #define HandleGranularity 16384
+#define HANDLE_NULL BaseObject_ZHdl(0);
 
 class BaseObject_Z;
 class BaseObject_ZHdl;
@@ -24,16 +25,22 @@ union HdlID {
 };
 
 class BaseObject_ZHdl {
+    friend class HandleManager_Z;
 public:
     BaseObject_ZHdl() {
         m_RealID.GblID = 0;
+    }
+
+    BaseObject_ZHdl(const S32 i_Val) {
+        m_RealID.Ref.ID = i_Val;
+        m_RealID.Ref.Key = (S8)i_Val;
     }
 
     U32 GetID() {
         return m_RealID.Ref.ID;
     }
 
-    U32 GetKey() {
+    S8 GetKey() {
         return m_RealID.Ref.Key;
     }
 
@@ -87,6 +94,9 @@ public:
     HandleManager_Z();
 
     BaseObject_Z* GetPtr(const BaseObject_ZHdl& i_Hdl) const;
+    BaseObject_ZHdl U32ToHandle(S32 i_Value);
+    S32 HandleToU32(const BaseObject_ZHdl& i_Hdl);
+    void MarkU32Handle(U32 i_Hdl);
 };
 
 #endif

@@ -17,14 +17,14 @@ public:
         m_ResourceHT.Flush();
     }
 
-    void Load(void** l_Data);
+    void Load(void** i_Data);
     void UpdateLinks();
     void MarkHandles();
     void Minimize();
 };
 
 class ClassNameResManager_Z {
-    HashName_ZTable_Z m_ClassHT;
+    HashName_ZTable_Z m_ClassHT; // Enum?
     HoleArray_Z<ClassNameRes_Z, 32> m_ClassResHA;
 
 public:

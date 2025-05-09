@@ -125,7 +125,7 @@ public:
     }
 
     
-    Weak_Z Bool Insert(const T &i_Ele) {
+    Weak_Z Bool Insert(const T& i_Ele) {
         if (!m_Status) {
             Resize(HASHTABLE_DEFAULT_SIZE);
         }
@@ -168,6 +168,54 @@ public:
 
     void Minimize() {
         Resize(m_NbElem);
+    }
+
+    const T* Search(const T& Element) const {
+        if (!m_NbElem)
+            return NULL;
+        S32 l_HashSize = m_Status->GetSize() - 1;
+        S32 l_HashID = Element.HashBase() & l_HashSize;
+        S32 l_HashInc = Element.HashIncrement();
+        if (!(l_HashInc & 0x1))
+            l_HashInc++;
+
+        for (;;) {
+            if (!m_Status->GetBit(l_HashID)) {
+                if (m_Hash[l_HashID].IsEmpty())
+                    return NULL;
+            } else {
+                T* l_Ptr = m_Hash + l_HashID;
+                if (*l_Ptr == Element)
+                    return l_Ptr;
+            }
+            l_HashID = (l_HashID + l_HashInc) & l_HashSize;
+        }
+        return NULL;
+    }
+
+    inline void InitScan(void) {
+        if (!m_NbElem)
+            m_ScanID = -1;
+        else
+            m_ScanID = 0;
+    }
+
+    inline T *NextScan(void) {
+        if (m_ScanID < 0) return NULL;
+        if (m_ScanID >= m_Status->GetSize()) {
+            m_ScanID = -1;
+            return NULL;
+        }
+
+        S32 NextScan = m_Status->FindFirstBit(TRUE, m_ScanID);
+
+        if (NextScan < 0) {
+            m_ScanID = -1;
+            return NULL;
+        }
+
+        m_ScanID = NextScan + 1;
+        return m_Hash + NextScan;
     }
 };
 

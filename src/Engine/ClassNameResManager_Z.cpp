@@ -1,4 +1,6 @@
 #include "ClassNameResManager_Z.h"
+#include "Program_Z.h"
+#include "Sys_Z.h"
 
 void ClassNameResManager_Z::Shut() {
     m_ClassHT.Flush();
@@ -102,23 +104,59 @@ void ClassNameResManager_Z::RemoveClassId(const Name_Z& i_Name, const Name_Z& i_
 }
 
 BaseObject_ZHdl ClassNameResManager_Z::GetObjectInClass(const S32 i_ClassID, const S32 i_EnumID) {
+    const S32Hash_Z l_HashElt(i_EnumID);
+    const S32Hash_Z* l_Result = m_ClassResHA[i_ClassID].m_ResourceHT.Search(l_HashElt);
 
+    if (!l_Result) {
+        return HANDLE_NULL;
+    } else {
+        return gData.ClassMgr->U32ToHandle(l_Result->m_Ref);
+    }
 }
 
 void ClassNameRes_Z::Minimize() {
     m_ResourceHT.Minimize();
 }
 
-void ClassNameRes_Z::Load(void** l_Data) {
+void ClassNameRes_Z::Load(void** i_Data) {
+    S32 l_NbHashElt;
+    S32Hash_Z l_HashElt;
+    *i_Data = Sys_Z::MemCpyFrom(&l_NbHashElt, *i_Data, 4);
 
+    for (S32 i = 0; i < l_NbHashElt; i++) {
+        *i_Data = Sys_Z::MemCpyFrom(&l_HashElt, *i_Data, 4);
+        gData.ClassMgr->LoadLinkId(&l_HashElt.m_Ref, i_Data);
+        m_ResourceHT.Insert(l_HashElt);
+    }
+
+    return;
 }
 
 void ClassNameRes_Z::UpdateLinks() {
+    m_ResourceHT.InitScan();
 
+    S32Hash_Z* l_HashElt = m_ResourceHT.NextScan();
+
+    while (l_HashElt) {
+        BaseObject_ZHdl l_Hdl;
+
+        gData.ClassMgr->UpdateLinkFromId(l_Hdl, l_HashElt->m_Ref);
+
+        l_HashElt->m_Ref = gData.ClassMgr->HandleToU32(l_Hdl);
+        l_HashElt = m_ResourceHT.NextScan();
+    }
 }
 
 void ClassNameRes_Z::MarkHandles() {
+    m_ResourceHT.InitScan();
 
+    S32Hash_Z* l_HashElt = m_ResourceHT.NextScan();
+
+    while (l_HashElt) {
+        BaseObject_ZHdl l_Hdl;
+        gData.ClassMgr->MarkU32Handle(l_HashElt->m_Ref);
+        l_HashElt = m_ResourceHT.NextScan();
+    }
 }
 
 
