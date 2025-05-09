@@ -61,7 +61,7 @@ public:
     Bitmap_Z(S32 i_Width, S32 i_Height, U8 i_Format, U8* i_Datas);
     virtual void Init();
     virtual ~Bitmap_Z();
-    virtual void Load(void** i_BigFile);
+    virtual void Load(void** i_Data);
     virtual void Clean();
     void InitBmap(S32 l_SizeX, S32 l_SizeY, U8 l_Format, U8* i_Datas, U8* i_Palette);
     Weak_Z void EnableFlag(U16 i_Flag)   {m_Flag|=i_Flag;}
@@ -85,7 +85,7 @@ private:
     S16 m_TexID;
     S32 m_SizeX;
     S32 m_SizeY;
-    U32 m_PrecalculatedSize;
+    S32 m_PrecalculatedSize;
     U8 m_Format;
     U8 m_TrueFormat;
     U8 m_PalFormat;

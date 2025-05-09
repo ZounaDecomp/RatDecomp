@@ -13,6 +13,8 @@ class Fonts_Z : public ResourceObject_Z
     virtual void EndLoad();
     virtual void AfterEndLoad();
     virtual void MarkHandles();
+
+    
 };
 
 #endif

@@ -152,16 +152,16 @@ void Z_FreeContiguous(void* i_Ptr);
 
 #define AllocAlign_Z(Size, Align) Z_Alloc(Size, "Anonymous Alloc", __FILE__, __LINE__, Align)
 //#define AllocAlignF_Z(Size, Align) Z_Alloc(Size, __FUNCTION__, __FILE__, __LINE__, Align)
-#define AllocAlignC_Z(Size, Align, Comment) Z_Alloc(Size, Comment, __FILE__, __LINE__, Align)
-#define AllocAlignL_Z(Size, Align, Line) Z_Alloc(Size, "Anonymous Alloc", __FILE__, Line, Align)
-#define AllocAlignCL_Z(Size, Align, Comment, Line) Z_Alloc(Size, Comment, __FILE__, Line, Align)
+#define AllocAlignC_Z(Size, Comment, Align) Z_Alloc(Size, Comment, __FILE__, __LINE__, Align)
+#define AllocAlignL_Z(Size, Line, Align) Z_Alloc(Size, "Anonymous Alloc", __FILE__, Line, Align)
+#define AllocAlignCL_Z(Size, Comment, Line, Align) Z_Alloc(Size, Comment, __FILE__, Line, Align)
 //#define AllocAlignFL_Z(Size, Align, Line) Z_Alloc(Size, __FUNCTION__, __FILE__, Line, Align)
 
 #define AllocContiguousAlign_Z(Size, Align) Z_AllocContiguous(Size, "Anonymous Alloc", __FILE__, __LINE__, Align)
 //#define AllocContiguousAlignF_Z(Size, Align) Z_AllocContiguous(Size, __FUNCTION__, __FILE__, __LINE__, Align)
-#define AllocContiguousAlignC_Z(Size, Align, Comment) Z_AllocContiguous(Size, Comment, __FILE__, __LINE__, Align)
-#define AllocContiguousAlignL_Z(Size, Align, Line) Z_AllocContiguous(Size, "Anonymous Alloc", __FILE__, Line, Align)
-#define AllocContiguousAlignCL_Z(Size, Align, Comment, Line) Z_AllocContiguous(Size, Comment, __FILE__, Line, Align)
+#define AllocContiguousAlignC_Z(Size, Comment, Align) Z_AllocContiguous(Size, Comment, __FILE__, __LINE__, Align)
+#define AllocContiguousAlignL_Z(Size, Line, Align) Z_AllocContiguous(Size, "Anonymous Alloc", __FILE__, Line, Align)
+#define AllocContiguousAlignCL_Z(Size, Comment, Line, Align) Z_AllocContiguous(Size, Comment, __FILE__, Line, Align)
 //#define AllocContiguousAlignFL_Z(Size, Align, Line) Z_AllocContiguous(Size, __FUNCTION__, __FILE__, Line, Align)
 
 #endif

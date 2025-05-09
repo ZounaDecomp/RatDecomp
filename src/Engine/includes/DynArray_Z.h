@@ -151,7 +151,7 @@ private:
             if (m_ArrayPtr)
                 m_ArrayPtr = (T*)ReallocL_Z(m_ArrayPtr, i_NewNbElement * sizeof(T), 0x137);
             else
-                m_ArrayPtr = (T*)AllocAlignL_Z(i_NewNbElement * sizeof(T), Align, 0x13D);
+                m_ArrayPtr = (T*)AllocAlignL_Z(i_NewNbElement * sizeof(T), 0x13D, Align);
         } else {
             if (m_ArrayPtr) {
                 Free_Z(m_ArrayPtr);
