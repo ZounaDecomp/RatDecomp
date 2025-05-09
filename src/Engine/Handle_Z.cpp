@@ -16,11 +16,14 @@ S32 HandleManager_Z::HandleToU32(const BaseObject_ZHdl& i_Hdl) {
 
 void HandleManager_Z::MarkU32Handle(U32 i_Hdl)
 {
+    S32 l_ID;
+    S8 l_Key;
     Bool l_Result = FALSE;
 
-    S32 l_ID = ((BaseObject_ZHdl)i_Hdl).GetID();
+    l_ID = ((BaseObject_ZHdl*)&i_Hdl)->GetID();
     if (l_ID < m_HandleRecDA.GetSize()) {
-        S8 l_Key = ((BaseObject_ZHdl)i_Hdl).GetKey();
+        
+        l_Key = ((BaseObject_ZHdl*)&i_Hdl)->GetKey();
         if (l_Key == m_HandleRecDA[l_ID].m_Key) {
             l_Result = TRUE;
         }

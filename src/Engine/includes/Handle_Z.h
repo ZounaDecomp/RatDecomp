@@ -16,10 +16,10 @@ class DrawInfo_Z;
 #define GETPTR(a) gData.ClassMgr->GetPtr(a)
 
 union HdlID {
-    U32 GblID;
+    S32 GblID;
 
     struct {
-        U32 Key : 8,
+        S32 Key : 8,
             ID : 24;
     } Ref;
 };
@@ -36,7 +36,7 @@ public:
         m_RealID.Ref.Key = (S8)i_Val;
     }
 
-    U32 GetID() {
+    S32 GetID() {
         return m_RealID.Ref.ID;
     }
 
@@ -50,8 +50,8 @@ protected:
 };
 
 struct HandleRec_Z {
-    U8 m_Key;
-    U8 m_Flag;
+    S8 m_Key;
+    S8 m_Flag;
     Bool m_Marked;
     BaseObject_Z* m_ObjPtr;
     Name_Z m_Name;
@@ -61,18 +61,6 @@ struct HandleRec_Z {
 
 class HandleManager_Z {
 public:
-    virtual void CheckHandles();
-    virtual void MarkHandles(S32 a1);
-    virtual void Update(Float a1);
-    virtual void Draw(DrawInfo_Z& a1);
-    virtual void Minimize();
-    virtual void ClearMark();
-    virtual void InvalidClassSize(S16 const a1);
-    virtual void RemoveResource(const BaseObject_ZHdl& a1);
-    virtual void ChangeHandleName(const BaseObject_ZHdl& a1, const Name_Z& a2);
-    virtual void DeleteHandle(const BaseObject_ZHdl& a1);
-    virtual void GetNameStrFromId(const Name_Z& a1);
-
     DynArray_Z<HandleRec_Z, HandleGranularity> m_HandleRecDA;
     DynArray_Z<S32, HandleGranularity> m_FreeRecDA;
     HashS32Table_Z m_Placeholder_NameToIdHashtable[0x10];
@@ -97,6 +85,18 @@ public:
     BaseObject_ZHdl U32ToHandle(S32 i_Value);
     S32 HandleToU32(const BaseObject_ZHdl& i_Hdl);
     void MarkU32Handle(U32 i_Hdl);
+    
+    virtual void CheckHandles();
+    virtual void MarkHandles(S32 a1);
+    virtual void Update(Float a1);
+    virtual void Draw(DrawInfo_Z& a1);
+    virtual void Minimize();
+    virtual void ClearMark();
+    virtual void InvalidClassSize(S16 const a1);
+    virtual void RemoveResource(const BaseObject_ZHdl& a1);
+    virtual void ChangeHandleName(const BaseObject_ZHdl& a1, const Name_Z& a2);
+    virtual void DeleteHandle(const BaseObject_ZHdl& a1);
+    virtual void GetNameStrFromId(const Name_Z& a1);
 };
 
 #endif
