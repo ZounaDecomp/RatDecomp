@@ -19,7 +19,7 @@ class ResourceObject_Z : public BaseObject_Z
     public:
         Weak_Z ResourceObject_Z() {};
         Weak_Z ~ResourceObject_Z();
-        virtual void Load(void* a1);
+        virtual void Load(void** i_Data) {};
         virtual void EndLoad();
         virtual void LoadLinks(void* a1);
         virtual void EndLoadLinks();

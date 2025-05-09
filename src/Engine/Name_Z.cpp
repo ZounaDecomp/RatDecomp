@@ -69,26 +69,25 @@ S32 Crc32Tab[] = {
     0xBCB4666D, 0xB8757BDA, 0xB5365D03, 0xB1F740B4
 };
 
-U32 Name_Z::GetID(const S8* data, U32 result) {
-    U8* data2 = (U8*)data;
-    while (*data2)
+U32 Name_Z::GetID(const S8* i_Data, U32 i_Result) {
+    U8* l_DataCopy = (U8*)i_Data;
+    while (*l_DataCopy)
     {
-        result = (Crc32Tab[(result ^ g_ChartoLower[*data2]) & 0xFF]) ^ (result >> 8);
-        data2++;
+        i_Result = (Crc32Tab[(i_Result ^ g_ChartoLower[*l_DataCopy]) & 0xFF]) ^ (i_Result >> 8);
+        l_DataCopy++;
     }
-    return result;
+    return i_Result;
 }
 
-U32 Name_Z::GetID(U8* data, U32 size, U32 result) {
-    while (size--) {
-        result = (Crc32Tab[(result >> 0x18 ^ g_ChartoLower[*data++])]) ^ result << 8;
+U32 Name_Z::GetID(U8* i_Data, U32 i_Size, U32 i_Result) {
+    while (i_Size--) {
+        i_Result = (Crc32Tab[(i_Result >> 0x18 ^ g_ChartoLower[*i_Data++])]) ^ i_Result << 8;
     }
-    return result;
+    return i_Result;
 }
   
-S32 Name_ZSortingFunction(const void* a1, const void* a2)
-{
-    if (*(U32*)a1 < *(U32*)a2)
+S32 Name_ZSortingFunction(const void* i_Name1, const void* i_Name2) {
+    if (*(U32*)i_Name1 < *(U32*)i_Name2)
         return -1;
     return 1;
 }

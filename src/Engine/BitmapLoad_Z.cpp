@@ -7,7 +7,7 @@ void Bitmap_Z::Load(void **i_Data) {
     S32 l_AmountOfColors; 
     S32 l_PalSize; 
 
-    *i_Data = Sys_Z::MemCpyFrom(&m_SizeX, *i_Data, ((U8*)&m_Flag) - ((U8*)&m_SizeX) + 2);
+    *i_Data = Sys_Z::MemCpyFrom(&m_SizeX, *i_Data, ((U8*)&m_Flag) - ((U8*)&m_SizeX) + sizeof(U16));
     if (m_PrecalculatedSize)
     {
         m_Datas = AllocContiguousAlignCL_Z(m_PrecalculatedSize, "BITMAP_DATA_ALLOC", 13, 0x80);
