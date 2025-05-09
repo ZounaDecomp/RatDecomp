@@ -1,5 +1,5 @@
 Ratatouille  
-[![Build Status]][actions][![Discord Badge]][discord]
+[![Build Status]][actions]![Game Code]![Engine Code]![LibGC Code][![Discord Badge]][discord]
 =============
 
 <!--
@@ -7,6 +7,9 @@ Replace with your repository's URL.
 -->
 [Build Status]: https://github.com/ZounaDecomp/RatDecomp/actions/workflows/build.yml/badge.svg
 [actions]: https://github.com/ZounaDecomp/RatDecomp/actions/workflows/build.yml
+[Game Code]: https://decomp.dev/ZounaDecomp/RatDecomp.svg?mode=shield&category=game&measure=matched_code_percent
+[Engine Code]: https://decomp.dev/ZounaDecomp/RatDecomp.svg?mode=shield&category=engine&measure=matched_code_percent
+[LibGC Code]: https://decomp.dev/ZounaDecomp/RatDecomp.svg?mode=shield&category=libgc&measure=matched_code_percent
 [Discord Badge]: https://img.shields.io/discord/888080380752707624?color=%237289DA&logo=discord&logoColor=%23FFFFFF
 [discord]: https://discord.gg/cgUVpB6GNc
 
