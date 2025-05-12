@@ -3,6 +3,8 @@
 #include "Types_Z.h"
 #include "ClassManager_Z.h"
 #include "Timer_Z.h"
+#include "Fonts_Z.h"
+
 extern Char * strcpy(Char *__dest,Char *__src);
 extern "C" void memset(void *__s,S32 __c,U32 __n);
 class GCConsole_Z;

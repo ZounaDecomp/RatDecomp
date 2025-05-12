@@ -5,6 +5,16 @@
 #define ROL_Z(val,shift) ((val<<shift)|(val>>((sizeof(val)*8)-shift)))
 #define ROR_Z(val,shift) ((val>>shift)|(val<<((sizeof(val)*8)-shift)))
 
+class Vec2f 
+{
+public:
+    Float x, y;
+
+    Vec2f() {};
+    Vec2f(Float i_x, Float i_y) : x(i_x), y(i_y) {};
+};
+
+
 class Vec3f
 {
 public:
