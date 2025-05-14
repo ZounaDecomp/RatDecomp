@@ -45,7 +45,7 @@ void Bitmap_Z::Reset() {
     Init();
 }
 
-void Bitmap_Z::InitBmap(S32 i_SizeX, S32 i_SizeY, U8 i_Format, U8* i_Datas, U8* i_Palette) { // far from complete
+void Bitmap_Z::InitBmap(S32 i_SizeX, S32 i_SizeY, U8 i_Format, U8* i_Datas, U8* i_Palette) { 
     S32 l_PaletteSize;
     S32 l_BytePalleteSize;
 

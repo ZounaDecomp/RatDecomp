@@ -63,7 +63,7 @@ public:
     virtual ~Bitmap_Z();
     virtual void Load(void** i_Data);
     virtual void Clean();
-    void InitBmap(S32 l_SizeX, S32 l_SizeY, U8 l_Format, U8* i_Datas, U8* i_Palette);
+    void InitBmap(S32 i_SizeX, S32 i_SizeY, U8 l_Format, U8* i_Datas, U8* i_Palette);
     Weak_Z void EnableFlag(U16 i_Flag)   {m_Flag|=i_Flag;}
     U8 GetFormat() {return m_Format;}
     Weak_Z void* GetDatas() {return m_Datas;}
