@@ -14,6 +14,7 @@ class ResourceObjectLink_Z
         DynArray_Z<BaseObject_ZHdl, 32> m_LinkedResourceDA;
 };
 
+/* sizeof(ResourceObject_Z) == 0x14 */
 class ResourceObject_Z : public BaseObject_Z
 {
     public:
@@ -24,7 +25,7 @@ class ResourceObject_Z : public BaseObject_Z
         virtual void LoadLinks(void* a1);
         virtual void EndLoadLinks();
         virtual void MarkHandles();
-    	ResourceObjectLink_Z m_ResObjLink;
+    	ResourceObjectLink_Z m_ResObjLink; /* 0x08 */ 
 };
 
 #endif

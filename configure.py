@@ -195,6 +195,7 @@ cflags_base = [
     "-RTTI off",
     "-fp_contract on",
     "-str reuse",
+    "-lang=c++",
     "-multibyte",  # For Wii compilers, replace with `-enc SJIS`
     f"-i build/{config.version}/include",
     f"-DBUILD_VERSION={version_num}",
@@ -796,7 +797,7 @@ config.libs = [
             Object(NonMatching, "Engine/SplineZone_Z.cpp"),
             Object(NonMatching, "Engine/ParticlesDraw_Z.cpp"),
             Object(NonMatching, "Engine/VolumeAgent_Z.cpp"),
-            Object(NonMatching, "Engine/Dupe/String_Z.c"),
+            Object(Matching, "Engine/Dupe/String_Z.c"),
         ],
     },
     {
