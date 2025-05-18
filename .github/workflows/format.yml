@@ -1,0 +1,24 @@
+name: format
+
+on:
+  pull_request:
+    paths:
+      - '**.hpp'
+      - '**.cpp'
+      - '**.h'
+      - '**.c'
+      - '**.clang-format'
+
+permissions:
+  contents: read
+
+jobs:
+  check-format-and-tidy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - uses: jidicula/clang-format-action@v4.14.0
+      with:
+        clang-format-version: '18'
+        fallback-style: 'none'
