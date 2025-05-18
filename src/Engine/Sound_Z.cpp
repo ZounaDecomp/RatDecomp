@@ -1,17 +1,14 @@
 #include "Sound_Z.h"
 
-Sound_Z::Sound_Z()
-{
+Sound_Z::Sound_Z() {
     Init();
 }
 
-Sound_Z::~Sound_Z()
-{
+Sound_Z::~Sound_Z() {
     Reset();
 }
 
-void Sound_Z::Init()
-{
+void Sound_Z::Init() {
     m_SndDatas_Z = 0;
     m_Flags.Flags = 0;
     m_XRamBlock = -1;

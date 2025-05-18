@@ -3,14 +3,20 @@
 #include "Program_Z.h"
 
 extern void s_free(void* i_Ptr);
-extern void* s_malloc(U32 i_Size, U32 i_Align); extern void* s_realloc(void* i_Ptr, U32 i_Size);
-extern void s_Init(void* i_HeapBase, U32 i_HeapSize); void s_ShowMostNbMalloc(void);
-void* s_findalloc(void* i_RangeStart, void* i_RangeEnd); U32 s_getnbfindalloc(void* i_RangeStart, void* i_RangeEnd); void* s_getfindalloc(S32 i_AllocId, Char* l_ResultDescription, void* i_RangeStart, void* i_RangeEnd);
-extern "C" S32 sprintf(const Char* i_Buf, const Char*  i_Format, ...); extern void s_VerifyMem(); extern void* s_malloc_end(U32 i_Size, U32 i_Align);
+extern void* s_malloc(U32 i_Size, U32 i_Align);
+extern void* s_realloc(void* i_Ptr, U32 i_Size);
+extern void s_Init(void* i_HeapBase, U32 i_HeapSize);
+void s_ShowMostNbMalloc(void);
+void* s_findalloc(void* i_RangeStart, void* i_RangeEnd);
+U32 s_getnbfindalloc(void* i_RangeStart, void* i_RangeEnd);
+void* s_getfindalloc(S32 i_AllocId, Char* l_ResultDescription, void* i_RangeStart, void* i_RangeEnd);
+extern "C" S32 sprintf(const Char* i_Buf, const Char* i_Format, ...);
+extern void s_VerifyMem();
+extern void* s_malloc_end(U32 i_Size, U32 i_Align);
 
 void Hi_MemoryManager_Z::Init() {
     m_FreeMemCached = (U32)m_HeapEnd - (U32)m_HeapBase;
-    s_Init(m_HeapBase,m_FreeMemCached);
+    s_Init(m_HeapBase, m_FreeMemCached);
     m_NbAlloc = 0;
     m_FrameNbAlloc = 0;
     m_FreeMemCached = s_GetFreeMem();
@@ -96,7 +102,7 @@ void Hi_MemoryManager_Z::Free(void* i_Ptr) {
     m_NbAlloc--;
 }
 
-U32 Hi_MemoryManager_Z::Update(Float i_DeltaTime) {   
+U32 Hi_MemoryManager_Z::Update(Float i_DeltaTime) {
     U32 l_DidReset;
 
     m_AllocTimer = m_AllocTimer + i_DeltaTime;
@@ -168,7 +174,7 @@ void* Z_AllocEnd(U32 i_Size, const Char* i_Comment, const Char* i_File, S32 i_Li
     return MemManager.AllocEnd(i_Size, i_Comment, i_File, i_Line, i_Align);
 }
 
-typedef void* (*Memory_Manager__AllocContiguous)(MemoryManager_Z*,U32,const Char*,const Char*,S32,U32);
+typedef void* (*Memory_Manager__AllocContiguous)(MemoryManager_Z*, U32, const Char*, const Char*, S32, U32);
 
 void* Z_AllocContiguous(U32 i_Size, const Char* i_Comment, const Char* i_File, S32 i_Line, U32 i_Align) {
     MemoryManager_Z* l_MemMgr = &MemManager;
@@ -190,5 +196,5 @@ void Z_FreeContiguous(void* i_Ptr) {
 }
 
 void Hi_MemoryManager_Z::SetCallStackPtrs(U32* a1, S32 a2) {
-    memset(a1,0,0x20);
+    memset(a1, 0, 32);
 }

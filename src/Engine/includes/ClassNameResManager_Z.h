@@ -28,7 +28,8 @@ class ClassNameResManager_Z {
     HoleArray_Z<ClassNameRes_Z, 32> m_ClassResHA;
 
 public:
-    ClassNameResManager_Z() : m_ClassHT(64) {
+    ClassNameResManager_Z()
+        : m_ClassHT(64) {
     }
 
     void Load(const Name_Z& i_Name, const Name_Z& i_FileName, void** i_Data);

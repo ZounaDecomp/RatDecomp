@@ -5,14 +5,14 @@
 #include "Timer_Z.h"
 #include "Fonts_Z.h"
 
-extern Char * strcpy(Char *__dest,Char *__src);
-extern "C" void memset(void *__s,S32 __c,U32 __n);
+extern Char* strcpy(Char* __dest, Char* __src);
+extern "C" void memset(void* __s, S32 __c, U32 __n);
 class GCConsole_Z;
 
 class Globals {
 public:
-    virtual ~Globals() {};
-    virtual U32 GetMgrSize(Name_Z *l_Name, S32 *a1, S32 *a2);
+    virtual ~Globals() { };
+    virtual U32 GetMgrSize(Name_Z* l_Name, S32* a1, S32* a2);
     virtual void Minimize();
     virtual void GetDate();
     void InitTime();
@@ -37,7 +37,7 @@ public:
         *(S16*)(&m_Pad_0x14[1990]) = 8;
         *(S16*)(&m_Pad_0x14[1986]) = 60;
         *(S16*)(&m_Pad_0x14[1988]) = 480;
-        memset(&m_Pad_0x0, 0, 0x84u);
+        memset(&m_Pad_0x0, 0, 132);
         m_Pad_0x14[1968] = 1;
         *(Float*)(&m_Pad_0x14[1976]) = 0.0f;
         *(Float*)(&m_Pad_0x14[1972]) = 0.0f;

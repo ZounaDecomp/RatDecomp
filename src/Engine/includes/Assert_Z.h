@@ -11,16 +11,16 @@ void BreakPoint_Z();
 
 #undef ASSERT_Z
 #define ASSERT_Z(Exp, Comment) \
-    if (Exp == FALSE) \
-        ExceptionFonc_Z(#Exp, __FILE__, __LINE__, Comment, 0, 0, 0, 0, 0, 0)
+    if (Exp == FALSE)          \
+    ExceptionFonc_Z(#Exp, __FILE__, __LINE__, Comment, 0, 0, 0, 0, 0, 0)
 #undef ASSERTL_Z
 #define ASSERTL_Z(Exp, Comment, Line) \
-    if (Exp == FALSE) \
-        ExceptionFonc_Z(#Exp, __FILE__, Line, Comment, 0, 0, 0, 0, 0, 0)
+    if (Exp == FALSE)                 \
+    ExceptionFonc_Z(#Exp, __FILE__, Line, Comment, 0, 0, 0, 0, 0, 0)
 #undef ASSERTLE_Z
 #define ASSERTLE_Z(Exp, Comment, Line, OrigExp) \
-    if (Exp == FALSE) \
-        ExceptionFonc_Z(OrigExp, __FILE__, Line, Comment, 0, 0, 0, 0, 0, 0)
+    if (Exp == FALSE)                           \
+    ExceptionFonc_Z(OrigExp, __FILE__, Line, Comment, 0, 0, 0, 0, 0, 0)
 
 //#undef ASSERT_Z
 //#define ASSERT_Z(Exp) ASSERTC_Z(Exp, __FUNCTION__)

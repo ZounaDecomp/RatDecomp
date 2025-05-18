@@ -5,5 +5,4 @@
 extern "C" void CalibrateTimer();
 Float GetAbsoluteTime();
 
-
 #endif

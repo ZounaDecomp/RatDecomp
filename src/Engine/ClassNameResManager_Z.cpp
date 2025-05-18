@@ -4,7 +4,7 @@
 
 void ClassNameResManager_Z::Shut() {
     m_ClassHT.Flush();
-    
+
     for (S32 i = m_ClassResHA.FindFirst(); i >= 0; i = m_ClassResHA.FindNext(i)) {
         m_ClassResHA[i].Flush();
     }
@@ -85,10 +85,8 @@ Bool ClassNameResManager_Z::Minimize() {
     return TRUE;
 }
 
-void ClassNameResManager_Z::RemoveClassId(const S32 i_ClassID )
-{
-    if (!m_ClassResHA.IsElement(i_ClassID))
-    { 
+void ClassNameResManager_Z::RemoveClassId(const S32 i_ClassID) {
+    if (!m_ClassResHA.IsElement(i_ClassID)) {
         return;
     }
 
@@ -109,7 +107,8 @@ BaseObject_ZHdl ClassNameResManager_Z::GetObjectInClass(const S32 i_ClassID, con
 
     if (!l_Result) {
         return HANDLE_NULL;
-    } else {
+    }
+    else {
         return gData.ClassMgr->U32ToHandle(l_Result->m_Ref);
     }
 }
@@ -158,7 +157,6 @@ void ClassNameRes_Z::MarkHandles() {
         l_HashElt = m_ResourceHT.NextScan();
     }
 }
-
 
 // $SABE: Only here for now to match HashTableBase_Z::Insert
 void dummy() {

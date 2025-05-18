@@ -14,5 +14,4 @@ Bool AnimationManager_Z::Minimize() {
 }
 
 AnimationManager_Z::~AnimationManager_Z() {
-
 }

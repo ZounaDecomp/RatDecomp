@@ -2,20 +2,17 @@
 #define _NAME_Z_H_
 #include "Types_Z.h"
 
-class Name_Z
-{
+class Name_Z {
 public:
     Name_Z(const Name_Z& a1) {
         m_ID = a1.m_ID;
     }
     Name_Z(const Char* a1) {
         S32 result = 0;
-        if (a1)
-        {
+        if (a1) {
             result = GetID(a1, 0);
         }
-        else
-        {
+        else {
             result = 0;
         }
         m_ID = result;
@@ -30,7 +27,7 @@ public:
     Weak_Z Bool operator!=(const Name_Z& a1) const { return m_ID != a1.m_ID; }
     Weak_Z Bool operator!=(Name_Z a1) { return m_ID != a1.m_ID; }
 
-	U32 m_ID;
+    U32 m_ID;
 };
 
 #endif

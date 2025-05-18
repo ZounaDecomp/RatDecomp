@@ -3,7 +3,7 @@
 #include "BitArray_Z.h"
 #include "Name_Z.h"
 
-extern "C" void memset(void *__s,S32 __c,U32 __n);
+extern "C" void memset(void* __s, S32 __c, U32 __n);
 
 #define HASHTABLE_DEFAULT_SIZE 16
 class S32Hash_Z {
@@ -11,7 +11,7 @@ public:
     S32 m_Value;
     S32 m_Ref;
 
-    S32Hash_Z() {}
+    S32Hash_Z() { }
     S32Hash_Z(S32 i_Value) { m_Value = i_Value; }
     S32Hash_Z(S32 i_Value, S32 i_Ref) {
         m_Value = i_Value;
@@ -25,8 +25,8 @@ public:
     inline Bool IsEmpty() { return !m_Ref; }
     inline void SetShadow() { m_Ref = -1; }
 
-    Bool operator==(const S32Hash_Z &i_Elem) { return i_Elem.m_Value == m_Value; }
-    Bool operator!=(const S32Hash_Z &i_Elem) { return i_Elem.m_Value != m_Value; }
+    Bool operator==(const S32Hash_Z& i_Elem) { return i_Elem.m_Value == m_Value; }
+    Bool operator!=(const S32Hash_Z& i_Elem) { return i_Elem.m_Value != m_Value; }
 };
 
 class Name_ZHash_Z {
@@ -34,7 +34,7 @@ public:
     Name_Z m_Value;
     S32 m_Ref;
 
-    Name_ZHash_Z() {}
+    Name_ZHash_Z() { }
     Name_ZHash_Z(Name_Z i_Value) { m_Value = i_Value; }
     Name_ZHash_Z(Name_Z i_Value, S32 i_Ref) {
         m_Value = i_Value;
@@ -48,11 +48,11 @@ public:
     inline Bool IsEmpty() { return !m_Ref; }
     inline void SetShadow() { m_Ref = -1; }
 
-    Bool operator==(const Name_ZHash_Z &i_Elem) { return i_Elem.m_Value == m_Value; }
-    Bool operator!=(const Name_ZHash_Z &i_Elem) { return i_Elem.m_Value != m_Value; }
+    Bool operator==(const Name_ZHash_Z& i_Elem) { return i_Elem.m_Value == m_Value; }
+    Bool operator!=(const Name_ZHash_Z& i_Elem) { return i_Elem.m_Value != m_Value; }
 };
 
-template<class T>
+template <class T>
 class HashTableBase_Z {
     BitArray_Z* m_Status;
     T* m_Hash;
@@ -71,7 +71,7 @@ public:
         m_Hash = NULL;
         Resize(i_Size);
     }
-    
+
     ~HashTableBase_Z() {
         Flush();
     }
@@ -124,12 +124,11 @@ public:
         Delete_Z l_OldStatus;
     }
 
-    
     Weak_Z Bool Insert(const T& i_Ele) {
         if (!m_Status) {
             Resize(HASHTABLE_DEFAULT_SIZE);
         }
-        
+
         S32 l_HashSize = m_Status->GetSize() - 1;
         S32 l_HashID = i_Ele.HashBase() & l_HashSize;
         S32 l_HashInc = i_Ele.HashIncrement();
@@ -137,11 +136,11 @@ public:
         if (!(l_HashInc & 0x1)) {
             l_HashInc++;
         }
-        
+
         for (;;) {
             if (m_Status->GetBit(l_HashID) == FALSE) {
                 if (!m_Hash[l_HashID].m_Ref) {
-                //if (m_Hash[l_HashID].IsEmpty()) {
+                    //if (m_Hash[l_HashID].IsEmpty()) {
                     if (l_ShadowHashID < 0)
                         m_NbFree--;
                     else
@@ -151,15 +150,17 @@ public:
                     *(m_Hash + l_HashID) = i_Ele;
 
                     m_NbElem++;
-                    
+
                     if ((m_NbFree == 0) || (m_NbFree < (m_Status->GetSize() >> 2))) {
                         Resize(m_NbElem);
                     }
                     return TRUE;
-                } else if (l_ShadowHashID < 0) {
+                }
+                else if (l_ShadowHashID < 0) {
                     l_ShadowHashID = l_HashID;
                 }
-            } else if (m_Hash[l_HashID] == i_Ele) {
+            }
+            else if (m_Hash[l_HashID] == i_Ele) {
                 return FALSE;
             }
             l_HashID = (l_HashID + l_HashInc) & l_HashSize;
@@ -183,7 +184,8 @@ public:
             if (!m_Status->GetBit(l_HashID)) {
                 if (m_Hash[l_HashID].IsEmpty())
                     return NULL;
-            } else {
+            }
+            else {
                 T* l_Ptr = m_Hash + l_HashID;
                 if (*l_Ptr == Element)
                     return l_Ptr;
@@ -200,7 +202,7 @@ public:
             m_ScanID = 0;
     }
 
-    inline T *NextScan(void) {
+    inline T* NextScan(void) {
         if (m_ScanID < 0) return NULL;
         if (m_ScanID >= m_Status->GetSize()) {
             m_ScanID = -1;

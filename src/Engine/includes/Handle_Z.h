@@ -26,6 +26,7 @@ union HdlID {
 
 class BaseObject_ZHdl {
     friend class HandleManager_Z;
+
 public:
     BaseObject_ZHdl() {
         m_RealID.GblID = 0;
@@ -45,6 +46,7 @@ public:
     }
 
     operator BaseObject_Z*() const;
+
 protected:
     HdlID m_RealID;
 };
@@ -85,7 +87,7 @@ public:
     BaseObject_ZHdl U32ToHandle(S32 i_Value);
     S32 HandleToU32(const BaseObject_ZHdl& i_Hdl);
     void MarkU32Handle(U32 i_Hdl);
-    
+
     virtual void CheckHandles();
     virtual void MarkHandles(S32 a1);
     virtual void Update(Float a1);

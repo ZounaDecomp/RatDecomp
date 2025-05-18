@@ -12,12 +12,12 @@ BitArray_Z::BitArray_Z(S32 i_Size) {
 }
 
 // $VIOLET: Never used! but seems its needed to link properly
-BitArray_Z::BitArray_Z(const BitArray_Z &i_Src) {
+BitArray_Z::BitArray_Z(const BitArray_Z& i_Src) {
     m_BitsDA = i_Src.m_BitsDA;
     m_Size = i_Src.m_Size;
 }
 
-BitArray_Z& BitArray_Z::operator=(const BitArray_Z &i_Src) {
+BitArray_Z& BitArray_Z::operator=(const BitArray_Z& i_Src) {
     m_BitsDA = i_Src.m_BitsDA;
     m_Size = i_Src.m_Size;
     return *this;
@@ -30,10 +30,10 @@ void BitArray_Z::ClearBitRange(S32 i_StartIndex, S32 i_EndIndex) {
 
     S32 l_End = i_EndIndex >> 5;
     U32 l_BitCptEnd = i_EndIndex & 0x1F;
-    U32 l_BitEnd = ~(2 * ((1<<l_BitCptEnd)) - 1);
+    U32 l_BitEnd = ~(2 * ((1 << l_BitCptEnd)) - 1);
 
     if (l_Start == l_End) {
-        m_BitsDA[l_Start] &= l_Bit|l_BitEnd;
+        m_BitsDA[l_Start] &= l_Bit | l_BitEnd;
         return;
     }
 
@@ -41,16 +41,15 @@ void BitArray_Z::ClearBitRange(S32 i_StartIndex, S32 i_EndIndex) {
 
     if (l_Start < l_End) {
         l_Start++;
-        for(;l_Start < l_End; m_BitsDA[l_Start] = 0, l_Start++);
+        for (; l_Start < l_End; m_BitsDA[l_Start] = 0, l_Start++);
     }
     m_BitsDA[l_End] &= l_BitEnd;
-
 }
 
 void BitArray_Z::SetAllBits() {
     U32* l_Bits = m_BitsDA.GetArrayPtr();
     S32 l_Size = m_BitsDA.GetSize();
-    while(l_Size--) {
+    while (l_Size--) {
         *l_Bits++ = 0xFFFFFFFF;
     }
 }
@@ -58,7 +57,7 @@ void BitArray_Z::SetAllBits() {
 void BitArray_Z::ClearAllBits() {
     U32* l_Bits = m_BitsDA.GetArrayPtr();
     S32 l_Size = m_BitsDA.GetSize();
-    while(l_Size--) {
+    while (l_Size--) {
         *l_Bits++ = 0;
     }
 }
@@ -72,15 +71,13 @@ S32 BitArray_Z::FindFirstBit(bool i_State, S32 i_firstBitToCheck) const {
     S32 l_BitIndex = i_firstBitToCheck >> 5;
     S32 l_BitCpt = i_firstBitToCheck & 0x1F;
     S32 l_Size = m_BitsDA.GetSize();
-    if (l_BitCpt)
-    {
+    if (l_BitCpt) {
         U32 l_Bit = 1 << l_BitCpt;
         l_CurBits = m_BitsDA[l_BitIndex];
         if (!i_State)
             l_CurBits = ~l_CurBits;
         l_CurBits &= ~(l_Bit - 1);
-        if (l_CurBits)
-        {
+        if (l_CurBits) {
             S32 x = ((l_CurBits) & (-l_CurBits));
             S32 a = 0;
             if (x & 0xFFFF0000) a += 16;
@@ -97,9 +94,8 @@ S32 BitArray_Z::FindFirstBit(bool i_State, S32 i_firstBitToCheck) const {
         l_BitIndex++;
     }
 
-    if (i_State)
-    {
-        for (;(l_BitIndex < l_Size) && (!(l_CurBits = m_BitsDA[l_BitIndex])); l_BitIndex++);
+    if (i_State) {
+        for (; (l_BitIndex < l_Size) && (!(l_CurBits = m_BitsDA[l_BitIndex])); l_BitIndex++);
         if (l_BitIndex < l_Size) {
             S32 x = ((l_CurBits) & (-l_CurBits));
             S32 a = 0;
@@ -116,7 +112,7 @@ S32 BitArray_Z::FindFirstBit(bool i_State, S32 i_firstBitToCheck) const {
         }
     }
     else {
-        for (;(l_BitIndex < l_Size) && (!(l_CurBits = ~m_BitsDA[l_BitIndex])); l_BitIndex++);
+        for (; (l_BitIndex < l_Size) && (!(l_CurBits = ~m_BitsDA[l_BitIndex])); l_BitIndex++);
         if (l_BitIndex < l_Size) {
             S32 x = ((l_CurBits) & (-l_CurBits));
             S32 a = 0;

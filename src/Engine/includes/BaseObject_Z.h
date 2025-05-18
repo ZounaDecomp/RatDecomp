@@ -3,14 +3,13 @@
 #include "Name_Z.h"
 #include "Handle_Z.h"
 
-class BaseObject_Z
-{
+class BaseObject_Z {
 public:
     Name_Z m_Name;
     BaseObject_ZHdl m_Handle;
-    Weak_Z BaseObject_Z() {};
-    
-    virtual void Init() {};
+    Weak_Z BaseObject_Z() { };
+
+    virtual void Init() { };
     virtual ~BaseObject_Z();
     virtual void Load(void* a1);
     virtual void EndLoad();

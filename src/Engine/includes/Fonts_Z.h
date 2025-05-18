@@ -18,8 +18,7 @@ public:
     Vec2f m_TexCoordBottomRight;
 };
 
-class Fonts_Z : public ResourceObject_Z
-{
+class Fonts_Z : public ResourceObject_Z {
 public:
     Fonts_Z();
     virtual ~Fonts_Z();
@@ -27,6 +26,7 @@ public:
     virtual void EndLoad();
     virtual void AfterEndLoad();
     virtual void MarkHandles();
+
 private:
     S32 m_FontGlyphCount;
     DynArray_Z<S32, 32> m_MaterialDA;

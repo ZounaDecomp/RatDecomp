@@ -35,19 +35,16 @@ U8 g_ChartoLower[256] = {
     0xf8, 0xf9, 0xfa, 0xfb, 0xfc, 0xfd, 0xfe, 0xff
 };
 
-S32 fstricmp(const S8* a1, const S8* a2)
-{
+S32 fstricmp(const S8* a1, const S8* a2) {
     U8 lhs;
     U8 rhs;
     U8* a1_2 = (U8*)a1;
     U8* a2_2 = (U8*)a2;
-    do
-    {
+    do {
         if ((lhs = g_ChartoLower[*a1_2++]) != (rhs = g_ChartoLower[*a2_2++]))
             return 1;
-    }
-    while (lhs);
-    
+    } while (lhs);
+
     return 0;
 }
 

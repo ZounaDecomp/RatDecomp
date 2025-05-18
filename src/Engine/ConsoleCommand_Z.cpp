@@ -3,8 +3,7 @@
 #include "Name_Z.h"
 
 extern "C" S32 strlen(const Char* str);
-void Console_Z::AddCommand(const Char* i_Command, CommandProc i_Proc, const Char* i_Desc)
-{
+void Console_Z::AddCommand(const Char* i_Command, CommandProc i_Proc, const Char* i_Desc) {
     S32 l_CommandName;
     Command_Z* l_Command = NewL_Z(26) Command_Z;
     Char l_Char;
@@ -39,14 +38,11 @@ void Console_Z::AddCommand(const Char* i_Command, CommandProc i_Proc, const Char
     l_Command->m_Alias = Name_Z::GetID(l_Alias, 0);
 
     l_CommandList = m_CommandList;
-    while (l_CommandList->m_Prev)
-    {
+    while (l_CommandList->m_Prev) {
         l_CommandList = l_CommandList->m_Prev;
     }
-    if (l_CommandList)
-    {
+    if (l_CommandList) {
         l_CommandList->m_Prev = l_CommandList;
     }
     m_CommandList = l_CommandList;
-
 }

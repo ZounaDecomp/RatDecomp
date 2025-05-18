@@ -9,9 +9,9 @@ public:
 
     BitArray_Z();
     BitArray_Z(S32 i_Size);
-    BitArray_Z(const BitArray_Z &i_Src);
+    BitArray_Z(const BitArray_Z& i_Src);
     ~BitArray_Z();
-    BitArray_Z& operator=(const BitArray_Z &i_Src);
+    BitArray_Z& operator=(const BitArray_Z& i_Src);
 
     void SetAllBits();
     void ClearAllBits();
@@ -25,7 +25,7 @@ public:
         m_BitsDA[i_Bit >> 5] &= ~(1 << (i_Bit & 0x1F));
     }
 
-    U32 GetBit(S32 i_Bit) const { 
+    U32 GetBit(S32 i_Bit) const {
         return m_BitsDA[i_Bit >> 5] & (1 << (i_Bit & 0x1F));
     }
 
@@ -35,7 +35,7 @@ public:
 
     inline void SetSize(S32 i_Size) {
         m_Size = i_Size;
-        if (i_Size && (i_Size >> 5) + 1 > m_BitsDA.GetSize()) {   
+        if (i_Size && (i_Size >> 5) + 1 > m_BitsDA.GetSize()) {
             m_BitsDA.SetSize((m_Size >> 5) + 1);
         }
     }
@@ -45,7 +45,7 @@ public:
         m_Size = 0;
     }
 
-    inline void Minimize(void) { 
+    inline void Minimize(void) {
         m_BitsDA.Minimize();
     }
 };

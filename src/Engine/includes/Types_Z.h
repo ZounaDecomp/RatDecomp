@@ -18,10 +18,10 @@ typedef double Double;
 #define S32_MIN -2147483648
 
 #undef FALSE
-#define FALSE (Bool) (0==1)
+#define FALSE (Bool)(0 == 1)
 
 #undef TRUE
-#define TRUE (Bool) (0==0)
+#define TRUE (Bool)(0 == 0)
 
 #undef NULL
 #define NULL 0
@@ -30,6 +30,10 @@ typedef double Double;
 #define _ALLOCDEFAULTALIGN 4
 
 #undef Weak_Z
+#ifdef __MWERKS__
 #define Weak_Z __declspec(weak)
+#else
+#define Weak_Z __attribute__((weak))
+#endif
 
 #endif

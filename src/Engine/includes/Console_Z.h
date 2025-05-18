@@ -38,6 +38,7 @@ protected:
     Bool m_UnkBool_0x13ac;
     U8 m_Pad_0x13ad[4095];
     PopupMenu_Z* m_PopupMenu;
+
 private:
     Command_Z* m_CommandList;
     U32 m_CommIndex;
@@ -45,7 +46,7 @@ private:
     U32 m_UnkU32_0x23bc;
     String_Z<1088> m_CommandStack[16];
     U32 m_NbParam;
-    Char *m_StrParam[16];
+    Char* m_StrParam[16];
     Bool m_IsFloatParam[16];
     Float m_FloatParam[16];
     U32 m_CommandNbVar;
@@ -59,7 +60,7 @@ private:
     ConsoleInterp_Z* m_Interp;
 
 public:
-    void SetVar(Char *i_Var);
+    void SetVar(Char* i_Var);
     void AddCommand(const Char* i_Command, CommandProc i_Proc, const Char* i_Desc);
     U32 GetNbParam() { return m_NbParam; }
 
