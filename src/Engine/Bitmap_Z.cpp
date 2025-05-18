@@ -81,54 +81,54 @@ Float Bitmap_Z::GetBytePerPixel() {
     Float l_Result; // st7
 
     switch (m_Format) {
-    case BM_4:
-        l_Result = 0.5;
-        break;
-    case BM_8:
-    case BM_I4A4:
-        l_Result = 1.0;
-        break;
-    case BM_5551:
-    case BM_565:
-    case BM_4444:
-    case BM_1555:
-        l_Result = 2.0;
-        break;
-    case BM_8888:
-        l_Result = 4.0;
-        break;
-    case BM_888:
-        l_Result = 3.0;
-        break;
-    case BM_CMPR:
-        l_Result = 0.0;
-        break;
-    default:
-        ASSERTL_Z(FALSE, "Bitmap_Z::GetBytePerPixel", 117);
-        l_Result = 0.0;
-        break;
+        case BM_4:
+            l_Result = 0.5;
+            break;
+        case BM_8:
+        case BM_I4A4:
+            l_Result = 1.0;
+            break;
+        case BM_5551:
+        case BM_565:
+        case BM_4444:
+        case BM_1555:
+            l_Result = 2.0;
+            break;
+        case BM_8888:
+            l_Result = 4.0;
+            break;
+        case BM_888:
+            l_Result = 3.0;
+            break;
+        case BM_CMPR:
+            l_Result = 0.0;
+            break;
+        default:
+            ASSERTL_Z(FALSE, "Bitmap_Z::GetBytePerPixel", 117);
+            l_Result = 0.0;
+            break;
     }
     return l_Result;
 }
 
 S32 Bitmap_Z::GetPalSize() {
     switch (GetFormat()) {
-    case BM_4:
-        return 16;
-    case BM_8:
-        return 256;
-    case BM_5551:
-    case BM_565:
-    case BM_4444:
-    case BM_1555:
-    case BM_8888:
-    case BM_888:
-    case BM_CMPR:
-    case BM_I4A4:
-        return 0;
-    default:
-        ASSERTL_Z(FALSE, "Bitmap_Z::GetPalSize", 138);
-        return 0;
+        case BM_4:
+            return 16;
+        case BM_8:
+            return 256;
+        case BM_5551:
+        case BM_565:
+        case BM_4444:
+        case BM_1555:
+        case BM_8888:
+        case BM_888:
+        case BM_CMPR:
+        case BM_I4A4:
+            return 0;
+        default:
+            ASSERTL_Z(FALSE, "Bitmap_Z::GetPalSize", 138);
+            return 0;
     }
 }
 
@@ -162,33 +162,33 @@ U16 Bitmap_Z::GetColor(const Color& i_Color) {
     U16 l_Alpha = (U16)(i_Color.m_Alpha * 255.0f);
 
     switch (m_Format) {
-    // $Violet: The comments following will give the colors with correct logic formatting, in their correct ASM order
-    case BM_565:
-        //green, blue, red.  in wrong order. because of course
-        l_NewRed = ((l_Red & 0xFFF8) << 8);
-        l_NewGreen = ((l_Green & 0xFFFC) << 3);
-        l_NewBlue = ((l_Blue >> 3) & 0x1FFF);
+        // $Violet: The comments following will give the colors with correct logic formatting, in their correct ASM order
+        case BM_565:
+            //green, blue, red.  in wrong order. because of course
+            l_NewRed = ((l_Red & 0xFFF8) << 8);
+            l_NewGreen = ((l_Green & 0xFFFC) << 3);
+            l_NewBlue = ((l_Blue >> 3) & 0x1FFF);
 
-        l_ReturnValue = l_NewRed + l_NewBlue + l_NewGreen;
+            l_ReturnValue = l_NewRed + l_NewBlue + l_NewGreen;
 
-        return l_ReturnValue & 0xFFFF;
-    case BM_5551:
-        l_NewRed = ((l_Red & 0xFFF8) << 8);
-        l_NewGreen = ((l_Green & 0xFFE0) << 2);
-        l_NewBlue = ((l_Blue >> 3) & 0x1FFF);
-        l_NewAlpha = ((l_Alpha & 0xFF80) << 8);
-        l_ReturnValue = l_NewRed + l_NewBlue + l_NewGreen;
+            return l_ReturnValue & 0xFFFF;
+        case BM_5551:
+            l_NewRed = ((l_Red & 0xFFF8) << 8);
+            l_NewGreen = ((l_Green & 0xFFE0) << 2);
+            l_NewBlue = ((l_Blue >> 3) & 0x1FFF);
+            l_NewAlpha = ((l_Alpha & 0xFF80) << 8);
+            l_ReturnValue = l_NewRed + l_NewBlue + l_NewGreen;
 
-        return l_ReturnValue & 0xFFFF;
-    case BM_4444:
-        return (l_Blue >> 4) + (l_Green >> 4 << 4) + (l_Red >> 4 << 8) + (l_Alpha >> 4 << 12);
-    case BM_1555:
-        return (l_Alpha >> 7) + (l_Blue >> 3 << 1) + (l_Green >> 3 << 6) + (l_Red >> 3 << 11);
-    case BM_4:
-    case BM_8:
-        return GetBestPalEntry(l_Red, l_Green, l_Blue, l_Alpha);
-    default:
-        return l_ReturnValue;
+            return l_ReturnValue & 0xFFFF;
+        case BM_4444:
+            return (l_Blue >> 4) + (l_Green >> 4 << 4) + (l_Red >> 4 << 8) + (l_Alpha >> 4 << 12);
+        case BM_1555:
+            return (l_Alpha >> 7) + (l_Blue >> 3 << 1) + (l_Green >> 3 << 6) + (l_Red >> 3 << 11);
+        case BM_4:
+        case BM_8:
+            return GetBestPalEntry(l_Red, l_Green, l_Blue, l_Alpha);
+        default:
+            return l_ReturnValue;
     }
 }
 

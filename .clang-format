@@ -28,6 +28,7 @@ SpacesInAngles: false
 SortIncludes: false
 ReflowComments: false
 IndentWrappedFunctionNames: false
+IndentCaseLabels: true
 ColumnLimit: 0
 AlignAfterOpenBracket: Align
 AlignOperands: true
