@@ -1,7 +1,7 @@
 #include "ResName.h"
 #include "Name_Z.h"
 
-Name_Z DialogNames[0x11C / 4] = {
+Name_Z DialogNames[71] = {
     Name_Z("PROFILES"),
     Name_Z("ENTERPROFILENAME"),
     Name_Z("ENTERPROFILENAMEJPN"),
@@ -75,7 +75,7 @@ Name_Z DialogNames[0x11C / 4] = {
     Name_Z("ALERT"),
 };
 
-Name_Z DialogFrameNames[0x60 / 4] = {
+Name_Z DialogFrameNames[24] = {
     Name_Z("PROFILES"),
     Name_Z("ENTERPROFILENAME"),
     Name_Z("ENTERPROFILENAMEJPN"),
@@ -102,7 +102,7 @@ Name_Z DialogFrameNames[0x60 / 4] = {
     Name_Z("COMMANDS"),
 };
 
-Name_Z FrameNames[0x60 / 4] = {
+Name_Z FrameNames[24] = {
     Name_Z("F1"),
     Name_Z("F1"),
     Name_Z("F1"),
@@ -129,7 +129,7 @@ Name_Z FrameNames[0x60 / 4] = {
     Name_Z("F2TEXT"),
 };
 
-Name_Z DialogButtonNames[0xC1C / 4] = {
+Name_Z DialogButtonNames[775] = {
     Name_Z("PROFILES"),
     Name_Z("PROFILES"),
     Name_Z("PROFILES"),
@@ -907,7 +907,7 @@ Name_Z DialogButtonNames[0xC1C / 4] = {
     Name_Z("ALERT"),
 };
 
-Name_Z ButtonNames[0xC1C / 4] = {
+Name_Z ButtonNames[775] = {
     Name_Z("TMENU"),
     Name_Z("CREATE"),
     Name_Z("LOAD"),
