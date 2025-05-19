@@ -2,13 +2,13 @@
 #define _MEMORY_Z_H_
 #include "Types_Z.h"
 
-extern U32 s_GetFreeMem(void);
-extern U32 s_GetAllocatedMem(void);
-extern U32 s_GetNbFreeBlocks(void);
-extern U32 s_GetLargestFree(void);
+extern U32 s_GetFreeMem();
+extern U32 s_GetAllocatedMem();
+extern U32 s_GetNbFreeBlocks();
+extern U32 s_GetLargestFree();
 extern void s_MarkMem(U32 a1);
-extern U32 s_ShowUnMarkedMem(void);
-extern void s_ShowMostNbMalloc(void);
+extern U32 s_ShowUnMarkedMem();
+extern void s_ShowMostNbMalloc();
 class Hi_MemoryManager_Z {
 public:
     void* m_HeapBase;

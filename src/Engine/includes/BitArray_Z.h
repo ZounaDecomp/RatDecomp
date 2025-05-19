@@ -19,18 +19,13 @@ public:
     S32 FindFirstBit(bool i_State = TRUE, S32 i_firstBitToCheck = 0) const;
     S32 FindLastBit(bool i_State, S32 i_firstBitToCheck) const;
 
-    inline S32 GetSize() const { return m_Size; }
-
-    void ClearBit(S32 i_Bit) {
-        m_BitsDA[i_Bit >> 5] &= ~(1 << (i_Bit & 0x1F));
+    inline void Minimize() {
+        m_BitsDA.Minimize();
     }
 
-    U32 GetBit(S32 i_Bit) const {
-        return m_BitsDA[i_Bit >> 5] & (1 << (i_Bit & 0x1F));
-    }
-
-    void SetBit(S32 i_Bit) {
-        m_BitsDA[i_Bit >> 5] |= (1 << (i_Bit & 0x1F));
+    inline void Flush() {
+        m_BitsDA.Flush();
+        m_Size = 0;
     }
 
     inline void SetSize(S32 i_Size) {
@@ -40,13 +35,18 @@ public:
         }
     }
 
-    inline void Flush() {
-        m_BitsDA.Flush();
-        m_Size = 0;
+    inline S32 GetSize() const { return m_Size; }
+
+    inline U32 GetBit(S32 i_Bit) const {
+        return m_BitsDA[i_Bit >> 5] & (1 << (i_Bit & 0x1F));
     }
 
-    inline void Minimize(void) {
-        m_BitsDA.Minimize();
+    inline void SetBit(S32 i_Bit) {
+        m_BitsDA[i_Bit >> 5] |= (1 << (i_Bit & 0x1F));
+    }
+
+    inline void ClearBit(S32 i_Bit) {
+        m_BitsDA[i_Bit >> 5] &= ~(1 << (i_Bit & 0x1F));
     }
 };
 

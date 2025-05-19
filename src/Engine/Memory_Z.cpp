@@ -6,7 +6,7 @@ extern void s_free(void* i_Ptr);
 extern void* s_malloc(U32 i_Size, U32 i_Align);
 extern void* s_realloc(void* i_Ptr, U32 i_Size);
 extern void s_Init(void* i_HeapBase, U32 i_HeapSize);
-void s_ShowMostNbMalloc(void);
+void s_ShowMostNbMalloc();
 void* s_findalloc(void* i_RangeStart, void* i_RangeEnd);
 U32 s_getnbfindalloc(void* i_RangeStart, void* i_RangeEnd);
 void* s_getfindalloc(S32 i_AllocId, Char* l_ResultDescription, void* i_RangeStart, void* i_RangeEnd);

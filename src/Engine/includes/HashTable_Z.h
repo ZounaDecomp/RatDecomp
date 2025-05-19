@@ -61,36 +61,7 @@ class HashTableBase_Z {
     S32 m_ScanID;
 
 public:
-    HashTableBase_Z();
-
-    HashTableBase_Z(S32 i_Size) {
-        m_NbElem = 0;
-        m_NbFree = 0;
-        m_ScanID = -1;
-        m_Status = NULL;
-        m_Hash = NULL;
-        Resize(i_Size);
-    }
-
-    ~HashTableBase_Z() {
-        Flush();
-    }
-
-    void Flush() {
-        if (m_Status) {
-            Delete_Z m_Status;
-            m_Status = NULL;
-        }
-        if (m_Hash) {
-            Free_Z(m_Hash);
-            m_Hash = NULL;
-        }
-        m_NbElem = 0;
-        m_NbFree = 0;
-        m_ScanID = -1;
-    }
-
-    Weak_Z void Resize(S32 i_NewSize) {
+    void Resize(S32 i_NewSize) {
         S32 l_OldSize;
         S32 l_NextScan;
 
@@ -124,7 +95,47 @@ public:
         Delete_Z l_OldStatus;
     }
 
-    Weak_Z Bool Insert(const T& i_Ele) {
+    HashTableBase_Z() {
+        m_NbElem = 0;
+        m_NbFree = 0;
+        m_ScanID = -1;
+        m_Status = NULL;
+        m_Hash = NULL;
+        Resize(HASHTABLE_DEFAULT_SIZE);
+    }
+
+    HashTableBase_Z(S32 i_Size) {
+        m_NbElem = 0;
+        m_NbFree = 0;
+        m_ScanID = -1;
+        m_Status = NULL;
+        m_Hash = NULL;
+        Resize(i_Size);
+    }
+
+    ~HashTableBase_Z() {
+        Flush();
+    }
+
+    void Flush() {
+        if (m_Status) {
+            Delete_Z m_Status;
+            m_Status = NULL;
+        }
+        if (m_Hash) {
+            Free_Z(m_Hash);
+            m_Hash = NULL;
+        }
+        m_NbElem = 0;
+        m_NbFree = 0;
+        m_ScanID = -1;
+    }
+
+    void Minimize() {
+        Resize(m_NbElem);
+    }
+
+    Bool Insert(const T& i_Ele) {
         if (!m_Status) {
             Resize(HASHTABLE_DEFAULT_SIZE);
         }
@@ -138,7 +149,7 @@ public:
         }
 
         for (;;) {
-            if (m_Status->GetBit(l_HashID) == FALSE) {
+            if (!m_Status->GetBit(l_HashID)) {
                 if (!m_Hash[l_HashID].m_Ref) {
                     //if (m_Hash[l_HashID].IsEmpty()) {
                     if (l_ShadowHashID < 0)
@@ -167,10 +178,6 @@ public:
         }
     }
 
-    void Minimize() {
-        Resize(m_NbElem);
-    }
-
     const T* Search(const T& Element) const {
         if (!m_NbElem)
             return NULL;
@@ -195,14 +202,14 @@ public:
         return NULL;
     }
 
-    inline void InitScan(void) {
+    inline void InitScan() {
         if (!m_NbElem)
             m_ScanID = -1;
         else
             m_ScanID = 0;
     }
 
-    inline T* NextScan(void) {
+    inline T* NextScan() {
         if (m_ScanID < 0) return NULL;
         if (m_ScanID >= m_Status->GetSize()) {
             m_ScanID = -1;

@@ -11,11 +11,11 @@ extern void GetFlagsFromGame();
 extern void MathInitTables();
 extern Char* strcpy(Char* __dest, Char* __src);
 extern "C" void OSReport(const Char* __msg, ...);
-extern "C" void __start(void);
+extern "C" void __start();
 
 extern "C" void exit(S32 __status);
-extern "C" void* OSGetArenaHi(void);
-extern "C" void* OSGetArenaLo(void);
+extern "C" void* OSGetArenaHi();
+extern "C" void* OSGetArenaLo();
 
 extern "C" void* _stack_end;
 extern "C" void* _stack_addr;

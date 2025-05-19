@@ -209,7 +209,6 @@ cflags_rat_base = [
     "-fp fmadd",
     "-use_lmw_stmw on",
     '-pragma "cpp_extensions on"',
-    "-inline auto",
     "-i src/Engine/includes",
     "-i src/LibGC/includes",
     "-i src/Rat/includes",

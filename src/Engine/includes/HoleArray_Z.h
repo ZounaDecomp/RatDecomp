@@ -26,7 +26,7 @@ public:
         }
     }
 
-    S32 FindFirst(void) const {
+    S32 FindFirst() const {
         if (m_Size == 0) return -1;
         return m_BA.FindFirstBit();
     }
@@ -35,26 +35,6 @@ public:
         i_Cur++;
         if (i_Cur >= m_Size) return -1;
         return m_BA.FindFirstBit(TRUE, i_Cur);
-    }
-
-    S32 Add(const T& i_Elem) {
-        S32 l_Free;
-        if (m_Size == 0)
-            l_Free = -1;
-        else
-            l_Free = m_BA.FindFirstBit(FALSE);
-        m_NbElement++;
-        if (l_Free == -1) {
-            m_DA.Add(i_Elem);
-            m_BA.SetSize(m_Size + 1);
-            m_BA.SetBit(m_Size);
-            return m_Size++;
-        }
-        else {
-            m_DA[l_Free] = i_Elem;
-            m_BA.SetBit(l_Free);
-            return l_Free;
-        }
     }
 
     S32 Add() {
@@ -72,6 +52,26 @@ public:
         }
         else {
             new (&m_DA[l_Free]) T;
+            m_BA.SetBit(l_Free);
+            return l_Free;
+        }
+    }
+
+    S32 Add(const T& i_Elem) {
+        S32 l_Free;
+        if (m_Size == 0)
+            l_Free = -1;
+        else
+            l_Free = m_BA.FindFirstBit(FALSE);
+        m_NbElement++;
+        if (l_Free == -1) {
+            S32 l = m_DA.Add(i_Elem);
+            m_BA.SetSize(m_Size + 1);
+            m_BA.SetBit(m_Size);
+            return m_Size++;
+        }
+        else {
+            m_DA[l_Free] = i_Elem;
             m_BA.SetBit(l_Free);
             return l_Free;
         }
