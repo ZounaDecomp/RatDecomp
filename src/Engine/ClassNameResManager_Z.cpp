@@ -42,19 +42,6 @@ Bool ClassNameResManager_Z::GetClassID(const Name_Z& i_Name, const Name_Z& i_Fil
     return FALSE;
 }
 
-Weak_Z ClassNameRes_Z::ClassNameRes_Z() {
-    m_UnkS32_0x8 = -1;
-}
-
-Weak_Z HashS32Table_Z::HashTableBase_Z() {
-    m_NbElem = 0;
-    m_NbFree = 0;
-    m_ScanID = -1;
-    m_Status = NULL;
-    m_Hash = NULL;
-    Resize(HASHTABLE_DEFAULT_SIZE);
-}
-
 Bool ClassNameResManager_Z::MarkHandles() {
     S32 l_ClassID;
     l_ClassID = m_ClassResHA.FindFirst();
@@ -113,10 +100,6 @@ BaseObject_ZHdl ClassNameResManager_Z::GetObjectInClass(const S32 i_ClassID, con
     }
 }
 
-void ClassNameRes_Z::Minimize() {
-    m_ResourceHT.Minimize();
-}
-
 void ClassNameRes_Z::Load(void** i_Data) {
     S32 l_NbHashElt;
     S32Hash_Z l_HashElt;
@@ -158,9 +141,4 @@ void ClassNameRes_Z::MarkHandles() {
     }
 }
 
-// $SABE: Only here for now to match HashTableBase_Z::Insert
-void dummy() {
-    HashS32Table_Z tab;
-    S32Hash_Z ele;
-    tab.Insert(ele);
-}
+static const char* s_Unused = "Unknow Enum Symbol..";
