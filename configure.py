@@ -493,7 +493,7 @@ config.libs = [
         "lib": "Engine",
         "mw_version": config.linker_version,
         "cflags": cflags_rat_base,
-        "progress_category": "engine",  # str | List[str]
+        "progress_category": ["engine", "rat"],  # str | List[str]
         "objects": [
             Object(NonMatching, "Engine/ObjectBankManager_Z.cpp"),
             Object(NonMatching, "Engine/GameManager_Z.cpp"),
@@ -729,7 +729,7 @@ config.libs = [
             Object(NonMatching, "Engine/MaterialObj_Z.cpp"),
             Object(NonMatching, "Engine/MaterialManager_Z.cpp"),
             Object(NonMatching, "Engine/TriangleCache_Z.cpp"),
-            Object(NonMatching, "Engine/Random_Z.cpp"),
+            Object(Matching,    "Engine/Random_Z.cpp"),
             Object(NonMatching, "Engine/SurfaceLoad_Z.cpp"),
             Object(NonMatching, "Engine/LodMoveCollShadow_Z.cpp"),
             Object(NonMatching, "Engine/GraphLevel_Z.cpp"),
@@ -803,7 +803,7 @@ config.libs = [
         "lib": "LibGC",
         "mw_version": config.linker_version,
         "cflags": cflags_rat_base_libgc,
-        "progress_category": "libgc",  # str | List[str]
+        "progress_category": ["libgc", "rat"],  # str | List[str]
         "objects": [
             Object(NonMatching, "LibGC/MeshGCDraw_Z.cpp"),
             Object(NonMatching, "LibGC/GCConsoleSystem_Z.cpp"),
@@ -857,7 +857,7 @@ config.libs = [
         "lib": "Game",
         "mw_version": config.linker_version,
         "cflags": cflags_rat_base,
-        "progress_category": "game",  # str | List[str]
+        "progress_category": ["game", "rat"],  # str | List[str]
         "objects": [
             Object(NonMatching, "Rat/Mission_Heist.cpp"),
             Object(NonMatching, "Rat/Mission_LinguiniMaking.cpp"),
@@ -1156,6 +1156,7 @@ def link_order_callback(module_id: int, objects: List[str]) -> List[str]:
 # Optional extra categories for progress tracking
 # Adjust as desired for your project
 config.progress_categories = [
+    ProgressCategory("rat", "Ratatouille Code"),
     ProgressCategory("game", "Game Code"),
     ProgressCategory("engine", "Engine Code"),
     ProgressCategory("libgc", "LibGC Code"),
