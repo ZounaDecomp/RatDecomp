@@ -4,8 +4,8 @@
 #include "DynArray_Z.h"
 class ResourceObjectLink_Z {
 public:
-    Weak_Z ResourceObjectLink_Z() { };
-    ~ResourceObjectLink_Z();
+    ResourceObjectLink_Z() { };
+    ~ResourceObjectLink_Z() { };
     void Load(void* a1);
     void EndLoad();
     void EndLoadLinks();
@@ -16,11 +16,11 @@ public:
 /* sizeof(ResourceObject_Z) == 0x14 */
 class ResourceObject_Z : public BaseObject_Z {
 public:
-    Weak_Z ResourceObject_Z() { };
-    Weak_Z ~ResourceObject_Z();
-    virtual void Load(void** i_Data) { };
+    ResourceObject_Z() { };
+    virtual ~ResourceObject_Z() { };
+    virtual void Load(void** i_Data);
     virtual void EndLoad();
-    virtual void LoadLinks(void* a1);
+    virtual void LoadLinks(void** a1);
     virtual void EndLoadLinks();
     virtual void MarkHandles();
     ResourceObjectLink_Z m_ResObjLink; /* 0x08 */

@@ -16,3 +16,6 @@ void Sound_Z::Init() {
     m_Unk0x1D = 0;
     m_SoundSize = 0;
 }
+
+void Sound_Z::Reset() {
+}
