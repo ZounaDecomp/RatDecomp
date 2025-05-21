@@ -36,4 +36,7 @@ typedef double Double;
 #define Weak_Z __attribute__((weak))
 #endif
 
+#undef Extern_Z
+#define Extern_Z extern
+
 #endif

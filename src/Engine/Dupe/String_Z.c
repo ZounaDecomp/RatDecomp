@@ -1,7 +1,7 @@
 #include "stdarg.h"
 #include "Types_Z.h"
 
-extern "C" S32 vsprintf(const Char* i_Buf, const Char* i_Format, va_list i_Args);
+Extern_Z "C" S32 vsprintf(const Char* i_Buf, const Char* i_Format, va_list i_Args);
 
 S32 Vsprintf(Char* i_Buf, const Char* i_Format, Char* i_Args)
 {

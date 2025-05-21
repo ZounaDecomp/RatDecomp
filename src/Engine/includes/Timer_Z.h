@@ -2,7 +2,7 @@
 #define _TIMER_Z_H_
 #include "Types_Z.h"
 
-extern "C" void CalibrateTimer();
+Extern_Z "C" void CalibrateTimer();
 Float GetAbsoluteTime();
 
 #endif

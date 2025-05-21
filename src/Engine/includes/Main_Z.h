@@ -5,8 +5,8 @@
 #include "Timer_Z.h"
 #include "Fonts_Z.h"
 
-extern Char* strcpy(Char* __dest, Char* __src);
-extern "C" void memset(void* __s, S32 __c, U32 __n);
+Extern_Z Char* strcpy(Char* __dest, Char* __src);
+Extern_Z "C" void memset(void* __s, S32 __c, U32 __n);
 class GCConsole_Z;
 
 class Globals {

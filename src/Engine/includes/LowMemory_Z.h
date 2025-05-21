@@ -8,6 +8,6 @@ public:
     virtual void SetCallStackPtrs(unsigned long* a1, long a2) { };
 };
 
-extern MemoryManager_Z MemManager;
+Extern_Z MemoryManager_Z MemManager;
 
 #endif

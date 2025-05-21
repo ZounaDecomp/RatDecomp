@@ -1,7 +1,7 @@
 #include "Bitmap_Z.h"
 #include "Memory_Z.h"
 
-extern "C" void memcpy(void* dest, const void* src, S32 n);
+Extern_Z "C" void memcpy(void* dest, const void* src, S32 n);
 #pragma dont_inline on
 Bitmap_Z::Bitmap_Z() {
     Init();

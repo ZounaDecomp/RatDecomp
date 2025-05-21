@@ -5,22 +5,22 @@
 
 GCGlobals gData;
 
-extern void OSInit();
-extern void DVDInit();
-extern void GetFlagsFromGame();
-extern void MathInitTables();
-extern Char* strcpy(Char* __dest, Char* __src);
-extern "C" void OSReport(const Char* __msg, ...);
-extern "C" void __start();
+Extern_Z void OSInit();
+Extern_Z void DVDInit();
+Extern_Z void GetFlagsFromGame();
+Extern_Z void MathInitTables();
+Extern_Z Char* strcpy(Char* __dest, Char* __src);
+Extern_Z "C" void OSReport(const Char* __msg, ...);
+Extern_Z "C" void __start();
 
-extern "C" void exit(S32 __status);
-extern "C" void* OSGetArenaHi();
-extern "C" void* OSGetArenaLo();
+Extern_Z "C" void exit(S32 __status);
+Extern_Z "C" void* OSGetArenaHi();
+Extern_Z "C" void* OSGetArenaLo();
 
-extern "C" void* _stack_end;
-extern "C" void* _stack_addr;
-extern "C" void* _db_stack_end;
-extern "C" void* _db_stack_addr;
+Extern_Z "C" void* _stack_end;
+Extern_Z "C" void* _stack_addr;
+Extern_Z "C" void* _db_stack_end;
+Extern_Z "C" void* _db_stack_addr;
 
 // $SABE: Not fully matching yet, need to fix
 void PrintMemoryStatus(Char* i_Comment) {

@@ -1,6 +1,6 @@
 #include "Name_Z.h"
 
-extern U8 g_ChartoLower[256];
+Extern_Z U8 g_ChartoLower[256];
 
 S32 Crc32Tab[] = {
     0x00000000, 0x04C11DB7, 0x09823B6E, 0x0D4326D9,
