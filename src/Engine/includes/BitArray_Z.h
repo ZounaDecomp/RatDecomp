@@ -1,6 +1,7 @@
 #ifndef _BITARRAY_Z_H_
 #define _BITARRAY_Z_H_
 #include "DynArray_Z.h"
+#include "Types_Z.h"
 
 class BitArray_Z {
 public:
@@ -38,7 +39,7 @@ public:
     inline S32 GetSize() const { return m_Size; }
 
     inline U32 GetBit(S32 i_Bit) const {
-        return m_BitsDA[i_Bit >> 5] & (1 << (i_Bit & 0x1F));
+        return (m_BitsDA[i_Bit >> 5]) & (1 << (i_Bit & 0x1F));
     }
 
     inline void SetBit(S32 i_Bit) {
