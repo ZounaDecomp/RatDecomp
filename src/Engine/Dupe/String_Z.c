@@ -1,4 +1,4 @@
-#include "stdarg.h"
+#include "__va_arg.h"
 #include "Types_Z.h"
 
 Extern_Z "C" S32 vsprintf(const Char* i_Buf, const Char* i_Format, va_list i_Args);

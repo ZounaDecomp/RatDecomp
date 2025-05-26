@@ -240,8 +240,8 @@ cflags_bink_base = [
     f"-DVERSION_{config.version}",
     "-D__GEKKO__",
     "-O4,s",
-    "-sdata 4",
-    "-sdata2 4"
+    "-sdata 0",
+    "-sdata2 0"
 ]
 cflags_noopt = cflags_base[:]
 cflags_trk = [
@@ -300,7 +300,6 @@ cflags_rat_base = [
     "-i src/Engine/includes",
     "-i src/LibGC/includes",
     "-i src/Rat/includes",
-    "-i src/3rdParty/sdk/includes",
     "-O4,p",
     "-rostr"
 ]
@@ -1350,7 +1349,7 @@ config.libs = [
             Object(NonMatching, "3rdParty/bink/src/sdk/decode/ngc/ngcsnd.c"),
             Object(NonMatching, "3rdParty/bink/src/sdk/decode/binkread.c"),
             Object(NonMatching, "3rdParty/bink/src/sdk/decode/ngc/ngcfile.c"),
-            Object(NonMatching, "3rdParty/shared/memory/ngc/radmem.c"),
+            Object(Matching,    "3rdParty/shared/memory/ngc/radmem.c"),
             Object(NonMatching, "3rdParty/bink/src/sdk/decode/yuv.c"),
             Object(NonMatching, "3rdParty/bink/src/sdk/decode/binkacd.c"),
             Object(NonMatching, "3rdParty/shared/time/ngc/radcb.c"),
