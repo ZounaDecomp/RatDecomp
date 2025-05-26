@@ -4150,7 +4150,4 @@ bink/src/sdk/dct.c:
 	.rodata     start:0x8033D880 end:0x8033DD00
 
 bink/src/sdk/bitplane.c:
-	.text       start:0x80323714 end:0x80324B54
-
-bink/src/sdk/dummy.c:
-	.text       start:0x80324B54 end:0x80324B58
+	.text       start:0x80323714 end:0x80324B58

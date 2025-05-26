@@ -208,6 +208,38 @@ cflags_base = [
     f"-DVERSION_{config.version}",
     "-D__GEKKO__",
     "-O4,p",
+
+]
+cflags_bink_base = [
+    "-nodefaults",
+    "-proc gekko",
+    "-align powerpc",
+    "-enum int",
+    "-fp hardware",
+    "-Cpp_exceptions off",
+    # "-W all",
+    '-pragma "cats off"',
+    '-pragma "warn_notinlined off"',
+    "-maxerrors 1",
+    "-nosyspath",
+    "-fp_contract on",
+    "-str reuse",
+    "-multibyte",  # For Wii compilers, replace with `-enc SJIS`
+    f"-i build/{config.version}/include",
+    "-ir src/dolphin",
+    "-ir include",
+    "-i src/PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Include",
+    "-i src/PowerPC_EABI_Support/MSL/MSL_C/MSL_Common_Embedded/Math/Include",
+    "-i src/PowerPC_EABI_Support/MSL/MSL_C/PPC_EABI/Include",
+    "-i src/PowerPC_EABI_Support/MSL/MSL_C++/MSL_Common/Include",
+    "-i src/PowerPC_EABI_Support/Runtime/Inc",
+    "-i src/PowerPC_EABI_Support/MetroTRK",
+    "-i include/dolphin",
+    "-i src/bink/includes",
+    f"-DBUILD_VERSION={version_num}",
+    f"-DVERSION_{config.version}",
+    "-D__GEKKO__",
+    "-O4,S",
 ]
 cflags_noopt = cflags_base[:]
 cflags_trk = [
@@ -1308,8 +1340,8 @@ config.libs = [
     },
     {
         "lib": "bink",
-        "mw_version": config.linker_version,
-        "cflags": cflags_rat_base,
+        "mw_version": "GC/1.0",
+        "cflags": cflags_bink_base,
         "progress_category": "bink",  # str | List[str]
         "objects": [
             Object(NonMatching, "bink/src/sdk/decode/ngc/binkngc.c"),
@@ -1326,7 +1358,6 @@ config.libs = [
             Object(NonMatching, "bink/src/sdk/fft.c"),
             Object(NonMatching, "bink/src/sdk/dct.c"),
             Object(NonMatching, "bink/src/sdk/bitplane.c"),
-            Object(NonMatching, "bink/src/sdk/dummy.c"),
         ],
     }
 ]

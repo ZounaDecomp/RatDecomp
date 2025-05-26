@@ -155,30 +155,41 @@ S32 Bitmap_Z::GetNbEntries() {
 // $VIOLET: This function might make me become religious
 U16 Bitmap_Z::GetColor(const Color& i_Color)
 {
-    const U16 l_Red = (i_Color.m_Red * 255.0f);
-    const U16 l_Green = (i_Color.m_Green * 255.0f);
-    const U16 l_Blue = (i_Color.m_Blue * 255.0f);
-    const U16 l_Alpha = (i_Color.m_Alpha * 255.0f);
+    U16 l_Red = (i_Color.m_Red * 255.0f);
+    U16 l_Green = (i_Color.m_Green * 255.0f);
+    U16 l_Blue = (i_Color.m_Blue * 255.0f);
+    U16 l_Alpha = (i_Color.m_Alpha * 255.0f);
 
     U16 l_Color;
     
     switch (m_Format)
     {
-        // $Violet: The comments following will give the colors with correct logic formatting, in their correct ASM order
         case BM_565:
-            l_Color = ((l_Red >> 3 << 11)) + ((l_Green >> 2 << 5)) + (((l_Blue >> 3)));
+            l_Blue = l_Blue >> 3;
+            l_Green = l_Green >> 2;
+            l_Red = l_Red >> 3;
+            l_Color = (l_Red << 11) + (l_Green << 5) + l_Blue;
             break;
         case BM_5551:
-            l_Color = ((((l_Alpha >> 7 << 15))) + ((l_Red >> 3 << 10)) + ((l_Green >> 3 << 5)) + (U16)((l_Blue >> 3)));
+            l_Blue = l_Blue >> 3;
+            l_Green = l_Green >> 3;
+            l_Red = l_Red >> 3;
+            l_Alpha = l_Alpha >> 7;
+            l_Color = (l_Alpha << 15) + (l_Red << 10) + (l_Green << 5) + l_Blue;
             break;
         case BM_4444:
-            l_Color =  (((U16)(l_Alpha >> 4) << 12)) + ((U16)(l_Red >> 4) << 8) +((U16)(l_Green >> 4) << 4) + ((U16)(l_Blue >> 4));
+            l_Blue = l_Blue >> 4;
+            l_Green = l_Green >> 4;
+            l_Red = l_Red >> 4;
+            l_Alpha = l_Alpha >> 4;
+            l_Color = (l_Alpha << 12) + (l_Red << 8) + (l_Green << 4) + l_Blue;
             break;
         case BM_1555:
-            l_Color = (((l_Red >> 3) << 10) << 1)
-                + (((l_Green >> 3) << 5) << 1)
-                + (((l_Alpha) >> 7))
-                + ((U16)(l_Blue  >> 3) << 1);
+            l_Blue = l_Blue >> 3;
+            l_Green = l_Green >> 3;
+            l_Red = l_Red >> 3;
+            l_Alpha = l_Alpha >> 7;
+            l_Color = (l_Red << 11) + (l_Green << 6) + (l_Blue << 1) + l_Alpha;
             break;
         case BM_4:
         case BM_8:
@@ -186,6 +197,7 @@ U16 Bitmap_Z::GetColor(const Color& i_Color)
     }
     return l_Color;
 }
+
 
 #pragma optimize_for_size on
 U8 Bitmap_Z::GetBestPalEntry(U8 i_Red, U8 i_Green, U8 i_Blue, U8 i_Alpha) {
