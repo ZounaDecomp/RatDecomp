@@ -611,14 +611,6 @@ def generate_build_ninja(
     mwcc_cmd = f"{wrapper_cmd}{mwcc} $cflags -MMD -c $in -o $basedir"
     mwcc_implicit: List[Optional[Path]] = [compilers_implicit or mwcc, wrapper_implicit]
 
-    # NGCCC
-    ngccc = compiler_path / "ngccc.exe"
-    ngccc_cmd = f"{wrapper_cmd}{ngccc} $cflags -c -o $out  $in"
-    ngccc_implicit: List[Optional[Path]] = [
-        compilers_implicit or ngccc,
-        wrapper_implicit,
-    ]
-
     # MWCC with UTF-8 to Shift JIS wrapper
     mwcc_sjis_cmd = f"{wrapper_cmd}{sjiswrap} {mwcc} $cflags -MMD -c $in -o $basedir"
     mwcc_sjis_implicit: List[Optional[Path]] = [*mwcc_implicit, sjiswrap]
@@ -671,16 +663,6 @@ def generate_build_ninja(
     )
     n.newline()
 
-    n.comment("ProDG build")
-    n.rule(
-        name="prodg",
-        command=ngccc_cmd,
-        description="ProDG $out",
-        depfile="$basefile.d",
-        deps="gcc",
-    )
-    n.newline()
-    
     n.comment("MWCC build (with UTF-8 to Shift JIS wrapper)")
     n.rule(
         name="mwcc_sjis",
@@ -896,17 +878,11 @@ def generate_build_ninja(
             used_compiler_versions.add(obj.options["mw_version"])
 
             # Add MWCC build rule
-            fakerule = "mwcc_sjis" if obj.options["shift_jis"] else "mwcc"
-            fakeimplcit = mwcc_sjis_implicit if obj.options["shift_jis"] else mwcc_implicit
-            if ("prodg" in obj.options["mw_version"].lower()):
-                fakerule = "prodg"
-                fakeimplcit = None
-            
             lib_name = obj.options["lib"]
             n.comment(f"{obj.name}: {lib_name} (linked {obj.completed})")
             n.build(
                 outputs=obj.src_obj_path,
-                rule=fakerule,
+                rule="mwcc_sjis" if obj.options["shift_jis"] else "mwcc",
                 inputs=src_path,
                 variables={
                     "mw_version": Path(obj.options["mw_version"]),
@@ -915,7 +891,7 @@ def generate_build_ninja(
                     "basefile": obj.src_obj_path.with_suffix(""),
                 },
                 implicit=(
-                    fakeimplcit
+                    mwcc_sjis_implicit if obj.options["shift_jis"] else mwcc_implicit
                 ),
                 order_only="pre-compile",
             )
