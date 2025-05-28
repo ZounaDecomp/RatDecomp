@@ -78,6 +78,8 @@ public:
     }
 
     Bool Remove(S32 i_Index) {
+        // $VIOLET: Needed for regswaps
+        S32 l_Bit = m_BA.GetBit(i_Index);
         if (m_BA.GetBit(i_Index)) {
             m_DA[i_Index].~T();
             m_BA.ClearBit(i_Index);

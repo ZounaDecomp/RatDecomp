@@ -39,7 +39,8 @@ public:
     inline S32 GetSize() const { return m_Size; }
 
     inline U32 GetBit(S32 i_Bit) const {
-        return (m_BitsDA[i_Bit >> 5]) & (1 << (i_Bit & 0x1F));
+        const U32DA& l_Bits = m_BitsDA;
+        return (l_Bits.Get(i_Bit >> 5)) & (1 << (i_Bit & 0x1F));
     }
 
     inline void SetBit(S32 i_Bit) {
@@ -47,7 +48,7 @@ public:
     }
 
     inline void ClearBit(S32 i_Bit) {
-        m_BitsDA[i_Bit >> 5] &= ~(1 << (i_Bit & 0x1F));
+        m_BitsDA[i_Bit >> 5] &= ~(U32)(1 << (i_Bit & 0x1F));
     }
 };
 

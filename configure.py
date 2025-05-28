@@ -926,7 +926,7 @@ config.libs = [
             Object(NonMatching, "Engine/Streaming_Z.cpp"),
             Object(NonMatching, "Engine/SurfaceDraw_Z.cpp"),
             Object(NonMatching, "Engine/Error_Z.cpp"),
-            Object(NonMatching, "Engine/ClassNameResManager_Z.cpp"),
+            Object(Matching,    "Engine/ClassNameResManager_Z.cpp"),
             Object(NonMatching, "Engine/SoundManager_Z.cpp"),
             Object(NonMatching, "Engine/AnimationManager_Z.cpp"),
             Object(NonMatching, "Engine/InGameObjectsLoadAscii_Z.cpp"),
