@@ -6,26 +6,33 @@
 Extern_Z "C" void memset(void* __s, S32 __c, U32 __n);
 
 #define HASHTABLE_DEFAULT_SIZE 16
+
 class S32Hash_Z {
 public:
     S32 m_Value;
     S32 m_Ref;
 
     S32Hash_Z() { }
+
     S32Hash_Z(S32 i_Value) { m_Value = i_Value; }
+
     S32Hash_Z(S32 i_Value, S32 i_Ref) {
         m_Value = i_Value;
         m_Ref = i_Ref;
     }
 
     inline S32 HashBase() const { return m_Value; }
+
     inline S32 HashIncrement() const {
         return HashBase() == 0;
     }
+
     inline Bool IsEmpty() { return !m_Ref; }
+
     inline void SetShadow() { m_Ref = -1; }
 
     Bool operator==(const S32Hash_Z& i_Elem) { return i_Elem.m_Value == m_Value; }
+
     Bool operator!=(const S32Hash_Z& i_Elem) { return i_Elem.m_Value != m_Value; }
 };
 
@@ -35,20 +42,26 @@ public:
     S32 m_Ref;
 
     Name_ZHash_Z() { }
+
     Name_ZHash_Z(Name_Z i_Value) { m_Value = i_Value; }
+
     Name_ZHash_Z(Name_Z i_Value, S32 i_Ref) {
         m_Value = i_Value;
         m_Ref = i_Ref;
     }
 
     inline S32 HashBase() const { return m_Value.m_ID; }
+
     inline S32 HashIncrement() const {
         return HashBase() == 0;
     }
+
     inline Bool IsEmpty() { return !m_Ref; }
+
     inline void SetShadow() { m_Ref = -1; }
 
     Bool operator==(const Name_ZHash_Z& i_Elem) { return i_Elem.m_Value == m_Value; }
+
     Bool operator!=(const Name_ZHash_Z& i_Elem) { return i_Elem.m_Value != m_Value; }
 };
 

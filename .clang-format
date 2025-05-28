@@ -26,6 +26,7 @@ SpaceAfterCStyleCast: false
 SpaceBeforeAssignmentOperators: true
 SpacesInAngles: false
 SortIncludes: false
+SeparateDefinitionBlocks: Always
 ReflowComments: false
 IndentWrappedFunctionNames: false
 IndentCaseLabels: true

@@ -22,6 +22,7 @@ public:
     void Load(void** i_Data);
     void UpdateLinks();
     void MarkHandles();
+
     void Minimize() {
         m_ResourceHT.Minimize();
     }

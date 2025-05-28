@@ -10,6 +10,7 @@ union SoundFlags_Z {
             Stereo : 1,
             padding : 5;
     } data;
+
     U8 Flags;
 };
 

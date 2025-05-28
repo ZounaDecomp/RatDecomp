@@ -9,6 +9,7 @@ Extern_Z U32 s_GetLargestFree();
 Extern_Z void s_MarkMem(U32 a1);
 Extern_Z U32 s_ShowUnMarkedMem();
 Extern_Z void s_ShowMostNbMalloc();
+
 class Hi_MemoryManager_Z {
 public:
     void* m_HeapBase;
@@ -32,54 +33,71 @@ public:
     virtual void* FindAlloc(void* i_RangeStart, void* i_RangeEnd);
     virtual U32 FindAllocNb(void* i_RangeStart, void* i_RangeEnd);
     virtual void* FindAllocID(S32 i_AllocId, Char* i_ResultDescription, void* i_RangeStart, void* i_RangeEnd);
+
     virtual void* AllocContiguous(U32 i_Size, const Char* i_Comment, const Char* i_File, S32 i_Line, U32 i_Align) {
         return Alloc(i_Size, i_Comment, i_File, i_Line, i_Align);
     };
+
     virtual void FreeContiguous(void* i_Ptr) {
         Free(i_Ptr);
     };
+
     virtual U32 Update(Float i_DeltaTime);
     virtual void PrintStatus();
+
     virtual U32 GetHeapSize() {
         return (U32)m_HeapEnd - (U32)m_HeapBase;
     };
+
     virtual void* GetHeapBase() {
         return m_HeapBase;
     };
+
     virtual U32 GetNbAlloc() {
         return m_NbAlloc;
     };
+
     virtual U32 GetAllocatedMem() {
         return s_GetAllocatedMem();
     };
+
     virtual U32 GetFreeMem() {
         m_FreeMemCached = s_GetFreeMem();
         return m_FreeMemCached;
     };
+
     virtual U32 GetFragments() {
         return s_GetNbFreeBlocks();
     };
+
     virtual U32 GetLargestFree() {
         return s_GetLargestFree();
     };
+
     virtual U32 GetFrameNbAlloc() {
         return m_FrameNbAlloc;
     };
+
     virtual U32 GetMemUsed() {
         return GetHeapSize() - GetFreeMem();
     };
+
     virtual U32 GetMaxMemUsed() {
         return m_MaxMemUsed;
     };
+
     virtual void MarkMem(U32 a1) {
         s_MarkMem(a1);
     };
+
     virtual U32 ShowUnMarkedMem() {
         return s_ShowUnMarkedMem();
     };
+
     virtual void ShowMostNbMalloc() {
         s_ShowMostNbMalloc();
     };
+
     virtual void VerifyMem();
     virtual void SetCallStackPtrs(U32* a1, S32 a2);
 };

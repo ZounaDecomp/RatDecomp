@@ -21,6 +21,7 @@ class VolatileMgr_Z {
     void SetState(int i_ArrayOffset, S32 i_State);
     void UpdateVolatileBlocks(Float);
     void FreeVolatileBlock_Z(U32 i_BlockIdx);
+
 private:
     DynArray_Z<VolatileBlock, 8, FALSE> m_VolatileBlockArray;
     S32 m_FirstFreeBlock;

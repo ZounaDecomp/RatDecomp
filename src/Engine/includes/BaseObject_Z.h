@@ -2,10 +2,6 @@
 #define _BASE_OBJECT_Z_H_
 #include "Name_Z.h"
 #include "Handle_Z.h"
-#include "String_Z.h"
-
-static String_Z<256> DefaultStringBaseObject;
-static String_Z<256> DefaultStringRscBaseObject;
 
 class BaseObject_Z {
 public:
@@ -14,9 +10,11 @@ public:
     BaseObject_Z() { };
 
     virtual void Init() { };
+
     virtual ~BaseObject_Z() {
         m_Handle = HANDLE_NULL;
     };
+
     virtual void Load(void** a1);
     virtual void EndLoad();
     virtual void AfterEndLoad();

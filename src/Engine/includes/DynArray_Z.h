@@ -118,7 +118,7 @@ public:
     void Flush() {
         SetSize(0);
     }
-    
+
     void Minimize() {
         Realloc(m_Size);
         m_ReservedSize = 0;

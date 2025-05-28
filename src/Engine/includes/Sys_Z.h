@@ -5,7 +5,7 @@
 class Sys_Z {
 public:
     static void* MemCpyFrom(void* o_Dest, void* i_Src, const U32 i_Size);
-    static void  GetAbsoluteFromPath(const Char* i_Path, Char* o_AbsPath, Char* i_Unk);
+    static void GetAbsoluteFromPath(const Char* i_Path, Char* o_AbsPath, Char* i_Unk);
 };
 
 #endif

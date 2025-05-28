@@ -2,6 +2,7 @@
 #define _RESOURCE_OBJECT_Z_H_
 #include "BaseObject_Z.h"
 #include "DynArray_Z.h"
+
 class ResourceObjectLink_Z {
 public:
     ResourceObjectLink_Z() { };

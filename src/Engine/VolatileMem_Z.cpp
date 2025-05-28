@@ -12,7 +12,7 @@ void VolatileMgr_Z::SetState(int i_ArrayOffset, S32 i_State) {
         switch (l_VolBlock.m_State) {
             case 0: {
                 l_NextBlockToUpdate = l_VolBlock.m_NextBlockToUpdate;
-                if (l_NextBlockToUpdate >=  0) {
+                if (l_NextBlockToUpdate >= 0) {
                     m_VolatileBlockArray[l_NextBlockToUpdate].m_PrevBlockToUpdate = l_VolBlock.m_PrevBlockToUpdate;
                 }
                 l_PrevBlockToUpdate = l_VolBlock.m_PrevBlockToUpdate;
@@ -64,6 +64,7 @@ void VolatileMgr_Z::SetState(int i_ArrayOffset, S32 i_State) {
         }
     }
 }
+
 VolatileMgr_Z::VolatileMgr_Z() {
     m_FirstFreeBlock = -1;
     m_FirstAllocatedBlock = -1;
@@ -73,17 +74,15 @@ VolatileMgr_Z::VolatileMgr_Z() {
         l_VolBlock.m_Pointer = NULL;
         l_VolBlock.m_Key = 1;
         l_VolBlock.m_State = -1;
-        SetState(l_BlockId,0);
+        SetState(l_BlockId, 0);
     }
 }
-
 
 void VolatileMgr_Z::FreeVolatileBlock_Z(U32 i_BlockIdx) {
     if (i_BlockIdx < m_VolatileBlockArray.GetSize()) {
         int l_BlockIdx = i_BlockIdx;
         VolatileBlock& l_VolBlock = m_VolatileBlockArray[l_BlockIdx];
-        if (l_VolBlock.m_Pointer) 
-        {
+        if (l_VolBlock.m_Pointer) {
             Free_Z(l_VolBlock.m_Pointer);
             l_VolBlock.m_Pointer = NULL;
         }
@@ -94,6 +93,5 @@ void VolatileMgr_Z::FreeVolatileBlock_Z(U32 i_BlockIdx) {
             l_VolBlock.m_Key += 1;
         }
         SetState(i_BlockIdx, 0);
-
     }
 }

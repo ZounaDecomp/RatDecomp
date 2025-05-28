@@ -2707,8 +2707,8 @@ Engine/AnimationManager_Z.cpp:
 
 Engine/ClassNameResManager_Z.cpp:
 	.text       start:0x80229CB8 end:0x8022B97C
-	.rodata     start:0x80335768 end:0x803357D8
-	.data       start:0x8035C9A8 end:0x8035C9C0
+	.rodata     start:0x80335768 end:0x803357D1
+	.data       start:0x8035C9A8 end:0x8035C9BC
 
 Engine/AnimationMaterial_Z.cpp:
 	.text       start:0x8022B97C end:0x8022BB54

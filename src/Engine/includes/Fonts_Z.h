@@ -11,6 +11,7 @@ U32 GetUTF8CharCode(const S8* a1);
 class FontGlyphHash_Z {
 public:
     S32 HashBase() const { return m_CharCode; }
+
     S32 m_CharCode;
     S32 m_MaterialIndex;
     Float m_Descent;

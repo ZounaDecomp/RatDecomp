@@ -19,6 +19,7 @@ public:
         gQRandom1 = 2.0f;
         gQRandom2 = 0.5;
     }
+
     float gQRandom1;
     float gQRandom2;
 };

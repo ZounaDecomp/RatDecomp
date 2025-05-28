@@ -3,6 +3,7 @@
 
 Extern_Z "C" void memcpy(void* dest, const void* src, S32 n);
 #pragma dont_inline on
+
 Bitmap_Z::Bitmap_Z() {
     Init();
 }
@@ -153,17 +154,15 @@ S32 Bitmap_Z::GetNbEntries() {
 }
 
 // $VIOLET: This function might make me become religious
-U16 Bitmap_Z::GetColor(const Color& i_Color)
-{
+U16 Bitmap_Z::GetColor(const Color& i_Color) {
     U16 l_Red = (i_Color.m_Red * 255.0f);
     U16 l_Green = (i_Color.m_Green * 255.0f);
     U16 l_Blue = (i_Color.m_Blue * 255.0f);
     U16 l_Alpha = (i_Color.m_Alpha * 255.0f);
 
     U16 l_Color;
-    
-    switch (m_Format)
-    {
+
+    switch (m_Format) {
         case BM_565:
             l_Blue = l_Blue >> 3;
             l_Green = l_Green >> 2;
@@ -198,8 +197,8 @@ U16 Bitmap_Z::GetColor(const Color& i_Color)
     return l_Color;
 }
 
-
 #pragma optimize_for_size on
+
 U8 Bitmap_Z::GetBestPalEntry(U8 i_Red, U8 i_Green, U8 i_Blue, U8 i_Alpha) {
     Float l_CmpValue = 1024 * 1024 * 1024;
     Float l_Match = 0;
