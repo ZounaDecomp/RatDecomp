@@ -14,6 +14,19 @@ typedef long long S64;
 typedef float Float;
 typedef double Double;
 
+typedef volatile bool VBool;
+typedef volatile char VChar;
+typedef volatile unsigned char VU8;
+typedef volatile char VS8;
+typedef volatile unsigned short VU16;
+typedef volatile short VS16;
+typedef volatile unsigned long VU32;
+typedef volatile long VS32;
+typedef volatile unsigned long long VU64;
+typedef volatile long long VS64;
+typedef volatile float VFloat;
+typedef volatile double VDouble;
+
 #undef S32_MIN
 #define S32_MIN -2147483648
 
