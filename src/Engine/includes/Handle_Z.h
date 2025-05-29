@@ -78,12 +78,15 @@ public:
         return m_RealID.Ref.Key;
     }
 
+    // $SABE: Needed for ObjectDatas_Z::Clone(...) but defining operator BaseObject_Z*() const causes circular dependency issues
     Bool IsValid() {
         BaseObject_Z* l_Ptr = *this;
         return l_Ptr != NULL;
     }
 
-    operator BaseObject_Z*() const;
+    operator BaseObject_Z*() const; // {
+    //     return GETPTR(*this);
+    // }
 
 protected:
     HdlID m_RealID;
@@ -138,9 +141,5 @@ public:
     virtual void DeleteHandle(const BaseObject_ZHdl& a1);
     virtual void GetNameStrFromId(const Name_Z& a1);
 };
-
-// BaseObject_ZHdl::operator BaseObject_Z*() const {
-//     return ((HandleManager_Z*)gData.ClassMgr)->GetPtr(*this);
-// }
 
 #endif

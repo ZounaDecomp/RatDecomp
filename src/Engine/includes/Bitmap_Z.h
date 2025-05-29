@@ -43,6 +43,8 @@ enum BmTransp {
 class Color {
 
 public:
+    Color() { }
+
     Weak_Z Color(Float i_Red, Float i_Green, Float i_Blue, Float i_Alpha);
 
     Float m_Red;
