@@ -2,10 +2,6 @@
 #include "Main_Z.h"
 #include "Program_Z.h"
 
-BaseObject_ZHdl::operator BaseObject_Z*() const {
-    return GETPTR(*this);
-}
-
 HandleManager_Z::HandleManager_Z() {
 }
 

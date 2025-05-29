@@ -26,7 +26,7 @@ public:
     virtual void Load(void* a1);
     virtual void EndLoad();
     virtual void AfterEndLoad();
-    virtual void MarkHandles();
+    virtual Bool MarkHandles();
 
 private:
     S32 m_FontGlyphCount;

@@ -3,6 +3,7 @@
 #include "HashTable_Z.h"
 #include "HoleArray_Z.h"
 #include "Handle_Z.h"
+#include "Program_Z.h"
 
 class ClassNameRes_Z {
 public:

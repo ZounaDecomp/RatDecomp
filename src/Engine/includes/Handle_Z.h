@@ -4,6 +4,7 @@
 #include "Name_Z.h"
 #include "DynArray_Z.h"
 #include "HashTable_Z.h"
+//#include "Global_Z.h"
 
 #define HandleGranularity 16384
 #define HANDLE_NULL BaseObject_ZHdl(0);
@@ -12,8 +13,40 @@ class BaseObject_Z;
 class BaseObject_ZHdl;
 class HandleManager_Z;
 class DrawInfo_Z;
+class GCGlobals;
+extern GCGlobals gData;
 
-#define GETPTR(a) gData.ClassMgr->GetPtr(a)
+#define GETPTR(h) gData.ClassMgr->GetPtr(h)
+
+#define HANDLE_Z(ClassName, ParentName)                          \
+    class ClassName##Hdl;                                        \
+    class ClassName##Hdl : public ParentName##Hdl {              \
+    private:                                                     \
+    public:                                                      \
+        ClassName##Hdl(void) {                                   \
+            m_RealID.GblID = 0;                                  \
+        }                                                        \
+        ClassName##Hdl(const ClassName##Hdl& i_Org) {            \
+            m_RealID.GblID = i_Org.m_RealID.GblID;               \
+        }                                                        \
+        ClassName##Hdl(const BaseObject_ZHdl& i_Org) {           \
+            ClassName##Hdl* Ptr = (ClassName##Hdl*)&i_Org;       \
+            m_RealID.GblID = Ptr->m_RealID.GblID;                \
+        }                                                        \
+        ClassName##Hdl& operator=(const ClassName##Hdl& i_Org) { \
+            m_RealID.GblID = i_Org.m_RealID.GblID;               \
+            return *this;                                        \
+        }                                                        \
+        ClassName##Hdl(int i_Val) {                              \
+            m_RealID.GblID = i_Val;                              \
+        }                                                        \
+        ClassName* operator->() const {                          \
+            return (ClassName*)GETPTR((BaseObject_ZHdl&)*this);  \
+        }                                                        \
+        operator ClassName*() const {                            \
+            return (ClassName*)GETPTR((BaseObject_ZHdl&)*this);  \
+        }                                                        \
+    }
 
 union HdlID {
     S32 GblID;
@@ -43,6 +76,11 @@ public:
 
     S8 GetKey() {
         return m_RealID.Ref.Key;
+    }
+
+    Bool IsValid() {
+        BaseObject_Z* l_Ptr = *this;
+        return l_Ptr != NULL;
     }
 
     operator BaseObject_Z*() const;
@@ -100,5 +138,9 @@ public:
     virtual void DeleteHandle(const BaseObject_ZHdl& a1);
     virtual void GetNameStrFromId(const Name_Z& a1);
 };
+
+// BaseObject_ZHdl::operator BaseObject_Z*() const {
+//     return ((HandleManager_Z*)gData.ClassMgr)->GetPtr(*this);
+// }
 
 #endif

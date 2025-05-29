@@ -52,4 +52,6 @@ typedef volatile double VDouble;
 #undef Extern_Z
 #define Extern_Z extern
 
+#define Aligned_Z(x) __attribute__((aligned(x)))
+
 #endif

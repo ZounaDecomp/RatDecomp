@@ -1293,7 +1293,6 @@ def generate_build_ninja(
         ###
         # Helper tools
         ###
-        # TODO: make these rules work for RELs too
         dol_link_step = link_steps[0]
         dol_elf_path = dol_link_step.partial_output()
         n.comment("Check for mismatching symbols")

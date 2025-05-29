@@ -1,5 +1,4 @@
 #include "ClassNameResManager_Z.h"
-#include "Program_Z.h"
 #include "Sys_Z.h"
 
 void ClassNameResManager_Z::Shut() {

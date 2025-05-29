@@ -1,5 +1,5 @@
-#ifndef _RESOURCE_OBJECT_Z_H_
-#define _RESOURCE_OBJECT_Z_H_
+#ifndef _RESOURCEOBJECT_Z_H_
+#define _RESOURCEOBJECT_Z_H_
 #include "BaseObject_Z.h"
 #include "DynArray_Z.h"
 
@@ -23,7 +23,7 @@ public:
     virtual void EndLoad();
     virtual void LoadLinks(void** a1);
     virtual void EndLoadLinks();
-    virtual void MarkHandles();
+    virtual Bool MarkHandles();
     ResourceObjectLink_Z m_ResObjLink; /* 0x08 */
 };
 

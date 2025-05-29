@@ -1,5 +1,5 @@
-#ifndef _VOLATILE_MEM_Z_H_
-#define _VOLATILE_MEM_Z_H_
+#ifndef _VOLATILEMEM_Z_H_
+#define _VOLATILEMEM_Z_H_
 #include "DynArray_Z.h"
 #include "Types_Z.h"
 

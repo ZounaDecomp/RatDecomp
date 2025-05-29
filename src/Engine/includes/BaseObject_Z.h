@@ -1,5 +1,5 @@
-#ifndef _BASE_OBJECT_Z_H_
-#define _BASE_OBJECT_Z_H_
+#ifndef _BASEOBJECT_Z_H_
+#define _BASEOBJECT_Z_H_
 #include "Name_Z.h"
 #include "Handle_Z.h"
 
@@ -22,7 +22,7 @@ public:
     virtual void LoadLinks(void** a1);
     virtual void EndLoadLinks();
     virtual void Clean();
-    virtual void MarkHandles();
+    virtual Bool MarkHandles();
 };
 
 #endif
