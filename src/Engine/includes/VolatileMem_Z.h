@@ -2,7 +2,6 @@
 #define _VOLATILE_MEM_Z_H_
 #include "DynArray_Z.h"
 #include "Types_Z.h"
-#include "mtx.h"
 
 struct VolatileBlock {
     void* m_Pointer;
