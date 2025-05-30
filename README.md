@@ -98,3 +98,8 @@ Download the latest release from [encounter/objdiff](https://github.com/encounte
 Select an object from the left sidebar to begin diffing. Changes to the project will rebuild automatically: changes to source files, headers, `configure.py`, `splits.txt` or `symbols.txt`.
 
 ![](assets/objdiff.png)
+
+Credits
+============
+Runtime and SDK code has been used from:
+- [Twilight Princess](https://github.com/zeldaret/tp)
