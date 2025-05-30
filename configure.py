@@ -840,7 +840,7 @@ config.libs = [
             Object(NonMatching, "Engine/LodCollisionMovingSphere_Z.cpp"),
             Object(NonMatching, "Engine/Sound_Z.cpp"),
             Object(NonMatching, "Engine/Sys_Z.cpp"),
-            Object(Matching, "Engine/UserDefine_Z.cpp"),
+            Object(NonMatching, "Engine/UserDefine_Z.cpp"),
             Object(NonMatching, "Engine/MeshVolume_Z.cpp"),
             Object(NonMatching, "Engine/ObjectMoveCollNode_Z.cpp"),
             Object(NonMatching, "Engine/Renderer_Z.cpp"),
