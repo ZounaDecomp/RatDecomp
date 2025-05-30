@@ -4,7 +4,7 @@
 typedef bool Bool;
 typedef char Char;
 typedef unsigned char U8;
-typedef char S8;
+typedef signed char S8;
 typedef unsigned short U16;
 typedef short S16;
 typedef unsigned long U32;

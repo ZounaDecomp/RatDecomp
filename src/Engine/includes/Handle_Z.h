@@ -59,6 +59,7 @@ union HdlID {
 
 class BaseObject_ZHdl {
     friend class HandleManager_Z;
+    friend class BaseObject_Z;
 
 public:
     BaseObject_ZHdl() {
@@ -70,11 +71,11 @@ public:
         m_RealID.Ref.Key = (S8)i_Val;
     }
 
-    S32 GetID() {
+    S32 GetID() const {
         return m_RealID.Ref.ID;
     }
 
-    S8 GetKey() {
+    S8 GetKey() const {
         return m_RealID.Ref.Key;
     }
 
@@ -84,6 +85,7 @@ public:
         return l_Ptr != NULL;
     }
 
+private:
     operator BaseObject_Z*() const; // {
     //     return GETPTR(*this);
     // }
@@ -124,11 +126,6 @@ public:
 
     HandleManager_Z();
 
-    BaseObject_Z* GetPtr(const BaseObject_ZHdl& i_Hdl) const;
-    BaseObject_ZHdl U32ToHandle(S32 i_Value);
-    S32 HandleToU32(const BaseObject_ZHdl& i_Hdl);
-    void MarkU32Handle(U32 i_Hdl);
-
     virtual void CheckHandles();
     virtual void MarkHandles(S32 a1);
     virtual void Update(Float a1);
@@ -140,6 +137,27 @@ public:
     virtual void ChangeHandleName(const BaseObject_ZHdl& a1, const Name_Z& a2);
     virtual void DeleteHandle(const BaseObject_ZHdl& a1);
     virtual void GetNameStrFromId(const Name_Z& a1);
+
+    BaseObject_Z* GetPtr(const BaseObject_ZHdl& i_Hdl) const;
+    BaseObject_ZHdl U32ToHandle(S32 i_Value);
+    S32 HandleToU32(const BaseObject_ZHdl& i_Hdl);
+    void MarkU32Handle(U32 i_Hdl);
+    Bool MarkHandle(const BaseObject_ZHdl&);
+
+    inline Name_Z& GetHandleName(const BaseObject_ZHdl& i_Hdl) {
+        int l_ID = i_Hdl.GetID();
+        int l_Key = i_Hdl.GetKey();
+
+        if (CheckKey(l_ID, l_Key)) {
+            return m_HandleRecDA[l_ID].m_Name;
+        }
+
+        return m_NullName;
+    }
+
+    inline Bool CheckKey(int i_ID, int i_Key) const {
+        return (i_ID < m_HandleRecDA.GetSize() && m_HandleRecDA[i_ID].m_Key == i_Key);
+    }
 };
 
 #endif

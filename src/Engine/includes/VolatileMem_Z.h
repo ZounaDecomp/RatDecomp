@@ -16,6 +16,7 @@ struct VolatileBlock {
 
 class VolatileMgr_Z {
     void Minimize();
+
     void AddIndex(S32& i_Block, int i_ArrayOffset) {
         VolatileBlock& l_VolBlock = m_VolatileBlockArray[i_ArrayOffset];
         l_VolBlock.m_NextBlockToUpdate = i_Block;
@@ -41,6 +42,7 @@ class VolatileMgr_Z {
             i_Block = l_VolBlock.m_NextBlockToUpdate;
         }
     }
+
     void SetState(int i_ArrayOffset, S32 i_State);
     VolatileMgr_Z();
     void UpdateVolatileBlocks(Float);

@@ -2,7 +2,7 @@
 #include "Main_Z.h"
 #include "Program_Z.h"
 
-S32 GetUTF8CharBytes(const S8* i_CharBytePtr) {
+S32 GetUTF8CharBytes(const Char* i_CharBytePtr) {
     if ((*i_CharBytePtr & 0x80) == 0) {
         return 1;
     }
@@ -18,7 +18,7 @@ S32 GetUTF8CharBytes(const S8* i_CharBytePtr) {
     return 1;
 }
 
-U32 GetUTF8CharCode(const S8* i_CharBytePtr) {
+U32 GetUTF8CharCode(const Char* i_CharBytePtr) {
     const U8* l_CharByteU8Ptr = (const U8*)i_CharBytePtr;
     char l_CharFirstByte = *l_CharByteU8Ptr;
 

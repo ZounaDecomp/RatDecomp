@@ -8,6 +8,8 @@
 
 class Node_Z;
 
+#define FL_OBJECTDATAS_CLONED (U32)(1 << 3)
+
 /* sizeof(ObjectDatas_Z) == 0x28 */
 class ObjectDatas_Z : public ResourceObject_Z {
 public:
@@ -25,7 +27,11 @@ public:
     virtual void SetShadowData(Node_Z* i_Node, const Vec3f& i_Origin, const ColLineResult_Z& i_Result, Float i_Radius);
     virtual void UpdateShadowData(Node_Z* i_Node, const Vec3f& i_Origin, Float i_Radius);
     virtual void UpdateReflectData(Node_Z* i_Node, const Vec3f& i_Origin);
-    virtual void SetDfltColor(const Color& i_Color);
+
+    virtual void SetDfltColor(const Color& i_Color) {
+        m_DefaultColor = i_Color;
+    }
+
     virtual void SetDfltColorNoAlpha(const Color& i_Color);
     virtual void SetDfltColorAlpha(Float i_Alpha);
     virtual void FreeLightCacheEntry(U16 i_Index);

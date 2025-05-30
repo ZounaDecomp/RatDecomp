@@ -5,8 +5,8 @@
 #include "Types_Z.h"
 #include "Math_Z.h"
 #include "HashTable_Z.h"
-S32 GetUTF8CharBytes(const S8* a1);
-U32 GetUTF8CharCode(const S8* a1);
+S32 GetUTF8CharBytes(const Char* a1);
+U32 GetUTF8CharCode(const Char* a1);
 
 class FontGlyphHash_Z {
 public:

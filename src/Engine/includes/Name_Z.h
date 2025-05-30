@@ -25,7 +25,7 @@ public:
 
     void SetID(S32 a1) { m_ID = a1; }
 
-    static U32 GetID(const S8* a1, U32 a2 = 0);
+    static U32 GetID(const Char* a1, U32 a2 = 0);
     static U32 GetID(U8* data, U32 size, U32 result);
 
     Bool operator==(const Name_Z& a1) const { return m_ID == a1.m_ID; }

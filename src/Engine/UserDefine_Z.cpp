@@ -3,8 +3,8 @@
 #include "ResourceObject_Z.h"
 #include "Sys_Z.h"
 #include "Types_Z.h"
-Extern_Z "C" int strlen(char* Str);
-Extern_Z "C" void memcpy(void* dst, const void* src, int n);
+
+Extern_Z "C" void memcpy(void* dest, const void* src, S32 n);
 
 UserDefine_Z::UserDefine_Z() {
     m_Cmd.m_UserDatas = NULL;
@@ -77,6 +77,7 @@ Char* UserDefineCmd_Z::GetNextCommand(U32& o_Length) {
 // $VIOLET: Hacky fix to link this because I have no idea how to implement it otherwise.
 #define __FILE__ "UserDefine_Z.h"
 #pragma dont_inline on
+
 void UserDefine_Z::Load(void** i_Data) {
     S32 l_DataLength;
     *i_Data = Sys_Z::MemCpyFrom(&l_DataLength, *i_Data, 4);
@@ -101,4 +102,5 @@ void UserDefine_Z::Load(void** i_Data) {
     }
     *(U32*)i_Data += l_DataLength;
 }
+
 #pragma dont_inline reset

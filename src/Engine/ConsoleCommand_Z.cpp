@@ -2,8 +2,6 @@
 #include "Memory_Z.h"
 #include "Name_Z.h"
 
-Extern_Z "C" S32 strlen(const Char* str);
-
 void Console_Z::AddCommand(const Char* i_Command, CommandProc i_Proc, const Char* i_Desc) {
     S32 l_CommandName;
     Command_Z* l_Command = NewL_Z(26) Command_Z;

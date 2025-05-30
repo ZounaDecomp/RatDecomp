@@ -17,4 +17,8 @@ public:
     }
 };
 
+Weak_Z BaseObject_ZHdl::operator BaseObject_Z*() const {
+    return GETPTR(*this);
+}
+
 #endif

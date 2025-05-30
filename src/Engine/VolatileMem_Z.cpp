@@ -4,7 +4,6 @@ void VolatileMgr_Z::Minimize() {
     return;
 }
 
-
 void VolatileMgr_Z::SetState(int i_ArrayOffset, S32 i_State) {
     VolatileBlock& l_VolBlock = m_VolatileBlockArray[i_ArrayOffset];
     if (l_VolBlock.m_State != i_State) {
@@ -31,7 +30,6 @@ void VolatileMgr_Z::SetState(int i_ArrayOffset, S32 i_State) {
         }
     }
 }
-
 
 VolatileMgr_Z::VolatileMgr_Z() {
     m_FirstFreeBlock = -1;
