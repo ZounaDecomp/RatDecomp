@@ -74,8 +74,9 @@ Char* UserDefineCmd_Z::GetNextCommand(U32& o_Length) {
     return &m_UserDatas[l_Pos];
 }
 
+// $VIOLET: Hacky fix to link this because I have no idea how to implement it otherwise.
+#define __FILE__ "UserDefine_Z.h"
 #pragma dont_inline on
-
 void UserDefine_Z::Load(void** i_Data) {
     S32 l_DataLength;
     *i_Data = Sys_Z::MemCpyFrom(&l_DataLength, *i_Data, 4);
@@ -100,7 +101,4 @@ void UserDefine_Z::Load(void** i_Data) {
     }
     *(U32*)i_Data += l_DataLength;
 }
-
 #pragma dont_inline reset
-
-static const char* s_Unused = "UserDefine_Z.h";
