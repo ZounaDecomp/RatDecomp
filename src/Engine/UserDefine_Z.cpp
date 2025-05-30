@@ -4,8 +4,6 @@
 #include "Sys_Z.h"
 #include "Types_Z.h"
 
-Extern_Z "C" void memcpy(void* dest, const void* src, S32 n);
-
 UserDefine_Z::UserDefine_Z() {
     m_Cmd.m_UserDatas = NULL;
     m_Cmd.m_DataSize = 0;
@@ -74,33 +72,10 @@ Char* UserDefineCmd_Z::GetNextCommand(U32& o_Length) {
     return &m_UserDatas[l_Pos];
 }
 
-// $VIOLET: Hacky fix to link this because I have no idea how to implement it otherwise.
-#define __FILE__ "UserDefine_Z.h"
-#pragma dont_inline on
-
 void UserDefine_Z::Load(void** i_Data) {
     S32 l_DataLength;
     *i_Data = Sys_Z::MemCpyFrom(&l_DataLength, *i_Data, 4);
     Char* l_Data = (Char*)*i_Data;
-
-    if (l_DataLength == -1) {
-        m_Cmd.m_DataSize = strlen(l_Data);
-    }
-    else {
-        m_Cmd.m_DataSize = l_DataLength;
-    }
-
-    if (m_Cmd.m_UserDatas) {
-        Free_Z(m_Cmd.m_UserDatas);
-        m_Cmd.m_UserDatas = NULL;
-    }
-
-    if (m_Cmd.m_DataSize) {
-        m_Cmd.m_UserDatas = (Char*)AllocL_Z(m_Cmd.m_DataSize, 42);
-        memcpy(m_Cmd.m_UserDatas, l_Data, m_Cmd.m_DataSize);
-        m_Cmd.MakeCommandList();
-    }
+    m_Cmd.SetCmd(l_Data, l_DataLength);
     *(U32*)i_Data += l_DataLength;
 }
-
-#pragma dont_inline reset
