@@ -606,14 +606,6 @@ def generate_build_ninja(
     ###
     compiler_path = compilers / "$mw_version"
 
-    # NGCCC
-    ngccc = compiler_path / "ngccc.exe"
-    ngccc_cmd = f"{wrapper_cmd}{ngccc} $cflags -c -o $out $in"
-    ngccc_implicit: List[Optional[Path]] = [
-        compilers_implicit or ngccc,
-        wrapper_implicit,
-    ]
-
     # MWCC
     mwcc = compiler_path / "mwcceppc.exe"
     mwcc_cmd = f"{wrapper_cmd}{mwcc} $cflags -MMD -c $in -o $basedir"
@@ -666,16 +658,6 @@ def generate_build_ninja(
         name="mwcc",
         command=mwcc_cmd,
         description="MWCC $out",
-        depfile="$basefile.d",
-        deps="gcc",
-    )
-    n.newline()
-
-    n.comment("ProDG build")
-    n.rule(
-        name="prodg",
-        command=ngccc_cmd,
-        description="ProDG $out",
         depfile="$basefile.d",
         deps="gcc",
     )
@@ -896,16 +878,12 @@ def generate_build_ninja(
             used_compiler_versions.add(obj.options["mw_version"])
 
             # Add MWCC build rule            
-            fakerule = "mwcc_sjis" if obj.options["shift_jis"] else "mwcc"
-            fakeimplicit = mwcc_sjis_implicit if obj.options["shift_jis"] else mwcc_implicit
-            if ("prodg" in obj.options["mw_version"].lower()):
-                fakerule = "prodg"
-                fakeimplicit = ngccc_implicit
+            # Add MWCC build rule
             lib_name = obj.options["lib"]
             n.comment(f"{obj.name}: {lib_name} (linked {obj.completed})")
             n.build(
                 outputs=obj.src_obj_path,
-                rule=fakerule,
+                rule="mwcc_sjis" if obj.options["shift_jis"] else "mwcc",
                 inputs=src_path,
                 variables={
                     "mw_version": Path(obj.options["mw_version"]),
@@ -914,7 +892,7 @@ def generate_build_ninja(
                     "basefile": obj.src_obj_path.with_suffix(""),
                 },
                 implicit=(
-                    fakeimplicit
+                    mwcc_sjis_implicit if obj.options["shift_jis"] else mwcc_implicit
                 ),
                 order_only="pre-compile",
             )

@@ -1,7 +1,7 @@
 #ifndef _RADMEM_H_
 #define _RADMEM_H_
 #include "bink_types.h"
-#include "OS/OSAlloc.h"
+#include "OSAlloc.h"
 
 typedef void *(*RADMEMALLOC)(U32 size);
 typedef void (*RADMEMFREE)(void* mem);
@@ -12,7 +12,10 @@ void radfree(void* ptr);
 
 extern volatile OSHeapHandle __OSCurrHeap;
 
-RADMEMALLOC usermalloc = 0;
-RADMEMFREE userfree = 0;
+#pragma push
+#pragma section ".data" ".data"
+__declspec(section ".data") RADMEMALLOC usermalloc = NULL;
+__declspec(section ".data") RADMEMFREE userfree = NULL;
+#pragma pop
 
 #endif

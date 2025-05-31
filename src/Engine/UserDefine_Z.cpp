@@ -1,4 +1,6 @@
 #include "UserDefine_Z.h"
+#include "Memory_Z.h"
+#include "ResourceObject_Z.h"
 #include "Sys_Z.h"
 #include "Types_Z.h"
 

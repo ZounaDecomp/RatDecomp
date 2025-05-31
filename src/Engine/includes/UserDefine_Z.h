@@ -27,11 +27,10 @@ public:
 
     Char* GetNextCommand(U32& o_Length);
     Char* GetFirstCommand(U32& o_Length);
+    void MakeCommandList();
     Char* m_UserDatas;
     S32 m_DataSize;
     S32 m_CurLen;
-private:
-    void MakeCommandList();
 };
 
 class UserDefine_Z : public ResourceObject_Z {

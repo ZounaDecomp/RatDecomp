@@ -143,7 +143,7 @@ if not config.non_matching:
 
 # Tool versions
 config.binutils_tag = "2.42-1"
-config.compilers_tag = "20250520"
+config.compilers_tag = "20240706"
 config.dtk_tag = "v1.4.1"
 config.objdiff_tag = "v2.7.1"
 config.sjiswrap_tag = "v1.2.0"
@@ -211,18 +211,37 @@ cflags_base = [
 
 ]
 cflags_bink_base = [
-    "-O3",
-    "-mcpu=750",
-    "-fno-exceptions",
-    "-Wno-inline",
-    "-nostdinc",
-    "-I src/3rdParty/dolphin",
-    "-I include",
-    "-I include/dolphin",
+    "-nodefaults",
+    "-proc gekko",
+    "-align powerpc",
+    "-enum int",
+    "-fp hardware",
+    "-Cpp_exceptions off",
+    # "-W all",
+    '-pragma "cats off"',
+    '-pragma "warn_notinlined off"',
+    "-maxerrors 1",
+    "-nosyspath",
+    "-fp_contract on",
+    "-str reuse",
+    "-multibyte",  # For Wii compilers, replace with `-enc SJIS`
+    f"-i build/{config.version}/include",
+    "-ir src/3rdParty/dolphin",
+    "-ir include",
+    "-i src/3rdParty/PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Include",
+    "-i src/3rdParty/PowerPC_EABI_Support/MSL/MSL_C/MSL_Common_Embedded/Math/Include",
+    "-i src/3rdParty/PowerPC_EABI_Support/MSL/MSL_C/PPC_EABI/Include",
+    "-i src/3rdParty/PowerPC_EABI_Support/MSL/MSL_C++/MSL_Common/Include",
+    "-i src/3rdParty/PowerPC_EABI_Support/Runtime/Inc",
+    "-i src/3rdParty/PowerPC_EABI_Support/MetroTRK",
+    "-i include/dolphin",
+    "-i src/3rdParty/bink/includes",
+    f"-DBUILD_VERSION={version_num}",
+    f"-DVERSION_{config.version}",
     "-D__GEKKO__",
-    "-I src/3rdParty/bink/includes",
-    "-I src/3rdParty/PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Include",
-    "-G0",
+    "-O4,s",
+    "-sdata 0",
+    "-sdata2 0"
 ]
 cflags_noopt = cflags_base[:]
 cflags_trk = [
@@ -1322,7 +1341,7 @@ config.libs = [
     },
     {
         "lib": "bink",
-        "mw_version": "ProDG/3.5",
+        "mw_version": config.linker_version,
         "cflags": cflags_bink_base,
         "progress_category": "bink",  # str | List[str]
         "objects": [
@@ -1330,7 +1349,7 @@ config.libs = [
             Object(NonMatching, "3rdParty/bink/src/sdk/decode/ngc/ngcsnd.c"),
             Object(NonMatching, "3rdParty/bink/src/sdk/decode/binkread.c"),
             Object(NonMatching, "3rdParty/bink/src/sdk/decode/ngc/ngcfile.c"),
-            Object(NonMatching, "3rdParty/shared/memory/ngc/radmem.c"),
+            Object(Matching,    "3rdParty/shared/memory/ngc/radmem.c"),
             Object(NonMatching, "3rdParty/bink/src/sdk/decode/yuv.c"),
             Object(NonMatching, "3rdParty/bink/src/sdk/decode/binkacd.c"),
             Object(NonMatching, "3rdParty/shared/time/ngc/radcb.c"),
