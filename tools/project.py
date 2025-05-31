@@ -877,7 +877,6 @@ def generate_build_ninja(
             cflags_str = make_flags_str(all_cflags)
             used_compiler_versions.add(obj.options["mw_version"])
 
-            # Add MWCC build rule            
             # Add MWCC build rule
             lib_name = obj.options["lib"]
             n.comment(f"{obj.name}: {lib_name} (linked {obj.completed})")

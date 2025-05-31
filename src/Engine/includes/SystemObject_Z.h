@@ -78,4 +78,11 @@ struct SphereFlag_Z {
     BaseObject_Z* Object; // $SABE: Not sure if it's really here
 };
 
+struct Rect_Z { 
+    S16 x1;
+    S16 y1; 
+    S16 x2;
+    S16 y2;
+}
+
 #endif
