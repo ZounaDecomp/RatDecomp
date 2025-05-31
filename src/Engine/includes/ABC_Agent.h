@@ -3,6 +3,6 @@
 #include "BaseObject_Z.h"
 class ABC_Agent : public BaseObject_Z {
     
-}
+};
 
 #endif

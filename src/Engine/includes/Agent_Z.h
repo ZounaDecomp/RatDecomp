@@ -3,5 +3,5 @@
 #include "ABC_Agent.h"
 class Agent_Z : public ABC_Agent {
 
-}
+};
 #endif

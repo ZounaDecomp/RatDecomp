@@ -83,6 +83,6 @@ struct Rect_Z {
     S16 y1; 
     S16 x2;
     S16 y2;
-}
+};
 
 #endif
