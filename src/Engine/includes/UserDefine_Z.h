@@ -3,11 +3,6 @@
 #include "ResourceObject_Z.h"
 
 Extern_Z "C" void memcpy(void* dst, const void* src, int n);
-<<<<<<< Updated upstream
-
-=======
-/* sizeof(UserDefineCmd_Z) == 0x0C*/
->>>>>>> Stashed changes
 class UserDefineCmd_Z {
 public:
     void SetCmd(Char* i_UserDatas, S32 i_DataSize) {

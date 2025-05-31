@@ -900,7 +900,7 @@ def generate_build_ninja(
             fakeimplicit = mwcc_sjis_implicit if obj.options["shift_jis"] else mwcc_implicit
             if ("prodg" in obj.options["mw_version"].lower()):
                 fakerule = "prodg"
-                fakeimplicit = None
+                fakeimplicit = ngccc_implicit
             lib_name = obj.options["lib"]
             n.comment(f"{obj.name}: {lib_name} (linked {obj.completed})")
             n.build(
