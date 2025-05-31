@@ -1349,7 +1349,7 @@ config.libs = [
             Object(NonMatching, "3rdParty/bink/src/sdk/decode/ngc/ngcsnd.c"),
             Object(NonMatching, "3rdParty/bink/src/sdk/decode/binkread.c"),
             Object(NonMatching, "3rdParty/bink/src/sdk/decode/ngc/ngcfile.c"),
-            Object(Matching,    "3rdParty/shared/memory/ngc/radmem.c"),
+            Object(NonMatching, "3rdParty/shared/memory/ngc/radmem.c"),
             Object(NonMatching, "3rdParty/bink/src/sdk/decode/yuv.c"),
             Object(NonMatching, "3rdParty/bink/src/sdk/decode/binkacd.c"),
             Object(NonMatching, "3rdParty/shared/time/ngc/radcb.c"),

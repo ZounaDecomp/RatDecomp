@@ -139,6 +139,7 @@ public:
     virtual void GetNameStrFromId(const Name_Z& a1);
 
     BaseObject_Z* GetPtr(const BaseObject_ZHdl& i_Hdl) const;
+    BaseObject_Z* GetPtrXRam(const HandleRec_Z& i_Rec) const;
     BaseObject_ZHdl U32ToHandle(S32 i_Value);
     S32 HandleToU32(const BaseObject_ZHdl& i_Hdl);
     void MarkU32Handle(U32 i_Hdl);

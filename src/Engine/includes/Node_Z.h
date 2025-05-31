@@ -9,9 +9,14 @@
 #include "SystemObject_Z.h"
 #include "UserDefine_Z.h"
 #include "Agent_Z.h"
+#include "HFog_Z.h"
 class LightData_Z;
-class HFogData_Z;
 class Node_Z : public ResourceObject_Z {
+public:
+    void UpdateRootTM();
+    void UpdateTM(Node_Z *i_Parent);
+    inline Quat& GetRotInWorld() {return m_RotInWorld;}
+    inline void DisableFlag(U32 i_Flag) {m_Flag &=~ i_Flag;}
 
 private:
     Agent_Z m_Agent;
@@ -37,7 +42,7 @@ private:
     Node_Z* m_HeadSon;
     Node_Z* m_PrevSibling;
     Node_Z* m_NextSibling;
-    LightData_Z* m_Light;
+    LightData_Z* m_Light; // needs actually defined.
     HFogData_Z* m_FogData;
     Bitmap_Z* m_BitmapRadiosityRelated;
     BaseObject_Z* m_UnkObjPtr;
