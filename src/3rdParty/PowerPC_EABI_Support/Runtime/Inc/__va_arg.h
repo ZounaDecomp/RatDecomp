@@ -1,7 +1,9 @@
 #ifndef __VA_ARG_H
 #define __VA_ARG_H
 
-#include "dolphin/types.h"
+
+// TODO: Solve include intellisense problem (it was originally #include "dolphin/types.h")
+#include "types.h"
 
 typedef struct __va_list_struct {
     char gpr;

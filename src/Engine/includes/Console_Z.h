@@ -21,7 +21,7 @@ struct Command_Z {
 class Console_Z {
 protected:
     Char* m_ConsoleText;
-    S32 m_UnksS32_0x4;
+    S32 m_UnkS32_0x4;
     DynArray_Z<Char> m_TextBolded;
     U8 m_Pad_0x10[4976];
     U32 m_UnkU32_0x1380;

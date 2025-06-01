@@ -2,7 +2,7 @@
 #include "Sys_Z.h"
 
 Object_Z::Object_Z() {
-    m_Type = 0;
+    SetGeometryType(UNDEFINED_GEOMETRY);
     m_Flag = 0xffe30;
     Clean();
 }

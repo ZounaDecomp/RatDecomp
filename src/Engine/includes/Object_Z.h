@@ -8,6 +8,30 @@
 
 class Node_Z;
 
+enum ObjectType {
+    UNDEFINED_GEOMETRY = 0,
+    SURFACE_Z = 1,
+    SPLINE_Z = 2,
+    SKIN_Z = 3,
+    ROTSHAPE_Z = 4,
+    LOD_Z = 5,
+    MESH_Z = 6,
+    CAMERA_Z = 7,
+    SPLINEZONE_Z = 9,
+    OCCLUDER_Z = 10,
+    CAMERAZONE_Z = 11,
+    LIGHT_Z = 12,
+    HFOG_Z = 13,
+    COLLISIONVOL_Z = 14,
+    EMITER_Z = 15,
+    OMNI_Z = 16,
+    GRAPH_Z = 17,
+    PARTICLES_Z = 18,
+    FLARE_Z = 19,
+    HFIELD_Z = 20,
+    TREE_Z = 21,
+};
+
 #define FL_OBJECTDATAS_CLONED (U32)(1 << 3)
 
 /* sizeof(ObjectDatas_Z) == 0x28 */
@@ -104,8 +128,55 @@ public:
         return 0;
     }
 
+    inline U16 GetGeometryType() const {
+        return m_Type;
+    }
+
+    inline void SetGeometryType(U16 i_Type) {
+        m_Type = i_Type;
+    }
+
+    inline U32 GetFlag() const {
+        return m_Flag;
+    }
+
+    inline void SetFlag(const U32 i_Flag) {
+        m_Flag = i_Flag;
+    }
+
+    inline Bool IsFlag(const U32 i_Flag) const {
+        return (m_Flag & i_Flag) ? TRUE : FALSE;
+    }
+
+    inline void EnableFlag(const U32 i_Flag) {
+        m_Flag |= i_Flag;
+    }
+
+    inline void DisableFlag(const U32 i_Flag) {
+        m_Flag &= (U32)(~i_Flag);
+    }
+
+    inline const Sphere_Z& GetBSphere() const {
+        return m_BSphereLocal;
+    }
+
+    inline void SetBSphere(Sphere_Z& i_Sph) {
+        m_BSphereLocal = i_Sph;
+    }
+
+    inline const Box_Z& GetBBox() const {
+        return m_BBoxLocal;
+    }
+
+    inline void SetBBox(Box_Z& i_Box) {
+        m_BBoxLocal = i_Box;
+    }
+
+    inline Float GetFadeDist() const {
+        return m_FadeOutDistance;
+    }
+
 private:
-    U8 m_Unk_0x14[12];
     Sphere_Z m_BSphereLocal;
     Box_Z m_BBoxLocal;
     Float m_FadeOutDistance;

@@ -52,7 +52,18 @@ struct Vec4f {
         , y(i_y)
         , z(i_z)
         , w(i_w) { };
+
+    Vec4f(Vec3f const& i_v)
+        : x(i_v.x)
+        , y(i_v.y)
+        , z(i_v.z)
+        , w(1.0f) { };
+
     Vec4f(const Color& i_Color);
+
+    Vec4f operator+(const Vec4f& i_v) const { return Vec4f(x + i_v.x, y + i_v.y, z + i_v.z, w + i_v.w); }
+
+    Vec4f operator-(const Vec4f& i_v) const { return Vec4f(x - i_v.x, y - i_v.y, z - i_v.z, w - i_v.w); }
 };
 
 struct Mat3x3 {
@@ -233,11 +244,17 @@ struct Quat {
     Vec4f operator*(const Vec4f& p) const;
     Bool operator==(const Quat& _Quat) const;
     Bool operator!=(const Quat& _Quat) const;
-    void NegativeMul(const Vec3f& _v, Vec3f& _result) const;
-    void NegativeMul(const Vec4f& _v, Vec4f& _result) const;
+    void NegativeMul(const Vec3f& i_v, Vec3f& _result) const;
+    void NegativeMul(const Vec4f& i_v, Vec4f& _result) const;
     void GetEular(Vec3f& Eular) const;
     void SetEular(const Vec4f& Eular);
     Float GetDist(const Quat& Q);
+};
+
+// $SABE: Tangent Binormal Vertex ? - From Monopoly MAP
+struct TBVtx {
+    Vec2f UnkVec2f_0x0;
+    Vec2f UnkVec2f_0x8;
 };
 
 #endif
