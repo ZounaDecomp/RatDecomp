@@ -3,7 +3,6 @@
 
 #include "ClassManager_Z.h"
 #include "Program_Z.h"
-
 class BaseObject_Z;
 class ResourceObject_Z;
 

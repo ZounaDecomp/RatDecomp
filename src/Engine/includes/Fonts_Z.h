@@ -5,6 +5,8 @@
 #include "Types_Z.h"
 #include "Math_Z.h"
 #include "HashTable_Z.h"
+// #include "Material_ZHdl.h"
+// #include "Material_Z.h"
 S32 GetUTF8CharBytes(const Char* a1);
 U32 GetUTF8CharCode(const Char* a1);
 
@@ -29,8 +31,7 @@ public:
     virtual Bool MarkHandles();
 
 private:
-    S32 m_FontGlyphCount;
-    DynArray_Z<S32, 32> m_MaterialDA;
+    S32DA m_MaterialDA; // $VIOLET: Fix the stupid and dumb Material_ZHdl issues you were having
     HashTableBase_Z<FontGlyphHash_Z> m_FontGlyphHash;
 };
 

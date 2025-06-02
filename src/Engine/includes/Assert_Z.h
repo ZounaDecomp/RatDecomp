@@ -21,6 +21,9 @@ void BreakPoint_Z();
 #define ASSERTLE_Z(Exp, Comment, Line, OrigExp) \
     if (Exp == FALSE)                           \
     ExceptionFonc_Z(OrigExp, __FILE__, Line, Comment, 0, 0, 0, 0, 0, 0)
+#undef ASSERTLENF_Z
+#define ASSERTLENF_Z(Exp, Comment, Line, OrigExp) \
+    ExceptionFonc_Z(OrigExp, __FILE__, Line, Comment, 0, 0, 0, 0, 0, 0)
 
 //#undef ASSERT_Z
 //#define ASSERT_Z(Exp) ASSERTC_Z(Exp, __FUNCTION__)

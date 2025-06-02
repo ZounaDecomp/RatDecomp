@@ -1,9 +1,11 @@
 #ifndef _MAIN_Z_H_
 #define _MAIN_Z_H_
+#include "ManipulatorManager_Z.h"
 #include "Types_Z.h"
 #include "ClassManager_Z.h"
 #include "Timer_Z.h"
 #include "Fonts_Z.h"
+#include "Console_Z.h"
 #include "AnimationManager_Z.h"
 
 Extern_Z Char* strcpy(Char* __dest, Char* __src);
@@ -19,10 +21,12 @@ public:
     void InitTime();
 
     U8 m_Pad_0x0[0x4];
-    GCConsole_Z* Cons;
-    U8 m_Pad_0xc[0x4]; // GCRenderer_Z
+    Console_Z* Cons;
+    U8 m_Pad_0xc[0x4]; // Renderer_Z
     ClassManager_Z* ClassMgr;
-    U8 m_Pad_0x14[0x28];
+    U8 m_Pad_0x14[0x1C];
+    ManipulatorManager_Z* ManipMgr;
+    U8 m_Pad_0x34[0x8];
     AnimationManager_Z* AnimMgr;
     U8 m_Pad_0x40[0x7A0];
 

@@ -141,6 +141,7 @@ public:
     S32 HandleToU32(const BaseObject_ZHdl& i_Hdl);
     void MarkU32Handle(U32 i_Hdl);
     Bool MarkHandle(const BaseObject_ZHdl&);
+    void ForbidCheckHandles(Bool i_ForbidCheckHandles);
 
     inline Name_Z& GetHandleName(const BaseObject_ZHdl& i_Hdl) {
         int l_ID = i_Hdl.GetID();

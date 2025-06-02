@@ -829,7 +829,7 @@ config.libs = [
             Object(NonMatching, "Engine/Rtc_Z.cpp"),
             Object(NonMatching, "Engine/AnimationOmni_Z.cpp"),
             Object(NonMatching, "Engine/KeyframerrVec3f_Z.cpp"),
-            Object(NonMatching, "Engine/ManipulatorManager_Z.cpp"),
+            Object(Matching,    "Engine/ManipulatorManager_Z.cpp"),
             Object(NonMatching, "Engine/ObjectsGame_Z.cpp"),
             Object(NonMatching, "Engine/GraphLoad_Z.cpp"),
             Object(NonMatching, "Engine/CameraEngine_Z.cpp"),
