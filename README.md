@@ -103,3 +103,4 @@ Credits
 ============
 Runtime and SDK code has been used from:
 - [Twilight Princess](https://github.com/zeldaret/tp)
+- [DolSDK2004](https://github.com/doldecomp/dolsdk2004)
