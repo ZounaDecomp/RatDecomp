@@ -29,6 +29,8 @@ void VolatileMgr_Z::SetState(int i_ArrayOffset, S32 i_State) {
             }
         }
     }
+
+    FIXDEBUGINLINING_Z();
 }
 
 VolatileMgr_Z::VolatileMgr_Z() {

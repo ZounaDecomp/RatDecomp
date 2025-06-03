@@ -1,6 +1,6 @@
 #ifndef _TYPES_Z_H_
 #define _TYPES_Z_H_
-
+#include "Macros_Z.h"
 typedef bool Bool;
 typedef char Char;
 typedef unsigned char U8;

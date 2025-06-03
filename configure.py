@@ -747,7 +747,7 @@ config.libs = [
             Object(NonMatching, "Engine/CollisionVolDraw_Z.cpp"),
             Object(NonMatching, "Engine/ParticlesAgent_Z.cpp"),
             Object(NonMatching, "Engine/CameraEngineZoneCapture_Z.cpp"),
-            Object(NonMatching, "Engine/VolatileMem_Z.cpp"),
+            Object(Matching,    "Engine/VolatileMem_Z.cpp"),
             Object(NonMatching, "Engine/ObjectsGameClip_Z.cpp"),
             Object(NonMatching, "Engine/MeshLoad_Z.cpp"),
             Object(NonMatching, "Engine/CameraZoneDraw_Z.cpp"),

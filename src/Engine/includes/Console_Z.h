@@ -61,6 +61,7 @@ private:
 
 public:
     void SetVar(Char* i_Var);
+    void DisplayHelp();
     void AddCommand(const Char* i_Command, CommandProc i_Proc, const Char* i_Desc);
 
     U32 GetNbParam() { return m_NbParam; }
