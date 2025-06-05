@@ -1,4 +1,5 @@
 #include "UserDefine_Z.h"
+#include "Macros_Z.h"
 #include "Memory_Z.h"
 #include "ResourceObject_Z.h"
 #include "Sys_Z.h"
@@ -45,6 +46,7 @@ void UserDefineCmd_Z::MakeCommandList() {
     Free_Z(m_UserDatas);
     m_UserDatas = l_NewUserData;
     m_DataSize = l_NewDataSize;
+    FIXDEBUGINLINING_Z();
 }
 
 Char* UserDefineCmd_Z::GetFirstCommand(U32& o_Length) {

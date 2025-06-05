@@ -85,4 +85,10 @@ struct Rect_Z {
     S16 y2;
 };
 
+struct Segment_Z { 
+    Vec3f origin;
+    Float length;
+    Vec3f direction;
+};
+
 #endif

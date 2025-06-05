@@ -41,6 +41,13 @@ struct Vec3f {
         , y(i_y)
         , z(i_z) { };
     Vec3f(const Color& i_Color);
+    Vec3f operator*(const Float i_Scale) const {
+        Vec3f l_Temp;
+        l_Temp.x = x * i_Scale;
+        l_Temp.y = y * i_Scale;
+        l_Temp.z = z * i_Scale;
+        return l_Temp;
+    }
 };
 
 struct Vec4f {
