@@ -11,6 +11,7 @@ class ABC_CategoryData {
         m_IsPublic = FALSE;
     }
     Bool HasCategory(abc_category i_Cat);
+    Bool HasPublicCategory(abc_category i_Cat);
 private: 
     ABC_CategoryData* m_Next;
     S32 m_Category;

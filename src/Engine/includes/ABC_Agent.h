@@ -2,12 +2,7 @@
 #define _ABC_AGENT_H_
 #include "BaseObject_Z.h"
 #include "Handle_Z.h"
-
-struct BehaviorMethod {
-    S32 unk0;
-    void* vtableOffset;
-    S32 unk0x8;
-};
+#include "ABC_Behavior.h"
 
 class ABC_Message {
 private:
@@ -25,17 +20,6 @@ private:
     Char isPublic;
 };
 
-class ABC_Behavior {
-private:
-    ABC_Behavior* m_Next;
-    ABC_CategoryData* m_CategoryListHead;
-    BehaviorMethod m_Behavior;
-    void* m_LocalData;
-    S32 m_LocalDataSize;
-    U16 m_BehaviorFlags;
-    S16 m_BehaviorState;
-};
-
 enum abc_agentState {
     agent_neverActivated = 0,
     agent_inactive = 1,
@@ -45,11 +29,14 @@ enum abc_agentState {
 
 /* sizeof(ABC_Agent) == 0x40 */
 class ABC_Agent : public BaseObject_Z {
-
+public: 
+    ABC_Agent();
+    ~ABC_Agent();
+    void GetBehavior(behaviorMethodPtr i_Behav);
 private:
     abc_agentState m_AgentState;
     ABC_Agent* m_UnkAgent;
-    ABC_Agent* m_UnkAgetnt2;
+    ABC_Agent* m_UnkAgent2;
     Bool changeInBehaviorList;
     ABC_Behavior* m_BehaviorListHead;
     ABC_Message* m_MessageListHead;

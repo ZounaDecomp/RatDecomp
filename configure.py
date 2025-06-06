@@ -301,7 +301,7 @@ cflags_rat_base = [
     "-i src/LibGC/includes",
     "-i src/Rat/includes",
     "-O4,p",
-    "-rostr"
+    "-rostr",
 ]
 
 # Debug flags
@@ -810,7 +810,7 @@ config.libs = [
             Object(NonMatching, "Engine/SkinCollision_Z.cpp"),
             Object(NonMatching, "Engine/MatrixCache_Z.cpp"),
             Object(NonMatching, "Engine/SurfaceCache_Z.cpp"),
-            Object(NonMatching, "Engine/ABC_Category.cpp"),
+            Object(Matching,    "Engine/ABC_Category.cpp"),
             Object(NonMatching, "Engine/AnimatedMsgAgent_Z.cpp"),
             Object(NonMatching, "Engine/StreamAgent_Z.cpp"),
             Object(NonMatching, "Engine/ObjectMoveCollShadow_Z.cpp"),
