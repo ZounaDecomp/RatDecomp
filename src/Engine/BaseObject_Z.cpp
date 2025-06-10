@@ -1,7 +1,7 @@
 #include "BaseObject_Z.h"
 #include "String_Z.h"
 #include "Program_Z.h"
-
+#include "ABC_Agent.h"
 String_Z<256> DefaultStringBaseObject;
 String_Z<256> DefaultStringRscBaseObject;
 
@@ -26,6 +26,7 @@ String_Z<256>* BaseObject_Z::GetDebugRscName() const {
 }
 
 void BaseObject_Z::Send(abc_message i_Msg, ABC_Agent* i_Receiver, Float i_Param) {
+    i_Receiver->Receive(i_Msg, GetHandle(), i_Param);
 }
 
 void BaseObject_Z::SendTimed(abc_message i_Msg, ABC_Agent* i_Receiver, Float i_Delay, Float i_Param) {

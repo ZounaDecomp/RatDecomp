@@ -37,3 +37,21 @@ U32 GetUTF8CharCode(const Char* i_CharBytePtr) {
 
     return 1;
 }
+
+void Fonts_Z::MarkHandles() {
+    // for (S32 i = 0; i < m_MaterialDA.GetSize(); i++) {
+    //     if (gData.ClassMgr->GetPtr(m_MaterialDA[i]) != NULL) {
+    //         gData.ClassMgr->GetPtr(m_MaterialDA[i])->MarkHandles();
+    //     }
+    // }
+    ResourceObject_Z::MarkHandles();
+}
+
+void Fonts_Z::GetCharDesc(const char* i_Char, CharDesc& o_CharDesc) {
+    S32 l_CharCode = GetUTF8CharCode(i_Char);
+    FontGlyphHash_Z* l_Glyph;
+    l_Glyph->m_ID = l_CharCode;
+    if (m_FontGlyphHash.GetNbElem()) {
+        m_FontGlyphHash.Insert(*l_Glyph); //this doesnt make sense. might be search
+    }
+}

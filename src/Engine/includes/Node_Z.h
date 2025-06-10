@@ -17,6 +17,8 @@ public:
     void UpdateTM(Node_Z *i_Parent);
     inline Quat& GetRotInWorld() {return m_RotInWorld;}
     inline void DisableFlag(U32 i_Flag) {m_Flag &=~ i_Flag;}
+    inline Sphere_Z& GetBSphere() { return m_BSphere; }
+    inline Mat3x3& GetRotInWorldMatrix() { return m_RotInWorldMatrix; }
 
 private:
     Agent_Z m_Agent;

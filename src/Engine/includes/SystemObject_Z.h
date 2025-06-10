@@ -42,6 +42,13 @@ struct Box_Z {
 struct Sphere_Z {
     Vec3f Center;
     Float Radius;
+    Sphere_Z& operator=(const Vec4f& i_Vec) {
+        Center.x = i_Vec.x;
+        Center.y = i_Vec.y;
+        Center.z = i_Vec.z;
+        Radius = i_Vec.w;
+        return *this;
+    }
 } Aligned_Z(16);
 
 struct Cylindre_Z {

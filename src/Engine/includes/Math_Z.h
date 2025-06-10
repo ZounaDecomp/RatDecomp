@@ -5,7 +5,7 @@
 
 #define ROL_Z(val, shift) ((val << shift) | (val >> ((sizeof(val) * 8) - shift)))
 #define ROR_Z(val, shift) ((val >> shift) | (val << ((sizeof(val) * 8) - shift)))
-
+struct Sphere_Z;
 struct Vec2f;
 struct Vec3f;
 struct Vec4f;
@@ -74,6 +74,7 @@ struct Vec4f {
 };
 
 struct Mat3x3 {
+public:
     union mat {
         Float m[3][4];
 
@@ -263,5 +264,7 @@ struct TBVtx {
     Vec2f UnkVec2f_0x0;
     Vec2f UnkVec2f_0x8;
 };
+    
+Vec4f operator*(const Mat4x4& i_m, const Sphere_Z& i_v);
 
 #endif

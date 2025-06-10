@@ -7,7 +7,7 @@ class ResourceObjectLink_Z {
 public:
     ResourceObjectLink_Z() { };
     ~ResourceObjectLink_Z() { };
-    void Load(void* a1);
+    void Load(void** a1);
     void EndLoad();
     void EndLoadLinks();
     void MarkHandles();

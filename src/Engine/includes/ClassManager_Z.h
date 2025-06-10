@@ -6,7 +6,9 @@ class ClassManager_Z : public HandleManager_Z {
 public:
     void LoadLinkId(void* i_ID, void** i_Data);
     void UpdateLinkFromId(BaseObject_ZHdl& i_Hdl, S32 i_ID);
+    void UpdateLink(BaseObject_ZHdl& i_Hdl);
     void LoadName(Name_Z&, void**);
+    void LoadLink(BaseObject_ZHdl& i_Hdl, void** i_Data);
 };
 
 #endif

@@ -239,6 +239,10 @@ public:
         m_ScanID = NextScan + 1;
         return m_Hash + NextScan;
     }
+    
+    inline S32 GetNbElem() const {
+        return m_NbElem;
+    }
 };
 
 typedef HashTableBase_Z<S32Hash_Z> HashS32Table_Z;

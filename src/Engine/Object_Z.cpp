@@ -1,6 +1,8 @@
 #include "Object_Z.h"
+#include "BaseObject_Z.h"
+#include "ResourceObject_Z.h"
 #include "Sys_Z.h"
-
+#include "Node_Z.h"
 Object_Z::Object_Z() {
     SetGeometryType(UNDEFINED_GEOMETRY);
     m_Flag = 0xffe30;
@@ -12,25 +14,43 @@ void Object_Z::Clean() {
 }
 
 Bool Object_Z::MarkHandles() {
+    if (ResourceObject_Z::MarkHandles() == FALSE) {
+        return FALSE;
+    }
+    else {
+        if (gData.ClassMgr->GetPtr(m_ObjectDataHdl) != NULL) {
+            gData.ClassMgr->GetPtr(m_ObjectDataHdl)->MarkHandles();
+        }
+        return TRUE;
+    }
 }
 
 void Object_Z::UpdateObject(Node_Z* i_Node, ObjectDatas_Z* i_Data) {
+    i_Node->GetBSphere() = (*(Mat4x4*)i_Node->GetRotInWorldMatrix().m.m13.dummy.i32) * i_Node->GetBSphere();
 }
 
 void Object_Z::LoadLinks(void** i_Data) {
+    BaseObject_Z::LoadLinks(i_Data);
+    m_ResObjLink.Load(i_Data);
+    gData.ClassMgr->LoadLink(m_ObjectDataHdl, i_Data);
+    *i_Data = Sys_Z::MemCpyFrom((void*)&m_BSphereLocal, *i_Data,(S32)&m_Type - (S32)&m_BSphereLocal + sizeof(m_Type));
 }
 
 void Object_Z::EndLoadLinks() {
+    return;
 }
 
 void Object_Z::Load(void** i_Data) {
+    return;
 }
 
 void Object_Z::EndLoad() {
+    m_ResObjLink.EndLoad();
+    gData.ClassMgr->UpdateLink(m_ObjectDataHdl);
 }
 
 void Object_Z::Draw(DrawInfo_Z& a1, ObjectDatas_Z* i_Data) {
-    Clean();
+    return;
 }
 
 ObjectDatas_Z::ObjectDatas_Z() {
