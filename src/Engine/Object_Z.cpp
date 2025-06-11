@@ -26,7 +26,7 @@ Bool Object_Z::MarkHandles() {
 }
 
 void Object_Z::UpdateObject(Node_Z* i_Node, ObjectDatas_Z* i_Data) {
-    i_Node->GetBSphere() = (*(Mat4x4*)i_Node->GetRotInWorldMatrix().m.m13.dummy.i32) * i_Node->GetBSphere();
+    i_Node->SetBSphere((*(Mat4x4*)i_Node->GetRotInWorldMatrix().m.m13.dummy.i32) * GetBSphere());
 }
 
 void Object_Z::LoadLinks(void** i_Data) {

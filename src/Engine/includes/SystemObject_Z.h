@@ -42,11 +42,11 @@ struct Box_Z {
 struct Sphere_Z {
     Vec3f Center;
     Float Radius;
-    Sphere_Z& operator=(const Vec4f& i_Vec) {
-        Center.x = i_Vec.x;
-        Center.y = i_Vec.y;
-        Center.z = i_Vec.z;
-        Radius = i_Vec.w;
+    Sphere_Z& operator=(const Sphere_Z& i_Sph) {
+        Center.x = i_Sph.Center.x;
+        Center.y = i_Sph.Center.y;
+        Center.z = i_Sph.Center.z;
+        Radius = i_Sph.Radius;
         return *this;
     }
 } Aligned_Z(16);

@@ -197,7 +197,7 @@ struct Mat4x4 {
     void SetTRS(const Vec3f& i_Trans, const Quat& i_Rot, const Float i_Scale);
 
     U32 GetCRC() const;
-};
+} Aligned_Z(16);
 
 struct Quat {
     Vec3f v;
@@ -265,6 +265,6 @@ struct TBVtx {
     Vec2f UnkVec2f_0x8;
 };
     
-Vec4f operator*(const Mat4x4& i_m, const Sphere_Z& i_v);
+Sphere_Z operator *(const Mat4x4 &Mat,const Sphere_Z &Sphere);
 
 #endif

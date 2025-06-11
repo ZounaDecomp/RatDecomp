@@ -1,12 +1,11 @@
 #ifndef _FONTS_Z_H_
 #define _FONTS_Z_H_
+#include "Material_ZHdl.h"
 #include "DynArray_Z.h"
 #include "ResourceObject_Z.h"
 #include "Types_Z.h"
 #include "Math_Z.h"
 #include "HashTable_Z.h"
-//#include "Material_ZHdl.h"
-//#include "Material_Z.h"
 struct CharDesc {
     S32 m_CharCode;
     S32 m_MaterialIndex;
@@ -59,7 +58,7 @@ public:
     void GetCharDesc(const char* i_Char, CharDesc& o_CharDesc);
 
 private:
-    S32DA m_MaterialDA; // $VIOLET: Fix the stupid and dumb Material_ZHdl issues you were having
+    Material_ZHdlDA m_MaterialDA; // $VIOLET: Fix the stupid and dumb Material_ZHdl issues you were having
     HashTableBase_Z<FontGlyphHash_Z> m_FontGlyphHash;
 };
 

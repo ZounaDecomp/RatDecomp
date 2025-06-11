@@ -8,8 +8,10 @@
 #include "ResourceObject_Z.h"
 #include "SystemObject_Z.h"
 #include "UserDefine_Z.h"
+#include "Agent_ZHdl.h"
 #include "Agent_Z.h"
 #include "HFog_Z.h"
+
 class LightData_Z;
 class Node_Z : public ResourceObject_Z {
 public:
@@ -18,10 +20,11 @@ public:
     inline Quat& GetRotInWorld() {return m_RotInWorld;}
     inline void DisableFlag(U32 i_Flag) {m_Flag &=~ i_Flag;}
     inline Sphere_Z& GetBSphere() { return m_BSphere; }
+    inline void SetBSphere(const Sphere_Z& i_Sph) { m_BSphere = i_Sph; }
     inline Mat3x3& GetRotInWorldMatrix() { return m_RotInWorldMatrix; }
 
 private:
-    Agent_Z m_Agent;
+    Agent_ZHdl m_Agent;
     Mat4x4 m_InverseWorldMatrix;
     Mat3x3 m_RotInWorldMatrix;
     Mat3x3 m_InverseRotInWorldMatrxi;

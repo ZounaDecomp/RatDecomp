@@ -965,7 +965,7 @@ config.libs = [
             Object(NonMatching, "Engine/SplineZoneLoad_Z.cpp"),
             Object(NonMatching, "Engine/KeyframerLoad_Z.cpp"),
             Object(NonMatching, "Engine/Main_Z.cpp"),
-            Object(NonMatching, "Engine/Object_Z.cpp"),
+            Object(Matching,    "Engine/Object_Z.cpp"),
             Object(NonMatching, "Engine/Menu2DDraw_Z.cpp"),
             Object(NonMatching, "Engine/WarpLoad_Z.cpp"),
             Object(NonMatching, "Engine/ConsoleInterp_Z.cpp"),
