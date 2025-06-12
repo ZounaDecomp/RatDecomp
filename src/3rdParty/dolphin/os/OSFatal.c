@@ -208,6 +208,7 @@ void OSFatal(GXColor fg, GXColor bg, const char* msg) {
     OSSwitchFiber((u32)&Halt, (u32)OSGetArenaHi());
 }
 
+extern void* memmove(void* dest, const void* src, size_t n);
 static void Halt() {
     u32 count;
     OSFontHeader* fontData;

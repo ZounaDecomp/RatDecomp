@@ -208,7 +208,6 @@ cflags_base = [
     f"-DVERSION_{config.version}",
     "-D__GEKKO__",
     "-O4,p",
-
 ]
 cflags_bink_base = [
     "-nodefaults",
@@ -304,6 +303,9 @@ cflags_rat_base = [
     "-rostr",
 ]
 
+if config.non_matching:
+    cflags_rat_base.extend(["-DASSERTENABLED_Z"])
+
 # Debug flags
 if args.debug:
     # Or -sym dwarf-2 for Wii compilers
@@ -382,10 +384,10 @@ config.libs = [
             Object(NonMatching, "3rdParty/dolphin/os/OSArena.c"),
             Object(NonMatching, "3rdParty/dolphin/os/OSAudioSystem.c"),
             Object(NonMatching, "3rdParty/dolphin/os/OSCache.c"),
-            Object(NonMatching, "3rdParty/dolphin/os/OSContext.c"),
+            Object(Equivalent, "3rdParty/dolphin/os/OSContext.c"),
             Object(NonMatching, "3rdParty/dolphin/os/OSError.c"),
             Object(NonMatching, "3rdParty/dolphin/os/OSExec.c"),
-            Object(NonMatching, "3rdParty/dolphin/os/OSFont.c"),
+            Object(Equivalent, "3rdParty/dolphin/os/OSFont.c"),
             Object(NonMatching, "3rdParty/dolphin/os/OSInterrupt.c"),
             Object(NonMatching, "3rdParty/dolphin/os/OSLink.c"),
             Object(NonMatching, "3rdParty/dolphin/os/OSMemory.c"),
@@ -393,10 +395,11 @@ config.libs = [
             Object(NonMatching, "3rdParty/dolphin/os/OSReboot.c"),
             Object(NonMatching, "3rdParty/dolphin/os/OSReset.c"),
             Object(NonMatching, "3rdParty/dolphin/os/OSResetSW.c"),
-            Object(NonMatching, "3rdParty/dolphin/os/OSRtc.c"),
+            Object(Equivalent, "3rdParty/dolphin/os/OSRtc.c"),
             Object(NonMatching, "3rdParty/dolphin/os/OSSync.c"),
             Object(NonMatching, "3rdParty/dolphin/os/OSThread.c"),
             Object(NonMatching, "3rdParty/dolphin/os/OSTime.c"),
+            Object(Equivalent, "3rdParty/dolphin/os/OSFatal.c"), # --non-matching
             Object(NonMatching, "3rdParty/dolphin/os/__ppc_eabi_init.cpp"),
         ],
     ),
@@ -446,7 +449,7 @@ config.libs = [
     DolphinLib(
         "vi",
         [
-            Object(NonMatching, "3rdParty/dolphin/vi/vi.c"),
+            Object(Equivalent, "3rdParty/dolphin/vi/vi.c"),
         ],
     ),
     DolphinLib(
@@ -1374,11 +1377,11 @@ def link_order_callback(module_id: int, objects: List[str]) -> List[str]:
     if not config.non_matching:
         return objects
     if module_id == 0:  # DOL
-        return objects + ["dummy.c"]
+        return objects + ["3rdParty/dolphin/os/OSFatal.c"]
     return objects
 
 # Uncomment to enable the link order callback.
-# config.link_order_callback = link_order_callback
+config.link_order_callback = link_order_callback
 
 
 # Optional extra categories for progress tracking

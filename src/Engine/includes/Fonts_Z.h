@@ -29,7 +29,7 @@ public:
 
     inline S32 HashBase() const { return m_ID; }
     inline void SetShadow() { m_Ref = -1; }
-
+    inline Bool IsEmpty() { return !m_Ref; }
     inline S32 HashIncrement() const {
         return HashBase() == 0;
     }
