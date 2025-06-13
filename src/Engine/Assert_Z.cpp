@@ -2,10 +2,17 @@
 #include "Types_Z.h"
 #include "GXStruct.h"
 #include "os.h"
+#include <string.h>
+
+
 Extern_Z "C" int sprintf(char *s, const char *format, ...);
-Extern_Z "C" int strcat(char *dest, const char *src);
-
-
+#ifdef ASSERTENABLED_Z 
+char ConTemp1[255];
+char ConTemp2[255];
+char ConTemp3[255];
+char ConTemp4[255];
+char ConTemp5[255];
+#endif
 void ExceptionBool_Z(bool i_Cancelable, const Char* i_Message, ...) {
     va_list args;
 }
@@ -16,25 +23,70 @@ void ExceptionFonc_Z(const Char* a1, const Char* a2, S32 a3, const char* a4, U32
     Char l_Buffer[0x28F0];
     GXColor l_FgColor;
     l_FgColor.r = 255;
-    l_FgColor.g = 0;
-    l_FgColor.b = 0;
-    l_FgColor.a = 255;
+    l_FgColor.g = 255;
+    l_FgColor.b = 255;
+    l_FgColor.a = 0;
     GXColor l_BgColor;
-    l_BgColor.r = 255;
-    l_BgColor.g = 255;
+    l_BgColor.r = 0;
+    l_BgColor.g = 0;
     l_BgColor.b = 255;
-    l_BgColor.a = 0;
+    l_BgColor.a = 255;
     sprintf(l_Buffer, "Excep %s %s \"%s\" line%d.\n ", a1, a4, a2, a3);
     strcat(l_Buffer, WhereAmI);
     strcat(l_Buffer, "\n");
+    strcat(l_Buffer, "Console:\n");
+    strcat(l_Buffer, ConTemp1);
+    strcat(l_Buffer, ConTemp2);
+    strcat(l_Buffer, ConTemp3);
+    strcat(l_Buffer, ConTemp4);
+    strcat(l_Buffer, ConTemp5);
     OSFatal(l_FgColor, l_BgColor, l_Buffer);
 #endif
 }
-
+// $VIOLET: never called unfortunately / never called in GCConsole_Z::Flush.  add ifdef when we get there
 void ExceptionReport(const Char* a1) {
+#ifdef ASSERTENABLED_Z
+    strncpy(ConTemp1, ConTemp2, sizeof(ConTemp1));
+    strncpy(ConTemp2, ConTemp3, sizeof(ConTemp2));
+    strncpy(ConTemp3, ConTemp4, sizeof(ConTemp3));
+    strncpy(ConTemp4, ConTemp5, sizeof(ConTemp4));
+    strncpy(ConTemp5, a1, sizeof(ConTemp5));
+#endif
 }
 
+#ifdef ASSERTENABLED_Z
+void ErrorHandler(OSError error, OSContext* context, ...) {
+    Extern_Z char WhereAmI[0x1C];
+    Char l_Buffer[0x28F0];
+    GXColor l_FgColor;
+    l_FgColor.r = 255;
+    l_FgColor.g = 255;
+    l_FgColor.b = 255;
+    l_FgColor.a = 0;
+    GXColor l_BgColor;
+    l_BgColor.r = 0;
+    l_BgColor.g = 0;
+    l_BgColor.b = 255;
+    l_BgColor.a = 255;
+
+    strcpy(l_Buffer, "ErrorHandler");
+    strcat(l_Buffer, WhereAmI);
+    strcat(l_Buffer, "\n");
+    strcat(l_Buffer, "Console:\n");
+    strcat(l_Buffer, ConTemp1);
+    strcat(l_Buffer, ConTemp2);
+    strcat(l_Buffer, ConTemp3);
+    strcat(l_Buffer, ConTemp4);
+    strcat(l_Buffer, ConTemp5);
+    
+    OSFatal(l_FgColor, l_BgColor, l_Buffer);
+}
+#endif
+
 void ExceptionHandler() {
+#ifdef ASSERTENABLED_Z
+    OSSetErrorHandler(OS_ERROR_DSI, ErrorHandler);
+#endif
 }
 
 void BreakPoint_Z() {
