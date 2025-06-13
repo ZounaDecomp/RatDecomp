@@ -57,3 +57,34 @@ void Console_Z::AddCommand(const Char* i_Command, CommandProc i_Proc, const Char
         l_Tail->m_Prev = l_Command;
     }
 }
+
+Bool Console_Z::LaunchCommand(const Char* a1, const Char* i_CommandStr, U32 i_Depth, Command_Z* o_Command) {
+    U32 l_Alias;
+    if (o_Command == NULL) {
+        if (i_CommandStr)
+            l_Alias = Name_Z::GetID(i_CommandStr, 0);
+        else
+            l_Alias = 0;
+        
+        o_Command = m_CommandList;
+        while ((o_Command != NULL) ) {
+            if ((l_Alias == o_Command->m_Command) || (l_Alias == o_Command->m_Alias))
+                break;
+            o_Command = o_Command->m_Prev;
+        }
+    }
+    
+    if (o_Command == NULL)
+        return FALSE;
+
+    S32 l_Depth = m_Depth;
+    m_Depth = i_Depth;
+    Bool l_Result = o_Command->m_Proc();
+    m_UnkBool_0x6c70 = FALSE;
+    m_Depth = l_Depth;
+    return !!l_Result;
+}
+
+void Console_Z::NewCommand(const Char* i_CommandStr, U32 i_Depth) {
+    InterpCommandLine(i_CommandStr, i_Depth);
+}

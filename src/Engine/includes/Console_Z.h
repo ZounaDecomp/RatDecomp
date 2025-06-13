@@ -63,9 +63,10 @@ public:
     void SetVar(Char* i_Var);
     void DisplayHelp();
     void AddCommand(const Char* i_Command, CommandProc i_Proc, const Char* i_Desc);
-
+    Bool LaunchCommand(const Char* a1, const Char* i_CommandStr, U32 i_Depth, Command_Z* o_Command);
     U32 GetNbParam() { return m_NbParam; }
-
+    void InterpCommandLine(const Char* i_CommandStr, U32 i_Depth);
+    void NewCommand(const Char* i_CommandStr, U32 i_Depth);
     virtual ~Console_Z();
     virtual void Init();
     virtual U32 InitConsole();
