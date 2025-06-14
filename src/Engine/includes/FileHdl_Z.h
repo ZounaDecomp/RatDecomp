@@ -1,7 +1,7 @@
 #ifndef _FILE_HDL_Z_H_
 #define _FILE_HDL_Z_H_
 #include "Types_Z.h"
-class FILE;
+#include "ansi_files.h"
 
 class FileHdl_Z {
 private:

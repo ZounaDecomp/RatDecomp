@@ -1,7 +1,7 @@
 #include "Console_Z.h"
 #include "Memory_Z.h"
 #include "Name_Z.h"
-
+#include "ConsoleInterp_Z.h"
 void Console_Z::DisplayHelp() {
     return;
 }
@@ -87,4 +87,12 @@ Bool Console_Z::LaunchCommand(const Char* a1, const Char* i_CommandStr, U32 i_De
 
 void Console_Z::NewCommand(const Char* i_CommandStr, U32 i_Depth) {
     InterpCommandLine(i_CommandStr, i_Depth);
+}
+
+void Console_Z::PushCommand(Char* i_CommandLine, Bool i_Unk) {
+    m_Interp->PushCommand(i_CommandLine, i_Unk);
+}
+
+S32 Console_Z::NbPushedCommand() {
+    return m_Interp->NbCommands();
 }

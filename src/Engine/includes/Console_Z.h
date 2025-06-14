@@ -67,6 +67,8 @@ public:
     U32 GetNbParam() { return m_NbParam; }
     void InterpCommandLine(const Char* i_CommandStr, U32 i_Depth);
     void NewCommand(const Char* i_CommandStr, U32 i_Depth);
+    void PushCommand(Char* i_CommandLine, Bool i_Unk);
+    S32 NbPushedCommand();
     virtual ~Console_Z();
     virtual void Init();
     virtual U32 InitConsole();

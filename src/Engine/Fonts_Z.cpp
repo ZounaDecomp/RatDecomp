@@ -51,7 +51,7 @@ void Fonts_Z::GetCharDesc(const char* i_Char, CharDesc& o_CharDesc) {
     S32 l_CharCode = GetUTF8CharCode(i_Char);
     FontGlyphHash_Z* l_Glyph = (FontGlyphHash_Z*)i_Char;
     if (m_FontGlyphHash.GetNbElem()) {
-        m_FontGlyphHash.Insert(*l_Glyph); //this doesnt make sense. might be search
+        m_FontGlyphHash.Search(*l_Glyph); //this doesnt make sense. might be search
 
     }
 }
