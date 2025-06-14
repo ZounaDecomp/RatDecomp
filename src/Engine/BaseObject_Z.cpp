@@ -15,13 +15,13 @@ const BaseObject_ZHdl& BaseObject_Z::GetHandle() const {
 }
 
 String_Z<256>* BaseObject_Z::GetDebugName() const {
-    DefaultStringBaseObject.Sprintf("", m_Name.m_ID);
+    DefaultStringBaseObject.Sprintf("%d", m_Name.m_ID);
     return &DefaultStringBaseObject;
 }
 
 String_Z<256>* BaseObject_Z::GetDebugRscName() const {
     Name_Z l_RscName = gData.ClassMgr->GetHandleName(m_Handle);
-    DefaultStringRscBaseObject.Sprintf("", l_RscName.m_ID);
+    DefaultStringRscBaseObject.Sprintf("%d", l_RscName.m_ID);
     return &DefaultStringRscBaseObject;
 }
 
