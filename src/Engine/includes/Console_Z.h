@@ -36,7 +36,9 @@ protected:
     U32 m_UnkU32_0x13a4;
     U32 m_UnkU32_0x13a8;
     Bool m_UnkBool_0x13ac;
-    U8 m_Pad_0x13ad[4095];
+    U8 m_Pad_0x13ad[1599];
+    U32 m_UnkCount_0x19F0;
+    U8 m_Pad_0x19F4[2492];
     PopupMenu_Z* m_PopupMenu;
 
 private:
@@ -61,6 +63,10 @@ private:
 
 public:
     void SetVar(Char* i_Var);
+    void UnVar(Char* i_Var);
+    void PushVar(Bool i_State);
+    Char* IsVar(Char* i_Var);
+    void ChangeVarState();
     void DisplayHelp();
     void AddCommand(const Char* i_Command, CommandProc i_Proc, const Char* i_Desc);
     Bool LaunchCommand(const Char* a1, const Char* i_CommandStr, U32 i_Depth, Command_Z* o_Command);
@@ -69,6 +75,11 @@ public:
     void NewCommand(const Char* i_CommandStr, U32 i_Depth);
     void PushCommand(Char* i_CommandLine, Bool i_Unk);
     S32 NbPushedCommand();
+    Bool InterpCommand(Char* i_CommandStr, Bool I_Depth);
+    Bool InterpFloat(const Char* i_CommandStr, Float& o_Value);
+    inline void PopVar() {
+        m_StackNbVar--;
+    }
     virtual ~Console_Z();
     virtual void Init();
     virtual U32 InitConsole();
