@@ -7,7 +7,7 @@ Extern_Z "C" U32 strlen(const Char* str);
 Extern_Z "C" int strcpy(Char* dest, const Char* src);
 Extern_Z "C" int vsprintf(const Char* i_Buf, const Char* i_Format, va_list i_Args);
 Extern_Z "C" int strncpy(Char* dest, const Char* src, S32 count);
-S32 fstricmp(const Char* a1, const Char* a2);
+Bool fstricmp(const Char* a1, const Char* a2);
 void fsprintfID(Char* a1, U32 a2, U32 a3);
 
 template <S32 Size>

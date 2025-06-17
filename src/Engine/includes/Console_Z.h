@@ -47,13 +47,13 @@ private:
     U32 m_MaxComm;
     U32 m_UnkU32_0x23bc;
     String_Z<1088> m_CommandStack[16];
-    U32 m_NbParam;
+    S32 m_NbParam;
     Char* m_StrParam[16];
     Bool m_IsFloatParam[16];
     Float m_FloatParam[16];
-    U32 m_CommandNbVar;
+    S32 m_CommandNbVar;
     String_Z<32> m_CommandVar[32];
-    U32 m_StackNbVar;
+    S32 m_StackNbVar;
     Bool m_StackVarState[8];
     U32 m_FolderFlag;
     U32 m_Flag;
@@ -62,21 +62,24 @@ private:
     ConsoleInterp_Z* m_Interp;
 
 public:
-    void SetVar(Char* i_Var);
-    void UnVar(Char* i_Var);
+    void SetVar(const Char* i_Var);
+    void UnVar(const Char* i_Var);
     void PushVar(Bool i_State);
-    Char* IsVar(Char* i_Var);
+    Bool IsVar(const Char* i_Var);
     void ChangeVarState();
     void DisplayHelp();
     void AddCommand(const Char* i_Command, CommandProc i_Proc, const Char* i_Desc);
     Bool LaunchCommand(const Char* a1, const Char* i_CommandStr, U32 i_Depth, Command_Z* o_Command);
     U32 GetNbParam() { return m_NbParam; }
-    void InterpCommandLine(const Char* i_CommandStr, U32 i_Depth);
+    Bool InterpCommandLine(const Char* i_CommandStr, U32 i_Depth);
     void NewCommand(const Char* i_CommandStr, U32 i_Depth);
     void PushCommand(Char* i_CommandLine, Bool i_Unk);
     S32 NbPushedCommand();
-    Bool InterpCommand(Char* i_CommandStr, Bool I_Depth);
+    Bool InterpCommand(const Char* i_CommandStr, U32 i_Depth);
     Bool InterpFloat(const Char* i_CommandStr, Float& o_Value);
+
+    Command_Z* IsCommand(const Name_Z& l_CommandName) const;
+
     inline void PopVar() {
         m_StackNbVar--;
     }

@@ -1,4 +1,5 @@
 #include "String_Z.h"
+#include "Types_Z.h"
 
 U8 g_ChartoLower[256] = {
     0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07,
@@ -35,17 +36,17 @@ U8 g_ChartoLower[256] = {
     0xf8, 0xf9, 0xfa, 0xfb, 0xfc, 0xfd, 0xfe, 0xff
 };
 
-S32 fstricmp(const Char* a1, const Char* a2) {
+Bool fstricmp(const Char* a1, const Char* a2) {
     U8 lhs;
     U8 rhs;
     U8* a1_2 = (U8*)a1;
     U8* a2_2 = (U8*)a2;
     do {
         if ((lhs = g_ChartoLower[*a1_2++]) != (rhs = g_ChartoLower[*a2_2++]))
-            return 1;
+            return TRUE;
     } while (lhs);
 
-    return 0;
+    return FALSE;
 }
 
 void fsprintfID(Char* a1, U32 a2, U32 a3) {
