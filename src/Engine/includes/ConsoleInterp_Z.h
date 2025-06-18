@@ -12,7 +12,7 @@ private:
 
 class ConsoleInterp_Z : public Manipulator_Z {
 public:
-    void PushCommand(Char* i_CommandLine, Bool i_Unk);
+    void PushCommand(const Char* i_CommandLine, Bool i_Unk);
     inline S32 NbCommands() const { return m_StackCommIdx; }
 private:
     S32 m_StackCommIdx;

@@ -73,7 +73,7 @@ public:
     U32 GetNbParam() { return m_NbParam; }
     Bool InterpCommandLine(const Char* i_CommandStr, U32 i_Depth);
     void NewCommand(const Char* i_CommandStr, U32 i_Depth);
-    void PushCommand(Char* i_CommandLine, Bool i_Unk);
+    void PushCommand(const Char* i_CommandLine, Bool i_Unk);
     S32 NbPushedCommand();
     Bool InterpCommand(const Char* i_CommandStr, U32 i_Depth);
     Bool InterpFloat(const Char* i_CommandStr, Float& o_Value);

@@ -82,6 +82,12 @@ Float Bitmap_Z::GetBytePerPixel() {
     Float l_Result; // st7
 
     switch (m_Format) {
+        case BM_8888:
+            l_Result = 4.0;
+            break;
+        case BM_888:
+            l_Result = 3.0;
+            break;
         case BM_4:
             l_Result = 0.5;
             break;
@@ -94,12 +100,6 @@ Float Bitmap_Z::GetBytePerPixel() {
         case BM_4444:
         case BM_1555:
             l_Result = 2.0;
-            break;
-        case BM_8888:
-            l_Result = 4.0;
-            break;
-        case BM_888:
-            l_Result = 3.0;
             break;
         case BM_CMPR:
             l_Result = 0.0;
@@ -200,7 +200,7 @@ U16 Bitmap_Z::GetColor(const Color& i_Color) {
 #pragma optimize_for_size on
 
 U8 Bitmap_Z::GetBestPalEntry(U8 i_Red, U8 i_Green, U8 i_Blue, U8 i_Alpha) {
-    Float l_CmpValue = 1024 * 1024 * 1024;
+    Float l_CmpValue = 1099511600000.0f;
     Float l_Match = 0;
     U8 l_BestMatch = -1;
     U8 l_Red, l_Green, l_Blue, l_Alpha = 0;

@@ -97,7 +97,7 @@ void Console_Z::NewCommand(const Char* i_CommandStr, U32 i_Depth) {
     InterpCommandLine(i_CommandStr, i_Depth);
 }
 
-void Console_Z::PushCommand(Char* i_CommandLine, Bool i_Unk) {
+void Console_Z::PushCommand(const Char* i_CommandLine, Bool i_Unk) {
     m_Interp->PushCommand(i_CommandLine, i_Unk);
 }
 
@@ -313,45 +313,55 @@ Bool Console_Z::InterpCommandLine(const Char* i_CommandStr, U32 i_Depth) {
 
 }
 
-Bool Console_Z::InterpFloat(const Char* i_CommandStr, Float &o_Value)
-{
-    if (*i_CommandStr == 0)
-    {
+Bool Console_Z::InterpFloat(const Char* i_CommandStr, Float &o_Value) {
+    U32 i = 0;
+    if (i_CommandStr[0] == 0) {
         return FALSE;
     }
-    
-    Bool l_bIsFloat = FALSE;
-    Bool l_UnkBool = FALSE;
-    Float l_FloatValue = 0.0f;
-    Float l_FloatValue2 = 0.1f;
+    if (i_CommandStr[0] == '-') {
+        i++;
+    }
 
-    for (const Char* l_Char = i_CommandStr + (*i_CommandStr == '-' ? 1 : 0); *l_Char != 0; l_Char++)
-    {
-        if (*l_Char >= '0' && *l_Char <= '9')
-        {
-            if (*l_Char != '.') {
-                if (*l_Char == 'f') {
-                    return FALSE;
-                }
-                return FALSE;
+    U8 l_AfterDecimalPoint = FALSE;
+    Float l_MultVal = 0.1f;
+    Float l_Result = 0.0f;
+    while(i_CommandStr[i] != 0) {
+        if (i_CommandStr[i] >= '0' && i_CommandStr[i] <= '9') {
+            if (l_AfterDecimalPoint) {
+                l_Result = l_Result + (l_MultVal * ((i_CommandStr[i]) - '0'));
+                l_MultVal *= 0.1f;
             }
-            if (l_UnkBool) {
-                return FALSE;
+            else {
+                l_Result *= 10.0f;
+                l_Result += ((i_CommandStr[i]) - '0');
             }
-            l_bIsFloat = TRUE;
-            l_UnkBool = TRUE;
-        }
-        else if (l_UnkBool) {
-            l_FloatValue2 = l_FloatValue * (*l_Char - '0') + l_FloatValue2;
-            l_FloatValue *= 0.1f;
         }
         else {
-            l_FloatValue2 = l_FloatValue2 * 10.0f + (*l_Char - '0');
+            if (i_CommandStr[i] == '.') {
+                if (l_AfterDecimalPoint) {
+                    return 0;
+                }
+                l_AfterDecimalPoint = TRUE;
+            }
+            else if (i_CommandStr[i] == 'f') {
+                return l_AfterDecimalPoint;
+            }
+            else {
+                return FALSE;
+            }
         }
+        i++;
     }
-    o_Value = l_FloatValue2;
-    return TRUE;
 
+#ifdef BUGFIXES_Z
+    if (l_IsNegative)
+    {
+        l_Result = -l_Result;
+    }
+#endif
+
+    o_Value = l_Result;
+    return TRUE;
 }
 
 Bool Console_Z::IsVar(const Char *i_Var)
@@ -377,9 +387,9 @@ void Console_Z::UnVar(const Char *i_Var)
         if (stricmp(m_CommandVar[i], i_Var) == 0)
         {
             m_CommandNbVar--;
-            for (S32 j = i; j < m_CommandNbVar; j++)
+            for (; i < m_CommandNbVar; i++)
             {
-                strcpy(m_CommandVar[j], m_CommandVar[j + 1]);
+                strcpy(m_CommandVar[i], m_CommandVar[i + 1]);
             }
             return;
         }
@@ -395,14 +405,12 @@ void Console_Z::SetVar(const Char *i_Var)
 
     if (m_StackNbVar == 0 || m_StackVarState[m_StackNbVar - 1])
     {
-        S32 l_CommandNbVar = m_CommandNbVar++;
-        strcpy(m_CommandVar[l_CommandNbVar], i_Var);
+        strcpy(m_CommandVar[m_CommandNbVar++], i_Var);
     }
 }
 
 void Console_Z::PushVar(Bool i_State)
 {
-
     if (m_StackNbVar && !m_StackVarState[m_StackNbVar - 1])
     {
         i_State = FALSE;
@@ -413,7 +421,6 @@ void Console_Z::PushVar(Bool i_State)
 
 void Console_Z::ChangeVarState()
 {
-
     if (m_StackNbVar >= 2 && !m_StackVarState[m_StackNbVar - 2])
     {
         return;
