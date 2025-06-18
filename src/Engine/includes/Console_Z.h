@@ -5,7 +5,9 @@
 #include "String_Z.h"
 #include "Name_Z.h"
 #include "PopupMenu_Z.h"
-
+#define CONS_PAUSED (1 << 5)
+Bool DisplayHelp();
+Bool Pause();
 class ConsoleInterp_Z;
 class DrawInfo_Z;
 
@@ -23,7 +25,7 @@ protected:
     Char* m_ConsoleText;
     S32 m_UnkS32_0x4;
     DynArray_Z<Char> m_TextBolded;
-    U8 m_Pad_0x10[4976];
+    U8 m_UnkBuf0x10[4976];
     U32 m_UnkU32_0x1380;
     U32 m_UnkU32_0x1384;
     U32 m_UnkU32_0x1388;
@@ -62,6 +64,11 @@ private:
     ConsoleInterp_Z* m_Interp;
 
 public:
+    Console_Z();
+    void MarkHandles();
+    void InterpFileBuffer(const Char* i_FileBuffer, S32 i_Unk);
+    U32 GetCurrentInterpSize();
+    void* GetCurrentInterpBuffer();
     void SetVar(const Char* i_Var);
     void UnVar(const Char* i_Var);
     void PushVar(Bool i_State);
@@ -89,7 +96,7 @@ public:
     virtual void CloseConsole();
     virtual void EnableFolder(unsigned long a1);
     virtual void DisableFolder(unsigned long a1);
-    virtual void EnableFlag(unsigned long a1);
+    virtual void EnableFlag(U32 i_Flag);
     virtual void DisableFlag(unsigned long a1);
     virtual void Update(float a1);
     virtual void Draw(DrawInfo_Z& a1);

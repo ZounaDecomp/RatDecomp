@@ -5,13 +5,17 @@
 class PopupMenu_Z;
 
 class PopupItem_Z;
-class PopupPage_Z;
+class PopupPage_Z {
+public:
+    U8 m_Pad_0x0[0x14];
+};
 
 class PopupMenu_Z {
 public:
     U8 m_Pad_0x0[0x14];
 
     PopupMenu_Z();
+    ~PopupMenu_Z();
 
     virtual void Update(Float a1);
     virtual void Show(S32 a1, S32 a2);

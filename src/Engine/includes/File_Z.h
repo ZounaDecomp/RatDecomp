@@ -7,7 +7,7 @@ class File_Z {
 public:
     ~File_Z();
     void Init(S32 i_Unk, const char* i_FileName);
-    S32 GetSize();
+    U32 GetSize();
     void* GetBuf() { return m_FileBuf; }
 private:
     FileHdl_Z m_FileHdl;

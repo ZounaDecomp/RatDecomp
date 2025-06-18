@@ -9,6 +9,10 @@ public:
     void UpdateLink(BaseObject_ZHdl& i_Hdl);
     void LoadName(Name_Z&, void**);
     void LoadLink(BaseObject_ZHdl& i_Hdl, void** i_Data);
+    Bool IsBigFileOpened() const { return m_IsBigFileOpened; }
+private:
+    Char m_Unks[0x4f2];
+    Bool m_IsBigFileOpened;
 };
 
 #endif
