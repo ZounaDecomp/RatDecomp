@@ -105,10 +105,9 @@ class HandleManager_Z {
 public:
     DynArray_Z<HandleRec_Z, HandleGranularity> m_HandleRecDA;
     DynArray_Z<S32, HandleGranularity> m_FreeRecDA;
-    HashS32Table_Z m_Placeholder_NameToIdHashtable[0x10];
-    S32 m_UnkS32_0x20; // $SABE: Looks unused
+    HashS32Table_Z m_Placeholder_NameToIdHashtable;
     U32 m_HandleRecDASize;
-    U32 m_NbFree;
+    S32 m_NbFree;
     Name_Z m_NullName;
     BaseObject_ZHdl m_NullHandle;
     Bool m_UnkBool_SetsDeltaTimeTo30fps_0x34;
@@ -142,7 +141,9 @@ public:
     void MarkU32Handle(U32 i_Hdl);
     Bool MarkHandle(const BaseObject_ZHdl&);
     void ForbidCheckHandles(Bool i_ForbidCheckHandles);
-
+    BaseObject_ZHdl CreateNewHandle(BaseObject_Z* i_BObj, const Name_Z& i_Name, S16 i_ClassID, U8 i_Flag);
+    void ExpandSize(S32 i_NewSize);
+    void AddResourceRef(const HandleRec_Z&, S32 i_IDInDA);
     inline Name_Z& GetHandleName(const BaseObject_ZHdl& i_Hdl) {
         int l_ID = i_Hdl.GetID();
         int l_Key = i_Hdl.GetKey();

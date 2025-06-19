@@ -8,6 +8,7 @@
 #define CONS_PAUSED (1 << 5)
 Bool DisplayHelp();
 Bool Pause();
+Bool Source();
 class ConsoleInterp_Z;
 class DrawInfo_Z;
 
@@ -84,9 +85,17 @@ public:
     S32 NbPushedCommand();
     Bool InterpCommand(const Char* i_CommandStr, U32 i_Depth);
     Bool InterpFloat(const Char* i_CommandStr, Float& o_Value);
-
+    
+    ConsoleInterp_Z* GetInterp() const {
+        return m_Interp;
+    }
+    void SetInterp(ConsoleInterp_Z* i_Interp) {
+        m_Interp = i_Interp;
+    }
     Command_Z* IsCommand(const Name_Z& l_CommandName) const;
-
+    Char*& GetStrParam(S32 i_Index) {
+        return m_StrParam[i_Index];
+    }
     inline void PopVar() {
         m_StackNbVar--;
     }

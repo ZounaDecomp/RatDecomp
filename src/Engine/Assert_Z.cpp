@@ -35,11 +35,16 @@ void ExceptionFonc_Z(const Char* a1, const Char* a2, S32 a3, const char* a4, U32
     strcat(l_Buffer, WhereAmI);
     strcat(l_Buffer, "\n");
     strcat(l_Buffer, "Console:\n");
-    strcat(l_Buffer, ConTemp1);
+    strcat(l_Buffer, ConTemp1); // $VIOLET: These \n are only here so I can hack something together in InterpCommand, remove later. Except the one after WhereAmI.
+    strcat(l_Buffer, "\n");
     strcat(l_Buffer, ConTemp2);
+    strcat(l_Buffer, "\n");
     strcat(l_Buffer, ConTemp3);
+    strcat(l_Buffer, "\n");
     strcat(l_Buffer, ConTemp4);
+    strcat(l_Buffer, "\n");
     strcat(l_Buffer, ConTemp5);
+    strcat(l_Buffer, "\n");
     OSFatal(l_FgColor, l_BgColor, l_Buffer);
 #endif
 }

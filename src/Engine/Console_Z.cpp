@@ -1,5 +1,6 @@
 #include "Console_Z.h"
 #include "GCMain_Z.h"
+#include "Handle_Z.h"
 #include "Memory_Z.h"
 #include "PopupMenu_Z.h"
 #include "Types_Z.h"
@@ -139,5 +140,18 @@ Bool DisplayHelp() {
 Bool Pause() {
     gData.Cons->EnableFlag(CONS_PAUSED);
 
+    return TRUE;
+}
+
+Bool Source() {
+    BaseObject_ZHdl l_InterpHdl;
+    Console_Z* l_Console = gData.Cons;
+    if (gData.Cons->GetInterp() == NULL) {
+        l_InterpHdl = gData.ClassMgr->NewObject(Name_Z::GetID("ConsoleInterp_Z", 0), Name_Z::GetID("ConsoleInterp", 0));
+        ConsoleInterp_Z* l_Interp = (ConsoleInterp_Z*)GETPTR(l_InterpHdl);
+        l_Console->SetInterp(l_Interp);
+        l_Interp->Deactivate();
+    }
+    l_Console->GetInterp()->Start(l_Console->GetStrParam(1), &l_Console->GetStrParam(0), l_Console->GetNbParam());
     return TRUE;
 }

@@ -5,8 +5,8 @@
 
 class BaseStream_Z {
 public:
-    short m_UnkS16_0x0;
-    short m_UnkS16_0x2;
+    short m_OpenID;
+    short m_ReadID;
     virtual void StreamOpened(S32 a1, S32 a2);
     virtual void StreamReaded(S32 a1, S32 a2);
     virtual void Opened(S32 a1, S32 a2, S32 a3);

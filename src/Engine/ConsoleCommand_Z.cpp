@@ -125,6 +125,9 @@ Command_Z* Console_Z::IsCommand(const Name_Z& i_CommandName) const {
 }
 
 Bool Console_Z::InterpCommand(const Char* i_CommandStr, U32 i_Depth) {
+#ifdef ASSERTENABLED_Z
+    ExceptionReport(i_CommandStr);
+#endif
     String_Z<1024> l_CommandStack[16];
 
     if (strlen(i_CommandStr) == FALSE) {
@@ -269,7 +272,7 @@ Bool Console_Z::InterpCommand(const Char* i_CommandStr, U32 i_Depth) {
 Bool Console_Z::InterpCommandLine(const Char* i_CommandStr, U32 i_Depth) {
     U32 l_Pos = 0; 
     S32 l_CurPos = 0; 
-    U32 l_r29 = 0;
+    U32 l_UnkCount = 0;
     
     String_Z<1024 + 64> l_CurCommand;
     
@@ -279,12 +282,12 @@ Bool Console_Z::InterpCommandLine(const Char* i_CommandStr, U32 i_Depth) {
         {
             if (l_Pos + l_CurPos) {
                 if (i_CommandStr[l_Pos+l_CurPos-1] != '\\') {
-                    l_r29++;
+                    l_UnkCount++;
                 }
             }
         }
 
-        if (l_r29 % 2 == 0 && i_CommandStr[l_Pos+l_CurPos] == ';')
+        if (l_UnkCount % 2 == 0 && i_CommandStr[l_Pos+l_CurPos] == ';')
         {
             l_CurCommand.StrnCpy(i_CommandStr + l_Pos, l_CurPos);
             l_CurCommand[l_CurPos] = 0;
