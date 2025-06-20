@@ -8,15 +8,8 @@
 #include "Renderer_Z.h"
 #include "File_Z.h"
 Extern_Z GCGlobals gData;
-Console_Z::Console_Z() {
-    memset(m_UnkBuf0x10, 0, (int)this + (sizeof(m_UnkBuf0x10) - (int)m_UnkBuf0x10));
-    m_UnkU32_0x1390 = 0;
-    m_UnkU32_0x138c = 0;
-    m_UnkU32_0x1388 = 0;
-    m_UnkU32_0x1384 = 0;
-    m_UnkU32_0x1380 = 0;
+Console_Z::Console_Z() : m_UnkU32_0x1390(0), m_UnkU32_0x138c(0), m_UnkU32_0x1388(0), m_UnkU32_0x1384(0), m_UnkBool_0x13ac(0) {
     m_UnkU32_0x23bc = 0;
-
     m_MaxComm = 0;
     m_UnkU32_0x23bc = 0;
     m_CommIndex = -1;
@@ -25,7 +18,7 @@ Console_Z::Console_Z() {
     m_Depth = 0;
     m_UnkBool_0x6c70 = FALSE;
     m_Flag = 0;
-    m_FolderFlag = 0;
+    m_FolderFlag = (1<<ConsoleMessage);
     m_UnkU32_0x1394 = 0;
     m_UnkU32_0x1398 = 0;
     m_UnkU32_0x139c = 0;
@@ -35,8 +28,8 @@ Console_Z::Console_Z() {
     m_ConsoleText = NULL;
     m_CommandNbVar = 0;
     m_StackNbVar = 0;
-
 }
+
 
 Console_Z::~Console_Z() {
     Command_Z* l_Curr = m_CommandList;
@@ -68,7 +61,7 @@ void Console_Z::MarkHandles() {
 }
 
 void Console_Z::DisableFlag(U32 i_Flag) {
-    if (((m_Flag & CONS_PAUSED) && (i_Flag & CONS_PAUSED) && (gData.ClassMgr->IsBigFileOpened()))) {
+    if (((m_Flag & FL_CONS_PAUSED) && (i_Flag & FL_CONS_PAUSED) && (gData.ClassMgr->IsBigFileOpened()))) {
         ASSERTLE_Z(0, "", 0x5f, "! (Flag&(1<<5) && _Flag&(1<<5) && gData.ClassMgr->IsBigFileOpened())");
     }
     m_Flag &= ~i_Flag;
@@ -98,9 +91,10 @@ void* Console_Z::GetCurrentInterpBuffer() {
     if (m_Interp == NULL) {
         return NULL;
     }
-    l_Size = m_Interp->GetFileStack().GetSize();
-    if (l_Size != 0){
-        l_File = m_Interp->GetFileStack()[l_Size - 1].GetFile();
+    DynArray_Z<FileInterp_Z>& fs = m_Interp->GetFileStack();
+    if (fs.GetSize() != 0){
+        int temp = fs.GetSize();
+        l_File = fs[--temp].GetFile();
     } else {
         l_File = NULL;
     }
@@ -118,9 +112,10 @@ U32 Console_Z::GetCurrentInterpSize() {
     if (m_Interp == NULL) {
         return 0;
     }
-    l_Size = m_Interp->GetFileStack().GetSize();
-    if (l_Size != 0){
-        l_File = m_Interp->GetFileStack()[l_Size - 1].GetFile();
+    DynArray_Z<FileInterp_Z>& fs = m_Interp->GetFileStack();
+    if (fs.GetSize() != 0) {
+        int temp = fs.GetSize();
+        l_File = fs[--temp].GetFile();
     } else {
         l_File = NULL;
     }
@@ -138,20 +133,34 @@ Bool DisplayHelp() {
 }
 
 Bool Pause() {
-    gData.Cons->EnableFlag(CONS_PAUSED);
+    gData.Cons->EnableFlag(FL_CONS_PAUSED);
 
     return TRUE;
 }
 
-Bool Source() {
-    BaseObject_ZHdl l_InterpHdl;
-    Console_Z* l_Console = gData.Cons;
+void Console_Z::InterpFile() {
     if (gData.Cons->GetInterp() == NULL) {
-        l_InterpHdl = gData.ClassMgr->NewObject(Name_Z::GetID("ConsoleInterp_Z", 0), Name_Z::GetID("ConsoleInterp", 0));
-        ConsoleInterp_Z* l_Interp = (ConsoleInterp_Z*)GETPTR(l_InterpHdl);
-        l_Console->SetInterp(l_Interp);
-        l_Interp->Deactivate();
+        BaseObject_ZHdl* l_InterpHdl = gData.ClassMgr->NewObject(Name_Z::GetID("ConsoleInterp_Z", 0), Name_Z::GetID("ConsoleInterp", 0));
+        BaseObject_ZHdl l_BObj;
+        l_BObj = *l_InterpHdl;
+        ConsoleInterp_Z* l_Interp = (ConsoleInterp_Z*)GETPTR(l_BObj);
+        SetInterp(l_Interp);
+        GetInterp()->Deactivate();
     }
-    l_Console->GetInterp()->Start(l_Console->GetStrParam(1), &l_Console->GetStrParam(0), l_Console->GetNbParam());
+    GetInterp()->Start(m_StrParam[1], &m_StrParam[0], GetNbParam());
+}
+
+Bool Source() {
+    gData.Cons->InterpFile();
     return TRUE;
+}
+
+Bool BSource() {
+    gData.Cons->EnableFlag(FL_CONS_UNK0x10);
+    gData.Cons->InterpFile();
+    return TRUE;
+}
+
+void Dummy() {
+    gData.Cons->CloseConsole();
 }

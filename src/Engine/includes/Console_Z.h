@@ -5,7 +5,13 @@
 #include "String_Z.h"
 #include "Name_Z.h"
 #include "PopupMenu_Z.h"
-#define CONS_PAUSED (1 << 5)
+#include "HashTable_Z.h"
+#define REGISTERCOMMANDC(a,b,c) gData.Cons->AddCommand(a,b,c);
+#define REGISTERCOMMAND(a,b)    gData.Cons->AddCommand(a,b,"No Comment");
+
+#define FL_CONS_UNK0x10 (1 << 4)
+#define FL_CONS_PAUSED  (1 << 5)
+
 Bool DisplayHelp();
 Bool Pause();
 Bool Source();
@@ -20,13 +26,31 @@ struct Command_Z {
     CommandProc m_Proc;
     Command_Z* m_Prev;
 };
+struct ConsoleUnkBuffer_Z {
+    U8 m_UnkBuf0x0[4976];
+
+    ConsoleUnkBuffer_Z() {
+        memset(&m_UnkBuf0x0, 0, (int)this + (sizeof(m_UnkBuf0x0) - (int)m_UnkBuf0x0));
+    }
+};
+
+enum ConsoleId
+{
+    ConsoleSystem,
+    ConsoleMessage,
+    ConsoleScript,
+    ConsoleLevel,
+    ConsoleProfiler,
+    ConsoleUser,
+    ConsoleNbFolder
+};
 
 class Console_Z {
 protected:
     Char* m_ConsoleText;
     S32 m_UnkS32_0x4;
     DynArray_Z<Char> m_TextBolded;
-    U8 m_UnkBuf0x10[4976];
+    ConsoleUnkBuffer_Z m_ConsoleUnkBuffer;
     U32 m_UnkU32_0x1380;
     U32 m_UnkU32_0x1384;
     U32 m_UnkU32_0x1388;
@@ -80,12 +104,12 @@ public:
     Bool LaunchCommand(const Char* a1, const Char* i_CommandStr, U32 i_Depth, Command_Z* o_Command);
     U32 GetNbParam() { return m_NbParam; }
     Bool InterpCommandLine(const Char* i_CommandStr, U32 i_Depth);
+    void InterpFile();
     void NewCommand(const Char* i_CommandStr, U32 i_Depth);
     void PushCommand(const Char* i_CommandLine, Bool i_Unk);
     S32 NbPushedCommand();
     Bool InterpCommand(const Char* i_CommandStr, U32 i_Depth);
     Bool InterpFloat(const Char* i_CommandStr, Float& o_Value);
-    
     ConsoleInterp_Z* GetInterp() const {
         return m_Interp;
     }
@@ -93,7 +117,7 @@ public:
         m_Interp = i_Interp;
     }
     Command_Z* IsCommand(const Name_Z& l_CommandName) const;
-    Char*& GetStrParam(S32 i_Index) {
+    Char* GetStrParam(S32 i_Index) const { 
         return m_StrParam[i_Index];
     }
     inline void PopVar() {
@@ -102,7 +126,7 @@ public:
     virtual ~Console_Z();
     virtual void Init();
     virtual U32 InitConsole();
-    virtual void CloseConsole();
+    virtual void CloseConsole() { return; };
     virtual void EnableFolder(unsigned long a1);
     virtual void DisableFolder(unsigned long a1);
     virtual void EnableFlag(U32 i_Flag);

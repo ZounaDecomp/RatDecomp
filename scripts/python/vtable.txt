@@ -1,0 +1,17 @@
+.obj __vt__10Material_Z, global
+	.4byte 0x00000000
+	.4byte 0x00000000
+	.4byte Init__12BaseObject_ZFv
+	.4byte __dt__10Material_ZFv
+	.4byte Load__10Material_ZFPPv
+	.4byte EndLoad__10Material_ZFv
+	.4byte AfterEndLoad__12BaseObject_ZFv
+	.4byte LoadDone__12BaseObject_ZFv
+	.4byte LoadLinks__16ResourceObject_ZFPPv
+	.4byte EndLoadLinks__16ResourceObject_ZFv
+	.4byte Clean__10Material_ZFv
+	.4byte MarkHandles__10Material_ZFv
+	.4byte Clone__10Material_ZFR13Material_ZHdl
+	.4byte UpdateTMatrix__10Material_ZFv
+	.4byte Changed__10Material_ZFv
+.endobj __vt__10Material_Z
