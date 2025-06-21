@@ -5,7 +5,6 @@
 #include "Assert_Z.h"
 #include "Color_Z.h"
 #define INVALID_TEXID -1
-
 #define FL_BITMAP_BILINEAR 1 << 2
 
 enum BmFormat_Z {
@@ -51,11 +50,11 @@ public:
     virtual void Clean();
     void InitBmap(S32 i_SizeX, S32 i_SizeY, U8 l_Format, U8* i_Datas, U8* i_Palette);
 
-    Weak_Z void EnableFlag(U16 i_Flag) { m_Flag |= i_Flag; }
+    void EnableFlag(U16 i_Flag) { m_Flag |= i_Flag; }
 
     U8 GetFormat() { return m_Format; }
 
-    Weak_Z void* GetDatas() { return m_Datas; }
+    void* GetDatas() { return m_Datas; }
 
     void SetDatas(U8* i_Datas);
     void SetTransp(U8 i_Transp);
@@ -69,6 +68,7 @@ public:
     S32 GetDataSize();
     S32 GetNbEntries();
     void SetUniversal(U8* i_Datas);
+    void Save(const Char* i_FileName);
 
 private:
     void* m_Datas;
@@ -85,5 +85,7 @@ private:
     U8 m_UnkU8_0x31; // Always set to 4
     U16 m_Flag;
 };
+
+void SaveTGA(const Char* i_FileName, U8* i_Data, S32 i_SizeX, S32 i_SizeY, S32 i_Bpp);
 
 #endif

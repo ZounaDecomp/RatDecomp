@@ -826,7 +826,7 @@ config.libs = [
             Object(NonMatching, "Engine/KSys_Z.cpp"),
             Object(NonMatching, "Engine/SplineDraw_Z.cpp"),
             Object(NonMatching, "Engine/LowLevelTools_Z.cpp"),
-            Object(NonMatching, "Engine/BitmapLoad_Z.cpp"),
+            Object(Matching,    "Engine/BitmapLoad_Z.cpp"),
             Object(NonMatching, "Engine/Game_Z.cpp"),
             Object(NonMatching, "Engine/ObjectThrow_Z.cpp"),
             Object(NonMatching, "Engine/Rtc_Z.cpp"),

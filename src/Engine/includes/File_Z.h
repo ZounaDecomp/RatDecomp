@@ -5,8 +5,13 @@
 #include "String_Z.h"
 class File_Z {
 public:
+    File_Z();
     ~File_Z();
     void Init(S32 i_Unk, const char* i_FileName);
+    Bool Open(const Char* i_FileName, U32 i_Flags);
+    Bool Write(const void* i_Data, U32 i_Size);
+    void Flush();
+    void Close();
     U32 GetSize();
     void* GetBuf() { return m_FileBuf; }
 private:
