@@ -5,6 +5,7 @@
 class PopupMenu_Z;
 
 class PopupItem_Z;
+
 class PopupPage_Z {
 public:
     U8 m_Pad_0x0[0x14];

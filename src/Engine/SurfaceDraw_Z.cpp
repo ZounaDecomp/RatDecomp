@@ -1,7 +1,6 @@
 #include "Surface_Z.h"
 
-void Surface_Z::GetQuadPatchCtrlPoint(const Patch& i_Patch, QuadCtrlPoint_Z& o_QuadCtrlPoint)
-{
+void Surface_Z::GetQuadPatchCtrlPoint(const Patch& i_Patch, QuadCtrlPoint_Z& o_QuadCtrlPoint) {
     // m_Vertices on the corners
     o_QuadCtrlPoint.ControlPoints[0][0] = Vec4f(m_Vertices[m_EdgeTab[i_Patch.EdgeIndices[0]].P[i_Patch.Flag & EDGE1 ? 1 : 0]]);
     o_QuadCtrlPoint.ControlPoints[0][3] = Vec4f(m_Vertices[m_EdgeTab[i_Patch.EdgeIndices[1]].P[i_Patch.Flag & EDGE2 ? 1 : 0]]);

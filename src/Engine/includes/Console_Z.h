@@ -6,11 +6,11 @@
 #include "Name_Z.h"
 #include "PopupMenu_Z.h"
 #include "HashTable_Z.h"
-#define REGISTERCOMMANDC(a,b,c) gData.Cons->AddCommand(a,b,c);
-#define REGISTERCOMMAND(a,b)    gData.Cons->AddCommand(a,b,"No Comment");
+#define REGISTERCOMMANDC(a, b, c) gData.Cons->AddCommand(a, b, c);
+#define REGISTERCOMMAND(a, b) gData.Cons->AddCommand(a, b, "No Comment");
 
 #define FL_CONS_UNK0x10 (1 << 4)
-#define FL_CONS_PAUSED  (1 << 5)
+#define FL_CONS_PAUSED (1 << 5)
 
 Bool DisplayHelp();
 Bool Pause();
@@ -26,6 +26,7 @@ struct Command_Z {
     CommandProc m_Proc;
     Command_Z* m_Prev;
 };
+
 struct ConsoleUnkBuffer_Z {
     U8 m_UnkBuf0x0[4976];
 
@@ -34,8 +35,7 @@ struct ConsoleUnkBuffer_Z {
     }
 };
 
-enum ConsoleId
-{
+enum ConsoleId {
     ConsoleSystem,
     ConsoleMessage,
     ConsoleScript,
@@ -102,7 +102,9 @@ public:
     void DisplayHelp();
     void AddCommand(const Char* i_Command, CommandProc i_Proc, const Char* i_Desc);
     Bool LaunchCommand(const Char* a1, const Char* i_CommandStr, U32 i_Depth, Command_Z* o_Command);
+
     U32 GetNbParam() { return m_NbParam; }
+
     Bool InterpCommandLine(const Char* i_CommandStr, U32 i_Depth);
     void InterpFile();
     void NewCommand(const Char* i_CommandStr, U32 i_Depth);
@@ -110,23 +112,31 @@ public:
     S32 NbPushedCommand();
     Bool InterpCommand(const Char* i_CommandStr, U32 i_Depth);
     Bool InterpFloat(const Char* i_CommandStr, Float& o_Value);
+
     ConsoleInterp_Z* GetInterp() const {
         return m_Interp;
     }
+
     void SetInterp(ConsoleInterp_Z* i_Interp) {
         m_Interp = i_Interp;
     }
+
     Command_Z* IsCommand(const Name_Z& l_CommandName) const;
-    Char* GetStrParam(S32 i_Index) const { 
+
+    Char* GetStrParam(S32 i_Index) const {
         return m_StrParam[i_Index];
     }
+
     inline void PopVar() {
         m_StackNbVar--;
     }
+
     virtual ~Console_Z();
     virtual void Init();
     virtual U32 InitConsole();
+
     virtual void CloseConsole() { return; };
+
     virtual void EnableFolder(unsigned long a1);
     virtual void DisableFolder(unsigned long a1);
     virtual void EnableFlag(U32 i_Flag);

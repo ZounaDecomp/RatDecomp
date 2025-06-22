@@ -44,7 +44,7 @@ private:
 class Points_Z : public Object_Z {
 public:
     Points_Z();
-    virtual ~Points_Z() {};
+    virtual ~Points_Z() { };
 
     static BaseObject_Z* NewObject() {
         return New_Z Points_Z;

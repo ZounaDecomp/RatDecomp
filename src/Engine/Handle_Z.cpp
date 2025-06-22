@@ -8,11 +8,12 @@ HandleManager_Z::HandleManager_Z() {
 S32 HandleManager_Z::HandleToU32(const BaseObject_ZHdl& i_Hdl) {
     return i_Hdl.m_RealID.GblID;
 }
+
 // $VIOLET: TODO: Finish this
 BaseObject_ZHdl HandleManager_Z::CreateNewHandle(BaseObject_Z* i_BObj, const Name_Z& i_Name, S16 i_ClassID, U8 i_Flag) {
     Name_Z l_Name;
     S32 l_FreeRecID;
-    if (m_NbFree == 0){
+    if (m_NbFree == 0) {
         ExpandSize(0x4000);
     }
 
@@ -32,7 +33,6 @@ BaseObject_ZHdl HandleManager_Z::CreateNewHandle(BaseObject_Z* i_BObj, const Nam
     i_BObj->AfterEndLoad();
     AddResourceRef(l_Rec, l_FreeRecID);
     return i_BObj->GetHandle();
-
 }
 
 void HandleManager_Z::MarkU32Handle(U32 i_Hdl) {

@@ -4,9 +4,8 @@
 #include "os.h"
 #include <string.h>
 
-
-Extern_Z "C" int sprintf(char *s, const char *format, ...);
-#ifdef ASSERTENABLED_Z 
+Extern_Z "C" int sprintf(char* s, const char* format, ...);
+#ifdef ASSERTENABLED_Z
 char ConTemp1[255];
 char ConTemp2[255];
 char ConTemp3[255];
@@ -18,7 +17,7 @@ void ExceptionBool_Z(bool i_Cancelable, const Char* i_Message, ...) {
 }
 
 void ExceptionFonc_Z(const Char* a1, const Char* a2, S32 a3, const char* a4, U32 a5, U32 a6, U32 a7, U32 a8, U32 a9, U64* a10) {
-#ifdef ASSERTENABLED_Z 
+#ifdef ASSERTENABLED_Z
     Extern_Z char WhereAmI[0x1C];
     Char l_Buffer[0x28F0];
     GXColor l_FgColor;
@@ -48,6 +47,7 @@ void ExceptionFonc_Z(const Char* a1, const Char* a2, S32 a3, const char* a4, U32
     OSFatal(l_FgColor, l_BgColor, l_Buffer);
 #endif
 }
+
 // $VIOLET: never called unfortunately / never called in GCConsole_Z::Flush.  add ifdef when we get there
 void ExceptionReport(const Char* a1) {
 #ifdef ASSERTENABLED_Z
@@ -83,7 +83,7 @@ void ErrorHandler(OSError error, OSContext* context, ...) {
     strcat(l_Buffer, ConTemp3);
     strcat(l_Buffer, ConTemp4);
     strcat(l_Buffer, ConTemp5);
-    
+
     OSFatal(l_FgColor, l_BgColor, l_Buffer);
 }
 #endif

@@ -3,6 +3,7 @@
 #include "ResourceObject_Z.h"
 
 Extern_Z "C" void memcpy(void* dst, const void* src, int n);
+
 class UserDefineCmd_Z {
 public:
     void SetCmd(Char* i_UserDatas, S32 i_DataSize) {

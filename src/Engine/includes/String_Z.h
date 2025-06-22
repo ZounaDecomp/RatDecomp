@@ -43,6 +43,7 @@ public:
     const Char* CStr() const {
         return m_Str;
     }
+
     S32 StrnCpy(const Char* i_Src, S32 i_Count) {
         return strncpy(m_Str, i_Src, i_Count);
     }

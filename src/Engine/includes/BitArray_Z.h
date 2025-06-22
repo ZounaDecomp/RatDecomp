@@ -2,6 +2,7 @@
 #define _BITARRAY_Z_H_
 #include "DynArray_Z.h"
 #include "Types_Z.h"
+
 /* sizeof(BitArray_Z) == 0xC*/
 class BitArray_Z {
 public:

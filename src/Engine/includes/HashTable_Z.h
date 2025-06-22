@@ -64,6 +64,7 @@ public:
 
     Bool operator!=(const Name_ZHash_Z& i_Elem) { return i_Elem.m_Value != m_Value; }
 };
+
 /* sizeof(HashTableBase) == 0x14*/
 template <class T>
 class HashTableBase_Z {
@@ -239,7 +240,7 @@ public:
         m_ScanID = NextScan + 1;
         return m_Hash + NextScan;
     }
-    
+
     inline S32 GetNbElem() const {
         return m_NbElem;
     }

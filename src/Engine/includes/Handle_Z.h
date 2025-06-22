@@ -144,6 +144,7 @@ public:
     BaseObject_ZHdl CreateNewHandle(BaseObject_Z* i_BObj, const Name_Z& i_Name, S16 i_ClassID, U8 i_Flag);
     void ExpandSize(S32 i_NewSize);
     void AddResourceRef(const HandleRec_Z&, S32 i_IDInDA);
+
     inline Name_Z& GetHandleName(const BaseObject_ZHdl& i_Hdl) {
         int l_ID = i_Hdl.GetID();
         int l_Key = i_Hdl.GetKey();

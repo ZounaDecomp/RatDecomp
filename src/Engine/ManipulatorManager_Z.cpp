@@ -39,16 +39,16 @@ void ManipulatorManager_Z::FlushBuffer() {
     ManipulatorList_Z* l_ManipList;
     S32 i;
     Manipulator_Z* l_Manip;
-    
+
     i = m_ManipDA.GetSize();
     if (m_ManipDA.GetSize() == 0) {
         return;
     }
-    
+
     while (i-- != 0) {
         l_Manip = m_ManipDA[i];
         l_ManipList = &m_ManipList[l_Manip->m_ManipGroup];
-        
+
         Bool l_ContainsManip = Contains(l_Manip, *l_ManipList);
         if (l_ContainsManip) {
             l_ManipList->Remove(l_Manip);

@@ -41,6 +41,7 @@ struct Vec3f {
         , y(i_y)
         , z(i_z) { };
     Vec3f(const Color& i_Color);
+
     Vec3f operator*(const Float i_Scale) const {
         Vec3f l_Temp;
         l_Temp.x = x * i_Scale;
@@ -264,7 +265,7 @@ struct TBVtx {
     Vec2f UnkVec2f_0x0;
     Vec2f UnkVec2f_0x8;
 };
-    
-Sphere_Z operator *(const Mat4x4 &Mat,const Sphere_Z &Sphere);
+
+Sphere_Z operator*(const Mat4x4& Mat, const Sphere_Z& Sphere);
 
 #endif

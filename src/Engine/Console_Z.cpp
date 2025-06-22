@@ -8,7 +8,13 @@
 #include "Renderer_Z.h"
 #include "File_Z.h"
 Extern_Z GCGlobals gData;
-Console_Z::Console_Z() : m_UnkU32_0x1390(0), m_UnkU32_0x138c(0), m_UnkU32_0x1388(0), m_UnkU32_0x1384(0), m_UnkBool_0x13ac(0) {
+
+Console_Z::Console_Z()
+    : m_UnkU32_0x1390(0)
+    , m_UnkU32_0x138c(0)
+    , m_UnkU32_0x1388(0)
+    , m_UnkU32_0x1384(0)
+    , m_UnkBool_0x13ac(0) {
     m_UnkU32_0x23bc = 0;
     m_MaxComm = 0;
     m_UnkU32_0x23bc = 0;
@@ -18,7 +24,7 @@ Console_Z::Console_Z() : m_UnkU32_0x1390(0), m_UnkU32_0x138c(0), m_UnkU32_0x1388
     m_Depth = 0;
     m_UnkBool_0x6c70 = FALSE;
     m_Flag = 0;
-    m_FolderFlag = (1<<ConsoleMessage);
+    m_FolderFlag = (1 << ConsoleMessage);
     m_UnkU32_0x1394 = 0;
     m_UnkU32_0x1398 = 0;
     m_UnkU32_0x139c = 0;
@@ -29,7 +35,6 @@ Console_Z::Console_Z() : m_UnkU32_0x1390(0), m_UnkU32_0x138c(0), m_UnkU32_0x1388
     m_CommandNbVar = 0;
     m_StackNbVar = 0;
 }
-
 
 Console_Z::~Console_Z() {
     Command_Z* l_Curr = m_CommandList;
@@ -92,17 +97,18 @@ void* Console_Z::GetCurrentInterpBuffer() {
         return NULL;
     }
     DynArray_Z<FileInterp_Z>& fs = m_Interp->GetFileStack();
-    if (fs.GetSize() != 0){
+    if (fs.GetSize() != 0) {
         int temp = fs.GetSize();
         l_File = fs[--temp].GetFile();
-    } else {
+    }
+    else {
         l_File = NULL;
     }
 
     if (l_File != NULL) {
         return l_File->GetBuf();
     }
-    
+
     return NULL;
 }
 
@@ -116,14 +122,15 @@ U32 Console_Z::GetCurrentInterpSize() {
     if (fs.GetSize() != 0) {
         int temp = fs.GetSize();
         l_File = fs[--temp].GetFile();
-    } else {
+    }
+    else {
         l_File = NULL;
     }
 
     if (l_File != NULL) {
         return l_File->GetSize();
     }
-    
+
     return 0;
 }
 

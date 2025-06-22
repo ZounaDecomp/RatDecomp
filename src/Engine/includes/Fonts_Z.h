@@ -6,6 +6,7 @@
 #include "Types_Z.h"
 #include "Math_Z.h"
 #include "HashTable_Z.h"
+
 struct CharDesc {
     S32 m_CharCode;
     S32 m_MaterialIndex;
@@ -25,16 +26,23 @@ public:
     Float m_TopLeftCoord[2];
     Float m_BottomRightCoord[2];
     S32 m_Ref;
+
     FontGlyphHash_Z() { }
 
     inline S32 HashBase() const { return m_ID; }
+
     inline void SetShadow() { m_Ref = -1; }
+
     inline Bool IsEmpty() { return !m_Ref; }
+
     inline S32 HashIncrement() const {
         return HashBase() == 0;
     }
+
     Bool operator==(const FontGlyphHash_Z& i_Elem) { return i_Elem.m_ID == m_ID; }
+
     Bool operator!=(const FontGlyphHash_Z& i_Elem) { return i_Elem.m_ID != m_ID; }
+
     FontGlyphHash_Z& operator=(const FontGlyphHash_Z& i_Elem) {
         m_ID = i_Elem.m_ID;
         m_MaterialIndex = i_Elem.m_MaterialIndex;

@@ -8,7 +8,8 @@
 Extern_Z "C" int strncmp(const char* str1, const char* str2, int n);
 Extern_Z "C" size_t strlen(const char* str);
 Extern_Z "C" Float atof(const char* str);
-Extern_Z "C" int stricmp(const char *String1, const char *String2);
+Extern_Z "C" int stricmp(const char* String1, const char* String2);
+
 void Console_Z::DisplayHelp() {
     return;
 }
@@ -24,40 +25,37 @@ void Console_Z::AddCommand(const Char* i_Command, CommandProc i_Proc, const Char
 
     l_Command->m_Command = i_Command ? Name_Z::GetID(i_Command, 0) : 0;
     l_Command->m_Proc = i_Proc;
-    
+
     Char l_Alias[16];
     S32 l_AliasSize = 0;
 
     S32 len = strlen(i_Command);
-    
+
     char* l_AliasStr = l_Alias;
 
     Char l_Char;
     for (S32 i = 0; i < len && l_AliasSize < 15; i++) {
-         l_Char = i_Command[i];
+        l_Char = i_Command[i];
         if ('A' <= l_Char && l_Char <= 'Z' || '0' <= l_Char && l_Char <= '9') {
             *l_AliasStr++ = l_Char;
             l_AliasSize++;
         }
     }
-    
+
     l_Alias[l_AliasSize] = '\0';
     l_Command->m_Alias = Name_Z::GetID(l_Alias, 0);
-    
+
     Command_Z* l_Tail = m_CommandList;
     Command_Z* l_Tail2 = (Command_Z*)(void*)l_Tail;
-    
-    for (Command_Z* l_TailCopy = m_CommandList; l_TailCopy != NULL; l_TailCopy = l_TailCopy->m_Prev)
-        ;
+
+    for (Command_Z* l_TailCopy = m_CommandList; l_TailCopy != NULL; l_TailCopy = l_TailCopy->m_Prev);
 
     if (NULL == l_Tail) {
         m_CommandList = l_Command;
     }
-    else if (l_Tail == l_Tail2)
-    {
+    else if (l_Tail == l_Tail2) {
         l_Command->m_Prev = l_Tail;
         m_CommandList = l_Command;
-        
     }
     else {
         l_Command->m_Prev = l_Tail->m_Prev;
@@ -72,15 +70,15 @@ Bool Console_Z::LaunchCommand(const Char* a1, const Char* i_CommandStr, U32 i_De
             l_Alias = Name_Z::GetID(i_CommandStr, 0);
         else
             l_Alias = 0;
-        
+
         o_Command = m_CommandList;
-        while ((o_Command != NULL) ) {
+        while ((o_Command != NULL)) {
             if ((l_Alias == o_Command->m_Command) || (l_Alias == o_Command->m_Alias))
                 break;
             o_Command = o_Command->m_Prev;
         }
     }
-    
+
     if (o_Command == NULL)
         return FALSE;
 
@@ -137,16 +135,16 @@ Bool Console_Z::InterpCommand(const Char* i_CommandStr, U32 i_Depth) {
     S32 i;
     S32 l_CommandNameLen;
     const Char* l_CommandStr = i_CommandStr;
-    
+
     m_NbParam = 0;
-    for (i = 0; *l_CommandStr == ' ' || *l_CommandStr == '\t';  i++, l_CommandStr++);
+    for (i = 0; *l_CommandStr == ' ' || *l_CommandStr == '\t'; i++, l_CommandStr++);
 
     while (m_NbParam < 16 && i_CommandStr[i]) {
         l_CommandNameLen = 0;
-    
+
         while (i_CommandStr[i + l_CommandNameLen] != ' '
-            && i_CommandStr[i + l_CommandNameLen] != '\0'
-            && i_CommandStr[i + l_CommandNameLen] != '\t') {
+               && i_CommandStr[i + l_CommandNameLen] != '\0'
+               && i_CommandStr[i + l_CommandNameLen] != '\t') {
 
             S32 l_StrNCmp = strncmp(&i_CommandStr[i + l_CommandNameLen], "\\\"", 2); // $VIOLET: sizeof("\\\"") == 3 so either C++ is bugged.
             if (l_StrNCmp != 0 && i_CommandStr[i + l_CommandNameLen] == '"') {
@@ -167,12 +165,11 @@ Bool Console_Z::InterpCommand(const Char* i_CommandStr, U32 i_Depth) {
                 l_CommandNameLen++;
             }
         }
-        l_CommandStack[m_NbParam ][l_CommandNameLen] = 0;
+        l_CommandStack[m_NbParam][l_CommandNameLen] = 0;
         m_StrParam[m_NbParam] = l_CommandStack[m_NbParam];
 
         Float l_FloatValue;
-        if (l_CommandNameLen != 0 && InterpFloat(l_CommandStack[m_NbParam], l_FloatValue) != 0)
-        {
+        if (l_CommandNameLen != 0 && InterpFloat(l_CommandStack[m_NbParam], l_FloatValue) != 0) {
             m_IsFloatParam[m_NbParam] = TRUE;
             m_FloatParam[m_NbParam] = l_FloatValue;
         }
@@ -199,19 +196,18 @@ Bool Console_Z::InterpCommand(const Char* i_CommandStr, U32 i_Depth) {
         i = i + l_CommandNameLen;
         for (l_CommandStr = &i_CommandStr[i]; *l_CommandStr == ' ' || *l_CommandStr == '\t'; i++, l_CommandStr++);
         m_NbParam++;
-
     }
     S32 l_NbParam = this->m_NbParam;
     if (l_NbParam == 0) {
         return TRUE;
     }
-    
+
     Name_Z l_CommandName = Name_Z::GetID(l_CommandStack[0], 0);
     Command_Z* l_Curr = IsCommand(l_CommandName);
-    
+
     if (l_Curr == NULL) {
         S32 l_NbParam = this->m_NbParam;
-        
+
         if (l_NbParam == 3) {
             if (fstricmp(l_CommandStack[0], "#define") == FALSE) {
                 m_NbParam--;
@@ -222,7 +218,7 @@ Bool Console_Z::InterpCommand(const Char* i_CommandStr, U32 i_Depth) {
                 }
             }
         }
-        else if (l_NbParam <= 2)  {
+        else if (l_NbParam <= 2) {
             if (l_NbParam == 2) {
                 if (fstricmp(l_CommandStack[0], "#SET") == FALSE) {
                     SetVar(l_CommandStack[1]);
@@ -247,7 +243,7 @@ Bool Console_Z::InterpCommand(const Char* i_CommandStr, U32 i_Depth) {
                 if ((fstricmp(l_CommandStack[0], "#IFNDEF") == FALSE)) {
                     PushVar(!IsVar(l_CommandStack[1]));
                     return TRUE;
-                }   
+                }
             }
 
             if (fstricmp(l_CommandStack[0], "#ELSE") == FALSE) {
@@ -270,53 +266,46 @@ Bool Console_Z::InterpCommand(const Char* i_CommandStr, U32 i_Depth) {
 }
 
 Bool Console_Z::InterpCommandLine(const Char* i_CommandStr, U32 i_Depth) {
-    U32 l_Pos = 0; 
-    S32 l_CurPos = 0; 
+    U32 l_Pos = 0;
+    S32 l_CurPos = 0;
     U32 l_UnkCount = 0;
-    
+
     String_Z<1024 + 64> l_CurCommand;
-    
-    while (i_CommandStr[l_Pos+l_CurPos] != 0)
-    {
-        if (i_CommandStr[l_Pos+l_CurPos] == '\"')
-        {
+
+    while (i_CommandStr[l_Pos + l_CurPos] != 0) {
+        if (i_CommandStr[l_Pos + l_CurPos] == '\"') {
             if (l_Pos + l_CurPos) {
-                if (i_CommandStr[l_Pos+l_CurPos-1] != '\\') {
+                if (i_CommandStr[l_Pos + l_CurPos - 1] != '\\') {
                     l_UnkCount++;
                 }
             }
         }
 
-        if (l_UnkCount % 2 == 0 && i_CommandStr[l_Pos+l_CurPos] == ';')
-        {
+        if (l_UnkCount % 2 == 0 && i_CommandStr[l_Pos + l_CurPos] == ';') {
             l_CurCommand.StrnCpy(i_CommandStr + l_Pos, l_CurPos);
             l_CurCommand[l_CurPos] = 0;
-            
+
             InterpCommand(l_CurCommand, i_Depth);
-            
+
             l_Pos += l_CurPos;
             l_Pos++;
-            l_CurPos=0;
+            l_CurPos = 0;
         }
-        else
-        {
+        else {
             l_CurPos++;
         }
     }
 
-    if (l_CurPos>0)
-    {
-        l_CurCommand.StrnCpy(i_CommandStr+l_Pos,l_CurPos);
+    if (l_CurPos > 0) {
+        l_CurCommand.StrnCpy(i_CommandStr + l_Pos, l_CurPos);
         l_CurCommand[l_CurPos] = 0;
 
         return InterpCommand(l_CurCommand, i_Depth);
-        
     }
     return TRUE;
-
 }
 
-Bool Console_Z::InterpFloat(const Char* i_CommandStr, Float &o_Value) {
+Bool Console_Z::InterpFloat(const Char* i_CommandStr, Float& o_Value) {
     U32 i = 0;
     if (i_CommandStr[0] == 0) {
         return FALSE;
@@ -328,7 +317,7 @@ Bool Console_Z::InterpFloat(const Char* i_CommandStr, Float &o_Value) {
     U8 l_AfterDecimalPoint = FALSE;
     Float l_MultVal = 0.1f;
     Float l_Result = 0.0f;
-    while(i_CommandStr[i] != 0) {
+    while (i_CommandStr[i] != 0) {
         if (i_CommandStr[i] >= '0' && i_CommandStr[i] <= '9') {
             if (l_AfterDecimalPoint) {
                 l_Result = l_Result + (l_MultVal * ((i_CommandStr[i]) - '0'));
@@ -357,8 +346,7 @@ Bool Console_Z::InterpFloat(const Char* i_CommandStr, Float &o_Value) {
     }
 
 #ifdef BUGFIXES_Z
-    if (l_IsNegative)
-    {
+    if (l_IsNegative) {
         l_Result = -l_Result;
     }
 #endif
@@ -367,31 +355,23 @@ Bool Console_Z::InterpFloat(const Char* i_CommandStr, Float &o_Value) {
     return TRUE;
 }
 
-Bool Console_Z::IsVar(const Char *i_Var)
-{
-    for (S32 i = 0; i < m_CommandNbVar; i++)
-    {
-        if (stricmp(m_CommandVar[i], i_Var) == 0)
-        {
+Bool Console_Z::IsVar(const Char* i_Var) {
+    for (S32 i = 0; i < m_CommandNbVar; i++) {
+        if (stricmp(m_CommandVar[i], i_Var) == 0) {
             return TRUE;
         }
     }
     return FALSE;
 }
 
-void Console_Z::UnVar(const Char *i_Var)
-{
-    if ((m_StackNbVar != 0) && (m_StackVarState[m_StackNbVar - 1]) == FALSE)
-    {
+void Console_Z::UnVar(const Char* i_Var) {
+    if ((m_StackNbVar != 0) && (m_StackVarState[m_StackNbVar - 1]) == FALSE) {
         return;
     }
-    for (S32 i = 0; i < m_CommandNbVar; i++)
-    {
-        if (stricmp(m_CommandVar[i], i_Var) == 0)
-        {
+    for (S32 i = 0; i < m_CommandNbVar; i++) {
+        if (stricmp(m_CommandVar[i], i_Var) == 0) {
             m_CommandNbVar--;
-            for (; i < m_CommandNbVar; i++)
-            {
+            for (; i < m_CommandNbVar; i++) {
                 strcpy(m_CommandVar[i], m_CommandVar[i + 1]);
             }
             return;
@@ -399,33 +379,26 @@ void Console_Z::UnVar(const Char *i_Var)
     }
 }
 
-void Console_Z::SetVar(const Char *i_Var)
-{
-    if (IsVar(i_Var))
-    {
+void Console_Z::SetVar(const Char* i_Var) {
+    if (IsVar(i_Var)) {
         return;
     }
 
-    if (m_StackNbVar == 0 || m_StackVarState[m_StackNbVar - 1])
-    {
+    if (m_StackNbVar == 0 || m_StackVarState[m_StackNbVar - 1]) {
         strcpy(m_CommandVar[m_CommandNbVar++], i_Var);
     }
 }
 
-void Console_Z::PushVar(Bool i_State)
-{
-    if (m_StackNbVar && !m_StackVarState[m_StackNbVar - 1])
-    {
+void Console_Z::PushVar(Bool i_State) {
+    if (m_StackNbVar && !m_StackVarState[m_StackNbVar - 1]) {
         i_State = FALSE;
     }
 
     m_StackVarState[m_StackNbVar++] = i_State;
 }
 
-void Console_Z::ChangeVarState()
-{
-    if (m_StackNbVar >= 2 && !m_StackVarState[m_StackNbVar - 2])
-    {
+void Console_Z::ChangeVarState() {
+    if (m_StackNbVar >= 2 && !m_StackVarState[m_StackNbVar - 2]) {
         return;
     }
 

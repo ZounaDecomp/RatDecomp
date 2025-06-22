@@ -42,6 +42,7 @@ struct Box_Z {
 struct Sphere_Z {
     Vec3f Center;
     Float Radius;
+
     Sphere_Z& operator=(const Sphere_Z& i_Sph) {
         Center.x = i_Sph.Center.x;
         Center.y = i_Sph.Center.y;
@@ -85,14 +86,14 @@ struct SphereFlag_Z {
     BaseObject_Z* Object; // $SABE: Not sure if it's really here
 };
 
-struct Rect_Z { 
+struct Rect_Z {
     S16 x1;
-    S16 y1; 
+    S16 y1;
     S16 x2;
     S16 y2;
 };
 
-struct Segment_Z { 
+struct Segment_Z {
     Vec3f origin;
     Float length;
     Vec3f direction;

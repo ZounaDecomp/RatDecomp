@@ -2,6 +2,7 @@
 #define _COLLISION_Z_H_
 #include "SystemObject_Z.h"
 class Node_Z;
+
 struct ColLineResult_Z {
 };
 

@@ -1,7 +1,7 @@
 #include "Handle_Z.h"
 #include "Program_Z.h"
 
-BaseObject_Z* HandleManager_Z::GetPtr(const BaseObject_ZHdl& i_Hdl) const {    
+BaseObject_Z* HandleManager_Z::GetPtr(const BaseObject_ZHdl& i_Hdl) const {
     const HandleRec_Z& l_HdlRec = m_HandleRecDA[i_Hdl.GetID()];
     if (l_HdlRec.m_Key == i_Hdl.GetKey()) {
         if (l_HdlRec.m_xRamBlock >= 0) {

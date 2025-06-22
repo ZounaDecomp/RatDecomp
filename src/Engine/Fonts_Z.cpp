@@ -52,6 +52,5 @@ void Fonts_Z::GetCharDesc(const char* i_Char, CharDesc& o_CharDesc) {
     FontGlyphHash_Z* l_Glyph = (FontGlyphHash_Z*)i_Char;
     if (m_FontGlyphHash.GetNbElem()) {
         m_FontGlyphHash.Search(*l_Glyph); //this doesnt make sense. might be search
-
     }
 }

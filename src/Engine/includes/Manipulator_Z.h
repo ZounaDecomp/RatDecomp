@@ -8,8 +8,9 @@ class ManipulatorManager_Z;
 class ManipulatorList_Z;
 
 class Manipulator_Z : public BaseObject_Z {
-friend class ManipulatorManager_Z;
-friend class ManipulatorList_Z;
+    friend class ManipulatorManager_Z;
+    friend class ManipulatorList_Z;
+
 public:
     Manipulator_Z();
     void Activate();
@@ -22,8 +23,10 @@ public:
     virtual void ActionOnActive();
     virtual void ActionOnDeactivate();
     virtual void Update(Float i_DeltaTime) = 0;
-    inline ActivableGroup_Z GetGroup() {return m_ManipGroup;}
-private: 
+
+    inline ActivableGroup_Z GetGroup() { return m_ManipGroup; }
+
+private:
     Manipulator_Z* m_PreviousPtr;
     Manipulator_Z* m_NextPtr;
     ActivableGroup_Z m_ManipGroup; //TODO: Define enum for this

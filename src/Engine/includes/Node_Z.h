@@ -13,14 +13,20 @@
 #include "HFog_Z.h"
 
 class LightData_Z;
+
 class Node_Z : public ResourceObject_Z {
 public:
     void UpdateRootTM();
-    void UpdateTM(Node_Z *i_Parent);
-    inline Quat& GetRotInWorld() {return m_RotInWorld;}
-    inline void DisableFlag(U32 i_Flag) {m_Flag &=~ i_Flag;}
+    void UpdateTM(Node_Z* i_Parent);
+
+    inline Quat& GetRotInWorld() { return m_RotInWorld; }
+
+    inline void DisableFlag(U32 i_Flag) { m_Flag &= ~i_Flag; }
+
     inline Sphere_Z& GetBSphere() { return m_BSphere; }
+
     inline void SetBSphere(const Sphere_Z& i_Sph) { m_BSphere = i_Sph; }
+
     inline Mat3x3& GetRotInWorldMatrix() { return m_RotInWorldMatrix; }
 
 private:

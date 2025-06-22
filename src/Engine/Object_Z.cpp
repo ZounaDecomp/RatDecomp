@@ -3,6 +3,7 @@
 #include "ResourceObject_Z.h"
 #include "Sys_Z.h"
 #include "Node_Z.h"
+
 Object_Z::Object_Z() {
     SetGeometryType(UNDEFINED_GEOMETRY);
     m_Flag = 0xffe30;
@@ -33,7 +34,7 @@ void Object_Z::LoadLinks(void** i_Data) {
     BaseObject_Z::LoadLinks(i_Data);
     m_ResObjLink.Load(i_Data);
     gData.ClassMgr->LoadLink(m_ObjectDataHdl, i_Data);
-    *i_Data = Sys_Z::MemCpyFrom((void*)&m_BSphereLocal, *i_Data,(S32)&m_Type - (S32)&m_BSphereLocal + sizeof(m_Type));
+    *i_Data = Sys_Z::MemCpyFrom((void*)&m_BSphereLocal, *i_Data, (S32)&m_Type - (S32)&m_BSphereLocal + sizeof(m_Type));
 }
 
 void Object_Z::EndLoadLinks() {

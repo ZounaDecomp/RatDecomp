@@ -127,7 +127,6 @@ void Z_FreeContiguous(void* i_Ptr);
 #define NewCL_Z(Comment, Line) new (Comment, __FILE__, Line)
 //#define NewFL_Z(Line) new(__FUNCTION__, __FILE__, Line)
 
-
 #undef Delete_Z
 #define Delete_Z delete
 

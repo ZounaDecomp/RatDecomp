@@ -11,6 +11,7 @@ public:
     virtual ~AnimationManager_Z();
 
     U32 GetMeshByName(const Name_Z& i_Name);
+
 private:
 };
 

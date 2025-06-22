@@ -17,7 +17,7 @@ Manipulator_Z::~Manipulator_Z() {
 
 void Manipulator_Z::Init() {
     if ((m_IsActive) || (m_ManipGroup != 18)) {
-        ASSERTLENF_Z(!m_IsActive && m_ManipGroup == ag_no_group,"", 24, "!bActive && Group==ag_no_group");
+        ASSERTLENF_Z(!m_IsActive && m_ManipGroup == ag_no_group, "", 24, "!bActive && Group==ag_no_group");
     }
     gData.ManipMgr->Add(this);
 }

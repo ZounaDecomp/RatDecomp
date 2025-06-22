@@ -29,11 +29,12 @@ enum abc_agentState {
 
 /* sizeof(ABC_Agent) == 0x40 */
 class ABC_Agent : public BaseObject_Z {
-public: 
+public:
     ABC_Agent();
     ~ABC_Agent();
     void GetBehavior(behaviorMethodPtr i_Behav);
     void Receive(abc_message i_Message, const BaseObject_ZHdl& i_Sender, Float i_Param);
+
 private:
     abc_agentState m_AgentState;
     ABC_Agent* m_UnkAgent;

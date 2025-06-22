@@ -1,6 +1,7 @@
 #ifndef _COLOR_Z_H_
 #define _COLOR_Z_H_
 #include "Types_Z.h"
+
 class Color {
 
 public:

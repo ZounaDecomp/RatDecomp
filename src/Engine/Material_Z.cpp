@@ -1,5 +1,6 @@
 #include "Material_Z.h"
 U32 Material_Z::DefaultRdrFlag = MAT_RDR_UNK23;
+
 Material_Z::Material_Z() {
     m_RdrFlags2 = 0;
     m_WaterHeightMap = NULL;
@@ -20,7 +21,7 @@ Material_Z::Material_Z() {
     m_UVTransform.m.m[2][1] = 0.0f;
     m_UVTransform.m.m[2][2] = 1.0f;
     m_UVTransform.m.m[2][3] = 0.0f;
-    
+
     m_DiffuseOpacity = 1.0f;
     m_EmissiveColor = Vec3f(0.5f, 0.5f, 0.5f);
     m_DiffuseColor = Vec3f(0.5f, 0.5f, 0.5f);

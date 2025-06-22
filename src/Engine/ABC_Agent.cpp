@@ -13,8 +13,7 @@ ABC_Agent::ABC_Agent() {
     m_AbcAgentFlags = NULL;
 }
 
-ABC_Agent::~ABC_Agent() {}
+ABC_Agent::~ABC_Agent() { }
 
 void ABC_Agent::GetBehavior(behaviorMethodPtr i_Behav) {
-    
 }
