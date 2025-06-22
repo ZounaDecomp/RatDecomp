@@ -38,19 +38,25 @@ U32 GetUTF8CharCode(const Char* i_CharBytePtr) {
     return 1;
 }
 
-void Fonts_Z::MarkHandles() {
+Bool Fonts_Z::MarkHandles() {
     for (S32 i = 0; i < m_MaterialDA.GetSize(); i++) {
         if (gData.ClassMgr->GetPtr(m_MaterialDA[i]) != NULL) {
             gData.ClassMgr->GetPtr(m_MaterialDA[i])->MarkHandles();
         }
     }
-    ResourceObject_Z::MarkHandles();
+    return ResourceObject_Z::MarkHandles();
 }
 
-void Fonts_Z::GetCharDesc(const char* i_Char, CharDesc& o_CharDesc) {
+Bool Fonts_Z::GetCharDesc(const char* i_Char, CharDesc_Z& o_CharDesc) {
     S32 l_CharCode = GetUTF8CharCode(i_Char);
-    FontGlyphHash_Z* l_Glyph = (FontGlyphHash_Z*)i_Char;
-    if (m_FontGlyphHash.GetNbElem()) {
-        m_FontGlyphHash.Search(*l_Glyph); //this doesnt make sense. might be search
+    const FontGlyphHash_Z l_HashElt(l_CharCode);
+    const FontGlyphHash_Z* l_Result = m_FontGlyphHashHT.Search(l_HashElt);
+    if (!l_Result) {
+        return FALSE;
     }
+    o_CharDesc.m_TexCoordBottomRight = l_Result->m_TexCoordBottomRight;
+    o_CharDesc.m_TexCoordTopLeft = l_Result->m_TexCoordTopLeft;
+    o_CharDesc.m_Descent = l_Result->m_Descent;
+    o_CharDesc.m_MatHdl = m_MaterialDA[l_Result->m_MaterialIndex];
+    return TRUE;
 }

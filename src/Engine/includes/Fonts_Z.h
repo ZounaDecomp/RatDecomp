@@ -7,27 +7,21 @@
 #include "Math_Z.h"
 #include "HashTable_Z.h"
 
-struct CharDesc {
-    S32 m_CharCode;
-    S32 m_MaterialIndex;
-    Float m_Descent;
-    Vec2f m_TexCoordTopLeft;
-    Vec2f m_TexCoordBottomRight;
-};
-
 S32 GetUTF8CharBytes(const Char* a1);
 U32 GetUTF8CharCode(const Char* a1);
 
 class FontGlyphHash_Z {
 public:
-    S32 m_ID;
+    U32 m_ID;
     S32 m_MaterialIndex;
     Float m_Descent;
-    Float m_TopLeftCoord[2];
-    Float m_BottomRightCoord[2];
+    Vec2f m_TexCoordTopLeft;
+    Vec2f m_TexCoordBottomRight;
     S32 m_Ref;
 
     FontGlyphHash_Z() { }
+
+    FontGlyphHash_Z(U32 i_ID) { m_ID = i_ID; }
 
     inline S32 HashBase() const { return m_ID; }
 
@@ -47,12 +41,18 @@ public:
         m_ID = i_Elem.m_ID;
         m_MaterialIndex = i_Elem.m_MaterialIndex;
         m_Descent = i_Elem.m_Descent;
-        m_TopLeftCoord[0] = i_Elem.m_TopLeftCoord[0];
-        m_TopLeftCoord[1] = i_Elem.m_TopLeftCoord[1];
-        m_BottomRightCoord[0] = i_Elem.m_BottomRightCoord[0];
-        m_BottomRightCoord[1] = i_Elem.m_BottomRightCoord[1];
+        m_TexCoordTopLeft = i_Elem.m_TexCoordTopLeft;
+        m_TexCoordBottomRight = i_Elem.m_TexCoordBottomRight;
         m_Ref = i_Elem.m_Ref;
+        return *this;
     }
+};
+
+struct CharDesc_Z {
+    Material_ZHdl m_MatHdl;
+    Float m_Descent;
+    Vec2f m_TexCoordTopLeft;
+    Vec2f m_TexCoordBottomRight;
 };
 
 class Fonts_Z : public ResourceObject_Z {
@@ -62,12 +62,12 @@ public:
     virtual void Load(void* a1);
     virtual void EndLoad();
     virtual void AfterEndLoad();
-    virtual void MarkHandles();
-    void GetCharDesc(const char* i_Char, CharDesc& o_CharDesc);
+    virtual Bool MarkHandles();
+    Bool GetCharDesc(const char* i_Char, CharDesc_Z& o_CharDesc);
 
 private:
     Material_ZHdlDA m_MaterialDA; // $VIOLET: Fix the stupid and dumb Material_ZHdl issues you were having
-    HashTableBase_Z<FontGlyphHash_Z> m_FontGlyphHash;
+    HashTableBase_Z<FontGlyphHash_Z> m_FontGlyphHashHT;
 };
 
 #endif
