@@ -60,7 +60,7 @@ void Bitmap_Z::InitBmap(S32 i_SizeX, S32 i_SizeY, U8 i_Format, U8* i_Datas, U8* 
 
     if (i_Format == BM_4 || i_Format == BM_8) {
         l_BytePalleteSize = 4 * l_PaletteSize;
-        m_Palette = AllocAlignCL_Z(l_BytePalleteSize, "BITMAP_PAL_ALLOC", 74, 128);
+        m_Palette = (U8*)AllocAlignCL_Z(l_BytePalleteSize, "BITMAP_PAL_ALLOC", 74, 128);
         if (i_Palette)
             memcpy(m_Palette, i_Palette, l_BytePalleteSize);
     }
@@ -72,7 +72,7 @@ void Bitmap_Z::InitBmap(S32 i_SizeX, S32 i_SizeY, U8 i_Format, U8* i_Datas, U8* 
         SetUniversal(i_Datas);
     }
     else {
-        m_Datas = AllocContiguousAlignCL_Z(GetDataSize(), "BITMAP_DATA_ALLOC", 92, 128);
+        m_Datas = (U8*)AllocContiguousAlignCL_Z(GetDataSize(), "BITMAP_DATA_ALLOC", 92, 128);
 
         Clear(Color(0.0, 0.0, 0.0, 0.0));
     }

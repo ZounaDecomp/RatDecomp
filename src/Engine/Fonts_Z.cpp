@@ -60,3 +60,13 @@ Bool Fonts_Z::GetCharDesc(const char* i_Char, CharDesc_Z& o_CharDesc) {
     o_CharDesc.m_MatHdl = m_MaterialDA[l_Result->m_MaterialIndex];
     return TRUE;
 }
+
+S32 Fonts_Z::GetSizeChar(const char* i_Char) {
+    S32 l_CharCode = GetUTF8CharCode(i_Char);
+    const FontGlyphHash_Z l_HashElt(l_CharCode);
+    const FontGlyphHash_Z* l_Result = m_FontGlyphHashHT.Search(l_HashElt);
+    if (l_Result == NULL) {
+        return -1;
+    }
+    return (S32)((l_Result->m_TexCoordBottomRight.x - l_Result->m_TexCoordTopLeft.x));
+}

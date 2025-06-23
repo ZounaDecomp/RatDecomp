@@ -64,6 +64,7 @@ public:
     virtual void AfterEndLoad();
     virtual Bool MarkHandles();
     Bool GetCharDesc(const char* i_Char, CharDesc_Z& o_CharDesc);
+    S32 GetSizeChar(const char* i_Char);
 
 private:
     Material_ZHdlDA m_MaterialDA; // $VIOLET: Fix the stupid and dumb Material_ZHdl issues you were having

@@ -764,7 +764,7 @@ config.libs = [
             Object(NonMatching, "Engine/AnimationMorph_Z.cpp"),
             Object(NonMatching, "Engine/MathTools_Z.cpp"),
             Object(NonMatching, "Engine/Manipulator_Z.cpp"),
-            Object(NonMatching, "Engine/Parameters_Z.cpp"),
+            Object(Matching,    "Engine/Parameters_Z.cpp"),
             Object(NonMatching, "Engine/MovieManipulator_Z.cpp"),
             Object(NonMatching, "Engine/Language_Z.cpp"),
             Object(NonMatching, "Engine/SkelLoad_Z.cpp"),
