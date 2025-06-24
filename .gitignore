@@ -34,3 +34,4 @@ compile_commands.json
 /*.txt
 *.exe
 RatDecomp.code-workspace
+format.ps1

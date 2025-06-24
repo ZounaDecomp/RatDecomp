@@ -4,12 +4,11 @@
 #include <math.h>
 void MathInitTables();
 
-Float InvSqrt(Float x,Float y)
-{ 	
-    return x/sqrtf(y);
+Float InvSqrt(Float x, Float y) {
+    return x / sqrtf(y);
 }
 
-Float O_Atan2(Float x,Float y);
+Float O_Atan2(Float x, Float y);
 Float O_Cos(Float x);
 Float O_Sin(Float x);
 Float O_Tan(Float x);

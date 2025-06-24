@@ -5,6 +5,7 @@
 #include "dolphin/GX/GXStruct.h"
 #include "Types_Z.h"
 #include "gx/GXEnum.h"
+
 class Texture_Z {
 public:
     GXTexObj m_Tex;
@@ -26,6 +27,7 @@ class TextureManager_Z {
     Bool Minimize();
     void BeginRender();
     void EndRender(S32&, S32&);
+
 private:
     HoleArray_Z<Texture_Z, 8> m_TextureHA;
 };

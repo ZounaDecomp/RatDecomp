@@ -24,7 +24,7 @@ Name_Z CharNames[20] = {
     Name_Z::GetID("START", 0),
 };
 
-U8 GetCharIdFromText(Char *i_Text) {
+U8 GetCharIdFromText(Char* i_Text) {
     Name_Z i_Name;
     for (S32 i = 0; i < 20; i++) {
         if (i_Text != NULL) {
@@ -41,5 +41,4 @@ U8 GetCharIdFromText(Char *i_Text) {
 }
 
 Bool TT() {
-
 }

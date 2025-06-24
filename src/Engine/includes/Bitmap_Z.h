@@ -21,7 +21,6 @@ enum BmFormat_Z {
     BM_I8A8 = 0x10, // I4A4
 };
 
-
 enum PalFormat_Z {
     PAL_3444 = 0x01,  // 16 ARGB
     PAL_565 = 0x02,   // 16 RGB
@@ -48,17 +47,29 @@ public:
     virtual void Load(void** i_Data);
     virtual void Clean();
     void InitBmap(S32 i_SizeX, S32 i_SizeY, U8 l_Format, U8* i_Datas, U8* i_Palette);
+
     S16 GetTexId() { return m_TexID; }
+
     S32 GetSizeX() { return m_SizeX; }
+
     S32 GetSizeY() { return m_SizeY; }
+
     U8* GetPalette() { return m_Palette; }
+
     U8 GetPalFormat() { return m_PalFormat; }
+
     void SetTexId(S16 i_TexId) { m_TexID = i_TexId; }
+
     void EnableFlag(U16 i_Flag) { m_Flag |= i_Flag; }
+
     U8 GetFormat() { return m_Format; }
+
     U8* GetDatas() { return m_Datas; }
+
     U8 GetMipMapCount() { return m_MipmapCount; }
+
     Bool IsFlagEnable(U16 i_Flag) { return (m_Flag & i_Flag) != 0; }
+
     void SetDatas(U8* i_Datas);
     void SetTransp(U8 i_Transp);
     void Clear(Color i_Color);
@@ -68,7 +79,14 @@ public:
     void Invalidate();
     Float GetBytePerPixel();
     S32 GetPalSize();
-    S32 GetSize() { if (m_PrecalculatedSize) return m_PrecalculatedSize; else return GetDataSize(); }
+
+    S32 GetSize() {
+        if (m_PrecalculatedSize)
+            return m_PrecalculatedSize;
+        else
+            return GetDataSize();
+    }
+
     S32 GetDataSize();
     S32 GetNbEntries();
     void SetUniversal(U8* i_Datas);

@@ -5,10 +5,11 @@
 #include "DynArray_Z.h"
 U8 GetCharIdFromText(Char* i_Text);
 Bool TT();
+
 struct Language_Z {
     /* $VIOLET: These might be defined in the cpp and not in this struct.*/
     static DynArray_Z<Char, 256> LangTextTxt;
     static int LangForMpeg; //$VIOLET: TODO: Make enum def.
-    static char CurChar; 
+    static char CurChar;
 };
 #endif

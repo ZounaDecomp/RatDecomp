@@ -4,6 +4,7 @@
 Float ParameterValues[0x4000];
 S32 ParametersLoaded = -1;
 extern GCGlobals gData;
+
 void AddParameters(int i_Index, Float i_Value) {
     if (ParametersLoaded == -1) {
         return;
@@ -28,7 +29,7 @@ void ReadParameters(int i_Index) {
     }
     String_Z<256> l_Str;
     l_Str.Sprintf("BSOURCE PARAM\\PP%03d.TSC", i_Index);
-    gData.Cons->InterpCommand(l_Str,0);
+    gData.Cons->InterpCommand(l_Str, 0);
 }
 
 void FreeParameters() {
