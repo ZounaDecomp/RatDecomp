@@ -6,10 +6,10 @@
 class Txt_Z : public ResourceObject_Z {
     virtual void Load(void** i_Data);
 
-    virtual ~Txt_Z() { m_File->~File_Z(); };
+    virtual ~Txt_Z() { };
 
 private:
-    File_Z* m_File;
+    File_Z m_File;
 };
 
 #endif
