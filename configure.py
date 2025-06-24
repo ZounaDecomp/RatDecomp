@@ -739,7 +739,7 @@ config.libs = [
             Object(NonMatching, "Engine/LodMove_Z.cpp"),
             Object(NonMatching, "Engine/LodAgent_Z.cpp"),
             Object(NonMatching, "Engine/CameraZoneLoad_Z.cpp"),
-            Object(NonMatching, "Engine/Txt_Z.cpp"),
+            Object(Matching,    "Engine/Txt_Z.cpp"),
             Object(Matching,    "Engine/PointsLoad_Z.cpp"),
             Object(NonMatching, "Engine/Menu3DLoadAscii_Z.cpp"),
             Object(NonMatching, "Engine/LodShadow_Z.cpp"),

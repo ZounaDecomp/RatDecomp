@@ -4,6 +4,6 @@
 
 class GCSoundBF_Z {
 public:
-    static Char gSbfHeader[];
+    static U8 gSbfHeader[];
 };
 #endif
