@@ -3,6 +3,8 @@
 #include "Types_Z.h"
 #include "Bitmap_Z.h"
 
+#define Float_Eps	1.e-6f
+#define Pi			3.14159265358979323846f
 #define ROL_Z(val, shift) ((val << shift) | (val >> ((sizeof(val) * 8) - shift)))
 #define ROR_Z(val, shift) ((val >> shift) | (val << ((sizeof(val) * 8) - shift)))
 struct Sphere_Z;
@@ -41,7 +43,7 @@ struct Vec3f {
         , y(i_y)
         , z(i_z) { };
     Vec3f(const Color& i_Color);
-
+    Vec3f(const Quat& Q);
     Vec3f operator*(const Float i_Scale) const {
         Vec3f l_Temp;
         l_Temp.x = x * i_Scale;
@@ -49,6 +51,49 @@ struct Vec3f {
         l_Temp.z = z * i_Scale;
         return l_Temp;
     }
+	Vec3f	operator -  () const;
+	Vec3f& operator *= ( const Float _f );
+};
+
+struct  Vec3i
+{
+	S32	x,y,z;
+
+	Vec3i()										{};
+	Vec3i(S32 _x,S32 _y,S32 _z)					{x = _x;y = _y;z = _z;};
+	Vec3i	&Set(S32 _x,S32 _y,S32 _z)			{x=_x;y=_y;z=_z;return *this;}
+	Vec3i	&Set(const Vec3i &_v)				{x=_v.x;y=_v.y;z=_v.z; return *this;}		
+	// Operator
+	Vec3i	operator=(const Vec3i &_v)			{x=_v.x; y=_v.y; z=_v.z; return *this;}
+	Vec3i	operator+(const Vec3i &_v) const	{return Vec3i(x+_v.x,y+_v.y,z+_v.z);}
+	Vec3i	&operator+=(const Vec3i &_v)		{x+=_v.x;y+=_v.y;z+=_v.z;return *this;}
+	Vec3i	operator+() const					{return *this;}
+	Vec3i	operator-(const Vec3i &_v) const	{return Vec3i(x-_v.x,y-_v.y,z-_v.z);}
+	Vec3i	&operator-=(const Vec3i &_v)		{x-=_v.x;y-=_v.y;z-=_v.z; return *this;}
+	Vec3i	operator-() const					{return Vec3i(-x,-y,-z);}
+	Vec3i	operator*(S32 _f)	const			{return Vec3i(x*_f,y*_f,z*_f);}
+	Vec3i	&operator*=(S32 _f)					{x*=_f;y*=_f;z*=_f; return *this;}
+	Bool	operator==(const Vec3i& v)	const	{return x==v.x && y==v.y && z==v.z;}
+	S32&	operator[]  ( const int _i )		{return (&x)[_i];}
+	const S32& operator[] ( const int _i ) const {return (&x)[_i];}
+};
+
+struct Vec4i {
+    S32 x, y, z, w;
+
+    Vec4i() { };
+    Vec4i(S32 i_x, S32 i_y, S32 i_z, S32 i_w)
+        : x(i_x)
+        , y(i_y)
+        , z(i_z)
+        , w(i_w) { };
+    Vec4i(const Vec3i& i_v)
+        : x(i_v.x)
+        , y(i_v.y)
+        , z(i_v.z)
+        , w(1) { };
+    Vec4i operator+(const Vec4i& i_v) const { return Vec4i(x + i_v.x, y + i_v.y, z + i_v.z, w + i_v.w); }
+    Vec4i operator-(const Vec4i& i_v) const { return Vec4i(x - i_v.x, y - i_v.y, z - i_v.z, w - i_v.w); }
 };
 
 struct Vec4f {
@@ -68,7 +113,11 @@ struct Vec4f {
         , w(1.0f) { };
 
     Vec4f(const Color& i_Color);
-
+    Vec4f(Float F)
+        : x(F)
+        , y(F)
+        , z(F)
+        , w(F) { };
     Vec4f operator+(const Vec4f& i_v) const { return Vec4f(x + i_v.x, y + i_v.y, z + i_v.z, w + i_v.w); }
 
     Vec4f operator-(const Vec4f& i_v) const { return Vec4f(x - i_v.x, y - i_v.y, z - i_v.z, w - i_v.w); }
@@ -147,7 +196,7 @@ struct Mat4x4 {
 
     Mat4x4() { }
 
-    //Mat4x4(const Float _s);
+    Mat4x4(const Float _s);
 
     //Mat4x4(const Vec3f& i_Trans, const Quat& i_Rot, const Vec3f& i_Scale) {
     //    SetTRS(i_Trans, i_Rot, i_Scale);

@@ -10,17 +10,17 @@ public:
     Color(Float i_Red, Float i_Green, Float i_Blue, Float i_Alpha);
 
     Color& operator=(Color const& i_Color) {
-        m_Red = i_Color.m_Red;
-        m_Green = i_Color.m_Green;
-        m_Blue = i_Color.m_Blue;
-        m_Alpha = i_Color.m_Alpha;
+        r = i_Color.r;
+        g = i_Color.g;
+        b = i_Color.b;
+        a = i_Color.a;
         return *this;
     }
 
-    Float m_Red;
-    Float m_Green;
-    Float m_Blue;
-    Float m_Alpha;
+    Float r;
+    Float g;
+    Float b;
+    Float a;
 };
 
 #endif

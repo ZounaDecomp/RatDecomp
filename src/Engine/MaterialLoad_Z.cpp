@@ -2,9 +2,11 @@
 #include "Material_Z.h"
 #include "ResourceObject_Z.h"
 #include "Sys_Z.h"
+
 extern GCGlobals gData;
+
 void Material_Z::Load(void** i_Data) {
-    *i_Data = Sys_Z::MemCpyFrom(&m_DiffuseColor, *i_Data, (int)&m_TextureFlags - (int)&m_DiffuseColor + sizeof(char));
+    MEMCPYFROMRANGE_Z(&m_DiffuseColor, *i_Data, m_TextureFlags, m_DiffuseColor);
     for (S32 i = 0; i < mtl_nb_params; i++) {
         gData.ClassMgr->LoadLink(m_CurBmapHdl[i], i_Data);
     }

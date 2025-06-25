@@ -56,10 +56,10 @@ void Object_Z::Draw(DrawInfo_Z& a1, ObjectDatas_Z* i_Data) {
 
 ObjectDatas_Z::ObjectDatas_Z() {
     m_Flag = 0;
-    m_DefaultColor.m_Red = 1.0f;
-    m_DefaultColor.m_Green = 1.0f;
-    m_DefaultColor.m_Blue = 1.0f;
-    m_DefaultColor.m_Alpha = 1.0f;
+    m_DefaultColor.r = 1.0f;
+    m_DefaultColor.g = 1.0f;
+    m_DefaultColor.b = 1.0f;
+    m_DefaultColor.a = 1.0f;
 }
 
 void ObjectDatas_Z::Clone(ObjectDatas_ZHdl& o_ObjectDatasHdl, Object_ZHdl& o_ObjectHdl) {
