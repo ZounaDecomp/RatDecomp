@@ -997,7 +997,7 @@ config.libs = [
             Object(NonMatching, "Engine/LodMoveCollNode_Z.cpp"),
             Object(NonMatching, "Engine/KeyframerHdl_Z.cpp"),
             Object(NonMatching, "Engine/NodeLoad_Z.cpp"),
-            Object(NonMatching, "Engine/MaterialLoad_Z.cpp"),
+            Object(Matching,    "Engine/MaterialLoad_Z.cpp"),
             Object(NonMatching, "Engine/SplineZoneDraw_Z.cpp"),
             Object(NonMatching, "Engine/CollisionTool_Z.cpp"),
             Object(NonMatching, "Engine/KeyframerVec4f_Z.cpp"),

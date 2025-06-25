@@ -20,7 +20,9 @@ public:
     ResourceObject_Z() { };
     virtual ~ResourceObject_Z() { };
     virtual void Load(void** i_Data);
-    virtual void EndLoad();
+    virtual void EndLoad() { 
+        m_ResObjLink.EndLoad(); 
+    };
     virtual void LoadLinks(void** a1);
     virtual void EndLoadLinks();
     virtual Bool MarkHandles();

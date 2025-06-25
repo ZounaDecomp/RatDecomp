@@ -8,5 +8,4 @@ HANDLE_Z(Node_Z, ResourceObject_Z);
 
 typedef DynArray_Z<Node_ZHdl, 32> Node_ZHdlDA;
 
-
 #endif

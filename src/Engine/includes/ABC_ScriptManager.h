@@ -6,8 +6,8 @@
 #include "World_ZHdl.h"
 class Message_Z;
 class RegMessage_Z;
-class ABC_ScriptManager
-{
+
+class ABC_ScriptManager {
     virtual ~ABC_ScriptManager();
     virtual void Init();
     virtual void Shut();
