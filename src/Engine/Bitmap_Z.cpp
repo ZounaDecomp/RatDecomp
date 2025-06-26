@@ -13,11 +13,10 @@ Bitmap_Z::Bitmap_Z(S32 i_Width, S32 i_Height, U8 i_Format, U8* i_Datas) {
     InitBmap(i_Width, i_Height, i_Format, i_Datas, 0);
 }
 
-#pragma optimize_for_size on
 Bitmap_Z::~Bitmap_Z() {
     Reset();
 }
-#pragma optimize_for_size off
+
 void Bitmap_Z::Init() {
     m_Flag = 0;
     Bitmap_Z::EnableFlag(0x14);
@@ -150,7 +149,6 @@ S32 Bitmap_Z::GetDataSize() {
     return l_MipSize;
 }
 
-#pragma optimize_for_size on
 void Bitmap_Z::SetDatas(U8* i_Datas) {
     if (i_Datas != m_Datas) {
         if (m_Datas) {
@@ -160,7 +158,6 @@ void Bitmap_Z::SetDatas(U8* i_Datas) {
         m_Datas = i_Datas;
     }
 }
-#pragma optimize_for_size off
 
 // $VIOLET: This function might make me become religious
 U16 Bitmap_Z::GetColor(const Color& i_Color) {
@@ -206,9 +203,6 @@ U16 Bitmap_Z::GetColor(const Color& i_Color) {
     return l_Color;
 }
 
-
-#pragma optimize_for_size on
-
 U8 Bitmap_Z::GetBestPalEntry(U8 i_Red, U8 i_Green, U8 i_Blue, U8 i_Alpha) {
     Float l_CmpValue = 1099511600000.0f;
     Float l_Match = 0;
@@ -249,79 +243,57 @@ U8 Bitmap_Z::GetBestPalEntry(U8 i_Red, U8 i_Green, U8 i_Blue, U8 i_Alpha) {
     return l_BestMatch;
 }
 
-#pragma optimize_for_size off
-
-S32 Bitmap_Z::GetNbEntries() {
-    U8 l_Format = m_Format;
-    if (l_Format == BM_4)
-        return 16;
-    else
-        return l_Format == BM_8 ? 256 : 0;
-}
-
-#pragma optimize_for_size on
 void Bitmap_Z::Clear(Color i_Color) {
-    switch(m_Format) {
-        case BM_4:
-            {
-                U8* l_Datas8 = (U8*)m_Datas;
-                U8 l_Color8 = GetColor(i_Color);
-                for (S32 i = 0; i < m_SizeX * m_SizeY / 2; i++) {
-                    l_Datas8[i] = ((l_Color8 & 0xf) + (l_Color8 << 4)) & 0xff;
-                }
+    switch (m_Format) {
+        case BM_4: {
+            U8* l_Datas8 = (U8*)m_Datas;
+            U8 l_Color8 = GetColor(i_Color);
+            for (S32 i = 0; i < m_SizeX * m_SizeY / 2; i++) {
+                l_Datas8[i] = ((l_Color8 & 0xf) + (l_Color8 << 4)) & 0xff;
             }
-            break;
-        case BM_8:
-            {
-                U8* l_Datas8 = (U8*)m_Datas;
-                U8 l_Color8 = GetColor(i_Color);
-                for (S32 i = 0; i < m_SizeX * m_SizeY; i++) {
-                    l_Datas8[i] = l_Color8;
-                }
+        } break;
+        case BM_8: {
+            U8* l_Datas8 = (U8*)m_Datas;
+            U8 l_Color8 = GetColor(i_Color);
+            for (S32 i = 0; i < m_SizeX * m_SizeY; i++) {
+                l_Datas8[i] = l_Color8;
             }
-            break;
+        } break;
         case BM_5551:
         case BM_565:
         case BM_4444:
-        case BM_1555:
-            {
-                U16* l_Datas16 = (U16*)m_Datas;
-                U16 l_Color16 = GetColor(i_Color);
-                for (S32 i = 0; i < m_SizeX * m_SizeY; i++) {
-                    l_Datas16[i] = l_Color16;
-                }
+        case BM_1555: {
+            U16* l_Datas16 = (U16*)m_Datas;
+            U16 l_Color16 = GetColor(i_Color);
+            for (S32 i = 0; i < m_SizeX * m_SizeY; i++) {
+                l_Datas16[i] = l_Color16;
             }
-            break;
-        case BM_888:
-            {
-                U8* l_Data = (U8*)m_Datas;
-                U8 l_Red = i_Color.r * 255.0f;
-                U8 l_Green = i_Color.g * 255.0f;
-                U8 l_Blue = i_Color.b * 255.0f;
-                S32 i;
-                for (i = 0; i < m_SizeX * m_SizeY; i++) {
-                    l_Data[3 * i] = l_Red;
-                    l_Data[3 * i] = l_Green;
-                    l_Data[3 * i] = l_Blue;
-                }
+        } break;
+        case BM_888: {
+            U8* l_Data = (U8*)m_Datas;
+            U8 l_Red = i_Color.r * 255.0f;
+            U8 l_Green = i_Color.g * 255.0f;
+            U8 l_Blue = i_Color.b * 255.0f;
+            S32 i;
+            for (i = 0; i < m_SizeX * m_SizeY; i++) {
+                l_Data[3 * i] = l_Red;
+                l_Data[3 * i] = l_Green;
+                l_Data[3 * i] = l_Blue;
             }
-            break;
-        case BM_8888:
-            {
-                U32* l_Data = (U32*)m_Datas;
-                Float l_Red = i_Color.r * 255.0f;
-                Float l_Green = i_Color.g * 255.0f;
-                Float l_Blue = i_Color.b * 255.0f;
-                Float l_Alpha = i_Color.a * 255.0f;
-                for (S32 i = 0; i < m_SizeX * m_SizeY; i++) {
-                    l_Data[i] = ((int)(l_Alpha) * 0x1000000) + (((int)(l_Red) & 0xFF) * 0x10000) + (((int)(l_Green) & 0xFF) * 0x100) + ((int)(l_Blue) & 0xFF);
-                }
+        } break;
+        case BM_8888: {
+            U32* l_Data = (U32*)m_Datas;
+            Float l_Red = i_Color.r * 255.0f;
+            Float l_Green = i_Color.g * 255.0f;
+            Float l_Blue = i_Color.b * 255.0f;
+            Float l_Alpha = i_Color.a * 255.0f;
+            for (S32 i = 0; i < m_SizeX * m_SizeY; i++) {
+                l_Data[i] = ((int)(l_Alpha) * 0x1000000) + (((int)(l_Red) & 0xFF) * 0x10000) + (((int)(l_Green) & 0xFF) * 0x100) + ((int)(l_Blue) & 0xFF);
             }
-            break;
+        } break;
         default:
             break;
     }
 }
-#pragma optimize_for_size reset
 
 #pragma dont_inline off

@@ -88,7 +88,15 @@ public:
     }
 
     S32 GetDataSize();
-    S32 GetNbEntries();
+
+    S32 GetNbEntries() {
+        U8 l_Format = m_Format;
+        if (l_Format == BM_4)
+            return 16;
+        else
+            return l_Format == BM_8 ? 256 : 0;
+    }
+
     void SetUniversal(U8* i_Datas);
     void Save(const Char* i_FileName);
 

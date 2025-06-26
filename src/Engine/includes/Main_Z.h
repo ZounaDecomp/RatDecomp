@@ -10,6 +10,7 @@
 Extern_Z Char* strcpy(Char* __dest, Char* __src);
 Extern_Z "C" void memset(void* __s, S32 __c, U32 __n);
 class GCConsole_Z;
+class Renderer_Z;
 
 class Globals {
 public:
@@ -21,7 +22,7 @@ public:
 
     U8 m_Pad_0x0[0x4];
     Console_Z* Cons;
-    U8 m_Pad_0xc[0x4]; // Renderer_Z
+    Renderer_Z* MainRdr;
     ClassManager_Z* ClassMgr;
     U8 m_Pad_0x14[0x1C];
     ManipulatorManager_Z* ManipMgr;

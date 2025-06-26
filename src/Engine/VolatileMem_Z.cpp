@@ -31,6 +31,9 @@ void VolatileMgr_Z::SetState(int i_ArrayOffset, S32 i_State) {
     }
 
     FIXDEBUGINLINING_Z();
+    FIXDEBUGINLINING_Z();
+    FIXDEBUGINLINING_Z();
+    FIXDEBUGINLINING_Z();
 }
 
 VolatileMgr_Z::VolatileMgr_Z() {
@@ -51,7 +54,7 @@ void VolatileMgr_Z::UpdateVolatileBlocks(Float i_DeltaTime) {
         i_DeltaTime = 0.05f;
     }
     S32 l_BlockId;
-    S32 l_CurBlockId;
+    int l_CurBlockId;
     for (l_BlockId = m_FirstAllocatedBlock, l_CurBlockId = l_BlockId; l_CurBlockId >= 0; l_CurBlockId = l_BlockId) {
         VolatileBlock& l_VolBlock = m_VolatileBlockArray[l_CurBlockId];
         if (!l_VolBlock.m_Pointer) {

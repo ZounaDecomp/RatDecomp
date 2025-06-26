@@ -128,7 +128,11 @@ public:
         return m_ArrayPtr[i_Index];
     }
 
-    T& operator[](S32 i_Index) const {
+    T& operator[](int i_Index) const {
+        return m_ArrayPtr[i_Index];
+    }
+
+    T& operator[](int i_Index) {
         return m_ArrayPtr[i_Index];
     }
 
@@ -142,7 +146,7 @@ public:
     }
 
 private:
-    void Realloc(S32 i_NewNbElement) {
+    void Realloc(int i_NewNbElement) {
         if (i_NewNbElement) {
             if (m_ArrayPtr)
                 m_ArrayPtr = (T*)ReallocL_Z(m_ArrayPtr, i_NewNbElement * sizeof(T), 311);

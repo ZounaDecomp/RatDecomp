@@ -20,3 +20,13 @@ __declspec(weak) float sinf(float x) {
 __declspec(weak) float tanf(float x) {
     return tan(x);
 }
+extern float __fabsf(float);
+__declspec(weak) inline double fabs(double f) {
+    return __fabs(f);
+}
+__declspec(weak) inline double fabsf2(float f) {
+    return __fabsf(f);
+}
+__declspec(weak) inline float fabsf(float f) {
+    return fabsf2(f);
+}

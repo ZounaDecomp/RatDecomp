@@ -116,11 +116,11 @@ public:
         return m_DA[(U32)i_Index];
     }
 
-    T& operator[](S32 i_Index) {
+    T& operator[](int i_Index) {
         return Get(i_Index);
     }
 
-    const T& operator[](S32 i_Index) const {
+    const T& operator[](int i_Index) const {
         return Get(i_Index);
     }
 };

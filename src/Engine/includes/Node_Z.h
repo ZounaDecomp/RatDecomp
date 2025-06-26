@@ -19,6 +19,8 @@ public:
     void UpdateRootTM();
     void UpdateTM(Node_Z* i_Parent);
 
+    Object_Z* GetObject(Bool) const;
+
     inline Quat& GetRotInWorld() { return m_RotInWorld; }
 
     inline void DisableFlag(U32 i_Flag) { m_Flag &= ~i_Flag; }
