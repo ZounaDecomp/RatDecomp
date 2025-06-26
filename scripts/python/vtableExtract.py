@@ -1,4 +1,3 @@
-# Check docs/vtableExtract.md for usage instructions
 from cwfilt import demangle
 
 import re
@@ -17,7 +16,6 @@ def extract_vtable_function_names(text):
 
 def printClasses(funcs):
     class_name = funcs[0]
-    body = ''
 
     typedefs = {
         'char': 'Char',
@@ -40,9 +38,12 @@ def printClasses(funcs):
             type_str = re.sub(r'\b' + re.escape(key) + r'\b', typedefs[key], type_str)
         return type_str
 
+    declarations = []
+    temp_offset = 8
+    
     for i in range(1, len(funcs)):
         if '__dt' in funcs[i]:
-            body += f'\tvirtual ~{class_name}();\n'
+            decl = f'\tvirtual ~{class_name}();'
         else:
             method = demangle(funcs[i])
             if method.startswith(f'{class_name}::'):
@@ -57,12 +58,22 @@ def printClasses(funcs):
                 param_str = ''
             else:
                 named_params = []
-                for i, p in enumerate(param_list):
+                for j, p in enumerate(param_list):
                     replaced_type = replace_typedefs(p)
-                    named_params.append(f'{replaced_type} a{i+1}')
+                    named_params.append(f'{replaced_type} a{j+1}')
                 param_str = ', '.join(named_params)
 
-            body += f'\tvirtual void {name}({param_str});\n'
+            decl = f'\tvirtual void {name}({param_str});'
+        
+        declarations.append((decl, temp_offset))
+        temp_offset += 4
+
+    max_length = max(len(decl) for decl, _ in declarations)
+    
+    body = ''
+    for decl, offset in declarations:
+        padding = max_length - len(decl)
+        body += f'{decl}{" " * padding} /* 0x{offset:02X} */\n'
 
     print(f'class {class_name}\n{{\n{body}}}')
 
