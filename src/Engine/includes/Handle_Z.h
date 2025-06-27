@@ -84,9 +84,9 @@ public:
         return l_Ptr != NULL;
     }
 
-private:
     operator BaseObject_Z*() const;
 
+private:
 protected:
     HdlID m_RealID;
 };

@@ -1,4 +1,5 @@
 #include "Console_Z.h"
+#include "BaseObject_Z.h"
 #include "GCMain_Z.h"
 #include "Handle_Z.h"
 #include "Memory_Z.h"
@@ -98,8 +99,8 @@ void* Console_Z::GetCurrentInterpBuffer() {
     }
     DynArray_Z<FileInterp_Z>& fs = m_Interp->GetFileStack();
     if (fs.GetSize() != 0) {
-        int temp = fs.GetSize();
-        l_File = fs[--temp].GetFile();
+        S32 l_Temp = fs.GetSize();
+        l_File = fs[--l_Temp].GetFile();
     }
     else {
         l_File = NULL;
@@ -150,9 +151,9 @@ void Console_Z::InterpFile() {
         BaseObject_ZHdl* l_InterpHdl = gData.ClassMgr->NewObject(Name_Z::GetID("ConsoleInterp_Z", 0), Name_Z::GetID("ConsoleInterp", 0));
         BaseObject_ZHdl l_BObj;
         l_BObj = *l_InterpHdl;
-        ConsoleInterp_Z* l_Interp = (ConsoleInterp_Z*)GETPTR(l_BObj);
-        SetInterp(l_Interp);
-        GetInterp()->Deactivate();
+        BaseObject_Z* l_Interp = l_BObj;
+        m_Interp = (ConsoleInterp_Z*)l_Interp;
+        m_Interp->Deactivate();
     }
     GetInterp()->Start(m_StrParam[1], &m_StrParam[0], GetNbParam());
 }

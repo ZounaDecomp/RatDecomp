@@ -221,7 +221,7 @@ public:
     virtual void MakeScreenShot(Char* a1);                                                                                                   /* 0x150 */
     virtual void MakeAVI(S32 a1, S32 a2);                                                                                                    /* 0x154 */
     virtual void CloseAVI();                                                                                                                 /* 0x158 */
-    virtual void SetActiveViewport(S32 a1);                                                                                                  /* 0x15C */
+    virtual void SetActiveViewport(S32 i_ViewportID);                                                                                        /* 0x15C */
     virtual void FlushActiveViewport();                                                                                                      /* 0x160 */
 private:
     DynArray_Z<VertexBuffer_Z*> m_VertexBufferPtrDA;

@@ -143,13 +143,13 @@ public:
     virtual void DisableFlag(unsigned long a1);
     virtual void Update(float a1);
     virtual void Draw(DrawInfo_Z& a1);
-    virtual PopupMenu_Z* GetPopupMenu();
+    virtual PopupMenu_Z* GetPopupMenu() const;
     virtual void Flush();
     virtual void DisplayStatus(unsigned long a1, const char* a2);
     virtual void MessageStatus(unsigned long a1, const char* a2, ...);
     virtual void SaveMessage(const char* a1);
     virtual void SaveWarningMessage(const char* a1);
-    virtual void MessageError(bool a1, ...);
+    virtual void MessageError(bool a1, U64 a2, const Char* a3, va_list& i_Args);
 };
 
 #endif

@@ -96,15 +96,20 @@ void Renderer_Z::SetActiveViewport(S32 i_ViewportId) {
     m_VSize = l_Viewport.GetVSize();
     m_HCenter = l_Viewport.GetHCenter();
     m_VCenter = l_Viewport.GetVCenter();
-    Node_Z* l_CameraNode = GetViewport(i_ViewportId).GetCamera().operator Node_Z*();
+    Node_Z* l_CameraNode = GetViewport(i_ViewportId).GetCamera();
     if (l_CameraNode) {
         Camera_Z* l_Camera = (Camera_Z*)(l_CameraNode->GetObject(FALSE));
         l_Camera->UpdateInverseWorldMatrix(l_CameraNode);
     }
 }
 
+void Renderer_Z::FlushActiveViewport() {
+    return;
+}
+
 void Renderer_Z::Draw(S32 i_ViewportId, Float i_DeltaTime) {
-    DrawInfo_Z l_DrawInfo = DrawInfo_Z();
+    SetActiveViewport(i_ViewportId);
+    DrawInfo_Z l_DrawInfo;
 }
 
 #pragma dont_inline reset

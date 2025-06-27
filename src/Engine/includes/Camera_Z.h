@@ -1,8 +1,8 @@
 #ifndef _CAMERA_Z_H_
 #define _CAMERA_Z_H_
 #include "Object_Z.h"
-class Camera_Z : public Object_Z
-{
+
+class Camera_Z : public Object_Z {
 public:
     void UpdateInverseWorldMatrix(Node_Z* i_Node);
     virtual ~Camera_Z();                                      /* 0x08 */

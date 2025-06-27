@@ -15,45 +15,52 @@ public:
         m_SizeX = i_SizeX;
         m_SizeY = i_SizeY;
     }
+
     void SetRenderer(Renderer_Z* i_Renderer) {
         m_Renderer = i_Renderer;
     }
+
     Float GetHSize() const {
         return m_HSize;
     }
+
     Float GetVSize() const {
         return m_VSize;
     }
+
     Float GetHCenter() const {
         if (!(m_HCenter > 0.0f)) {
             ASSERTLE_Z(0, "", 0x4b, "HCenter>0.f");
         }
         return m_HCenter;
     }
+
     Float GetVCenter() const {
         if (!(m_VCenter > 0.0f)) {
             ASSERTLE_Z(0, "", 0x4c, "VCenter>0.f");
         }
         return m_VCenter;
     }
-    Node_ZHdl GetCamera() const {
+
+    const Node_ZHdl& GetCamera() const {
         return m_CameraNodeHdl;
     }
+
     Viewport_Z();
     ~Viewport_Z();
     U32 m_StartX;
     U32 m_StartY;
     U32 m_SizeX;
     U32 m_SizeY;
-    BaseObject_ZHdl m_WorldHdl; 
+    BaseObject_ZHdl m_WorldHdl;
     BaseObject_ZHdl m_OccluderHdl;
     Node_ZHdl m_CameraNodeHdl;
     Float m_Tangent;
     Float m_InvDiagTangent;
     Float m_DFov;
     Float m_Ratio;
-    Float m_HRatio; 
-    Float m_VRatio; 
+    Float m_HRatio;
+    Float m_VRatio;
     Float m_HSize;
     Float m_VSize;
     Float m_HCenter;
@@ -76,7 +83,7 @@ public:
     Float m_UnkFloat0x80;
     Float m_UnkFloat0x84;
     Float m_UnkFloat0x88;
-    S16 m_IdxInMat4x4Buffer; 
+    S16 m_IdxInMat4x4Buffer;
     ManipulatorDraw_ZHdl ManipDrawHdls[16];
     S32 m_NumOfManipDraws;
     Char m_UnkBytes0xD4[12];

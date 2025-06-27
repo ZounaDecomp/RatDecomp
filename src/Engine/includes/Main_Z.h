@@ -11,6 +11,7 @@ Extern_Z Char* strcpy(Char* __dest, Char* __src);
 Extern_Z "C" void memset(void* __s, S32 __c, U32 __n);
 class GCConsole_Z;
 class Renderer_Z;
+class GameManager_Z;
 
 class Globals {
 public:
@@ -26,7 +27,8 @@ public:
     ClassManager_Z* ClassMgr;
     U8 m_Pad_0x14[0x1C];
     ManipulatorManager_Z* ManipMgr;
-    U8 m_Pad_0x34[0x8];
+    GameManager_Z* GameMgr;
+    U8 m_Pad_0x34[0x4];
     AnimationManager_Z* AnimMgr;
     U8 m_Pad_0x40[0x7A0];
 

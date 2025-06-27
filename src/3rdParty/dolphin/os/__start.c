@@ -18,7 +18,7 @@ SECTION_INIT extern void __init_data(void);
 SECTION_INIT extern void __init_hardware(void);
 SECTION_INIT extern void __flush_cache(void* addr, u32 size);
 
-extern u8 Debug_BBA_804516D0;
+extern u8 Debug_BBA_803BA848;
 
 /* 80003100-80003140 000000 0040+00 1/1 0/0 0/0 .init            __check_pad3 */
 SECTION_INIT void __check_pad3(void) {
@@ -29,12 +29,12 @@ SECTION_INIT void __check_pad3(void) {
 
 /* 80003140-8000314C 000040 000C+00 1/1 0/0 0/0 .init            __set_debug_bba */
 void __set_debug_bba(void) {
-    Debug_BBA_804516D0 = 1;
+    Debug_BBA_803BA848 = 1;
 }
 
 /* 8000314C-80003154 -00001 0008+00 0/0 0/0 0/0 .init            __get_debug_bba */
 SECTION_INIT u8 __get_debug_bba(void) {
-    return Debug_BBA_804516D0;
+    return Debug_BBA_803BA848;
 }
 
 /* 80003154-800032B0 000054 015C+00 0/0 1/0 0/0 .init            __start */
