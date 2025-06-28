@@ -234,6 +234,7 @@ cflags_bink_base = [
     "-i src/3rdParty/PowerPC_EABI_Support/Runtime/Inc",
     "-i src/3rdParty/PowerPC_EABI_Support/MetroTRK",
     "-i include/dolphin",
+    "-i include",
     "-i src/3rdParty/bink/includes",
     f"-DBUILD_VERSION={version_num}",
     f"-DVERSION_{config.version}",
@@ -307,7 +308,7 @@ cflags_rat_base = [
 ]
 
 if config.non_matching:
-    cflags_rat_base.extend(["-DASSERTENABLED_Z"])
+    cflags_rat_base.extend(["-DNONMATCHING_Z"])
 
 # Debug flags
 if args.debug:
@@ -828,7 +829,7 @@ config.libs = [
             Object(NonMatching, "Engine/InputEngine_Z.cpp"),
             Object(NonMatching, "Engine/KSys_Z.cpp"),
             Object(NonMatching, "Engine/SplineDraw_Z.cpp"),
-            Object(NonMatching, "Engine/LowLevelTools_Z.cpp"),
+            Object(NonMatching, "Engine/LowLevelTools_Z.cpp", extra_cflags=['-pragma "global_optimizer off"']),
             Object(Matching,    "Engine/BitmapLoad_Z.cpp"),
             Object(NonMatching, "Engine/Game_Z.cpp"),
             Object(NonMatching, "Engine/ObjectThrow_Z.cpp"),

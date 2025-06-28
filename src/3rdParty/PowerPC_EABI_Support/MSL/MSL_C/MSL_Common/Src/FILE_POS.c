@@ -2,15 +2,7 @@
 #include "critical_regions.h"
 #include "errno.h"
 
-/* 80365E90-80365F74 3607D0 00E4+00 0/0 2/2 0/0 .text            ftell */
-long ftell(FILE* stream) {
-    int retval;
 
-    __begin_critical_region(stdin_access);
-    retval = (long)_ftell(stream);
-    __end_critical_region(stdin_access);
-    return retval;
-}
 
 int _ftell(FILE* file) {
     int charsInUndoBuffer = 0;
@@ -43,7 +35,15 @@ int _ftell(FILE* file) {
 
     return (position);
 }
+/* 80365E90-80365F74 3607D0 00E4+00 0/0 2/2 0/0 .text            ftell */
+long ftell(FILE* stream) {
+    int retval;
 
+    __begin_critical_region(stdin_access);
+    retval = (long)_ftell(stream);
+    __end_critical_region(stdin_access);
+    return retval;
+}
 /* 80365C20-80365E90 360560 0270+00 1/1 0/0 0/0 .text            _fseek */
 int _fseek(FILE* file, unsigned long offset, int whence) {
     int bufferCode;

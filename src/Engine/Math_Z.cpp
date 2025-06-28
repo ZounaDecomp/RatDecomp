@@ -53,11 +53,32 @@ Vec3f::Vec3f(const Color& i_Color)
     , y(i_Color.g)
     , z(i_Color.b) { };
 
-Vec4f::Vec4f(const Color& i_Color)
-    : x(i_Color.r)
-    , y(i_Color.g)
-    , z(i_Color.b)
-    , w(i_Color.a) { };
+Vec3f::Vec3f(const Quat& Q) {
+    Float w = Q.w;
+
+    if (w < -1.f) w = -1.f;
+    if (w > 1.f) w = 1.f;
+    Float halfang = O_ACos(w);
+
+    Float s = sqrt(1.f - w * w);
+
+    if (s > Float_Eps)
+        *this = Q.v * (1.f / s);
+    else {
+        *this = VEC3F_NULL;
+        return;
+    }
+    w = halfang * 2.f;
+    if (w < 0.f) {
+        *this = -*this;
+        w = -w;
+    }
+    if (w > 3.141592f) {
+        *this = -*this;
+        w = 3.141592f * 2.f - w;
+    }
+    *this *= w;
+}
 
 Mat4x4& Mat4x4::operator*=(const Mat4x4& _m) {
     Mat4x4 Temp;
@@ -313,4 +334,12 @@ Vec3f Quat::operator*(const Vec3f& p) const {
     result.z = -pw * vz + pvz * w - pvx * vy + pvy * vx;
 
     return result;
+}
+
+void Quat::Normalize(void) {
+    Float rhn = 1.0f / sqrtf(v.x * v.x + v.y * v.y + v.z * v.z + w * w); // $VIOLET: I think its using the wrong sqrtf func. doesn't compile right
+    v.x *= rhn;
+    v.y *= rhn;
+    v.z *= rhn;
+    w *= rhn;
 }

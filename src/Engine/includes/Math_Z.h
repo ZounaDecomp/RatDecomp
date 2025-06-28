@@ -1,7 +1,6 @@
 #ifndef _MATH_Z_H_
 #define _MATH_Z_H_
 #include "MathTools_Z.h"
-#include "Math_Z.h"
 #include "Types_Z.h"
 #include "Bitmap_Z.h"
 

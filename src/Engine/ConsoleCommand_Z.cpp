@@ -123,7 +123,7 @@ Command_Z* Console_Z::IsCommand(const Name_Z& i_CommandName) const {
 }
 
 Bool Console_Z::InterpCommand(const Char* i_CommandStr, U32 i_Depth) {
-#ifdef ASSERTENABLED_Z
+#ifdef NONMATCHING_Z
     ExceptionReport(i_CommandStr);
 #endif
     String_Z<1024> l_CommandStack[16];

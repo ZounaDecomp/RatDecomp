@@ -1,13 +1,16 @@
 #include "Bitmap_Z.h"
+#include "Color_Z.h"
+#include "GCMain_Z.h"
 #include "Memory_Z.h"
 #include "Sys_Z.h"
 #include "File_Z.h"
+#include "Types_Z.h"
 
 void Bitmap_Z::Load(void** i_Data) {
+
     S32 l_DataSize;
     S32 l_AmountOfColors;
     S32 l_PalSize;
-
     MEMCPYFROMRANGE_Z(&m_SizeX, *i_Data, m_Flag, m_SizeX);
     if (m_PrecalculatedSize) {
         m_Datas = (U8*)AllocContiguousAlignCL_Z(m_PrecalculatedSize, "BITMAP_DATA_ALLOC", 13, 128);
