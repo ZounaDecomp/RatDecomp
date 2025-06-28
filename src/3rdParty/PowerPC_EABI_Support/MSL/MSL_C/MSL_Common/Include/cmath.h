@@ -1,14 +1,6 @@
 #ifndef STD_CMATH_H_
 #define STD_CMATH_H_
-extern "C" double fabs(double);
-extern "C" float fabsf(float);
-extern "C" float sqrtf(float);
-extern "C" float abs(float);
-extern "C" float fmod(float, float);
-extern "C" float ceilf(float);
-extern "C" float floorf(float);
-extern "C" float pow(float, float);
-extern "C" float powf(float, float);
+#include "math.h"
 
 
 namespace std {

@@ -1,5 +1,7 @@
 #ifndef _MATH_Z_H_
 #define _MATH_Z_H_
+#include "MathTools_Z.h"
+#include "Math_Z.h"
 #include "Types_Z.h"
 #include "Bitmap_Z.h"
 
@@ -38,24 +40,122 @@ struct Vec3f {
     Float x, y, z;
 
     Vec3f() { };
-    Vec3f(Float i_x, Float i_y, Float i_z)
-        : x(i_x)
-        , y(i_y)
-        , z(i_z) { };
     Vec3f(const Color& i_Color);
     Vec3f(const Quat& Q);
 
-    Vec3f operator*(const Float i_Scale) const {
-        Vec3f l_Temp;
-        l_Temp.x = x * i_Scale;
-        l_Temp.y = y * i_Scale;
-        l_Temp.z = z * i_Scale;
-        return l_Temp;
+    Vec3f(Float _x, Float _y, Float _z) {
+        x = _x;
+        y = _y;
+        z = _z;
     }
 
-    Vec3f operator-() const;
-    Vec3f& operator*=(const Float _f);
+    Vec3f& Set(Float _x, Float _y, Float _z) {
+        x = _x;
+        y = _y;
+        z = _z;
+        return *this;
+    }
+
+    Vec3f& Set(const Vec3f& _v) {
+        x = _v.x;
+        y = _v.y;
+        z = _v.z;
+        return *this;
+    }
+
+    Vec3f operator=(const Vec3f& _v) {
+        x = _v.x;
+        y = _v.y;
+        z = _v.z;
+        return *this;
+    }
+
+    inline Vec3f operator=(const Vec4f& _v);
+
+    Vec3f operator+(const Vec3f& _v) const { return Vec3f(x + _v.x, y + _v.y, z + _v.z); }
+
+    Vec3f& operator+=(const Vec3f& _v) {
+        x += _v.x;
+        y += _v.y;
+        z += _v.z;
+        return *this;
+    }
+
+    Vec3f operator+() const { return *this; }
+
+    Vec3f operator-(const Vec3f& _v) const { return Vec3f(x - _v.x, y - _v.y, z - _v.z); }
+
+    Vec3f& operator-=(const Vec3f& _v) {
+        x -= _v.x;
+        y -= _v.y;
+        z -= _v.z;
+        return *this;
+    }
+
+    Vec3f operator-() const { return Vec3f(-x, -y, -z); }
+
+    Vec3f operator*(Float _f) const { return Vec3f(x * _f, y * _f, z * _f); }
+
+    Vec3f& operator*=(Float _f) {
+        x *= _f;
+        y *= _f;
+        z *= _f;
+        return *this;
+    }
+
+    Float operator*(const Vec3f& _v) const { return x * _v.x + y * _v.y + z * _v.z; }
+
+    Vec3f operator/(Float _f) const {
+        float inv = 1.f / _f;
+        return Vec3f(x * inv, y * inv, z * inv);
+    }
+
+    Vec3f& operator/=(Float _f) {
+        float inv = 1.f / _f;
+        x *= inv;
+        y *= inv;
+        z *= inv;
+        return *this;
+    }
+
+    Vec3f operator/(const Vec3f& _v) { return Vec3f(x / _v.x, y / _v.y, z / _v.z); }
+
+    Vec3f operator^(const Vec3f& _v) const { return Vec3f(y * _v.z - z * _v.y, z * _v.x - x * _v.z, x * _v.y - y * _v.x); }
+
+    Vec3f operator&(const Vec3f& _v) const { return Vec3f(x * _v.x, y * _v.y, z * _v.z); }
+
+    Float& operator[](int _i) { return (&x)[_i]; }
+
+    const Float& operator[](int _i) const { return (&x)[_i]; }
+
+    Bool operator==(const Vec3f& v) const {
+        Vec3f Diff = *this - v;
+        return (fabsf(Diff.x) < Float_Eps) && (fabsf(Diff.y) < Float_Eps) && (fabsf(Diff.z) < Float_Eps);
+    }
+
+    Bool operator!=(const Vec3f& v) const { return !operator==(v); };
+
+    operator Float*() { return &x; }
+
+    Float GetNorm2() const { return (*this) * (*this); }
+
+    Float GetNorm() const { return sqrtf(GetNorm2()); }
+
+    Vec3f& Normalize() { return (*this) /= GetNorm(); }
+
+    Float HGetNorm2() const { return x * x + z * z; }
+
+    Float HGetNorm() const { return sqrtf(HGetNorm2()); }
+
+    Vec3f& HNormalize() {
+        *this = (Vec3f(x, 0.f, z) / HGetNorm());
+        return *this;
+    }
 };
+
+inline Vec3f operator*(Float _f, const Vec3f& _v) {
+    return _v * _f;
+}
 
 struct Vec3i {
     S32 x, y, z;
@@ -82,7 +182,6 @@ struct Vec3i {
         return *this;
     }
 
-    // Operator
     Vec3i operator=(const Vec3i& _v) {
         x = _v.x;
         y = _v.y;
@@ -151,30 +250,133 @@ struct Vec4i {
 struct Vec4f {
     Float x, y, z, w;
 
-    Vec4f() { };
-    Vec4f(Float i_x, Float i_y, Float i_z, Float i_w)
-        : x(i_x)
-        , y(i_y)
-        , z(i_z)
-        , w(i_w) { };
-
-    Vec4f(Vec3f const& i_v)
-        : x(i_v.x)
-        , y(i_v.y)
-        , z(i_v.z)
-        , w(1.0f) { };
+    Vec4f() { }
 
     Vec4f(const Color& i_Color);
-    Vec4f(Float F)
-        : x(F)
-        , y(F)
-        , z(F)
-        , w(F) { };
 
-    Vec4f operator+(const Vec4f& i_v) const { return Vec4f(x + i_v.x, y + i_v.y, z + i_v.z, w + i_v.w); }
+    Vec4f(const Vec3f& _v) {
+        x = _v.x;
+        y = _v.y;
+        z = _v.z;
+        w = 1.f;
+    }
 
-    Vec4f operator-(const Vec4f& i_v) const { return Vec4f(x - i_v.x, y - i_v.y, z - i_v.z, w - i_v.w); }
+    Vec4f(Float _x, Float _y, Float _z, Float _w) {
+        x = _x;
+        y = _y;
+        z = _z;
+        w = _w;
+    }
+
+    Vec4f& Set(Float _x, Float _y, Float _z, Float _w) {
+        x = _x;
+        y = _y;
+        z = _z;
+        w = _w;
+        return *this;
+    }
+
+    Vec4f& Set(const Vec4f& _v) {
+        x = _v.x;
+        y = _v.y;
+        z = _v.z;
+        w = _v.w;
+        return *this;
+    }
+
+    Vec4f operator=(const Vec4f& _v) {
+        x = _v.x;
+        y = _v.y;
+        z = _v.z;
+        w = _v.w;
+        return *this;
+    }
+
+    Vec4f operator=(const Vec3f& _v) {
+        x = _v.x;
+        y = _v.y;
+        z = _v.z;
+        w = 1.f;
+        return *this;
+    }
+
+    Vec4f operator+(const Vec4f& _v) const { return Vec4f(x + _v.x, y + _v.y, z + _v.z, w + _v.w); }
+
+    Vec4f& operator+=(const Vec4f& _v) {
+        x += _v.x;
+        y += _v.y;
+        z += _v.z;
+        w += _v.w;
+        return *this;
+    }
+
+    Vec4f operator+() const { return *this; }
+
+    Vec4f operator-(const Vec4f& _v) const { return Vec4f(x - _v.x, y - _v.y, z - _v.z, w - _v.w); }
+
+    Vec4f& operator-=(const Vec4f& _v) {
+        x -= _v.x;
+        y -= _v.y;
+        z -= _v.z;
+        w -= _v.w;
+        return *this;
+    }
+
+    Vec4f operator-() const { return Vec4f(-x, -y, -z, -w); }
+
+    Vec4f operator*(Float _f) const { return Vec4f(x * _f, y * _f, z * _f, w * _f); }
+
+    Vec4f& operator*=(Float _f) {
+        x *= _f;
+        y *= _f;
+        z *= _f;
+        w *= _f;
+        return *this;
+    }
+
+    Float operator*(const Vec4f& _v) const { return x * _v.x + y * _v.y + z * _v.z; }
+
+    Vec4f operator/(Float _f) const {
+        float inv = 1.f / _f;
+        return Vec4f(x * inv, y * inv, z * inv, w * inv);
+    }
+
+    Vec4f& operator/=(Float _f) {
+        float inv = 1.f / _f;
+        x *= inv;
+        y *= inv;
+        z *= inv;
+        w *= inv;
+        return *this;
+    }
+
+    Float& operator[](int _i) {
+        return (&x)[_i];
+    }
+
+    const Float& operator[](int _i) const {
+        return (&x)[_i];
+    }
+
+    Bool operator==(const Vec4f& v) {
+        Vec4f Diff = *this - v;
+        return (fabsf(Diff.x) < Float_Eps) && (fabsf(Diff.y) < Float_Eps) && (fabsf(Diff.y) < Float_Eps);
+    }
+
+    operator Float*() { return &x; }
+
+    Vec4f operator^(const Vec4f& _v) const { return Vec4f(y * _v.z - z * _v.y, z * _v.x - x * _v.z, x * _v.y - y * _v.x, 1.f); }
+
+    Float GetNorm2() const { return x * x + y * y + z * z; }
+
+    Float GetNorm() const { return sqrtf(x * x + y * y + z * z); }
+
+    Vec4f& Normalize() { return (*this) /= sqrtf(x * x + y * y + z * z); }
 };
+
+inline Vec4f operator*(Float _f, const Vec4f& _v) {
+    return _v * _f;
+}
 
 struct Mat3x3 {
 public:
@@ -300,66 +502,85 @@ struct Mat4x4 {
     void SetTRS(const Vec3f& i_Trans, const Quat& i_Rot, const Float i_Scale);
 
     U32 GetCRC() const;
+    inline Vec3f operator*(const Vec3f _v) const;
+    Vec4f operator*(const Vec4f _v) const;
+
 } Aligned_Z(16);
+
+Vec3f Mat4x4::operator*(const Vec3f _v) const {
+    Vec3f vec;
+
+    vec.x = m[0][0] * _v.x + m[1][0] * _v.y + m[2][0] * _v.z + m[3][0];
+    vec.y = m[0][1] * _v.x + m[1][1] * _v.y + m[2][1] * _v.z + m[3][1];
+    vec.z = m[0][2] * _v.x + m[1][2] * _v.y + m[2][2] * _v.z + m[3][2];
+
+    return vec;
+}
 
 struct Quat {
     Vec3f v;
     Float w;
 
-    Quat() { }
+    inline Quat() { }
 
-    Quat(const Float _w, const Float _x, const Float _y, const Float _z);
-    Quat(const Float Angle, const Vec3f& Axis);
-    explicit Quat(const Vec3f& RV);
+    inline Quat(Float _w, Float _x, Float _y, Float _z) {
+        w = _w;
+        v.x = _x;
+        v.y = _y;
+        v.z = _z;
+    }
+
+    inline Quat(Float Angle, const Vec3f& Axis) {
+        w = cosf(Angle / 2.f);
+        v = sinf(Angle / 2.f) * Axis;
+    }
+
+    inline Quat(const Quat& _Quat) {
+        w = _Quat.w;
+        v = _Quat.v;
+    }
+
     Quat(const Vec3f& V1, const Vec3f& V2);
     Quat(const Vec3f& V1, const Vec3f& V2, const Vec3f& V3);
-    explicit Quat(const Mat3x3& Matrix);
-    explicit Quat(const Mat4x4& Matrix);
+    Quat(const Mat3x3& Matrix);
+    Quat(const Mat4x4& Matrix);
 
-    const Vec4f& xyzw() const;
-    Vec4f& xyzw();
+    void SetAngleAxis(Float Angle, Vec3f& Axis) {
+        w = cosf(Angle / 2.f);
+        v = sinf(Angle / 2.f) * Axis;
+    }
 
-    const Vec3f& xyz() const;
-    Vec3f& xyz();
+    Quat& SetInverse() {
+        v = -v;
+        return *this;
+    }
 
-    Quat& SetNull();
-    void SetAngleAxis(const Float Angle, const Vec3f& Axis);
-    Quat& SetInverse();
     void Normalize();
-    Bool Maximize(Float f);
-    Float GetNorm2() const;
-    Float GetNorm() const;
-    Vec4f GetAxisAndAngle() const;
-    Float GetAngle() const;
-    Float GetSignedAngle() const;
-    void SetAngle(Float _ang);
     void GetMatrix(Mat4x4& Mat) const;
     void GetMatrix(Mat3x3& Mat) const;
     void SetMatrix(const Mat4x4& Mat);
     void SetMatrix(const Mat3x3& Mat);
-    Quat& operator=(const Vec3f& RV);
-    Quat& operator=(const Vec4f& RV);
-    Quat operator-() const;
-    Quat operator+(const Quat& q) const;
-    Quat operator-(const Quat& q) const;
-    Quat& operator+=(const Quat& q);
-    Quat& operator-=(const Quat& q);
+
+    Quat operator+(const Quat& q) const { return Quat(w + q.w, v.x + q.v.x, v.y + q.v.y, v.z + q.v.z); }
+
+    Quat operator-(const Quat& q) const { return Quat(w - q.w, v.x - q.v.x, v.y - q.v.y, v.z - q.v.z); }
+
+    Quat& operator=(const Quat& q) {
+        w = q.w;
+        v = q.v;
+        return *this;
+    }
+
     Quat operator*(const Quat& q) const;
-    Quat& operator*=(const Quat& q);
-    Quat operator*(const Float f) const;
-    Quat& operator*=(const Float f);
-    Quat operator/(const Float f) const;
-    Quat& operator/=(const Float f);
-    Float DotProduct(const Quat& Q) const;
+    Quat& operator*=(const Quat& Q);
+
+    Float operator*(Quat& Q) { return (v * Q.v + w * Q.w); }
+
     Vec3f operator*(const Vec3f& p) const;
-    Vec4f operator*(const Vec4f& p) const;
-    Bool operator==(const Quat& _Quat) const;
-    Bool operator!=(const Quat& _Quat) const;
-    void NegativeMul(const Vec3f& i_v, Vec3f& _result) const;
-    void NegativeMul(const Vec4f& i_v, Vec4f& _result) const;
-    void GetEular(Vec3f& Eular) const;
-    void SetEular(const Vec4f& Eular);
-    Float GetDist(const Quat& Q);
+
+    Bool operator==(const Quat& _Quat) const { return ((Vec4f(w - _Quat.w, v.x - _Quat.v.x, v.y - _Quat.v.y, v.z - _Quat.v.z).GetNorm2()) < Float_Eps) ? TRUE : FALSE; }
+
+    Bool operator!=(const Quat& _Quat) const { return !operator==(_Quat); }
 };
 
 // $SABE: Tangent Binormal Vertex ? - From Monopoly MAP
@@ -370,4 +591,28 @@ struct TBVtx {
 
 Sphere_Z operator*(const Mat4x4& Mat, const Sphere_Z& Sphere);
 
+template <typename T>
+T Clamp(T i_Value, T i_Min, T i_Max) {
+    if (i_Value <= i_Min) return i_Min;
+    if (i_Value >= i_Max) return i_Max;
+    return i_Value;
+}
+
+template <typename T>
+T Min(T i_V1, T i_V2) {
+    if (i_V1 < i_V2)
+        return i_V1;
+    else
+        return i_V2;
+}
+
+template <typename T>
+T Max(T i_V1, T i_V2) {
+    if (i_V1 > i_V2)
+        return i_V1;
+    else
+        return i_V2;
+}
+
+void Inverse2(const Mat4x4& In, Mat4x4& Out);
 #endif

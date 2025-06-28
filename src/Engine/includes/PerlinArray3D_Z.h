@@ -27,7 +27,7 @@ public:
         Float l_UnkFloatUsedInPowf = m_UnkFloat;
 
         Float l_Temp = i_UnkFloat4;
-        
+
         for (S32 i = 0; i < m_UnkInt; i++) {
             Float l_Powf = (std::powf(l_UnkFloatUsedInPowf, i));
             Float l_NoiseVal = (InterpolatedNoise(i_UnkFloat * l_Temp, i_UnkFloat2 * l_Temp, i_UnkFloat3 * l_Temp));

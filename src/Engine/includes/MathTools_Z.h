@@ -4,7 +4,6 @@
 #include <math.h>
 void MathInitTables();
 
-
 Float O_Atan2(Float x, Float y);
 Float O_Cos(Float x);
 Float O_Sin(Float x);

@@ -7,16 +7,17 @@
 #include "CameraStream_ZHdl.h"
 #include "Game_ZHdl.h"
 class Viewport_Z;
+
 class GameManager_Z {
-    void DebugDisplay(Viewport_Z * i_Vp);
+    void DebugDisplay(Viewport_Z* i_Vp);
+
 private:
     CameraUser_ZHdl m_CameraUserHdls[4];
     Bool m_CameraUserBools[4];
-    DynArray_Z<Game_ZHdl, 8> m_GamesDA; 
+    DynArray_Z<Game_ZHdl, 8> m_GamesDA;
     CameraOccluder_ZHdl m_CameraOccluderHdls[4];
     CameraStream_ZHdl m_CameraStreamHdls[4];
     bool m_IsPaused;
 };
-
 
 #endif
