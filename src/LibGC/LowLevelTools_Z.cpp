@@ -41,13 +41,12 @@ void Node_Z::UpdateTM(Node_Z* i_Parent) {
     l_WorldMatrix->m[3][1] = l_LocalMatrix.m[3][1];
     l_WorldMatrix->m[3][2] = l_LocalMatrix.m[3][2];
     l_WorldMatrix->m[3][3] = l_LocalMatrix.m[3][3];
-    
+
     m_RotInWorld *= m_Rotation;
     m_RotInWorld.GetMatrix(m_RotInWorldMatrix);
     m_Flag |= 0x10; // $VIOLET: TODO: Define this flag. Possibly FL_NODE_HAS_SCALE?
     m_OtherScaleUsedInFrustrum *= m_Scale;
     m_OneOverScale = 1.0f / m_OtherScaleUsedInFrustrum;
-
 }
 
 BaseObject_Z* HandleManager_Z::GetPtr(const BaseObject_ZHdl& i_Hdl) const {

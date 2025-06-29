@@ -924,7 +924,6 @@ config.libs = [
             Object(NonMatching, "Engine/AnimatedAgent_Z.cpp"),
             Object(NonMatching, "Engine/ABC_ScriptManager.cpp"),
             Object(NonMatching, "Engine/LodCollisions_Z.cpp"),
-            Object(NonMatching, "Engine/Streaming_Z.cpp"),
             Object(NonMatching, "Engine/SurfaceDraw_Z.cpp"),
             Object(NonMatching, "Engine/Error_Z.cpp"),
             Object(NonMatching, "Engine/ClassNameResManager_Z.cpp"),
@@ -1032,6 +1031,7 @@ config.libs = [
         "cflags": cflags_rat_base,
         "progress_category": ["libgc", "rat"],  # str | List[str]
         "objects": [
+            Object(NonMatching, "LibGC/Streaming_Z.cpp"),
             Object(NonMatching, "LibGC/MathTools_Z.cpp"),
             Object(Matching,    "LibGC/LowMemory_Z.cpp"),
             Object(NonMatching, "LibGC/ARAM_Z.cpp"),

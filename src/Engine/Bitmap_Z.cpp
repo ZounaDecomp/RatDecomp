@@ -1,6 +1,7 @@
 #include "Bitmap_Z.h"
 #include "Memory_Z.h"
-
+#include "Program_Z.h"
+#include "Renderer_Z.h"
 Extern_Z "C" void memcpy(void* dest, const void* src, int n);
 #pragma dont_inline on
 
@@ -31,6 +32,13 @@ void Bitmap_Z::Init() {
     m_MipmapCount = 0;
     m_PrecalculatedSize = 0;
     m_PalFormat = PAL_8888;
+}
+
+void Bitmap_Z::Invalidate() {
+    if ((gData.MainRdr != NULL) && (m_TexID != INVALID_TEXID)) {
+        gData.MainRdr->FreeTexture(m_TexID);
+    }
+    m_TexID = INVALID_TEXID;
 }
 
 void Bitmap_Z::Reset() {
@@ -293,6 +301,12 @@ void Bitmap_Z::Clear(Color i_Color) {
         } break;
         default:
             break;
+    }
+}
+// $VIOLET: TODO: Fix this
+void Bitmap_Z::SetPoint(S32 i_X, S32 i_Y, const Color& i_Color) {
+    if ((i_X > -1) && (i_X < m_SizeX) && (i_Y > -1) && (i_Y < m_SizeY)) {
+        SetPoint(&((U8*)m_Datas)[i_X + i_Y * m_SizeX * (int)GetBytePerPixel()], GetFormat(), i_X, i_Y, i_Color);
     }
 }
 

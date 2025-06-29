@@ -56,6 +56,7 @@ union HdlID {
             ID : 24;
     } Ref;
 };
+
 class BaseObject_ZHdl {
     friend class HandleManager_Z;
     friend class BaseObject_Z;

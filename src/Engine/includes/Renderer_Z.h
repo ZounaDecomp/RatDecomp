@@ -136,6 +136,7 @@ public:
     Viewport_Z& GetViewport(S32 i_ViewportID) { return m_Viewports[i_ViewportID]; }
 
     Float GetScreenRatio();
+    // clang-format off
     virtual ~Renderer_Z();                                                                                                                   /* 0x08 */
     virtual Bool Init(S32 i_SizeX, S32 i_SizeY);                                                                                             /* 0x0C */
     virtual void Shut();                                                                                                                     /* 0x10 */
@@ -182,7 +183,7 @@ public:
     virtual void SetActiveMaterial(Material_Z* a1);                                                                                          /* 0xB4 */
     virtual void SetBlankMaterial();                                                                                                         /* 0xB8 */
     virtual void SetActiveTexture(Bitmap_Z* a1, S32 a2);                                                                                     /* 0xBC */
-    virtual void FreeTexture(S16 a1);                                                                                                        /* 0xC0 */
+    virtual void FreeTexture(S16 a1) {}                                                                                                      /* 0xC0 */
     virtual void CreateVertexBuffer(S32 a1);                                                                                                 /* 0xC4 */
     virtual void DeleteVertexBuffer(VertexBuffer_Z* a1);                                                                                     /* 0xC8 */
     virtual void CreateIndexBuffer(S32 a1);                                                                                                  /* 0xCC */
@@ -223,6 +224,7 @@ public:
     virtual void CloseAVI();                                                                                                                 /* 0x158 */
     virtual void SetActiveViewport(S32 i_ViewportID);                                                                                        /* 0x15C */
     virtual void FlushActiveViewport();                                                                                                      /* 0x160 */
+    // clang-format on
 private:
     DynArray_Z<VertexBuffer_Z*> m_VertexBufferPtrDA;
     DynArray_Z<IndexBuffer_Z*> m_IndexBufferPtrDA;

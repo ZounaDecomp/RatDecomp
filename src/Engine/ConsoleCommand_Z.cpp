@@ -4,7 +4,6 @@
 #include "ConsoleInterp_Z.h"
 #include "Types_Z.h"
 #include "String_Z.h"
-
 Extern_Z "C" int strncmp(const char* str1, const char* str2, int n);
 Extern_Z "C" size_t strlen(const char* str);
 Extern_Z "C" Float atof(const char* str);

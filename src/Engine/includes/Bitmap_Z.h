@@ -79,6 +79,8 @@ public:
     void Invalidate();
     Float GetBytePerPixel();
     S32 GetPalSize();
+    void SetPoint(S32 i_X, S32 i_Y, const Color& i_Color);
+    void SetPoint(U8* i_Data, U8 i_Forma, S32 i_X, S32 i_Y, const Color& i_Color);
 
     S32 GetSize() {
         if (m_PrecalculatedSize)

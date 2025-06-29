@@ -2636,7 +2636,7 @@ LibGC/GCSndStream_Z.cpp:
 	.data       start:0x8035C730 end:0x8035C748
 	.sdata2     start:0x803C14D8 end:0x803C1518
 
-Engine/Streaming_Z.cpp:
+LibGC/Streaming_Z.cpp:
 	.text       start:0x8021DEB0 end:0x8021E054
 	.data       start:0x8035C748 end:0x8035C778
 	.sbss       start:0x803BAC90 end:0x803BAC98
