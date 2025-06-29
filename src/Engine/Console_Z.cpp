@@ -148,9 +148,9 @@ Bool Pause() {
 
 void Console_Z::InterpFile() {
     if (gData.Cons->GetInterp() == NULL) {
-        BaseObject_ZHdl* l_InterpHdl = gData.ClassMgr->NewObject(Name_Z::GetID("ConsoleInterp_Z", 0), Name_Z::GetID("ConsoleInterp", 0));
+        BaseObject_ZHdl& l_InterpHdl = gData.ClassMgr->NewObject(Name_Z::GetID("ConsoleInterp_Z", 0), Name_Z::GetID("ConsoleInterp", 0));
         BaseObject_ZHdl l_BObj;
-        l_BObj = *l_InterpHdl;
+        l_BObj = l_InterpHdl;
         BaseObject_Z* l_Interp = l_BObj;
         m_Interp = (ConsoleInterp_Z*)l_Interp;
         m_Interp->Deactivate();

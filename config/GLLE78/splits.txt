@@ -2406,7 +2406,7 @@ LibGC/GCFile_Z.cpp:
 	.sbss       start:0x803BAC58 end:0x803BAC60
 	.sdata2     start:0x803C1160 end:0x803C1188
 
-Engine/MathTools_Z.cpp:
+LibGC/MathTools_Z.cpp:
 	.text       start:0x801FBAAC end:0x801FC4A4
 	.bss        start:0x8038C7A0 end:0x8038C9A8
 	.sdata2     start:0x803C1188 end:0x803C11E0

@@ -766,7 +766,6 @@ config.libs = [
             Object(NonMatching, "Engine/HFog_Z.cpp"),
             Object(NonMatching, "Engine/AnimationMaterial_Z.cpp"),
             Object(NonMatching, "Engine/AnimationMorph_Z.cpp"),
-            Object(NonMatching, "Engine/MathTools_Z.cpp"),
             Object(NonMatching, "Engine/Manipulator_Z.cpp"),
             Object(Matching,    "Engine/Parameters_Z.cpp"),
             Object(NonMatching, "Engine/MovieManipulator_Z.cpp"),
@@ -1033,6 +1032,7 @@ config.libs = [
         "cflags": cflags_rat_base,
         "progress_category": ["libgc", "rat"],  # str | List[str]
         "objects": [
+            Object(NonMatching, "LibGC/MathTools_Z.cpp"),
             Object(Matching,    "LibGC/LowMemory_Z.cpp"),
             Object(NonMatching, "LibGC/ARAM_Z.cpp"),
             Object(Matching,    "LibGC/Assert_Z.cpp"),
