@@ -2355,14 +2355,14 @@ Rat/DialogGroup_G.cpp:
 3rdParty/TRK_MINNOW_DOLPHIN/gamedev/cust_connection/utils/gc/MWCriticalSection_gc.cpp:
 	.text       start:0x801F3B98 end:0x801F3BF0
 
-Engine/LowMemory_Z.cpp:
+LibGC/LowMemory_Z.cpp:
 	.text       start:0x801F3BF0 end:0x801F3F3C
 	.ctors      start:0x80324C74 end:0x80324C78
 	.rodata     start:0x803341B8 end:0x803341D8
 	.data       start:0x80357FB0 end:0x80358028
 	.bss        start:0x8038BDB0 end:0x8038BDE0
 
-Engine/ARAM_Z.cpp:
+LibGC/ARAM_Z.cpp:
 	.text       start:0x801F3F3C end:0x801F5EC4
 	.ctors      start:0x80324C78 end:0x80324C7C
 	.rodata     start:0x803341D8 end:0x80334410
@@ -2370,7 +2370,7 @@ Engine/ARAM_Z.cpp:
 	.bss        start:0x8038BDE0 end:0x8038BE08
 	.sdata2     start:0x803C10B8 end:0x803C10C8
 
-Engine/Assert_Z.cpp:
+LibGC/Assert_Z.cpp:
 	.text       start:0x801F5EC4 end:0x801F5F24
 
 LibGC/GCMain_Z.cpp:
@@ -2383,18 +2383,18 @@ LibGC/GCMain_Z.cpp:
 	.sbss       start:0x803BAC50 end:0x803BAC58
 	.sdata2     start:0x803C10C8 end:0x803C1138
 
-Engine/Dupe/String_Z.c:
+LibGC/String_Z.c:
 	.text       start:0x801FA188 end:0x801FA1CC
 
 LibGC/SystemObjectGC_Z.cpp:
 	.text       start:0x801FA1CC end:0x801FA5DC
 	.sdata2     start:0x803C1138 end:0x803C1148
 
-Engine/Timer_Z.cpp:
+LibGC/Timer_Z.cpp:
 	.text       start:0x801FA5DC end:0x801FA644
 	.sdata2     start:0x803C1148 end:0x803C1158
 
-Engine/LowLevelTools_Z.cpp:
+LibGC/LowLevelTools_Z.cpp:
 	.text       start:0x801FA644 end:0x801FAF84
 	.sdata2     start:0x803C1158 end:0x803C1160
 
@@ -2543,7 +2543,7 @@ LibGC/GCDrawString.cpp:
 	.data       start:0x803589B0 end:0x8035C170
 	.sdata2     start:0x803C1308 end:0x803C1320
 
-Engine/TextureManager_Z.cpp:
+LibGC/TextureManager_Z.cpp:
 	.text       start:0x802089F8 end:0x80209B1C
 	.rodata     start:0x80334CE0 end:0x80334D00
 	.data       start:0x8035C170 end:0x8035C1B0
@@ -2572,7 +2572,7 @@ LibGC/GCRendererTransp_Z.cpp:
 	.rodata     start:0x80334DC0 end:0x80334E70
 	.sdata2     start:0x803C1398 end:0x803C13F0
 
-Engine/DisplayList_Z.cpp:
+LibGC/DisplayList_Z.cpp:
 	.text       start:0x80210FA8 end:0x80211048
 	.rodata     start:0x80334E70 end:0x80334E98
 

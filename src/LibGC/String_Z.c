@@ -5,7 +5,7 @@ Extern_Z "C" S32 vsprintf(const Char* i_Buf, const Char* i_Format, va_list i_Arg
 
 S32 Vsprintf(Char* i_Buf, const Char* i_Format, Char* i_Args)
 {
-    // might not be va_list. idk man
+    // $VIOLET: might not be va_list. idk man
     va_list l_Unk;
     l_Unk[0].input_arg_area = i_Args;
 	l_Unk[0].reg_save_area = i_Args;
