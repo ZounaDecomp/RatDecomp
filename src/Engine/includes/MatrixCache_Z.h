@@ -3,9 +3,11 @@
 #include "DynArray_Z.h"
 #include "Math_Z.h"
 typedef U16 MatDbId;
+
 class Mat4x4Buffer_Z {
-public: 
+public:
     Mat4x4Buffer_Z();
+
 private:
     DynArray_Z<Mat4x4, 32, FALSE, FALSE> m_MatArray;
     DynArray_Z<MatDbId, 32, FALSE> m_MatIdArray;
@@ -18,4 +20,4 @@ private:
     DynArray_Z<U16> m_FreeMatDbIdIndices;
 };
 
-#endif 
+#endif

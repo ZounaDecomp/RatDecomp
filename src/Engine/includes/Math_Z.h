@@ -571,6 +571,7 @@ struct Quat {
     }
 
     Quat operator*(const Quat& q) const;
+    Quat operator*(const Float q) const;
     Quat& operator*=(const Quat& Q);
 
     Float operator*(Quat& Q) { return (v * Q.v + w * Q.w); }

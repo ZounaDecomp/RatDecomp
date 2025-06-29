@@ -589,7 +589,7 @@ config.libs = [
         "progress_category": "sdk",
         "host": False,
         "objects": [
-            Object(NonMatching, "3rdParty/PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/abort_exit.c"),
+            Object(Matching, "3rdParty/PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/abort_exit.c"),
             Object(NonMatching, "3rdParty/PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/rand.c"),
             Object(NonMatching, "3rdParty/PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/alloc.c"),
             Object(NonMatching, "3rdParty/PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/errno.c"),
@@ -598,7 +598,7 @@ config.libs = [
             Object(NonMatching, "3rdParty/PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/arith.c"),
             Object(NonMatching, "3rdParty/PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/buffer_io.c"),
             Object(NonMatching, "3rdParty/PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/char_io.c"),
-            Object(NonMatching, "3rdParty/PowerPC_EABI_Support/MSL/MSL_C/PPC_EABI/Src/critical_regions.gamecube.c"),
+            Object(Matching, "3rdParty/PowerPC_EABI_Support/MSL/MSL_C/PPC_EABI/Src/critical_regions.gamecube.c"),
             Object(Matching, "3rdParty/PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/ctype.c"),
             Object(NonMatching, "3rdParty/PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/direct_io.c"),
             Object(NonMatching, "3rdParty/PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/file_io.c"),
@@ -616,7 +616,7 @@ config.libs = [
             Object(NonMatching, "3rdParty/PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/strtoul.c"),
             Object(Matching, "3rdParty/PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/wchar_io.c"),
             Object(NonMatching, "3rdParty/PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/qsort.c"),
-            Object(NonMatching, "3rdParty/PowerPC_EABI_Support/MSL/MSL_C/PPC_EABI/Src/uart_console_io_gcn.c"),
+            Object(Matching, "3rdParty/PowerPC_EABI_Support/MSL/MSL_C/PPC_EABI/Src/uart_console_io_gcn.c", extra_cflags=["-inline deferred,auto"]),
             Object(Matching, "3rdParty/PowerPC_EABI_Support/MSL/MSL_C/MSL_Common_Embedded/Math/Double_precision/e_acos.c"),
             Object(NonMatching, "3rdParty/PowerPC_EABI_Support/MSL/MSL_C/MSL_Common_Embedded/Math/Double_precision/e_log.c"),
             Object(Matching, "3rdParty/PowerPC_EABI_Support/MSL/MSL_C/MSL_Common_Embedded/Math/Double_precision/e_asin.c"),
@@ -691,7 +691,7 @@ config.libs = [
             Object(Matching, "3rdParty/TRK_MINNOW_DOLPHIN/gamedev/cust_connection/utils/common/CircleBuffer.c"),
             Object(Matching, "3rdParty/TRK_MINNOW_DOLPHIN/gamedev/cust_connection/cc/exi2/GCN/EXI2_GDEV_GCN/main.c", extra_cflags=["-sdata 8"]),
             Object(Matching, "3rdParty/TRK_MINNOW_DOLPHIN/gamedev/cust_connection/utils/common/MWTrace.c"),
-            Object(NonMatching, "3rdParty/TRK_MINNOW_DOLPHIN/gamedev/cust_connection/utils/gc/MWCriticalSection_gc.cpp"),
+            Object(NonMatching, "3rdParty/TRK_MINNOW_DOLPHIN/gamedev/cust_connection/utils/gc/MWCriticalSection_gc.cpp", extra_cflags=["-lang=c"]),
         ],
     },
     {
@@ -711,7 +711,7 @@ config.libs = [
         "progress_category": "sdk",
         "host": False,
         "objects": [
-            Object(NonMatching, "3rdParty/odemuexi2/DebuggerDriver.c"),
+            Object(Matching, "3rdParty/odemuexi2/DebuggerDriver.c", extra_cflags=["-inline deferred,auto"]),
         ],
     },
     {
