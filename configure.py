@@ -1086,7 +1086,7 @@ config.libs = [
             Object(NonMatching, "LibGC/GCRenderer2D_Z.cpp"),
             Object(NonMatching, "LibGC/SurfaceGCCache_Z.cpp"),
             Object(NonMatching, "LibGC/wiitextures.c"),
-            Object(NonMatching, "LibGC/LowLevelTools_Z.cpp", extra_cflags=['-pragma "global_optimizer off"']),
+            Object(NonMatching, "LibGC/LowLevelTools_Z.cpp"), #extra_cflags=['-pragma "global_optimizer off"']),
         ],
     },
     {
