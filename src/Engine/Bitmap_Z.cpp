@@ -303,6 +303,7 @@ void Bitmap_Z::Clear(Color i_Color) {
             break;
     }
 }
+
 // $VIOLET: TODO: Fix this
 void Bitmap_Z::SetPoint(S32 i_X, S32 i_Y, const Color& i_Color) {
     if ((i_X > -1) && (i_X < m_SizeX) && (i_Y > -1) && (i_Y < m_SizeY)) {

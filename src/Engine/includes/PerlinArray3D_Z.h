@@ -18,7 +18,6 @@ public:
                 }
             }
         }
-        // $VIOLET: IGNORE THIS
     }
 
     Float PerlinNoise(Float i_UnkFloat, Float i_UnkFloat2, Float i_UnkFloat3, Float i_UnkFloat4) {

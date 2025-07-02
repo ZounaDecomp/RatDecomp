@@ -5,7 +5,7 @@
 #define FL_MAT_RDR_UNK1 (1 << 1)
 #define FL_MAT_RDR_UNK2 (1 << 2)
 #define FL_MAT_RDR_UNK3 (1 << 3)
-#define FL_MAT_RDR_UNK4 (1 << 4)
+#define FL_MATERIAL_PAWAP (1 << 4)
 #define FL_MAT_RDR_UNK5 (1 << 5)
 #define FL_MAT_RDR_UNK6 (1 << 6)
 #define FL_MAT_RDR_UNK7 (1 << 7)
