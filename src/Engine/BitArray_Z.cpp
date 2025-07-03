@@ -66,11 +66,11 @@ S32 BitArray_Z::FindFirstBit(bool i_State, S32 i_firstBitToCheck) const {
     if (i_firstBitToCheck >= m_Size) {
         return -1;
     }
-    S32 l_Index;
-    S32 l_CurBits;
+    int l_Index;
+    int l_CurBits;
     S32 l_BitIndex = i_firstBitToCheck >> 5;
     S32 l_BitCpt = i_firstBitToCheck & 0x1F;
-    S32 l_Size = m_BitsDA.GetSize();
+    int l_Size = m_BitsDA.GetSize();
     if (l_BitCpt) {
         U32 l_Bit = 1 << l_BitCpt;
         l_CurBits = m_BitsDA[l_BitIndex];

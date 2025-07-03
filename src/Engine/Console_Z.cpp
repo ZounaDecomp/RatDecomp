@@ -67,9 +67,7 @@ void Console_Z::MarkHandles() {
 }
 
 void Console_Z::DisableFlag(U32 i_Flag) {
-    if (((m_Flag & FL_CONS_PAUSED) && (i_Flag & FL_CONS_PAUSED) && (gData.ClassMgr->IsBigFileOpened()))) {
-        ASSERTLE_Z(0, "", 0x5f, "! (Flag&(1<<5) && _Flag&(1<<5) && gData.ClassMgr->IsBigFileOpened())");
-    }
+    ASSERTLE_Z(!((m_Flag & FL_CONS_PAUSED) && (i_Flag & FL_CONS_PAUSED) && gData.ClassMgr->IsBigFileOpened()), "", 95, "! (Flag&(1<<5) && _Flag&(1<<5) && gData.ClassMgr->IsBigFileOpened())");
     m_Flag &= ~i_Flag;
 }
 

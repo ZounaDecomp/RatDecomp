@@ -33,10 +33,7 @@ public:
     void CheckDisc(Bool i_Unk);
 
     Bool IsOpened() {
-        if ((m_EntryNum != -1) || (m_FilePtr != NULL)) {
-            return TRUE;
-        }
-        return FALSE;
+        return (m_EntryNum != -1) || (m_FilePtr != NULL);
     }
 
     const DVDFileInfo& GetDvdFileInfo() const { return m_DvdFileInfo; }

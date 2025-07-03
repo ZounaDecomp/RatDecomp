@@ -4,7 +4,7 @@
 Extern_Z "C" FILE* fopen(const Char* i_Filename, const Char* i_Mode);
 
 Bool FileHdl_Z::Open(const Char* i_Filename, U32 i_Flags) {
-    ASSERT_Z(!IsOpened(), '\0');
+    ASSERTL_Z(!IsOpened(), "", 6);
     Char l_FileName[128];
     Bool l_Aux = GetRealFileName(i_Filename, l_FileName);
     m_LastError = 0;

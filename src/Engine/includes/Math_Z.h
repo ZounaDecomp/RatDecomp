@@ -496,12 +496,12 @@ struct Mat4x4 {
     void SetTRS(const Vec3f& i_Trans, const Quat& i_Rot, const Float i_Scale);
 
     U32 GetCRC() const;
-    inline Vec3f operator*(const Vec3f i_Vec) const;
-    Vec4f operator*(const Vec4f i_Vec) const;
+    inline Vec3f operator*(const Vec3f& i_Vec) const;
+    inline Vec4f operator*(const Vec4f& i_Vec) const;
 
 } Aligned_Z(16);
 
-Vec3f Mat4x4::operator*(const Vec3f i_Vec) const {
+Vec3f Mat4x4::operator*(const Vec3f& i_Vec) const {
     Vec3f l_Vec;
 
     l_Vec.x = m[0][0] * i_Vec.x + m[1][0] * i_Vec.y + m[2][0] * i_Vec.z + m[3][0];

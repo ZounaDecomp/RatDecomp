@@ -204,6 +204,7 @@ cflags_base = [
     "-i src/3rdParty/PowerPC_EABI_Support/Runtime/Inc",
     "-i src/3rdParty/PowerPC_EABI_Support/MetroTRK",
     "-i include/dolphin",
+    "-i include",
     f"-DBUILD_VERSION={version_num}",
     f"-DVERSION_{config.version}",
     "-D__GEKKO__",
@@ -1086,7 +1087,7 @@ config.libs = [
             Object(NonMatching, "LibGC/GCRenderer2D_Z.cpp"),
             Object(NonMatching, "LibGC/SurfaceGCCache_Z.cpp"),
             Object(NonMatching, "LibGC/wiitextures.c"),
-            Object(NonMatching, "LibGC/LowLevelTools_Z.cpp"), #extra_cflags=['-pragma "global_optimizer off"']),
+            Object(Matching,    "LibGC/LowLevelTools_Z.cpp"),
         ],
     },
     {

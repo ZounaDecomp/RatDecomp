@@ -29,16 +29,12 @@ public:
     }
 
     Float GetHCenter() const {
-        if (!(m_HCenter > 0.0f)) {
-            ASSERTLE_Z(0, "", 0x4b, "HCenter>0.f");
-        }
+        ASSERTLE_Z(m_HCenter > 0.0f, "", 75, "HCenter>0.f");
         return m_HCenter;
     }
 
     Float GetVCenter() const {
-        if (!(m_VCenter > 0.0f)) {
-            ASSERTLE_Z(0, "", 0x4c, "VCenter>0.f");
-        }
+        ASSERTLE_Z(m_VCenter > 0.0f, "", 76, "VCenter>0.f");
         return m_VCenter;
     }
 

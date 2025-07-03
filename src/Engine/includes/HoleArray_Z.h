@@ -107,11 +107,11 @@ public:
     }
 
     T& Get(S32 i_Index) {
-        return m_DA[(U32)i_Index];
+        return m_DA[i_Index];
     }
 
     const T& Get(S32 i_Index) const {
-        return m_DA[(U32)i_Index];
+        return m_DA[i_Index];
     }
 
     T& operator[](int i_Index) {

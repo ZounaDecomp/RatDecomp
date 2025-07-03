@@ -79,23 +79,42 @@ void BoneNode_Z::UpdateTM(BoneNode_Z* i_Parent) {
 
 void Node_Z::GetLocal(const Segment_Z& i_WorldSegment, Segment_Z& o_LocalSegment) {
     o_LocalSegment.Origin = GetInverseWorldMatrix() * i_WorldSegment.Origin;
-    o_LocalSegment.Direction = GetInverseRotInWorld() * i_WorldSegment.Direction;
+    Quat l_InverseRotInWorld = GetInverseRotInWorld();
+    o_LocalSegment.Direction = l_InverseRotInWorld * i_WorldSegment.Direction;
     o_LocalSegment.Length = i_WorldSegment.Length * m_InverseUniformScale;
 }
 
-void Node_Z::GetLocal(const Sphere_Z& i_Sph, Sphere_Z& o_Sph) {
+void Node_Z::GetLocal(const Sphere_Z& i_WorldSph, Sphere_Z& o_LocalSph) {
+    o_LocalSph.Center = GetInverseWorldMatrix() * i_WorldSph.Center;
+    o_LocalSph.Radius = i_WorldSph.Radius * m_InverseUniformScale;
 }
 
-void Node_Z::GetLocal(const Capsule_Z& i_Capsule, Capsule_Z& o_Capsule) {
+void Node_Z::GetLocal(const Capsule_Z& i_WorldCapsule, Capsule_Z& o_LocalCapsule) {
+    o_LocalCapsule.Origin = GetInverseWorldMatrix() * i_WorldCapsule.Origin;
+    Quat l_InverseRotInWorld = GetInverseRotInWorld();
+    o_LocalCapsule.Direction = l_InverseRotInWorld * i_WorldCapsule.Direction;
+    o_LocalCapsule.Length = i_WorldCapsule.Length * m_InverseUniformScale;
+    o_LocalCapsule.Radius = i_WorldCapsule.Radius * m_InverseUniformScale;
 }
+
+#ifdef NONMATCHING_Z
+int g_Locks;
+#endif
+
+#pragma global_optimizer off
 
 BaseObject_Z* HandleManager_Z::GetPtr(const BaseObject_ZHdl& i_Hdl) const {
-    const HandleRec_Z& l_HdlRec = m_HandleRecDA[i_Hdl.GetID()];
-    if (l_HdlRec.m_Key == i_Hdl.GetKey()) {
-        if (l_HdlRec.m_xRamBlock >= 0) {
-            return gData.ClassMgr->GetPtrXRam(l_HdlRec);
+#ifdef NONMATCHING_Z
+    g_Locks++;
+#endif
+    S32 l_ID = i_Hdl.GetID();
+    if (m_HandleRecDA[l_ID].m_Key == i_Hdl.GetKey()) {
+        if (m_HandleRecDA[l_ID].m_xRamBlock >= 0) {
+            return gData.ClassMgr->GetPtrXRam(m_HandleRecDA[l_ID]);
         }
-        return l_HdlRec.m_ObjPtr;
+        return m_HandleRecDA[l_ID].m_ObjPtr;
     }
     return NULL;
 }
+
+#pragma global_optimizer on

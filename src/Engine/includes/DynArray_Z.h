@@ -8,7 +8,7 @@
 #define DYA_SIZEMAX ((1 << DYA_SIZEBITS))
 #define DYA_RSVSIZEMAX ((1 << DYA_RSVSIZEBITS))
 
-template <class T, S32 Granularity = 8, Bool DeleteObject = TRUE, Bool InitObject = TRUE, S32 Align = _ALLOCDEFAULTALIGN>
+template <class T, S32 Granularity = 8, Bool DeleteObject = TRUE, Bool InitObject = TRUE, int Align = _ALLOCDEFAULTALIGN>
 class DynArray_Z {
 public:
     DynArray_Z() {
@@ -64,8 +64,8 @@ public:
         }
     }
 
-    void SetReserve(S32 i_NewReservedSize) {
-        if (((U32)i_NewReservedSize) < m_Size)
+    void SetReserve(int i_NewReservedSize) {
+        if (i_NewReservedSize < m_Size)
             SetSize(i_NewReservedSize);
         else {
             S32 l_NewReserved = i_NewReservedSize - m_Size;
@@ -81,11 +81,11 @@ public:
         return m_ArrayPtr;
     }
 
-    S32 GetSize() const {
+    int GetSize() const {
         return m_Size;
     }
 
-    S32 Add() {
+    int Add() {
         if (!m_ReservedSize) {
             m_ReservedSize = Granularity;
             Realloc(m_ReservedSize + m_Size);
@@ -97,7 +97,7 @@ public:
         return m_Size - 1;
     }
 
-    S32 Add(const T& i_Ele) {
+    int Add(const T& i_Ele) {
         if (!m_ReservedSize) {
             m_ReservedSize = Granularity;
             Realloc(m_ReservedSize + m_Size);
@@ -124,7 +124,7 @@ public:
         m_ReservedSize = 0;
     }
 
-    T& Get(S32 i_Index) const {
+    T& Get(int i_Index) const {
         return m_ArrayPtr[i_Index];
     }
 

@@ -26,7 +26,7 @@ Bool ClassNameResManager_Z::GetClassID(const Name_Z& i_Name, const Name_Z& i_Fil
     o_ClassID = m_ClassResHA.FindFirst();
 
     while (o_ClassID >= 0) {
-        if (i_Name == m_ClassResHA[o_ClassID].m_Name && i_FileName == m_ClassResHA.Get((U32)o_ClassID).m_FileName) {
+        if (i_Name == m_ClassResHA[o_ClassID].m_Name && i_FileName == m_ClassResHA.Get(o_ClassID).m_FileName) {
             return TRUE;
         }
 
