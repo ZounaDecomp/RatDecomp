@@ -7,6 +7,6 @@
 #include "LowMemory_Z.h"
 #include "GCMain_Z.h"
 
-Extern_Z GCGlobals gData;
+Extern_Z Globals gData;
 
 #endif

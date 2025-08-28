@@ -2,7 +2,6 @@
 #define _RENDERER_Z_H_
 #include "SystemObject_Z.h"
 #include "Material_Z.h"
-#include "ManipulatorDraw_ZHdl.h"
 #include "Types_Z.h"
 #include "PerlinArray3D_Z.h"
 #include "Gaussian_Z.h"

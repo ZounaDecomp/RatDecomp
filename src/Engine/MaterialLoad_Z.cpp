@@ -3,7 +3,7 @@
 #include "ResourceObject_Z.h"
 #include "Sys_Z.h"
 
-extern GCGlobals gData;
+extern Globals gData;
 
 void Material_Z::Load(void** i_Data) {
     MEMCPYFROMRANGE_Z(&m_DiffuseColor, *i_Data, m_TextureFlags, m_DiffuseColor);
