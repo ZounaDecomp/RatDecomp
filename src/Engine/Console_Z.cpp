@@ -8,7 +8,7 @@
 #include "ConsoleInterp_Z.h"
 #include "Renderer_Z.h"
 #include "File_Z.h"
-Extern_Z Globals gData;
+Extern_Z GCGlobals gData;
 
 Console_Z::Console_Z()
     : m_UnkU32_0x1390(0)

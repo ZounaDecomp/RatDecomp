@@ -3,7 +3,7 @@
 #include "String_Z.h"
 Float ParameterValues[0x4000];
 S32 ParametersLoaded = -1;
-extern Globals gData;
+Extern_Z GCGlobals gData;
 
 void AddParameters(int i_Index, Float i_Value) {
     if (ParametersLoaded == -1) {

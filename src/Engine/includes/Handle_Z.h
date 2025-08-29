@@ -13,8 +13,8 @@ class BaseObject_Z;
 class BaseObject_ZHdl;
 class HandleManager_Z;
 class DrawInfo_Z;
-class Globals;
-extern Globals gData;
+class GCGlobals;
+Extern_Z GCGlobals gData;
 
 #define GETPTR(h) gData.ClassMgr->GetPtr(h)
 

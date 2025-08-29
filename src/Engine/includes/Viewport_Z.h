@@ -2,7 +2,7 @@
 #define _VIEWPORT_Z_H_
 #include "Handle_Z.h"
 #include "Assert_Z.h"
-#include "Main_Z.h"
+#include "GCMain_Z.h"
 #include "ManipulatorDraw_ZHdl.h"
 #include "Camera_Z.h"
 #include "Node_ZHdl.h"
