@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+# credit: https://gist.github.com/bwrsandman/0198ea048751f8486f9ab63e8360f184
 
 import sys
 
