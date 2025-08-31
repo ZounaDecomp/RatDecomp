@@ -15,7 +15,7 @@ public:
     BaseObject_ZHdl& NewObject(const Name_Z& a1, const Name_Z& a2);
 
 private:
-    Char m_Unks[0x622];
+    Char m_Unks[0x522];
     Bool m_IsBigFileOpened;
 };
 

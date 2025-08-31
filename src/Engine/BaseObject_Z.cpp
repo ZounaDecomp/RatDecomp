@@ -2,8 +2,8 @@
 #include "String_Z.h"
 #include "Program_Z.h"
 #include "ABC_Agent.h"
-String_Z<256> DefaultStringBaseObject;
-String_Z<256> DefaultStringRscBaseObject;
+String_Z<ARRAY_CHAR_MAX> DefaultStringBaseObject;
+String_Z<ARRAY_CHAR_MAX> DefaultStringRscBaseObject;
 
 void BaseObject_Z::SetHandle(S32 i_ID, S8 i_Key) {
     m_Handle.m_RealID.Ref.ID = i_ID;
@@ -14,12 +14,12 @@ const BaseObject_ZHdl& BaseObject_Z::GetHandle() const {
     return m_Handle;
 }
 
-String_Z<256>* BaseObject_Z::GetDebugName() const {
+String_Z<ARRAY_CHAR_MAX>* BaseObject_Z::GetDebugName() const {
     DefaultStringBaseObject.Sprintf("%d", m_Name.m_ID);
     return &DefaultStringBaseObject;
 }
 
-String_Z<256>* BaseObject_Z::GetDebugRscName() const {
+String_Z<ARRAY_CHAR_MAX>* BaseObject_Z::GetDebugRscName() const {
     Name_Z l_RscName = gData.ClassMgr->GetHandleName(m_Handle);
     DefaultStringRscBaseObject.Sprintf("%d", l_RscName.m_ID);
     return &DefaultStringRscBaseObject;

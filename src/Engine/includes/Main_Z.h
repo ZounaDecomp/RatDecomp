@@ -6,6 +6,7 @@
 #include "Timer_Z.h"
 #include "Console_Z.h"
 #include "AnimationManager_Z.h"
+#include "XRamManager_Z.h"
 
 Extern_Z Char* strcpy(Char* __dest, Char* __src);
 Extern_Z "C" void memset(void* __s, S32 __c, U32 __n);
@@ -30,7 +31,9 @@ public:
     GameManager_Z* GameMgr;
     U8 m_Pad_0x34[0x4];
     AnimationManager_Z* AnimMgr;
-    U8 m_Pad_0x40[0x7A0];
+    U8 m_Pad_0x40[0x44];
+    XRamManager_Z* XRamMgr;
+    U8 m_Pad_0x88[0x758];
 
     // TODO: Properly define members for all this so we don't gotta move stuff around
     inline Globals() {

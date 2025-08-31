@@ -30,11 +30,11 @@ public:
 
     void SetHandle(S32 i_ID, S8 i_Key);
     const BaseObject_ZHdl& GetHandle() const;
-    String_Z<256>* GetDebugName() const;
-    String_Z<256>* GetDebugRscName() const;
+    String_Z<ARRAY_CHAR_MAX>* GetDebugName() const;
+    String_Z<ARRAY_CHAR_MAX>* GetDebugRscName() const;
     void Send(abc_message i_Msg, ABC_Agent* i_Receiver, Float i_Param);
     void SendTimed(abc_message i_Msg, ABC_Agent* i_Receiver, Float i_Delay, Float i_Param);
-    void SetName(const Name_Z& i_Name, Bool i_ResToo);
+    void SetName(const Name_Z& i_Name, Bool i_ResToo = FALSE);
 };
 
 #endif
