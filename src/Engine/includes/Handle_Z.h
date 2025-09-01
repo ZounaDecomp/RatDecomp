@@ -1,5 +1,6 @@
 #ifndef _HANDLE_Z_H_
 #define _HANDLE_Z_H_
+#include "String_Z.h"
 #include "Types_Z.h"
 #include "Name_Z.h"
 #include "DynArray_Z.h"
@@ -9,12 +10,16 @@
 #define HandleGranularity 16384
 #define HANDLE_NULL BaseObject_ZHdl(0);
 
+#define HANDLE_MARKED_FALSE 0
+#define HANDLE_MARKED_TRUE 1
+#define HANDLE_MARKED_UNK 2
+
 class BaseObject_Z;
 class BaseObject_ZHdl;
 class HandleManager_Z;
 class DrawInfo_Z;
 class GCGlobals;
-extern GCGlobals gData;
+Extern_Z GCGlobals gData;
 
 #define GETPTR(h) gData.ClassMgr->GetPtr(h)
 
@@ -94,7 +99,8 @@ protected:
 struct HandleRec_Z {
     S8 m_Key;
     S8 m_Flag;
-    Bool m_Marked;
+    S8 m_Marked;
+    Bool m_AsyncRelated;
     BaseObject_Z* m_ObjPtr;
     Name_Z m_Name;
     S16 m_ClassID;
@@ -102,7 +108,7 @@ struct HandleRec_Z {
 };
 
 class HandleManager_Z {
-public:
+private:
     DynArray_Z<HandleRec_Z, HandleGranularity> m_HandleRecDA;
     DynArray_Z<S32, HandleGranularity> m_FreeRecDA;
     HashS32Table_Z m_Placeholder_NameToIdHashtable;
@@ -120,6 +126,7 @@ public:
     S32 m_UnkS32_0x44; // $SABE: Gets tested in HandleManager_Z::MarkHandle but never passes
     U32 m_FramesSpentDeleting;
 
+public:
     HandleManager_Z();
 
     virtual void CheckHandles();
@@ -135,16 +142,21 @@ public:
     virtual void GetNameStrFromId(const Name_Z& a1);
 
     BaseObject_Z* GetPtr(const BaseObject_ZHdl& i_Hdl) const;
-    BaseObject_Z* GetPtrXRam(const HandleRec_Z&) const;
+    BaseObject_Z* GetPtrXRam(const HandleRec_Z& i_HandleRec) const;
     BaseObject_ZHdl U32ToHandle(S32 i_Value);
     S32 HandleToU32(const BaseObject_ZHdl& i_Hdl);
     void MarkU32Handle(U32 i_Hdl);
     Bool MarkHandle(const BaseObject_ZHdl&);
     void ForbidCheckHandles(Bool i_ForbidCheckHandles);
-    BaseObject_ZHdl CreateNewHandle(BaseObject_Z* i_BObj, const Name_Z& i_Name, S16 i_ClassID, U8 i_Flag);
-    void ExpandSize(S32 i_NewSize);
-    void AddResourceRef(const HandleRec_Z&, S32 i_IDInDA);
+    const BaseObject_ZHdl& CreateNewHandle(BaseObject_Z* i_BObj, const Name_Z& i_Name, S16 i_ClassID, U8 i_Flag);
+    void ExpandSize(S32 i_NewSize = HandleGranularity);
+    void AddResourceRef(const HandleRec_Z& i_HandleRec, S32 i_IDInDA);
+    void RemoveResourceRef(const HandleRec_Z& i_HandleRec);
 
+private:
+    String_Z<ARRAY_CHAR_MAX> m_DefaultNameString;
+
+public:
     inline Name_Z& GetHandleName(const BaseObject_ZHdl& i_Hdl) {
         int l_ID = i_Hdl.GetID();
         int l_Key = i_Hdl.GetKey();

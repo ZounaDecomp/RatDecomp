@@ -3,7 +3,7 @@
 #include "String_Z.h"
 Float ParameterValues[0x4000];
 S32 ParametersLoaded = -1;
-extern GCGlobals gData;
+Extern_Z GCGlobals gData;
 
 void AddParameters(int i_Index, Float i_Value) {
     if (ParametersLoaded == -1) {
@@ -27,7 +27,7 @@ void ReadParameters(int i_Index) {
     for (int i = 0; i < 0x4000; i++) {
         ParameterValues[i] = 0.0f;
     }
-    String_Z<256> l_Str;
+    String_Z<ARRAY_CHAR_MAX> l_Str;
     l_Str.Sprintf("BSOURCE PARAM\\PP%03d.TSC", i_Index);
     gData.Cons->InterpCommand(l_Str, 0);
 }

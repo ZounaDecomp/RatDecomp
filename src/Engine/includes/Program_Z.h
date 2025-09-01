@@ -6,7 +6,6 @@
 #include "GCConsole_Z.h"
 #include "LowMemory_Z.h"
 #include "GCMain_Z.h"
-
 Extern_Z GCGlobals gData;
 
 #endif

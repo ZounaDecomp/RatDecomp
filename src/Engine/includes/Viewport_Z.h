@@ -2,6 +2,7 @@
 #define _VIEWPORT_Z_H_
 #include "Handle_Z.h"
 #include "Assert_Z.h"
+#include "GCMain_Z.h"
 #include "ManipulatorDraw_ZHdl.h"
 #include "Camera_Z.h"
 #include "Node_ZHdl.h"
@@ -44,6 +45,7 @@ public:
 
     Viewport_Z();
     ~Viewport_Z();
+    void Init();
     U32 m_StartX;
     U32 m_StartY;
     U32 m_SizeX;
@@ -79,8 +81,8 @@ public:
     Float m_UnkFloat0x80;
     Float m_UnkFloat0x84;
     Float m_UnkFloat0x88;
-    S16 m_IdxInMat4x4Buffer;
-    ManipulatorDraw_ZHdl ManipDrawHdls[16];
+    U16 m_IdxInMat4x4Buffer;
+    ManipulatorDraw_ZHdl* ManipDrawHdls[16];
     S32 m_NumOfManipDraws;
     Char m_UnkBytes0xD4[12];
     Renderer_Z* m_Renderer;

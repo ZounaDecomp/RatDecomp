@@ -4,10 +4,23 @@
 #include "Node_ZHdl.h"
 #include "Game_ZHdl.h"
 #include "World_ZHdl.h"
+#include "StreamAgent_ZHdl.h"
+#include "ABC_Agent.h"
 class Message_Z;
 class RegMessage_Z;
 
 class ABC_ScriptManager {
+
+private:
+    Bool m_IsPaused;
+    Float m_ScriptTime;
+    Float m_CycleDuration;
+    U32 m_CycleCount;
+    StreamAgent_ZHdl m_StreamAgent;
+    ABC_Message* m_Messages;
+    HashName_ZTable_Z m_MsgEnum;
+    
+public:
     virtual ~ABC_ScriptManager();
     virtual void Init();
     virtual void Shut();
@@ -39,6 +52,9 @@ class ABC_ScriptManager {
     virtual void StreamDone(const Game_ZHdl& a1, S32 a2);
     virtual void Update(Float a1);
     virtual void Minimize();
+
+private:
+    // $VIOLET: TODO: add more defs
 };
 
 #endif

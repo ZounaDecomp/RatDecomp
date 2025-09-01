@@ -54,4 +54,6 @@ typedef volatile double VDouble;
 
 #define Aligned_Z(x) __attribute__((aligned(x)))
 
+#define ARRAY_CHAR_MAX 256
+
 #endif
