@@ -52,10 +52,6 @@ struct Sphere_Z {
     }
 } Aligned_Z(16);
 
-struct Cylindre_Z {
-    U8 Unk_0x0[36]; // $SABE: Yet to reverse this, there's like the position of the base, normal and a radius but there's 4 unk bytes
-};
-
 struct FastBox_Z {
     Mat4x4 Mat;
     Mat4x4 RotMat;
@@ -104,6 +100,12 @@ struct Segment_Z {
     Vec3f Origin;
     Float Length;
     Vec3f Direction;
+    Float Pad;
+}  Aligned_Z(16);
+
+struct Cylindre_Z {
+    Segment_Z Seg;
+    Float Radius;
 };
 
 #endif
