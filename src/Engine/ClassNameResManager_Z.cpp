@@ -89,7 +89,8 @@ void ClassNameResManager_Z::RemoveClassId(const Name_Z& i_Name, const Name_Z& i_
 }
 
 BaseObject_ZHdl ClassNameResManager_Z::GetObjectInClass(const S32 i_ClassID, const S32 i_EnumID) {
-    const S32Hash_Z* l_Result = m_ClassResHA[i_ClassID].m_ResourceHT.Search(S32Hash_Z(i_EnumID));
+    S32Hash_Z l_HashElt(i_EnumID);
+    const S32Hash_Z* l_Result = m_ClassResHA[i_ClassID].m_ResourceHT.Search(l_HashElt);
 
     if (!l_Result) {
         return HANDLE_NULL;

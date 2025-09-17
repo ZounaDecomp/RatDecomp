@@ -16,7 +16,7 @@ Renderer_Z::~Renderer_Z() {
 Bool Renderer_Z::Init(S32 i_SizeX, S32 i_SizeY) {
     SetSize(i_SizeX, i_SizeY);
     SwitchScreen(screen_standard);
-    this->m_MipmapedGaussConvol = Compute_MipmapedGaussConvol(&m_MipmapGC, i_SizeX, i_SizeY, 14.0f, 1.0f);
+    m_MipmapedGaussConvol = Compute_MipmapedGaussConvol(&m_MipmapGC, i_SizeX, i_SizeY, 14.0f, 1.0f);
     return TRUE;
 }
 

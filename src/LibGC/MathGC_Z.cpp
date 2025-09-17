@@ -1,5 +1,6 @@
 #include "MathGC_Z.h"
 
+// clang-format off
 asm void ConcatMat4x4(const Mat4x4& a1, const Mat4x4& a2, Mat4x4& a3)
 {
     nofralloc
@@ -307,3 +308,5 @@ asm void ConcatMat4x4AndConvert(const Mat4x4& a1, const Mat4x4& a2, Mat3x3& a3)
     blr  
 
 }
+
+// clang-format on

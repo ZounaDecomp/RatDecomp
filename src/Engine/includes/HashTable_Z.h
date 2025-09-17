@@ -192,12 +192,12 @@ public:
         }
     }
 
-    const T* Search(const T& Element) const {
+    const T* Search(const T& i_Element) const {
         if (!m_NbElem)
             return NULL;
         S32 l_HashSize = m_Status->GetSize() - 1;
-        S32 l_HashID = Element.HashBase() & l_HashSize;
-        S32 l_HashInc = Element.HashIncrement();
+        S32 l_HashID = i_Element.HashBase() & l_HashSize;
+        S32 l_HashInc = i_Element.HashIncrement();
         if (!(l_HashInc & 0x1))
             l_HashInc++;
 
@@ -208,12 +208,40 @@ public:
             }
             else {
                 T* l_Ptr = m_Hash + l_HashID;
-                if (*l_Ptr == Element)
+                if (*l_Ptr == i_Element)
                     return l_Ptr;
             }
             l_HashID = (l_HashID + l_HashInc) & l_HashSize;
         }
         return NULL;
+    }
+
+    Bool Suppress(const T& i_Element) {
+        if (!m_NbElem)
+            return FALSE;
+        S32 l_HashSize = m_Status->GetSize() - 1;
+        S32 l_HashID = i_Element.HashBase() & l_HashSize;
+        S32 l_HashInc = i_Element.HashIncrement();
+        if (!(l_HashInc & 0x1))
+            l_HashInc++;
+
+        for (;;) {
+            if (!m_Status->GetBit(l_HashID)) {
+                if (m_Hash[l_HashID].IsEmpty())
+                    return FALSE;
+            }
+            else {
+                T* l_Ptr = m_Hash + l_HashID;
+                if (*l_Ptr == i_Element) {
+                    m_Status->ClearBit(l_HashID);
+                    l_Ptr->SetShadow();
+                    m_NbElem--;
+                    return TRUE;
+                }
+            }
+            l_HashID = (l_HashID + l_HashInc) & l_HashSize;
+        }
+        return FALSE;
     }
 
     inline void InitScan() {

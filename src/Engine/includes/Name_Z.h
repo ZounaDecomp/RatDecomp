@@ -25,6 +25,10 @@ public:
 
     void SetID(S32 a1) { m_ID = a1; }
 
+    U32 GetID() const {
+        return m_ID;
+    }
+
     static U32 GetID(const Char* a1, U32 a2 = 0);
     static U32 GetID(U8* data, U32 size, U32 result);
 

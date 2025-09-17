@@ -19,11 +19,11 @@ Bool FileHdl_Z::Open(const Char* i_Filename, U32 i_Flags) {
     }
     else if (l_Aux) {
         if ((i_Flags & WRITE_ONLY)) {
-            this->m_FilePtr = fopen(l_FileName, "wb");
+            m_FilePtr = fopen(l_FileName, "wb");
         }
     }
     else {
-        this->m_FilePtr = fopen(l_FileName, "rb");
+        m_FilePtr = fopen(l_FileName, "rb");
     }
     m_LastError = !IsOpened();
     return m_LastError == 0;

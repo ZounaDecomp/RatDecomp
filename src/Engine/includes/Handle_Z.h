@@ -97,6 +97,8 @@ protected:
 };
 
 struct HandleRec_Z {
+    static const U8 RSC = 8;
+
     S8 m_Key;
     S8 m_Flag;
     S8 m_Marked;
@@ -111,7 +113,7 @@ class HandleManager_Z {
 private:
     DynArray_Z<HandleRec_Z, HandleGranularity> m_HandleRecDA;
     DynArray_Z<S32, HandleGranularity> m_FreeRecDA;
-    HashS32Table_Z m_Placeholder_NameToIdHashtable;
+    HashS32Table_Z m_HandleIdHT;
     U32 m_HandleRecDASize;
     S32 m_NbFree;
     Name_Z m_NullName;
@@ -137,7 +139,7 @@ public:
     virtual void ClearMark();
     virtual void InvalidClassSize(S16 const a1);
     virtual void RemoveResource(const BaseObject_ZHdl& a1);
-    virtual void ChangeHandleName(const BaseObject_ZHdl& a1, const Name_Z& a2);
+    virtual S32 ChangeHandleName(const BaseObject_ZHdl& i_Hdl, const Name_Z& i_Name);
     virtual void DeleteHandle(const BaseObject_ZHdl& a1);
     virtual void GetNameStrFromId(const Name_Z& a1);
 
@@ -150,8 +152,9 @@ public:
     void ForbidCheckHandles(Bool i_ForbidCheckHandles);
     const BaseObject_ZHdl& CreateNewHandle(BaseObject_Z* i_BObj, const Name_Z& i_Name, S16 i_ClassID, U8 i_Flag);
     void ExpandSize(S32 i_NewSize = HandleGranularity);
-    void AddResourceRef(const HandleRec_Z& i_HandleRec, S32 i_IDInDA);
+    void AddResourceRef(const HandleRec_Z& i_HandleRec, S32 i_Index);
     void RemoveResourceRef(const HandleRec_Z& i_HandleRec);
+    S32 IsResourceRef(S32 i_Hdl);
 
 private:
     String_Z<ARRAY_CHAR_MAX> m_DefaultNameString;

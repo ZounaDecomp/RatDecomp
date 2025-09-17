@@ -19,7 +19,7 @@ private:
     StreamAgent_ZHdl m_StreamAgent;
     ABC_Message* m_Messages;
     HashName_ZTable_Z m_MsgEnum;
-    
+
 public:
     virtual ~ABC_ScriptManager();
     virtual void Init();

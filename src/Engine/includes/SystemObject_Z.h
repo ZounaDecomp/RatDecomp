@@ -101,7 +101,7 @@ struct Segment_Z {
     Float Length;
     Vec3f Direction;
     Float Pad;
-}  Aligned_Z(16);
+} Aligned_Z(16);
 
 struct Cylindre_Z {
     Segment_Z Seg;

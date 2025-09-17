@@ -10,7 +10,7 @@ public:
 
     virtual void Init();                                 /* 0x08 */
     virtual void Shut();                                 /* 0x0C */
-    virtual void Update(Float i_DeltaTime);                       /* 0x10 */
+    virtual void Update(Float i_DeltaTime);              /* 0x10 */
     virtual void Flush();                                /* 0x14 */
     virtual void Minimize();                             /* 0x18 */
     virtual void GetMemAllocated();                      /* 0x1C */

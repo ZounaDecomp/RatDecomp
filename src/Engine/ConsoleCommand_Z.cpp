@@ -111,7 +111,7 @@ Command_Z* Console_Z::IsCommand(const Name_Z& i_CommandName) const {
         return l_Curr;
     }
 
-    for (l_Curr = this->m_CommandList; l_Curr != NULL; l_Curr = l_Curr->m_Prev) {
+    for (l_Curr = m_CommandList; l_Curr != NULL; l_Curr = l_Curr->m_Prev) {
         if (i_CommandName == l_Curr->m_Command || i_CommandName == l_Curr->m_Alias) {
             PrevCommand = l_Curr;
             return l_Curr;
@@ -196,7 +196,7 @@ Bool Console_Z::InterpCommand(const Char* i_CommandStr, U32 i_Depth) {
         for (l_CommandStr = &i_CommandStr[i]; *l_CommandStr == ' ' || *l_CommandStr == '\t'; i++, l_CommandStr++);
         m_NbParam++;
     }
-    S32 l_NbParam = this->m_NbParam;
+    S32 l_NbParam = m_NbParam;
     if (l_NbParam == 0) {
         return TRUE;
     }
@@ -205,7 +205,7 @@ Bool Console_Z::InterpCommand(const Char* i_CommandStr, U32 i_Depth) {
     Command_Z* l_Curr = IsCommand(l_CommandName);
 
     if (l_Curr == NULL) {
-        S32 l_NbParam = this->m_NbParam;
+        S32 l_NbParam = m_NbParam;
 
         if (l_NbParam == 3) {
             if (fstricmp(l_CommandStack[0], "#define") == FALSE) {

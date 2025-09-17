@@ -33,7 +33,12 @@ public:
     AnimationManager_Z* AnimMgr;
     U8 m_Pad_0x40[0x44];
     XRamManager_Z* XRamMgr;
-    U8 m_Pad_0x88[0x758];
+    U8 m_Pad_0x88[0x4];
+    Bool m_ExitApp;
+    Bool m_BlockFrame;
+    Bool m_SkipLowLevelInitAndAgentInit; // $SABE: Never set to TRUE, I suppose it was used in BF Write mode
+    Bool m_UpdatingResource;
+    U8 m_Pad_0x90[0x750];
 
     // TODO: Properly define members for all this so we don't gotta move stuff around
     inline Globals() {
