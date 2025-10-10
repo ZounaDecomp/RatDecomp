@@ -1,0 +1,4 @@
+#ifndef _MISSION_CONTROLPANEL_H_
+#define _MISSION_CONTROLPANEL_H_
+#include "Types_Z.h"
+#endif // _MISSION_CONTROLPANEL_H_

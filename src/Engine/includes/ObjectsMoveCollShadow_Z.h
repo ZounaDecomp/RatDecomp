@@ -1,0 +1,4 @@
+#ifndef _OBJECTSMOVECOLLSHADOW_Z_H_
+#define _OBJECTSMOVECOLLSHADOW_Z_H_
+#include "Types_Z.h"
+#endif // _OBJECTSMOVECOLLSHADOW_Z_H_

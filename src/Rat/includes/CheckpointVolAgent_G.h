@@ -1,0 +1,4 @@
+#ifndef _CHECKPOINTVOLAGENT_G_H_
+#define _CHECKPOINTVOLAGENT_G_H_
+#include "Types_Z.h"
+#endif // _CHECKPOINTVOLAGENT_G_H_

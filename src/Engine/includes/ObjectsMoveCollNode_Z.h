@@ -1,0 +1,4 @@
+#ifndef _OBJECTSMOVECOLLNODE_Z_H_
+#define _OBJECTSMOVECOLLNODE_Z_H_
+#include "Types_Z.h"
+#endif // _OBJECTSMOVECOLLNODE_Z_H_

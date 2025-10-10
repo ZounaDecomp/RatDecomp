@@ -1,0 +1,4 @@
+#ifndef _COLLISIONVOLCOLLISION_Z_H_
+#define _COLLISIONVOLCOLLISION_Z_H_
+#include "Types_Z.h"
+#endif // _COLLISIONVOLCOLLISION_Z_H_

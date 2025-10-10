@@ -1,0 +1,4 @@
+#ifndef _CONDITIONVOLUMEAGENT_G_H_
+#define _CONDITIONVOLUMEAGENT_G_H_
+#include "Types_Z.h"
+#endif // _CONDITIONVOLUMEAGENT_G_H_

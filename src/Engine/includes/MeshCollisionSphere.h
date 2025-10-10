@@ -1,0 +1,4 @@
+#ifndef _MESHCOLLISIONSPHERE_H_
+#define _MESHCOLLISIONSPHERE_H_
+#include "Types_Z.h"
+#endif // _MESHCOLLISIONSPHERE_H_

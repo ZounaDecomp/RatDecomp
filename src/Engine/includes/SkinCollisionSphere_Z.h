@@ -1,0 +1,4 @@
+#ifndef _SKINCOLLISIONSPHERE_Z_H_
+#define _SKINCOLLISIONSPHERE_Z_H_
+#include "Types_Z.h"
+#endif // _SKINCOLLISIONSPHERE_Z_H_

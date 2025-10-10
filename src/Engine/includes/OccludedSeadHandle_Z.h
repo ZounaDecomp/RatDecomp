@@ -1,0 +1,4 @@
+#ifndef _OCCLUDEDSEADHANDLE_Z_H_
+#define _OCCLUDEDSEADHANDLE_Z_H_
+#include "Types_Z.h"
+#endif // _OCCLUDEDSEADHANDLE_Z_H_

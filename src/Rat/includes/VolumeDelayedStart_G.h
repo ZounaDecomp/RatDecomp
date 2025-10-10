@@ -1,0 +1,4 @@
+#ifndef _VOLUMEDELAYEDSTART_G_H_
+#define _VOLUMEDELAYEDSTART_G_H_
+#include "Types_Z.h"
+#endif // _VOLUMEDELAYEDSTART_G_H_

@@ -1,0 +1,4 @@
+#ifndef _CREATURERATBEAMRUN_H_
+#define _CREATURERATBEAMRUN_H_
+#include "Types_Z.h"
+#endif // _CREATURERATBEAMRUN_H_

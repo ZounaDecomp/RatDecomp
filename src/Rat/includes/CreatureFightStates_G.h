@@ -1,0 +1,4 @@
+#ifndef _CREATUREFIGHTSTATES_G_H_
+#define _CREATUREFIGHTSTATES_G_H_
+#include "Types_Z.h"
+#endif // _CREATUREFIGHTSTATES_G_H_

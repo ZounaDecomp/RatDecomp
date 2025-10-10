@@ -1,0 +1,4 @@
+#ifndef _MISSION_COOKINGLINGUINI_H_
+#define _MISSION_COOKINGLINGUINI_H_
+#include "Types_Z.h"
+#endif // _MISSION_COOKINGLINGUINI_H_

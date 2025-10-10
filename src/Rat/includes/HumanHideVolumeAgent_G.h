@@ -1,0 +1,4 @@
+#ifndef _HUMANHIDEVOLUMEAGENT_G_H_
+#define _HUMANHIDEVOLUMEAGENT_G_H_
+#include "Types_Z.h"
+#endif // _HUMANHIDEVOLUMEAGENT_G_H_

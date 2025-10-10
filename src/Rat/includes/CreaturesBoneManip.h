@@ -1,0 +1,4 @@
+#ifndef _CREATURESBONEMANIP_H_
+#define _CREATURESBONEMANIP_H_
+#include "Types_Z.h"
+#endif // _CREATURESBONEMANIP_H_

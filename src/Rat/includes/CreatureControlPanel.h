@@ -1,0 +1,4 @@
+#ifndef _CREATURECONTROLPANEL_H_
+#define _CREATURECONTROLPANEL_H_
+#include "Types_Z.h"
+#endif // _CREATURECONTROLPANEL_H_

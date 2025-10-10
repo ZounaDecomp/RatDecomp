@@ -1,0 +1,4 @@
+#ifndef _CREATUREIMPACTSTATES_G_H_
+#define _CREATUREIMPACTSTATES_G_H_
+#include "Types_Z.h"
+#endif // _CREATUREIMPACTSTATES_G_H_

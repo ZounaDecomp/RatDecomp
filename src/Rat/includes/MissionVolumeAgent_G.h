@@ -1,0 +1,4 @@
+#ifndef _MISSIONVOLUMEAGENT_G_H_
+#define _MISSIONVOLUMEAGENT_G_H_
+#include "Types_Z.h"
+#endif // _MISSIONVOLUMEAGENT_G_H_
