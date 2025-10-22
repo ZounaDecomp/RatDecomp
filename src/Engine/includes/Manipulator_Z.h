@@ -6,6 +6,7 @@
 
 class ManipulatorManager_Z;
 class ManipulatorList_Z;
+class Viewport_Z;
 
 class Manipulator_Z : public BaseObject_Z {
     friend class ManipulatorManager_Z;
@@ -32,6 +33,26 @@ private:
     ActivableGroup_Z m_ManipGroup; //TODO: Define enum for this
     Bool m_IsActive;
     Float m_TimeSpentRunning;
+};
+
+class ManipulatorDraw_Z : public Manipulator_Z {
+public:
+    virtual void Init();                             /* 0x08 */
+    virtual ~ManipulatorDraw_Z();                    /* 0x0C */
+    virtual void Update(Float i_DeltaTime);          /* 0x10 */
+    virtual void Draw(const Viewport_Z* i_Vp);       /* 0x14 */
+    virtual void Draw(const DrawInfo_Z& i_DrawInfo); /* 0x18 */
+};
+
+class ManipulatorSceneDraw_Z : public Manipulator_Z {
+public:
+    virtual void Init(); /* 0x08 */
+
+    virtual ~ManipulatorSceneDraw_Z() { } /* 0x0C */
+
+    virtual void Update(Float i_DeltaTime);                /* 0x10 */
+    virtual void BeforeDraw(const DrawInfo_Z& i_DrawInfo); /* 0x14 */
+    virtual void Draw(const DrawInfo_Z& i_DrawInfo);       /* 0x18 */
 };
 
 #endif

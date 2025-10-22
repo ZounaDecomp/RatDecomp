@@ -6,8 +6,15 @@
 #include "World_ZHdl.h"
 #include "StreamAgent_ZHdl.h"
 #include "ABC_Agent.h"
+#include "BnkLinkArray_Z.h"
 class Message_Z;
 class RegMessage_Z;
+
+typedef BnkLinkArray_Z<ABC_Message> MessageBnkLinkArray;
+typedef BnkLinkArray_Z<ABC_Behavior> BehaviorBnkLinkArray;
+typedef BnkLinkArray_Z<ABC_BehaviorHolder> BehaviorHolderBnkLinkArray;
+typedef BnkLinkArray_Z<ABC_CategoryHolder> CategoryHolderBnkLinkArray;
+typedef BnkLinkArray_Z<ABC_CategoryData> CategoryDataBnkLinkArray;
 
 class ABC_ScriptManager {
 
@@ -16,7 +23,8 @@ private:
     Float m_ScriptTime;
     Float m_CycleDuration;
     U32 m_CycleCount;
-    StreamAgent_ZHdl m_StreamAgent;
+    Float m_UnkFloat_0x10;
+    StreamAgent_ZHdl m_StreamAgentHdl;
     ABC_Message* m_Messages;
     HashName_ZTable_Z m_MsgEnum;
 
@@ -36,25 +44,33 @@ public:
     virtual void MateriaRemoveObjFlag(const Char* a1);
     virtual void InterGraphFlag(const Char* a1);
     virtual void InterGraphFlag(U64 a1);
-    virtual void GameSet(const Game_ZHdl& a1);
-    virtual void GameAgentSet(const Game_ZHdl& a1);
-    virtual void RemoveGame(const Game_ZHdl& a1);
+    virtual void GameSet(const Game_ZHdl& i_GameHdl);
+    virtual void GameAgentSet(const Game_ZHdl& i_GameHdl);
+    virtual void RemoveGame(const Game_ZHdl& i_GameHdl);
     virtual void GameRemoved();
-    virtual void GameReseted(const Game_ZHdl& a1);
-    virtual void ActivateGame(const Game_ZHdl& a1);
-    virtual void ViewportDone(const Game_ZHdl& a1);
+    virtual void GameReseted(const Game_ZHdl& i_GameHdl);
+    virtual void ActivateGame(const Game_ZHdl& i_GameHdl);
+    virtual void ViewportDone(const Game_ZHdl& i_GameHdl);
     virtual void WorldAdded(const World_ZHdl& a1);
     virtual void UpdateIndependentResources(const World_ZHdl& a1);
     virtual void InterpKeyframeMsg(const RegMessage_Z& a1);
     virtual void StreamRestored(const Node_ZHdl& a1);
-    virtual void StreamRemoving(const Game_ZHdl& a1, const Node_ZHdl& a2);
-    virtual void StreamDone(const Game_ZHdl& a1, const Node_ZHdl& a2);
-    virtual void StreamDone(const Game_ZHdl& a1, S32 a2);
+    virtual void StreamRemoving(const Game_ZHdl& i_GameHdl, const Node_ZHdl& a2);
+    virtual void StreamDone(const Game_ZHdl& i_GameHdl, const Node_ZHdl& a2);
+    virtual void StreamDone(const Game_ZHdl& i_GameHdl, S32 a2);
     virtual void Update(Float a1);
     virtual void Minimize();
 
 private:
     // $VIOLET: TODO: add more defs
+    U32 m_AgentCountMaybe;
+    ABC_AgentList_Z m_AgentsNoPause[agent_last];
+    ABC_AgentList_Z m_Agents[agent_last];
+    MessageBnkLinkArray m_MessageReserve;
+    BehaviorBnkLinkArray m_BehaviorReserve;
+    BehaviorHolderBnkLinkArray m_BehaviorHolderReserve;
+    CategoryHolderBnkLinkArray m_CategoryHolderReserve;
+    CategoryDataBnkLinkArray m_CategoryDataReserve;
 };
 
 #endif

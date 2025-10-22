@@ -124,6 +124,10 @@ public:
         m_ReservedSize = 0;
     }
 
+    void Realloc() {
+        Realloc(m_Size + m_ReservedSize);
+    }
+
     T& Get(int i_Index) const {
         return m_ArrayPtr[i_Index];
     }

@@ -2,6 +2,9 @@
 #define _CAMERA_Z_H_
 #include "Object_Z.h"
 
+struct Frustrum_Z {
+};
+
 class Camera_Z : public Object_Z {
 public:
     void UpdateInverseWorldMatrix(Node_Z* i_Node);

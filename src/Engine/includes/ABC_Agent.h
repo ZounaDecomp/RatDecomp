@@ -2,7 +2,10 @@
 #define _ABC_AGENT_H_
 #include "BaseObject_Z.h"
 #include "Handle_Z.h"
+#include "ABC_Category_Engine.h"
 #include "ABC_Behavior.h"
+
+typedef DynArray_Z<abc_category, 4> CategoryArray;
 
 class ABC_Message {
 private:
@@ -13,18 +16,12 @@ private:
     Float m_MessageParameter;
 };
 
-class ABC_CategoryData {
-private:
-    ABC_CategoryData* m_Next;
-    S32 m_Category;
-    Char isPublic;
-};
-
 enum abc_agentState {
     agent_neverActivated = 0,
     agent_inactive = 1,
     agent_active = 2,
     agent_toBeActivated = 3,
+    agent_last
 }; // Jimmy DWARF
 
 /* sizeof(ABC_Agent) == 0x40 */
@@ -49,6 +46,11 @@ private:
     S32 m_Unk0x34;
     S32 m_Unk0x38;
     U32 m_AbcAgentFlags;
+};
+
+class ABC_AgentList_Z {
+    ABC_Agent* m_First;
+    ABC_Agent* m_Last;
 };
 
 #endif

@@ -1,4 +1,4 @@
-#include "ABC_CategoryData.h"
+#include "ABC_Behavior.h"
 
 Bool ABC_CategoryData::HasCategory(abc_category i_Cat) {
     ABC_CategoryData* m_Curr = this;
