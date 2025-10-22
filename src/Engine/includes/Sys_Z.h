@@ -9,10 +9,10 @@ public:
 };
 
 // $VIOLET: NOLINT is needed to get clangd to shut up
-#define MEMCPYFROMRANGE_Z(dst, src, start, end) src = Sys_Z::MemCpyFrom(dst, src, ((U8*)&start - (U8*)&end + sizeof(start))) // NOLINT(bugprone-sizeof-expression)
-#define MEMCPYFROM_Z(dst, src, size) src = Sys_Z::MemCpyFrom(dst, src, size)                                                 // NOLINT(bugprone-sizeof-expression)
+#define MEMCPYFROMRANGE_Z(dst, src, start, end) src = Sys_Z::MemCpyFrom(dst, src, ((U8*)&end - (U8*)&start + sizeof(end))) // NOLINT(bugprone-sizeof-expression)
+#define MEMCPYFROM_Z(dst, src, size) src = Sys_Z::MemCpyFrom(dst, src, size)                                               // NOLINT(bugprone-sizeof-expression)
 
-#define MEMCPYFROMRANGEC_Z(dst, src, start, end) Sys_Z::MemCpyFrom(dst, src, ((U8*)&start - (U8*)&end + sizeof(start))) // NOLINT(bugprone-sizeof-expression)
-#define MEMCPYFROMC_Z(dst, src, size) Sys_Z::MemCpyFrom(dst, src, size)                                                 // NOLINT(bugprone-sizeof-expression)
+#define MEMCPYFROMRANGEC_Z(dst, src, start, end) Sys_Z::MemCpyFrom(dst, src, ((U8*)&end - (U8*)&start + sizeof(end))) // NOLINT(bugprone-sizeof-expression)
+#define MEMCPYFROMC_Z(dst, src, size) Sys_Z::MemCpyFrom(dst, src, size)                                               // NOLINT(bugprone-sizeof-expression)
 
 #endif

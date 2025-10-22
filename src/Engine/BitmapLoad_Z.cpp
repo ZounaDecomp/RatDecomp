@@ -11,7 +11,7 @@ void Bitmap_Z::Load(void** i_Data) {
     S32 l_DataSize;
     S32 l_AmountOfColors;
     S32 l_PalSize;
-    MEMCPYFROMRANGE_Z(&m_SizeX, *i_Data, m_Flag, m_SizeX);
+    MEMCPYFROMRANGE_Z(&m_SizeX, *i_Data, m_SizeX, m_Flag);
     if (m_PrecalculatedSize) {
         m_Datas = (U8*)AllocContiguousAlignCL_Z(m_PrecalculatedSize, "BITMAP_DATA_ALLOC", 13, 128);
         MEMCPYFROM_Z(m_Datas, *i_Data, m_PrecalculatedSize);

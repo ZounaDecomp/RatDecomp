@@ -103,10 +103,10 @@ BaseObject_ZHdl ClassNameResManager_Z::GetObjectInClass(const S32 i_ClassID, con
 void ClassNameRes_Z::Load(void** i_Data) {
     S32 l_NbHashElt;
     S32Hash_Z l_HashElt;
-    *i_Data = Sys_Z::MemCpyFrom(&l_NbHashElt, *i_Data, 4);
+    MEMCPYFROM_Z(&l_NbHashElt, *i_Data, 4);
 
     for (S32 i = 0; i < l_NbHashElt; i++) {
-        *i_Data = Sys_Z::MemCpyFrom(&l_HashElt, *i_Data, 4);
+        MEMCPYFROM_Z(&l_HashElt, *i_Data, 4);
         gData.ClassMgr->LoadLinkId(&l_HashElt.m_Ref, i_Data);
         m_ResourceHT.Insert(l_HashElt);
     }
