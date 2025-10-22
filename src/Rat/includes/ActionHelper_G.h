@@ -1,8 +1,8 @@
 #ifndef _ACTIONHELPER_G_H_
 #define _ACTIONHELPER_G_H_
+#include "Game_ZHdl.h"
 #include "Manipulator_Z.h"
 #include "Math_Z.h"
-#include "Game_ZHdl.h"
 
 class ActionHelperInfos;
 class SubParticlesActionHelper;
@@ -15,6 +15,12 @@ typedef DynArray_Z<ActionHelperInfos, 4> ActionHelperInfosDA;
 #define ACTIONHELPER_SUBPARTICLE_ARRAY_SIZE 6
 
 struct SubParticlesActionHelper {
+    SubParticlesActionHelper() {
+        m_MaterialIndex = -1;
+        m_UnkFloat_0x8 = 0.0f;
+        m_UnkFloat_0x4 = 0.0f;
+    }
+
     S32 m_MaterialIndex;
     Float m_UnkFloat_0x4;
     Float m_UnkFloat_0x8;
@@ -25,15 +31,26 @@ struct SubParticlesActionHelper {
     Float m_UnkFloat_0x1c;
     Float m_MaxTimeForSomething;
     Float m_CurrentTimeForSomething;
-    Float m_LifeProgress; // $SABE: Life time range from 0-1 (1 being max time elapsed)
+    Float m_LifeProgress; // $SABE: Maps life time range from 0-1
 };
 
 struct ActionHelperInfos {
+    ActionHelperInfos() {
+        m_HasAction = FALSE;
+        m_IsHidden = FALSE;
+        m_IsOnScreen = FALSE;
+        m_IsActiveOrSomething = FALSE;
+        m_OtherTime = 0.0f;
+        m_TimeSpentOnScreen = 0.0f;
+        m_MissionDef = NULL;
+        m_Node = NULL;
+        m_BoneNode = NULL;
+        m_HasOffset = FALSE;
+        m_MaybeOpacity = 0.1f;
+    }
+
     SubParticlesActionHelper m_SubPartricles[ACTIONHELPER_SUBPARTICLE_ARRAY_SIZE];
-    Bool m_UnkBool_0x108;
-    Bool m_UnkBool_0x109;
-    Bool m_UnkBool_0x10a;
-    Bool m_UnkBool_0x10b;
+    U32 m_HasAction; // $SABE: Not a Bool for some reason :|
     Bool m_IsActiveOrSomething;
     Bool m_IsOnScreen;
     Float m_TimeSpentOnScreen;

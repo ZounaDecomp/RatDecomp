@@ -30,6 +30,7 @@ public:
     }
 
     void SetSize(int i_NewSize, const Bool i_ResizeOnlyIfGreater = FALSE) {
+        FIXDEBUGINLINING_Z(); // $SABE: Probably from MRT DYNARRAY_Z_EXP(NewSize<=DYA_SIZEMAX); DYNARRAY_Z_EXP(NewSize>=0);
         S32 i;
         if (i_NewSize > m_Size) {
             if ((i_NewSize - m_Size > m_ReservedSize) || !i_ResizeOnlyIfGreater) {

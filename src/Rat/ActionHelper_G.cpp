@@ -14,6 +14,7 @@ void ActionHelper_G::Reset() {
 }
 
 Bool ActionHelper_G::Minimize() {
+    m_ActionHelperDA.Empty();
     m_ActionHelperDA.Minimize();
     return TRUE;
 }
