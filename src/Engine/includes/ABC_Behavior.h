@@ -77,18 +77,15 @@ public:
 
 class ABC_CategoryHolder {
 public:
-    abc_category category;
-    ABC_BehaviorHolder* publicBehaviors;
-    ABC_BehaviorHolder* privateBehaviors;
-    ABC_CategoryHolder* next;
-#ifdef _DEBUGSCRIPT
-    Name_Z Name;
-#endif //_DEBUGSCRIPT
+    abc_category m_Category;
+    ABC_BehaviorHolder* m_PublicBehaviors;
+    ABC_BehaviorHolder* m_PrivateBehaviors;
+    ABC_CategoryHolder* m_Next;
 
     ABC_CategoryHolder();
-    ABC_CategoryHolder(abc_category aCategory, const char* aCategoryName = NULL);
-    ABC_CategoryHolder& operator=(const ABC_CategoryHolder& aHolder);
-    ABC_CategoryHolder(const ABC_CategoryHolder& aHolder);
+    ABC_CategoryHolder(abc_category i_Category, const char* i_CategoryName = NULL);
+    ABC_CategoryHolder& operator=(const ABC_CategoryHolder& i_Holder);
+    ABC_CategoryHolder(const ABC_CategoryHolder& i_Holder);
     ~ABC_CategoryHolder();
 };
 
