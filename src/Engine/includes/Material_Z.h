@@ -6,7 +6,8 @@
 #include "Material_ZHdl.h"
 #include "Types_Z.h"
 #include "MaterialFlag_Z.h"
-#include "WaterHeightMap_Z.h"
+
+class WaterHeightMap_Z;
 
 class Material_Z : public ResourceObject_Z {
 public:

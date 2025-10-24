@@ -1,6 +1,5 @@
 #ifndef _WATERHEIGHTMAP_Z_H_
 #define _WATERHEIGHTMAP_Z_H_
-#include "Material_Z.h"
 class Material_Z;
 
 // $VIOLET: TODO: Actually implement this class.

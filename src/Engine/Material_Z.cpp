@@ -2,6 +2,7 @@
 #include "Math_Z.h"
 #include "ResourceObject_Z.h"
 #include "Types_Z.h"
+#include "WaterHeightMap_Z.h"
 U32 Material_Z::DefaultRdrFlag = FL_MAT_RDR_UNK23;
 
 Material_Z::Material_Z() {
