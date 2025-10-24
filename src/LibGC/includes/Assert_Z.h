@@ -3,7 +3,7 @@
 #include "Types_Z.h"
 #include "__va_arg.h"
 
-void ExceptionBool_Z(bool i_Cancelable, const Char* i_Message, ...);
+Bool ExceptionBool_Z(Bool i_Ext, const Char* i_Message, ...);
 void ExceptionFonc_Z(const Char* i_Title, const Char* i_File, S32 i_Line, const Char* i_Message, U32 a5, U32 a6, U32 a7, U32 a8, U32 a9, U64* a10);
 void ExceptionReport(const Char* a1);
 void ExceptionHandler();
@@ -21,5 +21,11 @@ void BreakPoint_Z();
 #define ASSERTLE_Z(Exp, Comment, Line, OrigExp) \
     if (!(Exp))                                 \
     ExceptionFonc_Z(OrigExp, __FILE__, Line, Comment, 0, 0, 0, 0, 0, 0)
+#undef EXCEPTIONC_Z
+#define EXCEPTIONC_Z(Exp, Comment, ...) \
+    do {                                \
+        (void)0;                        \
+        (void)0;                        \
+    } while (0)
 
 #endif

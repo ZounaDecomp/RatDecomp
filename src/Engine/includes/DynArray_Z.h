@@ -2,13 +2,17 @@
 #define _DYNARRAY_Z_H_
 #include "Types_Z.h"
 #include "Memory_Z.h"
+#include "Assert_Z.h"
+
+#define DYNARRAY_Z_EXP(exp) \
+    { EXCEPTIONC_Z(exp, "Array_Z %s %s (size %d)", #exp, TYPEINFO_Z(this), GetSize()); }
 
 #define DYA_SIZEBITS 18
 #define DYA_RSVSIZEBITS (32 - DYA_SIZEBITS)
 #define DYA_SIZEMAX ((1 << DYA_SIZEBITS))
 #define DYA_RSVSIZEMAX ((1 << DYA_RSVSIZEBITS))
 
-template <class T, S32 Granularity = 8, Bool DeleteObject = TRUE, Bool InitObject = TRUE, int Align = _ALLOCDEFAULTALIGN>
+template <class T, int Granularity = 8, Bool DeleteObject = TRUE, Bool InitObject = TRUE, int Align = _ALLOCDEFAULTALIGN>
 class DynArray_Z {
 public:
     DynArray_Z() {
@@ -30,8 +34,9 @@ public:
     }
 
     void SetSize(int i_NewSize, const Bool i_ResizeOnlyIfGreater = FALSE) {
-        FIXDEBUGINLINING_Z(); // $SABE: Probably from MRT DYNARRAY_Z_EXP(NewSize<=DYA_SIZEMAX); DYNARRAY_Z_EXP(NewSize>=0);
-        S32 i;
+        DYNARRAY_Z_EXP(i_NewSize <= DYA_SIZEMAX);
+        DYNARRAY_Z_EXP(i_NewSize >= 0);
+        int i;
         if (i_NewSize > m_Size) {
             if ((i_NewSize - m_Size > m_ReservedSize) || !i_ResizeOnlyIfGreater) {
                 Realloc(i_NewSize);
@@ -69,7 +74,8 @@ public:
         if (i_NewReservedSize < m_Size)
             SetSize(i_NewReservedSize);
         else {
-            S32 l_NewReserved = i_NewReservedSize - m_Size;
+            int l_NewReserved = i_NewReservedSize - m_Size;
+            DYNARRAY_Z_EXP(l_NewReserved <= DYA_RSVSIZEMAX);
             if (l_NewReserved > DYA_RSVSIZEMAX)
                 l_NewReserved = DYA_RSVSIZEMAX;
             i_NewReservedSize = m_Size + l_NewReserved;
@@ -88,18 +94,22 @@ public:
 
     int Add() {
         if (!m_ReservedSize) {
+            DYNARRAY_Z_EXP(Granularity <= DYA_RSVSIZEMAX);
             m_ReservedSize = Granularity;
             Realloc(m_ReservedSize + m_Size);
         }
         if (InitObject)
             new (&m_ArrayPtr[m_Size]) T();
+        DYNARRAY_Z_EXP(m_Size < DYA_SIZEMAX);
         m_Size++;
         m_ReservedSize--;
         return m_Size - 1;
     }
 
     int Add(const T& i_Ele) {
+        DYNARRAY_Z_EXP(m_ArrayPtr == NULL || !(&i_Ele >= m_ArrayPtr && &i_Ele < m_ArrayPtr + (U32)GetSize()));
         if (!m_ReservedSize) {
+            DYNARRAY_Z_EXP(Granularity <= DYA_RSVSIZEMAX);
             m_ReservedSize = Granularity;
             Realloc(m_ReservedSize + m_Size);
         }
@@ -107,6 +117,7 @@ public:
             new (&m_ArrayPtr[m_Size]) T(i_Ele);
         else
             m_ArrayPtr[m_Size] = i_Ele;
+        DYNARRAY_Z_EXP(m_Size < DYA_SIZEMAX);
         m_Size++;
         m_ReservedSize--;
         return m_Size - 1;
@@ -125,19 +136,23 @@ public:
         m_ReservedSize = 0;
     }
 
-    void Realloc() {
-        Realloc(m_Size + m_ReservedSize);
-    }
-
-    T& Get(int i_Index) const {
+    T& Get(int i_Index) {
+        DYNARRAY_Z_EXP(i_Index < m_Size);
         return m_ArrayPtr[i_Index];
     }
 
-    T& operator[](int i_Index) const {
+    const T& Get(int i_Index) const {
+        DYNARRAY_Z_EXP(i_Index < m_Size);
+        return m_ArrayPtr[i_Index];
+    }
+
+    const T& operator[](int i_Index) const {
+        DYNARRAY_Z_EXP(i_Index < m_Size);
         return m_ArrayPtr[i_Index];
     }
 
     T& operator[](int i_Index) {
+        DYNARRAY_Z_EXP(i_Index < m_Size);
         return m_ArrayPtr[i_Index];
     }
 
@@ -157,6 +172,7 @@ private:
                 m_ArrayPtr = (T*)ReallocL_Z(m_ArrayPtr, i_NewNbElement * sizeof(T), 311);
             else
                 m_ArrayPtr = (T*)AllocAlignL_Z(i_NewNbElement * sizeof(T), 317, Align);
+            DYNARRAY_Z_EXP(m_ArrayPtr != NULL);
         }
         else {
             if (m_ArrayPtr) {

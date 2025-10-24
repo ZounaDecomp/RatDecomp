@@ -78,6 +78,7 @@ public:
     }
 
     Bool Remove(S32 i_Index) {
+        DYNARRAY_Z_EXP(i_Index < m_Size);
         if (m_BA.GetBit(i_Index)) {
             m_DA[i_Index].~T();
             m_BA.ClearBit(i_Index);
@@ -107,18 +108,22 @@ public:
     }
 
     T& Get(S32 i_Index) {
+        DYNARRAY_Z_EXP(i_Index < m_Size);
         return m_DA[i_Index];
     }
 
     const T& Get(S32 i_Index) const {
+        DYNARRAY_Z_EXP(i_Index < m_Size);
         return m_DA[i_Index];
     }
 
     T& operator[](int i_Index) {
+        DYNARRAY_Z_EXP(i_Index < m_Size);
         return Get(i_Index);
     }
 
     const T& operator[](int i_Index) const {
+        DYNARRAY_Z_EXP(i_Index < m_Size);
         return Get(i_Index);
     }
 };
